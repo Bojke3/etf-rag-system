@@ -117,8 +117,7 @@ pytest tests/ --cov=src
 
 ## 👥 Tim
 
-- **Project Lead**: Marko Šošić (Profesor)
-- **Researchers**: [Dodaj imena članova tima]
+- **Researchers**: Andrija Trnavcevic i Vuk Bojovic
 
 ## 📅 Timeline
 
