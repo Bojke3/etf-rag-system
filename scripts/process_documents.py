@@ -2,8 +2,13 @@
 
 import argparse
 import logging
+import sys
 from pathlib import Path
 from typing import List
+
+# Ensure repo root is on the path when running this script directly
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from src.data import DocumentLoaderFactory
 from src.config import config
 from src.utils import setup_logging, ensure_directories, get_file_paths
