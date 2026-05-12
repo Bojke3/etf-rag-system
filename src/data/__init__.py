@@ -22,21 +22,17 @@ class DocumentLoader(ABC):
 
 class PDFLoader(DocumentLoader):
     """Loader for PDF documents"""
-    
+
     def load(self, file_path: str) -> str:
         """Extract text from PDF"""
-        try:
-            from pypdf import PdfReader
-            text = []
-            with open(file_path, 'rb') as f:
-                reader = PdfReader(f)
-                for page in reader.pages:
-                    text.append(page.extract_text())
-            return '\n'.join(text)
-        except Exception as e:
-            logger.error(f"Error loading PDF {file_path}: {e}")
-            return ""
-    
+        from pypdf import PdfReader
+        text = []
+        with open(file_path, 'rb') as f:
+            reader = PdfReader(f)
+            for page in reader.pages:
+                text.append(page.extract_text() or "")
+        return '\n'.join(text)
+
     def validate(self, file_path: str) -> bool:
         """Check if file is valid PDF"""
         try:
@@ -44,51 +40,43 @@ class PDFLoader(DocumentLoader):
             with open(file_path, 'rb') as f:
                 PdfReader(f)
             return True
-        except:
+        except Exception:
             return False
 
 class WordLoader(DocumentLoader):
     """Loader for Word documents"""
-    
+
     def load(self, file_path: str) -> str:
         """Extract text from Word document"""
-        try:
-            from docx import Document
-            doc = Document(file_path)
-            text = [paragraph.text for paragraph in doc.paragraphs]
-            return '\n'.join(text)
-        except Exception as e:
-            logger.error(f"Error loading Word document {file_path}: {e}")
-            return ""
-    
+        from docx import Document
+        doc = Document(file_path)
+        text = [paragraph.text for paragraph in doc.paragraphs]
+        return '\n'.join(text)
+
     def validate(self, file_path: str) -> bool:
         """Check if file is valid Word document"""
         try:
             from docx import Document
             Document(file_path)
             return True
-        except:
+        except Exception:
             return False
 
 class TextLoader(DocumentLoader):
     """Loader for plain text documents"""
-    
+
     def load(self, file_path: str) -> str:
         """Read text file"""
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                return f.read()
-        except Exception as e:
-            logger.error(f"Error loading text file {file_path}: {e}")
-            return ""
-    
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return f.read()
+
     def validate(self, file_path: str) -> bool:
         """Check if file can be read as text"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 f.read(100)
             return True
-        except:
+        except Exception:
             return False
 
 class DocumentLoaderFactory:

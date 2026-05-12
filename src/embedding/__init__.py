@@ -75,38 +75,39 @@ class VectorStore(ABC):
         pass
 
 class FAISSVectorStore(VectorStore):
-    """FAISS-based vector store"""
-    
+    """FAISS-based vector store using cosine similarity (IndexFlatIP on L2-normalised vectors)"""
+
     def __init__(self, embedding_dim: int):
         try:
             import faiss
-            self.index = faiss.IndexFlatL2(embedding_dim)
+            self.index = faiss.IndexFlatIP(embedding_dim)
             self.metadatas = []
         except Exception as e:
             logger.error(f"Error initializing FAISS: {e}")
             raise
-    
+
     def add(self, embeddings: np.ndarray, metadatas: List[Dict]) -> None:
         """Add embeddings to FAISS index"""
         import faiss
-        self.index.add(embeddings.astype('float32'))
+        vecs = embeddings.astype('float32').copy()
+        faiss.normalize_L2(vecs)
+        self.index.add(vecs)
         self.metadatas.extend(metadatas)
-    
+
     def search(self, query_embedding: np.ndarray, top_k: int = 5) -> List[Dict]:
         """Search FAISS index"""
-        distances, indices = self.index.search(
-            query_embedding.astype('float32').reshape(1, -1), 
-            top_k
-        )
-        
+        import faiss
+        vec = query_embedding.astype('float32').reshape(1, -1).copy()
+        faiss.normalize_L2(vec)
+        scores, indices = self.index.search(vec, top_k)
+
         results = []
-        for idx, distance in zip(indices[0], distances[0]):
+        for idx, score in zip(indices[0], scores[0]):
             if idx >= 0:
                 result = self.metadatas[idx].copy()
-                result['distance'] = float(distance)
-                result['score'] = 1.0 / (1.0 + float(distance))
+                result['score'] = float(score)  # cosine similarity in [-1, 1]
                 results.append(result)
-        
+
         return results
     
     def save(self, path: str) -> None:

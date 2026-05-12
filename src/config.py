@@ -1,6 +1,6 @@
 """Configuration management for ETF RAG System"""
 
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
 from typing import Optional
 
@@ -57,10 +57,11 @@ class Config(BaseSettings):
     telegram_bot_token: Optional[str] = None
     discord_bot_token: Optional[str] = None
     
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        case_sensitive = False
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+    )
 
 # Create config instance
 config = Config()

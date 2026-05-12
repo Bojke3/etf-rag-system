@@ -14,11 +14,12 @@ class RAGPipeline:
         self.llm_client = llm_client
         self.embedding_model = embedding_model
     
-    def process_query(self, 
+    def process_query(self,
                      question: str,
                      top_k: int = 5,
                      prompt_strategy: str = "zero_shot",
-                     include_sources: bool = True) -> Dict[str, Any]:
+                     include_sources: bool = True,
+                     examples: str = "") -> Dict[str, Any]:
         """Process user query end-to-end"""
         
         start_time = time.time()
@@ -45,7 +46,7 @@ class RAGPipeline:
             if prompt_strategy == "zero_shot":
                 prompt = PromptTemplate.format_zero_shot(question, context)
             elif prompt_strategy == "few_shot":
-                prompt = PromptTemplate.format_few_shot(question, context, "")
+                prompt = PromptTemplate.format_few_shot(question, context, examples)
             elif prompt_strategy == "chain_of_thought":
                 prompt = PromptTemplate.format_chain_of_thought(question, context)
             else:
