@@ -1,0 +1,546 @@
+# Benchmark dataset – Pravilnik o osnovnim akademskim studijama ETF
+
+```json
+[
+  {
+    "id": "Q001",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Када по правилу почиње школска година на Факултету?",
+    "expected_answer": "Школска година по правилу почиње 1. октобра и траје 12 календарских месеци.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 9"
+  },
+  {
+    "id": "Q002",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико радних недеља има школска година?",
+    "expected_answer": "Школска година има по правилу 42 радне недеље, од чега 30 наставних недеља и 12 недеља за консултације, припрему испита и испите.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 9"
+  },
+  {
+    "id": "Q003",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико наставних недеља има један семестар?",
+    "expected_answer": "Сваки семестар има по правилу 15 наставних недеља и 6 недеља за консултације, припрему испита и испите.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 9"
+  },
+  {
+    "id": "Q004",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Која су два акредитована студијска програма на основним академским студијама ETF-а?",
+    "expected_answer": "Акредитована су два студијска програма: Основне академске студије Електротехника и рачунарство и Основне академске студије Софтверско инжењерство.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 3"
+  },
+  {
+    "id": "Q005",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико ЕСПБ бодова одговара просечном оптерећењу током једне школске године?",
+    "expected_answer": "Збир од 60 ЕСПБ бодова одговара просечном укупном ангажовању студента у обиму 40-часовне радне недеље током једне школске године.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 12"
+  },
+  {
+    "id": "Q006",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико ЕСПБ бодова одговара просечном оптерећењу током једног семестра?",
+    "expected_answer": "Збир од 30 ЕСПБ бодова одговара просечном укупном ангажовању студента у обиму 40-часовне радне недеље током једног семестра.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 12"
+  },
+  {
+    "id": "Q007",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колики је минималан број часова активне наставе током школске године?",
+    "expected_answer": "Укупан број часова активне наставе у току школске године не може бити мањи од 600 часова.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 12"
+  },
+  {
+    "id": "Q008",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колики је максималан број часова активне наставе током школске године?",
+    "expected_answer": "Укупан број часова активне наставе у току школске године не може бити већи од 900 часова.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 12"
+  },
+  {
+    "id": "Q009",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Који је циљ пројеката као облика наставе?",
+    "expected_answer": "Циљ пројеката је увођење студената у инжењерски рад.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 24"
+  },
+  {
+    "id": "Q010",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Шта је циљ семинарског рада?",
+    "expected_answer": "Циљ семинарског рада је увођење студената у научноистраживачки рад.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 23"
+  },
+  {
+    "id": "Q011",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "У ком семестру се по правилу обавља стручна пракса?",
+    "expected_answer": "Стручна пракса се по правилу обавља у 8. семестру.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 19"
+  },
+  {
+    "id": "Q012",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико минимално часова студент мора да проведе на стручној пракси?",
+    "expected_answer": "Студент мора да обави најмање 90 часова стручне праксе.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 19"
+  },
+  {
+    "id": "Q013",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико ЕСПБ бодова носи стручна пракса?",
+    "expected_answer": "За обављену стручну праксу студент добија 2 ЕСПБ бода.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 19"
+  },
+  {
+    "id": "Q014",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Да ли се стручна пракса оцењује бројчано?",
+    "expected_answer": "Стручна пракса се не оцењује нумерички, већ описно оценом 'признаје се'.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 19"
+  },
+  {
+    "id": "Q015",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Ко може да држи предавања на Факултету?",
+    "expected_answer": "Предавања изводе наставници Факултета.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 15"
+  },
+  {
+    "id": "Q016",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико процената предавања асистенти могу да одрже?",
+    "expected_answer": "Асистенти са докторатом и асистенти могу одржати до 10% фонда часова предавања на предмету годишње.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 15"
+  },
+  {
+    "id": "Q017",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико сати консултација недељно наставник мора да обезбеди?",
+    "expected_answer": "Наставник мора обезбедити најмање два сата консултација седмично.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 20"
+  },
+  {
+    "id": "Q018",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Колико сати консултација недељно морају да држе асистенти и сарадници?",
+    "expected_answer": "Асистенти са докторатом, асистенти и сарадници у настави морају обезбедити најмање три сата консултација седмично.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 20"
+  },
+  {
+    "id": "Q019",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Да ли се консултације могу одржавати електронском поштом?",
+    "expected_answer": "Један термин консултација може се заменити консултацијама помоћу електронске поште.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 20"
+  },
+  {
+    "id": "Q020",
+    "type": "single_chunk",
+    "difficulty": "easy",
+    "question": "Шта студент мора да испуни пре полагања испита?",
+    "expected_answer": "Студент мора да одслуша предавања и испуни предиспитне обавезе предвиђене студијским програмом.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 25"
+  },
+  {
+    "id": "Q021",
+    "type": "medium",
+    "difficulty": "medium",
+    "question": "Које модуле обухвата студијски програм Електротехника и рачунарство?",
+    "expected_answer": "Студијски програм Електротехника и рачунарство обухвата модуле: Електроника и дигитални системи, Енергетика, Рачунарска техника и информатика, Сигнали и системи, Телекомуникације и информационе технологије и Физичка електроника.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 3"
+  },
+  {
+    "id": "Q022",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "На које смерове се дели одсек Физичка електроника?",
+    "expected_answer": "Одсек за физичку електронику дели се на смерове Наноелектроника и фотоника и Биомедицински и еколошки инжењеринг.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 3"
+  },
+  {
+    "id": "Q023",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "На које смерове се дели одсек Телекомуникације и информационе технологије?",
+    "expected_answer": "Одсек за телекомуникације и информационе технологије дели се на Информационо комуникационе технологије, Аудио и видео комуникације и Микроталасну технику.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 3"
+  },
+  {
+    "id": "Q024",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Који облици наставе су предвиђени студијским програмом?",
+    "expected_answer": "Студијски програм предвиђа предавања, вежбе, лабораторијске вежбе, семинаре, практикуме, практичну наставу, консултације, колоквијуме, израду радова, испите, израду и одбрану завршног рада и друге облике наставе.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 4"
+  },
+  {
+    "id": "Q025",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Шта све мора да садржи план рада на предмету?",
+    "expected_answer": "План рада обухвата основне податке о предмету, предуслове, циљеве, садржај и структуру предмета, план наставе, предиспитне обавезе, колоквијуме, начин оцењивања, литературу, начин оглашавања обавештења и имена наставника и сарадника.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 11"
+  },
+  {
+    "id": "Q026",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Од чега се састоји укупно ангажовање студента?",
+    "expected_answer": "Укупно ангажовање студента састоји се од активне наставе, самосталног рада, колоквијума, испита, израде завршног рада, добровољног рада у локалној заједници и других облика ангажовања.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 12"
+  },
+  {
+    "id": "Q027",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Шта су лабораторијске вежбе?",
+    "expected_answer": "Лабораторијске вежбе су облик наставе у коме студенти у лабораторији врше експерименталну проверу теоријског градива и пишу извештаје о извршеним експериментима.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 17"
+  },
+  {
+    "id": "Q028",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Шта је практикум као облик наставе?",
+    "expected_answer": "Практикум је облик наставе који студенте уводи у примену теорије и омогућава стицање практичних вештина и способности применљивих у струци.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 18"
+  },
+  {
+    "id": "Q029",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Које врсте колоквијума постоје?",
+    "expected_answer": "Колоквијуми могу бити писмени, усмени, практични или комбиновани.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 21"
+  },
+  {
+    "id": "Q030",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Шта је циљ семинара?",
+    "expected_answer": "Циљ семинара је дубље и критичко разматрање тематских садржаја и упознавање студената са критичким размишљањем и закључивањем.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 22"
+  },
+  {
+    "id": "Q031",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Ко може бити члан комисије за одбрану завршног рада?",
+    "expected_answer": "Комисија има најмање два члана, од којих је један руководилац рада, а други наставник, асистент са докторатом, асистент или сарадник у настави.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 29"
+  },
+  {
+    "id": "Q032",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Како изгледа јавна одбрана завршног рада?",
+    "expected_answer": "Јавна одбрана се састоји од усмене презентације рада, постављања питања од стране комисије и одговора студента на постављена питања.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 29"
+  },
+  {
+    "id": "Q033",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Које оцене постоје за добровољни рад у локалној заједници?",
+    "expected_answer": "Добровољни рад вреднује се описним оценама: 'истиче се', 'задовољава' и 'не задовољава'.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 31"
+  },
+  {
+    "id": "Q034",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Које статусе студент може имати на Факултету?",
+    "expected_answer": "Студент може бити буџетски студент или самофинансирајући студент.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 32"
+  },
+  {
+    "id": "Q035",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Колико дуго може трајати статус гостујућег студента?",
+    "expected_answer": "Својство гостујућег студента траје најдуже једну школску годину, односно два семестра.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 33"
+  },
+  {
+    "id": "Q036",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Да ли се при мобилности признаје оцена са друге високошколске установе?",
+    "expected_answer": "Признавањем испита признаје се и оцена коју је студент добио на испиту.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 34"
+  },
+  {
+    "id": "Q037",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Који је услов за задржавање статуса буџетског студента?",
+    "expected_answer": "Студент мора да оствари најмање 48 ЕСПБ бодова и да буде рангиран у оквиру одобреног броја буџетских места.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 38"
+  },
+  {
+    "id": "Q038",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Колико ЕСПБ бодова је потребно студентима са инвалидитетом за буџет?",
+    "expected_answer": "Студенти са инвалидитетом и студенти уписани по афирмативној мери треба да остваре 36 ЕСПБ бодова да би задржали право на буџет.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 38"
+  },
+  {
+    "id": "Q039",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "На ком језику се организују студије на Факултету?",
+    "expected_answer": "Студије на Факултету организују се на српском језику.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 40"
+  },
+  {
+    "id": "Q040",
+    "type": "multi_chunk",
+    "difficulty": "medium",
+    "question": "Под којим условом страни држављанин може да студира на Факултету?",
+    "expected_answer": "Страни држављанин може студирати као самофинансирајући студент и мора бити здравствено осигуран.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 41"
+  },
+  {
+    "id": "Q041",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Које услове студент мора да испуни да би пријавио одбрану завршног рада?",
+    "expected_answer": "Студент мора имати положене све испите и испуњене све обавезе предвиђене студијским програмом.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 28"
+  },
+  {
+    "id": "Q042",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Да ли студент може да промени тему завршног рада и под којим условима?",
+    "expected_answer": "Студент може променити тему завршног рада уз одобрење шефа одсека, али се тема може променити само једанпут.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 26"
+  },
+  {
+    "id": "Q043",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Колико времена студент има за одбрану завршног рада након пријаве теме?",
+    "expected_answer": "Студент је у обавези да одбрани завршни рад у року од једне године од дана пријаве теме.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 26"
+  },
+  {
+    "id": "Q044",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Колико највише може бити продужен рок за одбрану завршног рада?",
+    "expected_answer": "Рок за одбрану завршног рада може бити продужен највише шест месеци.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 26"
+  },
+  {
+    "id": "Q045",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Колико времена мора проћи да би иста тема завршног рада могла поново да се одобри?",
+    "expected_answer": "Исте теме се не могу одобрити у периоду од 3 године од последње одбране.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 26"
+  },
+  {
+    "id": "Q046",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Шта студент треба да преда након израде завршног рада?",
+    "expected_answer": "Студент предаје два примерка рада у писаној форми руководиоцу рада и један примерак у електронској форми Студентском одсеку.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 28"
+  },
+  {
+    "id": "Q047",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "На ком језику може бити написан завршни рад?",
+    "expected_answer": "Завршни рад може бити написан на српском или енглеском језику.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 28"
+  },
+  {
+    "id": "Q048",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Ко може бити уписан без пријемног испита на основне академске студије?",
+    "expected_answer": "Без пријемног испита могу се уписати лица са већ стеченим високим образовањем, студенти других високошколских установа који су остварили најмање 60 ЕСПБ бодова и други случајеви предвиђени правилником.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 43"
+  },
+  {
+    "id": "Q049",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Да ли студент другог универзитета може прећи на ETF ако му је остало мање од 60 ЕСПБ бодова до краја студија?",
+    "expected_answer": "Студент другог универзитета не може се уписати ако му је до окончања студија остало 60 или мање ЕСПБ бодова.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 43"
+  },
+  {
+    "id": "Q050",
+    "type": "hard",
+    "difficulty": "hard",
+    "question": "Ко одлучује о признавању положених испита приликом преласка на Факултет?",
+    "expected_answer": "О признавању положених испита одлучује Комисија за студије првог степена на основу мишљења предметних наставника.",
+    "source_document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+    "source_section": "Члан 44"
+  },
+  {
+    "id": "Q051",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Колика је школарина за самофинансирајуће студенте?",
+    "expected_answer": "Информација о висини школарине није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q052",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Када је основан Електротехнички факултет?",
+    "expected_answer": "Информација о датуму оснивања факултета није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q053",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Колико професора ради на ETF-у?",
+    "expected_answer": "Информација о броју професора није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q054",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Које је радно време студентске службе?",
+    "expected_answer": "Информација о радном времену студентске службе није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q055",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Који је контакт телефон библиотеке?",
+    "expected_answer": "Информација о контакт телефону библиотеке није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q056",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Да ли ETF има дом за студенте?",
+    "expected_answer": "Информација о студентском дому није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q057",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Колико студената годишње уписује ETF?",
+    "expected_answer": "Информација о броју уписаних студената није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q058",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Да ли факултет обезбеђује смештај за стране студенте?",
+    "expected_answer": "Информација о смештају за стране студенте није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q059",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Колика је просечна плата дипломираних студената ETF-а?",
+    "expected_answer": "Информација о просечној плати дипломираних студената није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  },
+  {
+    "id": "Q060",
+    "type": "out_of_scope",
+    "difficulty": "trap",
+    "question": "Да ли ETF има онлајн платформу за учење?",
+    "expected_answer": "Информација о онлајн платформи за учење није доступна у документима.",
+    "source_document": null,
+    "source_section": null
+  }
+]
+```
