@@ -60,8 +60,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process documents")
     parser.add_argument("--input", default=getattr(config, "data_dir", "./data/documents"), help="Input directory")
     parser.add_argument("--output", default=getattr(config, "processed_data_dir", "./data/processed"), help="Output directory")
-    parser.add_argument("--chunk-size", type=int, default=512, help="Chunk size in characters")
-    parser.add_argument("--overlap", type=int, default=100, help="Overlap between chunks in characters")
+    parser.add_argument("--chunk-size", type=int, default=getattr(config, "chunk_size", 512), help="Chunk size in characters")
+    parser.add_argument("--overlap", type=int, default=getattr(config, "chunk_overlap", 100), help="Overlap between chunks in characters")
 
     args = parser.parse_args()
 
