@@ -14,9 +14,13 @@ from pathlib import Path
 # Ensure repo root is on the path when running this script directly
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.config import config
 from src.embedding import FAISSVectorStore, SentenceTransformerEmbedding
 from src.utils import ensure_directories, get_file_paths, setup_logging
+
+try:
+    from src.config import config
+except ImportError:
+    config = None
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -97,10 +101,10 @@ def index_documents(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Embed document chunks and build FAISS index")
-    parser.add_argument("--input", default=config.processed_data_dir, help="Directory of chunked .txt files")
-    parser.add_argument("--output", default=config.vector_store_path, help="Output directory for FAISS index")
-    parser.add_argument("--model", default=config.embedding_model, help="Sentence-transformers model name")
-    parser.add_argument("--device", default=config.embedding_device, help="Device: cpu or cuda")
+    parser.add_argument("--input", default=getattr(config, "processed_data_dir", "./data/processed"), help="Directory of chunked .txt files")
+    parser.add_argument("--output", default=getattr(config, "vector_store_path", "./models/vectorstore"), help="Output directory for FAISS index")
+    parser.add_argument("--model", default=getattr(config, "embedding_model", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"), help="Sentence-transformers model name")
+    parser.add_argument("--device", default=getattr(config, "embedding_device", "cpu"), help="Device: cpu or cuda")
     parser.add_argument("--batch-size", type=int, default=32, help="Chunks per embedding batch")
 
     args = parser.parse_args()

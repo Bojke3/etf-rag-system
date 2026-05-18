@@ -20,7 +20,7 @@ class Config(BaseSettings):
     ollama_max_tokens: int = 2048
     
     # Embedding Configuration
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     embedding_device: str = "cpu"
     
     # Vector Store Configuration
@@ -33,8 +33,8 @@ class Config(BaseSettings):
     embedding_dir: str = "./data/embeddings"
     
     # Chunking Strategy
-    chunk_size: int = 512
-    chunk_overlap: int = 100
+    chunk_size: int = 1000
+    chunk_overlap: int = 150
     
     # Retrieval Configuration
     retrieval_top_k: int = 5

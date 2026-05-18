@@ -24,8 +24,8 @@ logger = logging.getLogger(__name__)
 def process_documents(
     input_dir: str,
     output_dir: str,
-    chunk_size: int = 512,
-    overlap: int = 100,
+    chunk_size: int = 1000,
+    overlap: int = 150,
     enable_ocr: bool = True,
     ocr_max_pages: int | None = None,
     ocr_languages: str | None = None,
@@ -81,8 +81,8 @@ if __name__ == "__main__":
     parser.add_argument("--input", default=getattr(config, "data_dir", "./data/documents"), help="Input directory")
     parser.add_argument("--output", default=getattr(config, "processed_data_dir", "./data/processed"), help="Output directory")
 
-    parser.add_argument("--chunk-size", type=int, default=getattr(config, "chunk_size", 512), help="Chunk size in characters")
-    parser.add_argument("--overlap", type=int, default=getattr(config, "chunk_overlap", 100), help="Overlap between chunks in characters")
+    parser.add_argument("--chunk-size", type=int, default=getattr(config, "chunk_size", 1000), help="Chunk size in characters")
+    parser.add_argument("--overlap", type=int, default=getattr(config, "chunk_overlap", 150), help="Overlap between chunks in characters")
 
     parser.add_argument("--no-ocr", action="store_true", help="Disable OCR fallback for scanned PDFs")
     parser.add_argument("--ocr-max-pages", type=int, help="OCR only the first N pages of each PDF")
