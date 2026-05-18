@@ -1,128 +1,111 @@
-# ETF RAG System — Progress & Status
+# ETF RAG System — Progress
+
+Last updated: 2026-05-18
+
+---
 
 ## Project Structure
 
 ```
 etf-rag-system/
-├── DataAkti/                          # 7 PDF dokumenata ETF pravilnika
+├── DataAkti/                          # 7 source PDFs (Serbian ETF rulebooks)
 ├── benchmarking/
-│   └── OAS_prec_23_benchmark.json     # 60 Q&A parova za evaluaciju
+│   └── OAS_prec_23_benchmark.json     # 60 Q&A pairs for evaluation
 ├── data/
-│   └── processed/                     # Chunk .txt fajlovi (gitignored)
-├── docs/
-│   ├── ARCHITECTURE.md
-│   ├── OCR.md                         # Dokumentacija za OCR setup
-│   └── ...
+│   └── processed/                     # .txt chunk files (gitignored, 75 files)
 ├── models/
-│   └── vectorstore/                   # FAISS index fajlovi (gitignored)
+│   └── vectorstore/                   # FAISS index + metadatas.json (gitignored)
 ├── scripts/
-│   ├── index_documents.py             # Embedduje chunkove → FAISS index
-│   ├── process_documents.py           # PDF → chunk .txt fajlovi (sa OCR fallbackom)
-│   └── setup_ollama_models.sh         # Preuzima Ollama modele
+│   ├── process_documents.py           # PDF → .txt chunks (with OCR fallback)
+│   ├── index_documents.py             # .txt chunks → FAISS vector index
+│   └── setup_ollama_models.sh         # Pulls mistral, llama2, neural-chat
 ├── src/
-│   ├── config.py                      # Pydantic config, čita .env
-│   ├── constants.py                   # Spisak podržanih embedding modela
+│   ├── config.py                      # Pydantic BaseSettings, reads .env
+│   ├── constants.py                   # Model lists, supported formats, metrics
 │   ├── data/
-│   │   ├── chunking.py                # SimpleChunker — deli Document na Chunk liste
-│   │   ├── document.py                # Document dataclass (text + metadata)
-│   │   ├── loaders.py                 # PDF/Word/Text loaderi, OCR fallback
-│   │   ├── ocr.py                     # OCRHandler — easyocr + PyMuPDF za skenove
-│   │   └── preprocessing.py          # TextPreprocessor — čisti whitespace/newlines
+│   │   ├── document.py                # Document dataclass: text + metadata dict
+│   │   ├── loaders.py                 # PDFLoader, WordLoader, TextLoader, Factory
+│   │   ├── chunking.py                # SimpleChunker — overlapping character chunks
+│   │   ├── preprocessing.py           # TextPreprocessor — whitespace/newline cleanup
+│   │   └── ocr.py                     # OCRHandler — easyocr + PyMuPDF for scanned PDFs
 │   ├── embedding/
 │   │   └── __init__.py                # SentenceTransformerEmbedding + FAISSVectorStore
+│   ├── retrieval/
+│   │   └── __init__.py                # SimpleRetriever (threshold filter) + ContextBuilder
 │   ├── llm/
 │   │   └── __init__.py                # OllamaClient + PromptTemplate (zero/few/CoT)
 │   ├── rag/
-│   │   └── __init__.py                # RAGPipeline — retrieve → prompt → generate
-│   ├── retrieval/
-│   │   └── __init__.py                # SimpleRetriever + ContextBuilder
+│   │   └── __init__.py                # RAGPipeline: retrieve → prompt → generate
 │   ├── evaluation/
-│   │   └── __init__.py                # (stub) BLEU, ROUGE, LLM-as-Judge
-│   └── chatbot/
-│       └── __init__.py                # (stub) Telegram/Discord/WhatsApp
+│   │   └── __init__.py                # BLEUMetric, ROUGEMetric, BERTScoreMetric, Evaluator
+│   ├── chatbot/
+│   │   └── __init__.py                # RAGAgent with conversation history (stub)
+│   └── utils/
+│       └── __init__.py                # setup_logging, ensure_directories, get_file_paths
 ├── web/
-│   └── app.py                         # Flask REST API (GET /, POST /query)
+│   └── app.py                         # Flask REST API: GET /, POST /query
 ├── tests/
 │   ├── conftest.py
 │   ├── test_document_loader.py
 │   └── test_embedding.py
-├── main.py                            # Demo skripta — štampa prvih 3 chunka po dokumentu
-├── test_structure.py                  # Brza provera da se sve importuje
-├── .env                               # Lokalna konfiguracija (gitignored)
-├── .env.example                       # Template za .env
-└── requirements.txt
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── OCR.md
+│   ├── SETUP.md
+│   ├── RESEARCH.md
+│   ├── BENCHMARKING.md
+│   └── API_DOCS.md
+├── main.py                            # Demo: loads all PDFs, prints first 3 chunks
+├── test_structure.py                  # Smoke test for imports
+├── .env                               # Local config (gitignored)
+└── .env.example                       # Config template
 ```
 
 ---
 
-## Šta Radi / Šta Ne Radi
+## What Works
 
-### Radi
-- **Document loading** — `src/data/loaders.py` čita PDF, Word i .txt fajlove
-- **Preprocessing** — `TextPreprocessor` čisti srpski tekst (whitespace, newlines)
-- **Chunking** — `SimpleChunker` deli tekst na overlapping chunkove
-- **Embedding** — `SentenceTransformerEmbedding` sa multilingual modelom
-- **FAISS vector store** — čuvanje i učitavanje indeksa
-- **Retrieval** — kosinusna sličnost sa threshold filterom
-- **LLM client** — `OllamaClient` komunicira sa lokalnim Ollama serverom
-- **Prompt engineering** — zero-shot, few-shot, chain-of-thought strategije
-- **Flask API** — `POST /query` vraća odgovor + izvore + metrike vremena
-- **OCR handler** — `OCRHandler` koristi easyocr + PyMuPDF za skenirana PDF-ova
-- **Config sistem** — sve se čita iz `.env` via Pydantic BaseSettings
+| Component | Status | Notes |
+|-----------|--------|-------|
+| Python venv | ✅ | `venv/` exists, dependencies installed |
+| `.env` config | ✅ | Configured, Pydantic reads all values |
+| Embedding model | ✅ | `paraphrase-multilingual-MiniLM-L12-v2` cached at `~/.cache/huggingface/hub/` |
+| Document loading | ✅ | PDFLoader, WordLoader, TextLoader all working |
+| Text preprocessing | ✅ | TextPreprocessor cleans whitespace/newlines |
+| Chunking | ✅ | SimpleChunker: 1024 chars, 150 overlap |
+| OCR handler | ✅ | Code complete in `src/data/ocr.py`, uses easyocr + PyMuPDF |
+| 75 real chunks | ✅ | In `data/processed/` from `Pravilnik_o_OAS_preciscen_jun_2023.pdf` |
+| qwen2.5:3b | ✅ | Installed via Ollama (1.9 GB) |
+| Flask API code | ✅ | `web/app.py` complete, lazy pipeline init |
+| Evaluation metrics | ✅ | BLEU, ROUGE, BERTScore code exists in `src/evaluation/` |
+| Benchmark dataset | ✅ | 60 Q&A pairs in `benchmarking/OAS_prec_23_benchmark.json` |
 
-### Ne Radi / Nije Završeno
-- **FAISS index nije rebuild-ovan** — trenutno sadrži samo 2 stara test chunka
-- **6 od 7 PDF-ova nisu procesirana** — skenirana su, OCR još nije pokrenut
-- **Web server nije testiran** — nikad pokrenut sa pravim podacima
-- **Evaluacija** — `src/evaluation/` je stub, benchmark skripta ne postoji
-- **Chatbot integracije** — `src/chatbot/` je prazan stub
-- **`.env` ima pogrešan model** — `OLLAMA_MODEL=mistral`, ali mistral nije instaliran
+## What Does NOT Work Yet
+
+| Component | Status | Blocker |
+|-----------|--------|---------|
+| FAISS index | ❌ | Contains 2 old dummy test chunks (May 12). Must rebuild |
+| 6 scanned PDFs | ❌ | OCR has not been run yet — 0 chunks from these |
+| Web server | ❌ | Never started with real data; would return answers from 2 test chunks |
+| Benchmark runner | ❌ | Script doesn't exist — needs to be written |
+| mistral model | ❌ | 4.4 GB download was interrupted; not installed |
 
 ---
 
-## Zavisnosti i Pokretanje
-
-### Preduslovi
+## How to Run
 
 ```bash
-# Python 3.10+
-python3 --version
-
-# Ollama
-ollama --version
-```
-
-### Instalacija
-
-```bash
-git clone https://github.com/Bojke3/etf-rag-system.git
-cd etf-rag-system
-
-python3 -m venv venv
+# Activate environment
 source venv/bin/activate
 
+# Step 1: Fix .env — change model to what's actually installed
+# Edit .env: OLLAMA_MODEL=qwen2.5:3b
+
+# Step 2: Install latest deps (Andrija added easyocr, PyMuPDF)
 pip install -r requirements.txt
-```
 
-### Konfiguracija
-
-Kopiraj `.env.example` → `.env` i podesi:
-
-```env
-OLLAMA_MODEL=qwen2.5:3b
-EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
-DATA_DIR=./DataAkti
-CHUNK_SIZE=1024
-CHUNK_OVERLAP=150
-RETRIEVAL_THRESHOLD=0.5
-VECTOR_STORE_PATH=./models/vectorstore
-PROCESSED_DATA_DIR=./data/processed
-```
-
-### Pokretanje
-
-```bash
-# 1. Procesiranje dokumenata (sa OCR za skenove)
+# Step 3: Process all documents with OCR for scanned PDFs
+# (~10-30 min on CPU; easyocr downloads ~500MB models on first run)
 python scripts/process_documents.py \
   --input DataAkti \
   --output data/processed \
@@ -130,92 +113,71 @@ python scripts/process_documents.py \
   --overlap 150 \
   --ocr-languages rs_cyrillic,en
 
-# 2. Kreiranje FAISS indeksa
+# Step 4: Rebuild FAISS index
 python scripts/index_documents.py
 
-# 3. Pokretanje web servera
+# Step 5: Start web server
 python web/app.py
 
-# 4. Test upit
+# Step 6: Test with a benchmark question
 curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
-  -d '{"question": "Када почиње школска година на Факултету?", "top_k": 5}'
+  -d '{"question": "Када по правилу почиње школска година на Факултету?", "top_k": 5}'
+
+# Expected: answer matches "Школска година по правилу почиње 1. октобра..."
 ```
 
 ---
 
-## Sledeći Koraci (Po Prioritetu)
+## Next Steps (Priority Order)
 
-### 1. Update `.env` — promeniti LLM model
-```
-OLLAMA_MODEL=qwen2.5:3b
-```
-
-### 2. Instalirati nove zavisnosti (Andrija dodao easyocr i PyMuPDF)
-```bash
-pip install -r requirements.txt
-```
-
-### 3. OCR procesiranje skeniranih PDF-ova
-Pokrenuti `process_documents.py` sa OCR flagom. EasyOCR će preuzeti modele
-(~500MB) pri prvom pokretanju i procesirati ~1-2 min/stranica na CPU-u.
-
-### 4. Rebuild FAISS indeksa
-Trenutni indeks ima samo 2 placeholder chunka. Rebuild sa pravim podacima.
-
-### 5. End-to-end test web servera
-Pokrenuti `web/app.py` i testirati pitanje iz benchmark dataseta.
-
-### 6. Napisati benchmark skriptu
-Automatski prolaz kroz `benchmarking/OAS_prec_23_benchmark.json` — upoređivanje
-generisanih odgovora sa `expected_answer` koristeći ROUGE/semantic similarity.
-
-### 7. Evaluacija kvaliteta OCR-a
-Ručno proveriti par chunk fajlova iz skeniranih PDF-ova — easyocr za ćirilicu
-nije savršen, može biti grešaka.
+1. **Fix `.env`** — `OLLAMA_MODEL=qwen2.5:3b`
+2. **`pip install -r requirements.txt`** — get easyocr and PyMuPDF
+3. **Run OCR processing** — extracts text from 6 scanned PDFs
+4. **Rebuild FAISS index** — index all real chunks
+5. **Test web server end-to-end** — verify real Q&A works
+6. **Write benchmark runner script** — iterate over `OAS_prec_23_benchmark.json`, call `/query`, score with ROUGE
+7. **Pull mistral** (`ollama pull mistral`) for comparison experiments
+8. **Evaluate OCR quality** — manually check a few chunks from scanned PDFs for Cyrillic accuracy
 
 ---
 
-## Poznati Problemi i Bagovi
+## Known Issues and Bugs
 
-| Problem | Status | Rešenje |
-|---------|--------|---------|
-| `.env` ima `OLLAMA_MODEL=mistral` ali mistral nije instaliran | Otvoreno | Promeniti na `qwen2.5:3b` |
-| FAISS index sadrži samo 2 test chunka | Otvoreno | Pokrenuti `index_documents.py` |
-| 6/7 PDF-ova su skenirana — pypdf ne može da izvuče tekst | Otvoreno | Pokrenuti OCR processing |
-| `src/evaluation/__init__.py` je prazan stub | Otvoreno | Implementirati ROUGE metriku |
-| `easyocr` OCR kvalitet za ćirilicu može biti slab | Nepoznato | Proveriti posle pokretanja |
-
----
-
-## Status Modela
-
-| Model | Veličina | Status | Napomena |
-|-------|----------|--------|---------|
-| `qwen2.5:3b` (Ollama) | 1.9 GB | **Instaliran** | Primarni LLM za testiranje |
-| `mistral` (Ollama) | 4.4 GB | **Nije instaliran** | Download prekinut, pokrenuti: `ollama pull mistral` |
-| `paraphrase-multilingual-MiniLM-L12-v2` | ~470 MB | **Keširan** | `~/.cache/huggingface/hub/` |
-| `all-MiniLM-L6-v2` | ~90 MB | **Keširan** | Engleski model, ne koristimo |
+| Issue | File | Details |
+|-------|------|---------|
+| `.env` has wrong model | `.env` L3 | `OLLAMA_MODEL=mistral` but mistral not installed |
+| FAISS index is stale | `models/vectorstore/` | May 12 timestamp, 2 dummy chunks |
+| easyocr not yet run | — | OCR models (~500MB) will download on first `process_documents.py` run |
+| Benchmark runner missing | — | `src/evaluation/` has metric classes but no script to run against JSON dataset |
 
 ---
 
-## Status Benchmark Dataseta
+## Model Status
 
-**Fajl:** `benchmarking/OAS_prec_23_benchmark.json`
-
-- **60 pitanja/odgovora** iz `Pravilnik_o_OAS_preciscen_jun_2023.pdf`
-- Format: `id`, `type`, `difficulty`, `question`, `expected_answer`, `source_document`, `source_section`
-- Tipovi: `single_chunk` (jedno poglavlje), potencijalno `multi_chunk` (više poglavlja)
-- Težine: `easy`, `medium`, `hard`
-- **Benchmark skripta ne postoji** — treba je napisati
+| Model | Type | Size | Status |
+|-------|------|------|--------|
+| `qwen2.5:3b` | Ollama LLM | 1.9 GB | ✅ Installed |
+| `mistral` | Ollama LLM | 4.4 GB | ❌ Not installed (download interrupted) |
+| `paraphrase-multilingual-MiniLM-L12-v2` | Embedding | ~470 MB | ✅ Cached at `~/.cache/huggingface/hub/` |
+| `all-MiniLM-L6-v2` | Embedding | ~90 MB | ✅ Cached (not used — English only) |
 
 ---
 
-## Tim
+## Benchmark Dataset
 
-- **Vuk Bojovic** — setup, konfiguracija, retrieval pipeline, chunking
-- **Andrija Trnavcevic** — `src/data/` refaktor, OCR integracija (`easyocr` + `PyMuPDF`)
+**File**: `benchmarking/OAS_prec_23_benchmark.json`
 
-## Rok
+- 60 question/answer pairs from `Pravilnik_o_OAS_preciscen_jun_2023.pdf`
+- Schema: `id`, `type` (`single_chunk`), `difficulty` (`easy`/`medium`/`hard`), `question`, `expected_answer`, `source_document`, `source_section`
+- All questions are in Serbian Cyrillic
+- **No evaluation script yet** — needs to be written
 
-**TELFOR 2026** — 4. septembar 2026
+---
+
+## Team
+
+- **Vuk Bojovic** — environment setup, pipeline config, retrieval, bugfixes
+- **Andrija Trnavcevic** — `src/data/` refactor into modules, OCR integration (easyocr + PyMuPDF)
+
+**Deadline**: TELFOR 2026 — September 4, 2026
