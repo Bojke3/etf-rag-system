@@ -8,39 +8,39 @@ ETF RAG System je dizajniran kao modularna arhitektura sa jasnom separacijom bri
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     CHATBOT/WEB LAYER                        │
+│                     CHATBOT/WEB LAYER                       │
 │         (Web UI, Telegram, Discord, WhatsApp)               │
 └──────────────────────────┬──────────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
-│                    AGENT/ORCHESTRATION                       │
-│        (Conversation Management, State)                      │
+│                    AGENT/ORCHESTRATION                      │
+│        (Conversation Management, State)                     │
 └──────────────────────────┬──────────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
-│                    RAG PIPELINE                              │
+│                    RAG PIPELINE                             │
 │    (Query → Retrieval → Context → LLM → Answer + Citations) │
 └──────────────────────────┬──────────────────────────────────┘
                            │
       ┌────────────────────┼────────────────────┐
       │                    │                    │
 ┌─────▼──────┐      ┌──────▼────────┐    ┌────▼──────────┐
-│ RETRIEVAL   │      │   LLM LAYER    │    │  EVALUATION   │
-│  LAYER      │      │                │    │   LAYER       │
+│ RETRIEVAL  │      │   LLM LAYER   │    │  EVALUATION   │
+│  LAYER     │      │               │    │   LAYER       │
 └─────┬──────┘      └──────┬────────┘    └────┬──────────┘
       │                    │                  │
 ┌─────▼──────────────┬─────▼─────────────┬───▼──────────┐
-│  EMBEDDING LAYER   │  PROMPT LAYER    │  METRICS     │
-│                    │                  │              │
-│ - Vector Store     │ - Prompt Templ.  │ - BLEU       │
-│ - Reranking        │ - Strategies     │ - ROUGE      │
-│ - Similarity       │   (0-shot, few)  │ - LLM Judge  │
-└─────┬──────────────┴─────┬────────────┴──┬───────────┘
+│  EMBEDDING LAYER   │  PROMPT LAYER     │  METRICS     │
+│                    │                   │              │
+│ - Vector Store     │ - Prompt Templ.   │ - BLEU       │
+│ - Reranking        │ - Strategies      │ - ROUGE      │
+│ - Similarity       │   (0-shot, few)   │ - LLM Judge  │
+└─────┬──────────────┴─────┬─────────────┴──┬───────────┘
       │                    │               │
 ┌─────▼────────────────────▼───────────────▼──────────────┐
-│                    DATA LAYER                            │
+│                    DATA LAYER                           │
 │         (PDF/Word Extraction, Preprocessing)            │
-└───────────────────────────────────────────────────────────┘
+└─────────────────────────────────────────────────────────┘
 ```
 
 ## 📊 Detaljni Opis Slojeva

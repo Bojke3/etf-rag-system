@@ -37,8 +37,9 @@ class TestTextLoader:
         test_file.write_text(test_content)
         
         loader = TextLoader()
-        content = loader.load(str(test_file))
-        assert content == test_content
+        document = loader.load(str(test_file))
+        assert document.text == test_content
+        assert document.metadata["file_name"] == "test.txt"
     
     def test_validate_valid_file(self, tmp_path):
         """Test validation of valid file"""

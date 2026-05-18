@@ -87,3 +87,6 @@ npm-debug.log
 *.pth
 *.pt
 *.bin
+
+.codex_pydeps/
+.venv/
