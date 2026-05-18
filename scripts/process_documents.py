@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -20,8 +21,27 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 
-def process_documents(input_dir: str, output_dir: str, chunk_size: int = 512, overlap: int = 100):
+def process_documents(
+    input_dir: str,
+    output_dir: str,
+    chunk_size: int = 512,
+    overlap: int = 100,
+    enable_ocr: bool = True,
+    ocr_max_pages: int | None = None,
+    ocr_languages: str | None = None,
+):
     """Process documents from input directory, chunking each into numbered segments."""
+
+    os.environ["ETF_RAG_ENABLE_OCR"] = "1" if enable_ocr else "0"
+    if ocr_max_pages:
+        os.environ["ETF_RAG_OCR_MAX_PAGES"] = str(ocr_max_pages)
+    else:
+        os.environ.pop("ETF_RAG_OCR_MAX_PAGES", None)
+
+    if ocr_languages:
+        os.environ["ETF_RAG_OCR_LANGUAGES"] = ocr_languages
+    else:
+        os.environ.pop("ETF_RAG_OCR_LANGUAGES", None)
 
     ensure_directories([output_dir])
     preprocessor = TextPreprocessor()
@@ -60,9 +80,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process documents")
     parser.add_argument("--input", default=getattr(config, "data_dir", "./data/documents"), help="Input directory")
     parser.add_argument("--output", default=getattr(config, "processed_data_dir", "./data/processed"), help="Output directory")
+
     parser.add_argument("--chunk-size", type=int, default=getattr(config, "chunk_size", 512), help="Chunk size in characters")
     parser.add_argument("--overlap", type=int, default=getattr(config, "chunk_overlap", 100), help="Overlap between chunks in characters")
 
+    parser.add_argument("--no-ocr", action="store_true", help="Disable OCR fallback for scanned PDFs")
+    parser.add_argument("--ocr-max-pages", type=int, help="OCR only the first N pages of each PDF")
+    parser.add_argument(
+        "--ocr-languages",
+        help="Comma-separated EasyOCR languages, for example: rs_cyrillic,en",
+    )
+
     args = parser.parse_args()
 
-    process_documents(args.input, args.output, args.chunk_size, args.overlap)
+    process_documents(
+        input_dir=args.input,
+        output_dir=args.output,
+        chunk_size=args.chunk_size,
+        overlap=args.overlap,
+        enable_ocr=not args.no_ocr,
+        ocr_max_pages=args.ocr_max_pages,
+        ocr_languages=args.ocr_languages,
+    )

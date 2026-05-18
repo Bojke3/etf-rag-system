@@ -8,3 +8,4 @@ from .loaders import (
 )
 from .preprocessing import TextPreprocessor
 from .chunking import Chunk, SimpleChunker
+from .ocr import OCRHandler
