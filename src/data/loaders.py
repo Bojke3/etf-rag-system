@@ -1,8 +1,13 @@
 from abc import ABC, abstractmethod
+import logging
+import os
 from pathlib import Path
 from typing import Dict, Type
 
 from .document import Document
+from .ocr import OCRHandler
+
+logger = logging.getLogger(__name__)
 
 
 class DocumentLoader(ABC):
@@ -17,42 +22,46 @@ class DocumentLoader(ABC):
 
 class PDFLoader(DocumentLoader):
     def load(self, file_path: str) -> Document:
-        from pypdf import PdfReader
-
         path = Path(file_path)
-        text_parts = []
+        text = ""
+        ocr_used = False
 
-        with open(path, "rb") as f:
-            reader = PdfReader(f)
+        try:
+            from pypdf import PdfReader
 
-            for i, page in enumerate(reader.pages):
-                page_text = page.extract_text() or ""
-                text_parts.append(page_text)
+            text_parts = []
+            with open(path, "rb") as f:
+                reader = PdfReader(f)
+
+                for page in reader.pages:
+                    page_text = page.extract_text() or ""
+                    text_parts.append(page_text)
+
+            text = "\n".join(text_parts)
+        except Exception as exc:
+            logger.warning("PDF text extraction failed for %s: %s", path, exc)
+
+        ocr_enabled = os.getenv("ETF_RAG_ENABLE_OCR", "1") != "0"
+
+        if not text.strip() and ocr_enabled:
+            ocr_text = OCRHandler().extract_text_from_pdf(str(path))
+            if ocr_text.strip():
+                text = ocr_text
+                ocr_used = True
 
         return Document(
-            text="\n".join(text_parts),
+            text=text,
             metadata={
                 "source": str(path),
                 "file_name": path.name,
                 "file_type": "pdf",
+                "ocr_used": ocr_used,
             },
         )
 
     def validate(self, file_path: str) -> bool:
-        try:
-            path = Path(file_path)
-
-            if not path.exists() or path.suffix.lower() != ".pdf":
-                return False
-
-            from pypdf import PdfReader
-
-            with open(path, "rb") as f:
-                PdfReader(f)
-
-            return True
-        except Exception:
-            return False
+        path = Path(file_path)
+        return path.exists() and path.is_file() and path.suffix.lower() == ".pdf"
 
 
 class WordLoader(DocumentLoader):
