@@ -1,5 +1,10 @@
 """Flask web interface for the ETF RAG System"""
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from src.config import config
