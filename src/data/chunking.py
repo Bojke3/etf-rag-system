@@ -11,7 +11,7 @@ class Chunk:
 
 
 class SimpleChunker:
-    def __init__(self, chunk_size: int = 1000, overlap: int = 200):
+    def __init__(self, chunk_size: int = 1024, overlap: int = 200):
         if overlap >= chunk_size:
             raise ValueError("overlap must be smaller than chunk_size")
 
