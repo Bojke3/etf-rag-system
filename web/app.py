@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from src.config import config
 
@@ -51,6 +51,11 @@ def get_pipeline():
             embedding_model=embedding_model,
         )
     return _pipeline
+
+
+@app.route("/chat", methods=["GET"])
+def chat():
+    return render_template("chat.html", model=config.ollama_model)
 
 
 @app.route("/", methods=["GET"])
