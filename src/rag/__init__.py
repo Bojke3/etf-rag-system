@@ -54,7 +54,7 @@ class RAGPipeline:
             
             # 4. Generate answer
             generation_start = time.time()
-            answer = self.llm_client.generate(prompt)
+            answer = self.llm_client.generate(prompt, system=PromptTemplate.SYSTEM)
             generation_time = time.time() - generation_start
             
             # 5. Build response

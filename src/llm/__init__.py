@@ -27,20 +27,24 @@ class OllamaClient(LLMClient):
         self.model = model
         self.session = None
     
-    def generate(self, prompt: str, temperature: float = 0.7, max_tokens: int = 2048, **kwargs) -> str:
+    def generate(self, prompt: str, temperature: float = 0.1, max_tokens: int = 2048, system: str = "", **kwargs) -> str:
         """Generate response using Ollama"""
         try:
             import requests
-            
+
+            payload = {
+                "model": self.model,
+                "prompt": prompt,
+                "temperature": temperature,
+                "num_predict": max_tokens,
+                "stream": False,
+            }
+            if system:
+                payload["system"] = system
+
             response = requests.post(
                 f"{self.base_url}/api/generate",
-                json={
-                    "model": self.model,
-                    "prompt": prompt,
-                    "temperature": temperature,
-                    "num_predict": max_tokens,
-                    "stream": False
-                },
+                json=payload,
                 timeout=120
             )
             
@@ -68,29 +72,28 @@ class OllamaClient(LLMClient):
 class PromptTemplate:
     """Prompt template builder"""
     
-    ZERO_SHOT = """Ti si asistent koji odgovara na pitanja o ETF fakultetu. Odgovori ISKLJUČIVO na osnovu datog konteksta. Ako odgovor nije u kontekstu, reci "Nisam pronašao odgovor u dostupnim dokumentima." Koristi latinično pismo. Ne izmišljaj informacije.
+    SYSTEM = "You are a helpful assistant for ETF faculty students. Answer only using the provided context. Always respond in Serbian using Latin script (not Cyrillic). If the answer is not in the context, say: 'Nisam pronasao odgovor u dostupnim dokumentima.'"
 
-Pitanje: {question}
-Kontekst: {context}
-Odgovor:"""
+    ZERO_SHOT = """Context:
+{context}
 
-    FEW_SHOT = """Ti si asistent koji odgovara na pitanja o ETF fakultetu. Odgovori ISKLJUČIVO na osnovu datog konteksta. Ako odgovor nije u kontekstu, reci "Nisam pronašao odgovor u dostupnim dokumentima." Koristi latinično pismo. Ne izmišljaj informacije.
+Question: {question}
+Answer in Serbian (Latin script only):"""
 
-Primeri:
+    FEW_SHOT = """Context:
+{context}
+
+Examples:
 {examples}
 
-Pitanje: {question}
-Kontekst: {context}
-Odgovor:"""
+Question: {question}
+Answer in Serbian (Latin script only):"""
 
-    CHAIN_OF_THOUGHT = """Ti si asistent koji odgovara na pitanja o ETF fakultetu. Odgovori ISKLJUČIVO na osnovu datog konteksta. Ako odgovor nije u kontekstu, reci "Nisam pronašao odgovor u dostupnim dokumentima." Koristi latinično pismo. Ne izmišljaj informacije.
+    CHAIN_OF_THOUGHT = """Context:
+{context}
 
-Pitanje: {question}
-Kontekst: {context}
-
-Korak 1: Identifikuj relevantne informacije iz konteksta
-Korak 2: Formuliši odgovor samo na osnovu tih informacija
-Odgovor:"""
+Question: {question}
+Answer in Serbian (Latin script only):"""
     
     @staticmethod
     def format_zero_shot(question: str, context: str) -> str:

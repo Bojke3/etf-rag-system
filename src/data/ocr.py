@@ -1,6 +1,7 @@
 import logging
 import os
 from pathlib import Path
+from typing import List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -14,15 +15,15 @@ class OCRHandler:
 
     def __init__(
         self,
-        languages: list[str] | None = None,
+        languages: Optional[List[str]] = None,
         zoom: float = 2.0,
-        max_pages: int | None = None,
+        max_pages: Optional[int] = None,
     ):
         self.languages = languages or self._languages_from_env()
         self.zoom = zoom
         self.max_pages = max_pages or self._max_pages_from_env()
 
-    def _languages_from_env(self) -> list[str]:
+    def _languages_from_env(self) -> List[str]:
         value = os.getenv("ETF_RAG_OCR_LANGUAGES")
         if not value:
             return DEFAULT_OCR_LANGUAGES
@@ -30,7 +31,7 @@ class OCRHandler:
         languages = [language.strip() for language in value.split(",") if language.strip()]
         return languages or DEFAULT_OCR_LANGUAGES
 
-    def _max_pages_from_env(self) -> int | None:
+    def _max_pages_from_env(self) -> Optional[int]:
         value = os.getenv("ETF_RAG_OCR_MAX_PAGES")
         if not value:
             return None

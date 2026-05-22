@@ -5,6 +5,7 @@ import logging
 import os
 import sys
 from pathlib import Path
+from typing import Optional
 
 # Ensure repo root is on the path when running this script directly
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -27,8 +28,8 @@ def process_documents(
     chunk_size: int = 1000,
     overlap: int = 150,
     enable_ocr: bool = True,
-    ocr_max_pages: int | None = None,
-    ocr_languages: str | None = None,
+    ocr_max_pages: Optional[int] = None,
+    ocr_languages: Optional[str] = None,
 ):
     """Process documents from input directory, chunking each into numbered segments."""
 
