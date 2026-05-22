@@ -68,32 +68,29 @@ class OllamaClient(LLMClient):
 class PromptTemplate:
     """Prompt template builder"""
     
-    ZERO_SHOT = """
-Question: {question}
-Context: {context}
-Answer:
-"""
-    
-    FEW_SHOT = """
-Examples:
+    ZERO_SHOT = """Ti si asistent koji odgovara na pitanja o ETF fakultetu. Odgovori ISKLJUČIVO na osnovu datog konteksta. Ako odgovor nije u kontekstu, reci "Nisam pronašao odgovor u dostupnim dokumentima." Koristi latinično pismo. Ne izmišljaj informacije.
+
+Pitanje: {question}
+Kontekst: {context}
+Odgovor:"""
+
+    FEW_SHOT = """Ti si asistent koji odgovara na pitanja o ETF fakultetu. Odgovori ISKLJUČIVO na osnovu datog konteksta. Ako odgovor nije u kontekstu, reci "Nisam pronašao odgovor u dostupnim dokumentima." Koristi latinično pismo. Ne izmišljaj informacije.
+
+Primeri:
 {examples}
 
-Now answer this question based on the context:
-Question: {question}
-Context: {context}
-Answer:
-"""
-    
-    CHAIN_OF_THOUGHT = """
-Let's think through this step by step.
+Pitanje: {question}
+Kontekst: {context}
+Odgovor:"""
 
-Question: {question}
-Context: {context}
+    CHAIN_OF_THOUGHT = """Ti si asistent koji odgovara na pitanja o ETF fakultetu. Odgovori ISKLJUČIVO na osnovu datog konteksta. Ako odgovor nije u kontekstu, reci "Nisam pronašao odgovor u dostupnim dokumentima." Koristi latinično pismo. Ne izmišljaj informacije.
 
-Step 1: Identify key information in the context
-Step 2: Reason through the problem
-Final Answer:
-"""
+Pitanje: {question}
+Kontekst: {context}
+
+Korak 1: Identifikuj relevantne informacije iz konteksta
+Korak 2: Formuliši odgovor samo na osnovu tih informacija
+Odgovor:"""
     
     @staticmethod
     def format_zero_shot(question: str, context: str) -> str:
