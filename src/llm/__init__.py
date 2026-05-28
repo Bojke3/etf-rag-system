@@ -78,7 +78,9 @@ class OllamaClient(LLMClient):
 class PromptTemplate:
     """Prompt template builder"""
     
-    SYSTEM = "You are a helpful assistant for ETF faculty students. Answer only using the provided context. Always respond in Serbian using Latin script (not Cyrillic). If the answer is not in the context, say: 'Nisam pronasao odgovor u dostupnim dokumentima.'"
+    SYSTEM = """You are a helpful assistant for ETF faculty students. 
+    Answer only using the provided context. Always respond in Serbian using Latin script (not Cyrillic). 
+    If the answer is not in the context, say: 'Nisam pronasao odgovor u dostupnim dokumentima.'"""
 
     ZERO_SHOT = """Context:
 {context}

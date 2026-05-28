@@ -3,6 +3,7 @@
 from typing import List, Dict, Any, Optional, Tuple
 import logging
 import time
+from src.data import TextPreprocessor
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +57,7 @@ class RAGPipeline:
 
             for i, doc in enumerate(retrieved_docs, start=1):
                 logger.info(
-                    "Chunk #%s | document=%s | chunk_id=%s | score=%s | text=%r",
+                    "Chunk #%s |\n|\n| document = %s |\n|\n| chunk_id = %s |\n|\n| score = %s |\n|\n| text = %r",
                     i,
                     doc.get("document", "Unknown"),
                     doc.get("chunk_id", "Unknown"),

@@ -1,4 +1,9 @@
-"""Script to process documents"""
+"""Script to process documents
+
+run:
+    python scripts\process_documents.py --input DataAkti --output data\processed --chunk-size 1024 --overlap 150 --ocr-languages rs_cyrillic,en
+
+"""
 
 import argparse
 import logging

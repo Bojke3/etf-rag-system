@@ -16,7 +16,7 @@ class OCRHandler:
     def __init__(
         self,
         languages: Optional[List[str]] = None,
-        zoom: float = 2.0,
+        zoom: float = 2.5,
         max_pages: Optional[int] = None,
     ):
         self.languages = languages or self._languages_from_env()
