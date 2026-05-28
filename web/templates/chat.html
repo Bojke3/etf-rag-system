@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -26,12 +26,21 @@
       gap: 10px;
     }
 
-    header span.model-badge {
+    header .model-select {
       font-size: 0.75rem;
       background: #e94560;
-      padding: 2px 8px;
+      color: #fff;
+      padding: 4px 24px 4px 8px;
       border-radius: 10px;
       font-weight: 400;
+      border: 0;
+      cursor: pointer;
+      outline: none;
+    }
+
+    header .model-select:disabled {
+      opacity: 0.7;
+      cursor: wait;
     }
 
     #chat-window {
@@ -175,7 +184,9 @@
 
 <header>
   ETF RAG System
-  <span class="model-badge">{{ model }}</span>
+  <select id="model-select" class="model-select" title="Choose Ollama model">
+    <option value="{{ model }}">{{ model }}</option>
+  </select>
 </header>
 
 <div id="chat-window"></div>
@@ -192,6 +203,60 @@
   const input = document.getElementById('question');
   const btn = document.getElementById('submit-btn');
   const window_ = document.getElementById('chat-window');
+  const modelSelect = document.getElementById('model-select');
+
+  async function loadModels() {
+    modelSelect.disabled = true;
+    try {
+      const res = await fetch('/models');
+      const data = await res.json();
+      if (data.status !== 'success') return;
+
+      modelSelect.innerHTML = '';
+      const models = data.models && data.models.length
+        ? data.models
+        : [data.current_model];
+
+      models.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model;
+        option.textContent = model;
+        if (model === data.current_model) option.selected = true;
+        modelSelect.appendChild(option);
+      });
+    } catch (err) {
+      console.error('Could not load Ollama models:', err);
+    } finally {
+      modelSelect.disabled = false;
+    }
+  }
+
+  modelSelect.addEventListener('change', async () => {
+    const selectedModel = modelSelect.value;
+    modelSelect.disabled = true;
+
+    try {
+      const res = await fetch('/models/current', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: selectedModel })
+      });
+      const data = await res.json();
+      if (data.status === 'error') {
+        appendMessage('assistant',
+          `<div class="error-bubble">Model switch error: ${escapeHtml(data.error)}</div>`
+        );
+        await loadModels();
+      }
+    } catch (err) {
+      appendMessage('assistant',
+        `<div class="error-bubble">Model switch network error: ${escapeHtml(err.message)}</div>`
+      );
+      await loadModels();
+    } finally {
+      modelSelect.disabled = false;
+    }
+  });
 
   function appendMessage(role, html) {
     const div = document.createElement('div');
@@ -218,7 +283,7 @@
     btn.disabled = true;
 
     const loadingDiv = appendMessage('assistant',
-      '<span class="spinner"></span> Thinking… (this can take ~20s)'
+      '<span class="spinner"></span> Thinking... (this can take ~20s)'
     );
 
     try {
@@ -240,10 +305,10 @@
           html += `<div class="sources">
             <div class="sources-title">Sources (${sources.length})</div>`;
           sources.forEach(s => {
-            const score = typeof s.score === 'number' ? s.score.toFixed(3) : '—';
+            const score = typeof s.score === 'number' ? s.score.toFixed(3) : 'â€”';
             const text = (s.text || s.content || '').slice(0, 200);
             html += `<div class="source-chunk">
-              <span>${escapeHtml(text)}${text.length >= 200 ? '…' : ''}</span>
+              <span>${escapeHtml(text)}${text.length >= 200 ? 'â€¦' : ''}</span>
               <span class="score" style="color:${scoreColor(s.score)}">${score}</span>
             </div>`;
           });
@@ -268,6 +333,9 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
   }
+  loadModels();
 </script>
 </body>
 </html>
+
+

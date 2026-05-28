@@ -1,4 +1,4 @@
-"""Flask web interface for the ETF RAG System"""
+﻿"""Flask web interface for the ETF RAG System"""
 
 import sys
 from pathlib import Path
@@ -15,8 +15,9 @@ setup_logging(config.log_dir, config.log_level)
 app = Flask(__name__)
 CORS(app)
 
-# Lazy-initialized pipeline — avoids crashing on startup if Ollama is not running
+# Lazy-initialized pipeline â€” avoids crashing on startup if Ollama is not running
 _pipeline = None
+_selected_ollama_model = config.ollama_model
 
 
 def get_pipeline():
@@ -46,7 +47,7 @@ def get_pipeline():
         )
         llm_client = OllamaClient(
             base_url=config.ollama_base_url,
-            model=config.ollama_model,
+            model=_selected_ollama_model,
             timeout=config.ollama_timeout
         )
         _pipeline = RAGPipeline(
@@ -57,9 +58,14 @@ def get_pipeline():
     return _pipeline
 
 
+
+def get_current_model():
+    """Return the model currently selected for Ollama generation."""
+    return _selected_ollama_model
+
 @app.route("/chat", methods=["GET"])
 def chat():
-    return render_template("chat.html", model=config.ollama_model)
+    return render_template("chat.html", model=get_current_model())
 
 
 @app.route("/", methods=["GET"])
@@ -69,10 +75,68 @@ def health():
         "status": "ok",
         "system": "ETF RAG System",
         "llm_type": config.llm_type,
-        "ollama_model": config.ollama_model,
+        "ollama_model": get_current_model(),
         "embedding_model": config.embedding_model,
     })
 
+
+
+@app.route("/models", methods=["GET"])
+def models():
+    """Return locally available Ollama models."""
+    try:
+        from src.llm import OllamaClient
+
+        client = OllamaClient(
+            base_url=config.ollama_base_url,
+            model=get_current_model(),
+            timeout=config.ollama_timeout,
+        )
+        available_models = client.list_available_models()
+        return jsonify({
+            "status": "success",
+            "current_model": get_current_model(),
+            "models": available_models,
+        })
+    except Exception as e:
+        return jsonify({"status": "error", "error": str(e)}), 500
+
+@app.route("/models/current", methods=["POST"])
+def set_current_model():
+    """Switch the Ollama model used by the current web session."""
+    global _selected_ollama_model
+
+    body = request.get_json(force=True, silent=True) or {}
+    model = body.get("model", "").strip()
+    if not model:
+        return jsonify({"status": "error", "error": "Missing 'model' field"}), 400
+
+    try:
+        from src.llm import OllamaClient
+
+        client = OllamaClient(
+            base_url=config.ollama_base_url,
+            model=get_current_model(),
+            timeout=config.ollama_timeout,
+        )
+        available_models = client.list_available_models()
+        if available_models and model not in available_models:
+            return jsonify({
+                "status": "error",
+                "error": f"Model '{model}' is not available in Ollama.",
+                "models": available_models,
+            }), 400
+
+        _selected_ollama_model = model
+        if _pipeline is not None:
+            _pipeline.llm_client.model = model
+
+        return jsonify({
+            "status": "success",
+            "current_model": get_current_model(),
+        })
+    except Exception as e:
+        return jsonify({"status": "error", "error": str(e)}), 500
 
 @app.route("/query", methods=["POST"])
 def query():
@@ -114,3 +178,5 @@ if __name__ == "__main__":
         port=config.web_port,
         debug=config.web_debug,
     )
+
+
