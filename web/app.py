@@ -15,7 +15,7 @@ setup_logging(config.log_dir, config.log_level)
 app = Flask(__name__)
 CORS(app)
 
-# Lazy-initialized pipeline â€” avoids crashing on startup if Ollama is not running
+# Lazy-initialized pipeline — avoids crashing on startup if Ollama is not running
 _pipeline = None
 _selected_ollama_model = config.ollama_model
 

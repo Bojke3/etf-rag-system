@@ -305,10 +305,10 @@
           html += `<div class="sources">
             <div class="sources-title">Sources (${sources.length})</div>`;
           sources.forEach(s => {
-            const score = typeof s.score === 'number' ? s.score.toFixed(3) : 'â€”';
+            const score = typeof s.score === 'number' ? s.score.toFixed(3) : '—';
             const text = (s.text || s.content || '').slice(0, 200);
             html += `<div class="source-chunk">
-              <span>${escapeHtml(text)}${text.length >= 200 ? 'â€¦' : ''}</span>
+              <span>${escapeHtml(text)}${text.length >= 200 ? '...' : ''}</span>
               <span class="score" style="color:${scoreColor(s.score)}">${score}</span>
             </div>`;
           });
