@@ -14,10 +14,11 @@ class Config(BaseSettings):
     # LLM Configuration
     llm_type: str = "ollama"
     ollama_base_url: str = "http://localhost:11434"
-    ollama_model: str = "mistral"
+    ollama_model: str = "mistral:7b"
     ollama_temperature: float = 0.7
     ollama_top_p: float = 0.9
-    ollama_max_tokens: int = 2048
+    ollama_max_tokens: int = 512
+    ollama_timeout: int = 300
     
     # Embedding Configuration
     embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
@@ -37,8 +38,8 @@ class Config(BaseSettings):
     chunk_overlap: int = 150
     
     # Retrieval Configuration
-    retrieval_top_k: int = 5
-    retrieval_threshold: float = 0.7
+    retrieval_top_k: int = 3
+    retrieval_threshold: float = 0.0
     
     # Logging
     log_level: str = "INFO"

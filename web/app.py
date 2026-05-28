@@ -8,6 +8,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from src.config import config
+from src.utils import setup_logging
+
+setup_logging(config.log_dir, config.log_level)
 
 app = Flask(__name__)
 CORS(app)
@@ -44,6 +47,7 @@ def get_pipeline():
         llm_client = OllamaClient(
             base_url=config.ollama_base_url,
             model=config.ollama_model,
+            timeout=config.ollama_timeout
         )
         _pipeline = RAGPipeline(
             retriever=retriever,

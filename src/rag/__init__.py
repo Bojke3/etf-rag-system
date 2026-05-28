@@ -52,6 +52,24 @@ class RAGPipeline:
             else:
                 prompt = PromptTemplate.format_zero_shot(question, context)
             
+            logger.info("Retrieved chunks: %s", len(retrieved_docs))
+
+            for i, doc in enumerate(retrieved_docs, start=1):
+                logger.info(
+                    "Chunk #%s | document=%s | chunk_id=%s | score=%s | text=%r",
+                    i,
+                    doc.get("document", "Unknown"),
+                    doc.get("chunk_id", "Unknown"),
+                    doc.get("score", 0),
+                    doc.get("text", "")[:700],
+                )
+
+            logger.info("Context chars=%s", len(context))
+            logger.info("Context preview=%r", context[:1500])
+
+            logger.info("Prompt strategy=%s", prompt_strategy)
+            logger.info("Prompt sent to LLM:\n%s", prompt)
+
             # 4. Generate answer
             generation_start = time.time()
             answer = self.llm_client.generate(prompt, system=PromptTemplate.SYSTEM)
