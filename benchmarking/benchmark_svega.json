@@ -1,0 +1,420 @@
+{
+  "description": "Benchmark pitanja po dokumentima iz ETF RAG sistema. Pitanja su napravljena iz data/processed chunkova, pa prate tekst koji sistem stvarno indeksira.",
+  "version": "2026-05-28",
+  "questions": [
+    {
+      "id": "IZMENA_OAS_2025_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Kog datuma je doneta odluka o izmeni Pravilnika o osnovnim akademskim studijama?",
+      "expected_answer": "Odluka je doneta 14.10.2025. godine.",
+      "source_document": "Izmena Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Odluka"
+    },
+    {
+      "id": "IZMENA_OAS_2025_002",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kod kog nastavnika student moze da radi zavrsni rad prema izmenjenom clanu 26?",
+      "expected_answer": "Student moze da radi zavrsni rad kod nastavnika angazovanog na izbornoj oblasti ili modulu studijskog programa koji je student upisao, ili kod nastavnika na predmetu koji je student slusao i polozio iz druge izborne oblasti ili modula.",
+      "source_document": "Izmena Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Clan 1 / Clan 26"
+    },
+    {
+      "id": "IZMENA_OAS_2025_003",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kako se odredjuje skolarina samofinansirajuceg studenta za upisane obaveze?",
+      "expected_answer": "Skolarina se odredjuje srazmerno broju ESPB bodova koje student upisuje i godisnjoj skolarini za 60 ESPB bodova.",
+      "source_document": "Izmena Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Clan 2 / Clan 52"
+    },
+    {
+      "id": "IZMENA_OAS_2025_004",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Za koje obaveze student moze da dobije povracaj dela skolarine po ovoj izmeni?",
+      "expected_answer": "Student moze da dobije povracaj 50% skolarine za ESPB bodove koji pripadaju strucnoj praksi i zavrsnom radu.",
+      "source_document": "Izmena Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Clan 2 / Clan 52"
+    },
+    {
+      "id": "OAS_IZMENE_2019_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Kog datuma je doneta odluka o izmenama i dopunama Pravilnika o osnovnim akademskim studijama?",
+      "expected_answer": "Odluka je doneta 15.10.2019. godine.",
+      "source_document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "source_section": "Odluka"
+    },
+    {
+      "id": "OAS_IZMENE_2019_002",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Na osnovu cega se rangiraju studenti za finansiranje iz budzeta prema izmenjenom clanu 38?",
+      "expected_answer": "Studenti se rangiraju prema broju ostvarenih ESPB bodova i postignutom uspehu, u skladu sa clanom 49.",
+      "source_document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "source_section": "Clan 38"
+    },
+    {
+      "id": "OAS_IZMENE_2019_003",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koji student sa druge viskolske ustanove moze da se upise na ETF bez prijemnog ispita?",
+      "expected_answer": "Moze da se upise student sa druge viskolske ustanove iz oblasti elektrotehnickog i racunarskog inzenjerstva koji je polozio sve ispite prve godine, odnosno ostvario najmanje 60 ESPB bodova, pod propisanim uslovima.",
+      "source_document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "source_section": "Clan 43"
+    },
+    {
+      "id": "OAS_IZMENE_2019_004",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kada student prve godine upisuje predmete prema izmenjenom clanu 48?",
+      "expected_answer": "Student prve godine upisuje sve predmete na pocetku skolske godine, osim ako pravilima studijskog programa nije drugacije odredjeno.",
+      "source_document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "source_section": "Clan 48"
+    },
+    {
+      "id": "OAS_IZMENE_2019_005",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Kada odluka o izmenama i dopunama iz 2019. godine stupa na snagu?",
+      "expected_answer": "Odluka stupa na snagu osmog dana od dana objavljivanja na internet stranici Fakulteta.",
+      "source_document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "source_section": "Clan 7"
+    },
+    {
+      "id": "OAS_IZMENA_2020_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Kog datuma je doneta odluka o izmeni clana 49 Pravilnika o osnovnim akademskim studijama?",
+      "expected_answer": "Odluka je doneta 11.02.2020. godine.",
+      "source_document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Odluka"
+    },
+    {
+      "id": "OAS_IZMENA_2020_002",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kako se rangiraju studenti za finansiranje iz budzeta prema izmenjenom clanu 49?",
+      "expected_answer": "Studenti se rangiraju prema ukupnom broju bodova koji odgovara ponderisanoj prosecnoj oceni.",
+      "source_document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Clan 49"
+    },
+    {
+      "id": "OAS_IZMENA_2020_003",
+      "type": "multi_chunk",
+      "difficulty": "hard",
+      "question": "Koji elementi ulaze u formulu za ukupne bodove po izmenjenom clanu 49?",
+      "expected_answer": "Formula koristi broj predmeta, broj ESPB bodova predmeta, ocenu, stimulativni faktor za rok u kome je ispit polozen i godinu studija u kojoj je ispit polagan.",
+      "source_document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Clan 49"
+    },
+    {
+      "id": "OAS_IZMENA_2020_004",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Za koje ispite se racuna stimulativni faktor pri rangiranju za budzet?",
+      "expected_answer": "Stimulativni faktor se racuna za ispite polozene u skolskoj godini u kojoj je student prvi put upisao predmet, posebno za prvi i drugi ispitni rok u kome je stekao pravo polaganja.",
+      "source_document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+      "source_section": "Clan 49"
+    },
+    {
+      "id": "OAS_JUN_2023_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Sta je usvojeno odlukom iz juna 2023. godine?",
+      "expected_answer": "Usvojen je predlog izmena i dopuna Pravilnika o osnovnim akademskim studijama.",
+      "source_document": "Odluka_OAS_jun_23",
+      "source_section": "Tacka 1"
+    },
+    {
+      "id": "OAS_JUN_2023_002",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Na ciji predlog je doneta odluka iz juna 2023. godine?",
+      "expected_answer": "Odluka je doneta na predlog Komisije za studije prvog stepena.",
+      "source_document": "Odluka_OAS_jun_23",
+      "source_section": "Obrazlozenje / uvod"
+    },
+    {
+      "id": "OAS_JUN_2023_003",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Kome se dostavlja odluka iz juna 2023. godine?",
+      "expected_answer": "Odluka se dostavlja Komisiji za studije prvog stepena, Sluzbi za studentska pitanja i Arhivi.",
+      "source_document": "Odluka_OAS_jun_23",
+      "source_section": "Dostaviti"
+    },
+    {
+      "id": "PRAVILNIK_OAS_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Sta uredjuje Pravilnik o osnovnim akademskim studijama?",
+      "expected_answer": "Pravilnik uredjuje organizaciju i izvodjenje osnovnih akademskih studija, oblike nastave, uslove kvaliteta, upis, pravila studiranja, proveru znanja, ocenjivanje, napredovanje i zavrsni rad.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 1"
+    },
+    {
+      "id": "PRAVILNIK_OAS_002",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Koja dva programa osnovnih akademskih studija organizuje Fakultet?",
+      "expected_answer": "Fakultet organizuje programe Elektrotehnika i racunarstvo i Softversko inzenjerstvo.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 3"
+    },
+    {
+      "id": "PRAVILNIK_OAS_003",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Sta su kolokvijumi prema Pravilniku o osnovnim akademskim studijama?",
+      "expected_answer": "Kolokvijumi su oblik nastave u kome studenti resavaju zadatke ili odgovaraju na pitanja radi provere stecenog znanja iz dela gradiva.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 21"
+    },
+    {
+      "id": "PRAVILNIK_OAS_004",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koji je cilj seminara kao oblika nastave?",
+      "expected_answer": "Cilj seminara je dublje i kriticko razmatranje odredjene teme i razvijanje kritickog rasudjivanja studenata.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 22"
+    },
+    {
+      "id": "PRAVILNIK_OAS_005",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Ko moze da se upise bez prijemnog ispita ako dolazi sa druge viskolske ustanove?",
+      "expected_answer": "Moze student iz oblasti elektrotehnickog i racunarskog inzenjerstva koji je polozio sve ispite prve godine, odnosno ostvario najmanje 60 ESPB bodova, pod propisanim uslovima.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 43"
+    },
+    {
+      "id": "PRAVILNIK_OAS_006",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Na osnovu cega se studentima odredjuje rang za finansiranje iz budzeta?",
+      "expected_answer": "Rang se odredjuje na osnovu ostvarenih ESPB bodova i uspeha, odnosno ponderisane prosecne ocene po pravilima iz clana 49.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 38 / Clan 49"
+    },
+    {
+      "id": "PRAVILNIK_OAS_007",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "U kom roku student treba da podnese zahtev za mirovanje prava i obaveza?",
+      "expected_answer": "Student treba da podnese zahtev u roku od 30 dana od nastanka razloga za mirovanje, a najkasnije do 1. juna tekuce skolske godine.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 56"
+    },
+    {
+      "id": "PRAVILNIK_OAS_008",
+      "type": "multi_chunk",
+      "difficulty": "hard",
+      "question": "Navedi nekoliko razloga zbog kojih studentu mogu da miruju prava i obaveze.",
+      "expected_answer": "Razlozi ukljucuju tezu bolest, strucno usavrsavanje, odsluzenje vojnog roka, negu deteta do godinu dana, odrzavanje trudnoce, smrt clana uze porodice i nemogucnost placanja skolarine jednom u toku studija.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 56"
+    },
+    {
+      "id": "PRAVILNIK_OAS_009",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koliko traje strucna praksa za studente upisane pre skolske 2020/2021. godine?",
+      "expected_answer": "Strucna praksa traje najmanje 80 sati za studente upisane pre skolske 2020/2021. godine.",
+      "source_document": "Pravilnik o osnovnim akademskim studijama",
+      "source_section": "Clan 73"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Sta uredjuje Pravilnik o upisu studenata?",
+      "expected_answer": "Pravilnik uredjuje uslove i nacin upisa na osnovne akademske studije, prijavljivanje kandidata, rangiranje, prijemni ispit, upis bez prijemnog ispita, ponovno sticanje statusa studenta i pravo na zalbu.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Clan 1"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_002",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Na koja dva programa osnovnih akademskih studija Fakultet organizuje upis?",
+      "expected_answer": "Fakultet organizuje upis na Elektrotehniku i racunarstvo i Softversko inzenjerstvo.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Clan 1"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_003",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Ko ima pravo na upis na studijski program?",
+      "expected_answer": "Pravo na upis ima lice koje ispunjava uslove propisane Zakonom, Statutom Univerziteta, studijskim programom, ovim pravilnikom i opstim aktima Fakulteta.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Clan 2"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_004",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kada kandidat stice pravo na upis?",
+      "expected_answer": "Kandidat stice pravo na upis ako se prijavio na konkurs i nalazi se na rang-listi u okviru odobrenog broja studenata za upis.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Clan 2"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_005",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koliko najmanje bodova kandidat treba da ima za upis na teret budzeta?",
+      "expected_answer": "Za upis na teret budzeta kandidat treba da bude u okviru budzetske kvote i da ima najmanje 51 bod.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Upis i rangiranje"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_006",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koliko najmanje bodova kandidat treba da ima za upis kao samofinansirajuci student?",
+      "expected_answer": "Za upis kao samofinansirajuci student kandidat treba da bude u okviru kvote i da ima najmanje 30 bodova.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Upis i rangiranje"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_007",
+      "type": "multi_chunk",
+      "difficulty": "hard",
+      "question": "Kako se vrednuju nagrade sa takmicenja pri prijemnom ispitu?",
+      "expected_answer": "Kandidati koji su osvojili jednu od prve tri nagrade na republickim ili medjunarodnim takmicenjima iz predmeta koji se polazu na prijemnom mogu dobiti maksimalan broj bodova za odgovarajuci predmet.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Takmicenja"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_008",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koje radnje nisu dozvoljene tokom prijemnog ispita?",
+      "expected_answer": "Nisu dozvoljeni razgovor sa drugim kandidatima, koriscenje nedozvoljenih pomagala i druge radnje koje ometaju regularnost ispita.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Pravila polaganja"
+    },
+    {
+      "id": "PRAVILNIK_UPIS_009",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kada kandidat najranije moze da napusti salu tokom prijemnog ispita?",
+      "expected_answer": "Kandidat moze da napusti salu najranije jedan sat nakon pocetka ispita, uz predaju odgovarajuceg materijala.",
+      "source_document": "Pravilnik o upisu studenata",
+      "source_section": "Pravila polaganja"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_001",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Koji dokumenti su objedinjeni u preciscenom tekstu Pravilnika o osnovnim akademskim studijama iz juna 2023?",
+      "expected_answer": "Precisceni tekst objedinjuje Pravilnik o osnovnim akademskim studijama i njegove izmene i dopune iz 2019, 2020. i 2023. godine.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Uvod"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_002",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Kako se organizuju osnovne akademske studije prema preciscenom pravilniku?",
+      "expected_answer": "Osnovne akademske studije se organizuju u skladu sa akreditovanim studijskim programima, Zakonom i statutima Univerziteta i Fakulteta.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Clan 2"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_003",
+      "type": "single_chunk",
+      "difficulty": "easy",
+      "question": "Koji studijski programi postoje na osnovnim akademskim studijama ETF-a?",
+      "expected_answer": "Postoje studijski programi Elektrotehnika i racunarstvo i Softversko inzenjerstvo.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Clan 3"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_004",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Koliko ESPB bodova obicno nosi jedna skolska godina, a koliko jedan semestar?",
+      "expected_answer": "Jedna skolska godina obicno nosi 60 ESPB bodova, a jedan semestar 30 ESPB bodova.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Organizacija studija"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_005",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Sta su seminarski radovi prema preciscenom pravilniku?",
+      "expected_answer": "Seminarski radovi su samostalni radovi studenata u kojima se obradjuje zadati problem ili tema iz nastavnog predmeta.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Clan 23"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_006",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Ko moze da upise studije bez prijemnog ispita prema clanu 43?",
+      "expected_answer": "Studije bez prijemnog ispita mogu upisati odredjene kategorije kandidata, ukljucujuci lica sa prethodno stecenim prvim stepenom akademskih studija, studente sa druge ustanove koji ispunjavaju uslove i studente kojima je prestao status a imaju dovoljan broj ESPB bodova.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Clan 43"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_007",
+      "type": "multi_chunk",
+      "difficulty": "hard",
+      "question": "Koja prava student ima prema preciscenom pravilniku?",
+      "expected_answer": "Student ima prava koja obuhvataju kvalitetno skolovanje, objektivno ocenjivanje, blagovremeno informisanje, zastitu od diskriminacije i pravo da bira i bude biran u studentske i druge organe Fakulteta.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Prava studenata"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_008",
+      "type": "multi_chunk",
+      "difficulty": "hard",
+      "question": "Koje obaveze student ima prema preciscenom pravilniku?",
+      "expected_answer": "Student je duzan da ispunjava nastavne i predispitne obaveze, postuje opste akte Univerziteta i Fakulteta i ispunjava druge obaveze propisane pravilnikom.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Obaveze studenata"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_009",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kada student moze da trazi mirovanje prava i obaveza?",
+      "expected_answer": "Student moze da trazi mirovanje prava i obaveza kada postoje opravdani razlozi kao sto su bolest, strucno usavrsavanje, vojna obaveza, nega deteta, trudnoca, smrt clana porodice ili drugi propisani razlozi.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Clan 56"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_010",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Kako se racuna skolarina za samofinansirajuceg studenta koji upisuje deo obaveza?",
+      "expected_answer": "Skolarina se racuna srazmerno broju ESPB bodova koje student upisuje u odnosu na godisnju skolarinu za pun obim od 60 ESPB bodova.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Clan 52"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_011",
+      "type": "single_chunk",
+      "difficulty": "medium",
+      "question": "Sta je profesionalna praksa u okviru osnovnih akademskih studija?",
+      "expected_answer": "Profesionalna praksa je nastavna obaveza predvidjena studijskim programom, sa definisanim trajanjem i ESPB vrednoscu u zavisnosti od vazecih pravila.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Profesionalna praksa"
+    },
+    {
+      "id": "PRECISCEN_OAS_2023_012",
+      "type": "multi_chunk",
+      "difficulty": "hard",
+      "question": "Kako bi sistem trebalo da odgovori ako se pitanje odnosi na pravilo koje je menjano kroz vise odluka?",
+      "expected_answer": "Sistem treba da koristi precisceni tekst ili najnoviju relevantnu izmenu, a po potrebi da navede da je pravilo menjano odlukama iz ranijih godina.",
+      "source_document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source_section": "Uvod / izmene pravilnika"
+    }
+  ]
+}
