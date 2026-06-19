@@ -18,7 +18,7 @@ class Config(BaseSettings):
     ollama_temperature: float = 0.7
     ollama_top_p: float = 0.9
     ollama_max_tokens: int = 512
-    ollama_timeout: int = 300
+    ollama_timeout: int = 900
     
     # Embedding Configuration
     embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"

@@ -1,0 +1,13 @@
+{
+  "run_id": "2026-06-19_202712_baseline_topk3",
+  "label": "baseline_topk3",
+  "created_at": "2026-06-19T20:27:12",
+  "benchmark": "benchmarking\\benchmark_svega.json",
+  "endpoint": "http://localhost:8000/query",
+  "top_k": 5,
+  "prompt_strategy": "zero_shot",
+  "model": "mistral:7b",
+  "timeout": 900,
+  "limit": 1,
+  "resume": true
+}
