@@ -4,30 +4,36 @@
 class PromptTemplate:
     """Prompt template builder"""
 
-    SYSTEM = """You are a helpful assistant for ETF faculty students. 
-    Answer only using the provided context. Always respond in Serbian using Latin script (not Cyrillic). 
-    If the answer is not in the context, say: 'Nisam pronasao odgovor u dostupnim dokumentima.'"""
+    SYSTEM = """Ti si asistent za studente Elektrotehnickog fakulteta.
+Odgovaraj iskljucivo na osnovu datog konteksta.
+Odgovaraj na srpskom jeziku, latinicom.
+Ako odgovor ne postoji u kontekstu, reci: "Nisam pronasao odgovor u dostupnim dokumentima."
+Ne izmisljaj informacije i ne koristi znanje van konteksta."""
 
-    ZERO_SHOT = """Context:
+    ZERO_SHOT = """Kontekst:
 {context}
 
-Question: {question}
-Answer in Serbian (Latin script only):"""
+Pitanje: {question}
+Odgovor:"""
 
-    FEW_SHOT = """Context:
+    FEW_SHOT = """Kontekst:
 {context}
 
-Examples:
+Primeri:
 {examples}
 
-Question: {question}
-Answer in Serbian (Latin script only):"""
+Pitanje: {question}
+Odgovor:"""
 
-    CHAIN_OF_THOUGHT = """Context:
+    CHAIN_OF_THOUGHT = """Prvo pazljivo pronadji relevantne delove konteksta, ali u odgovoru prikazi samo konacan odgovor.
+
+Kontekst:
 {context}
 
-Question: {question}
-Answer in Serbian (Latin script only):"""
+Pitanje:
+{question}
+
+Odgovor:"""
 
     @staticmethod
     def format_zero_shot(question: str, context: str) -> str:
