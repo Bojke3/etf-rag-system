@@ -90,3 +90,7 @@ npm-debug.log
 
 .codex_pydeps/
 .venv/
+CONTEXT.md
+NEXT_SESSION.md
+PROGRESS.md
+DECISIONS.md
