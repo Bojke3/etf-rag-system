@@ -13,10 +13,22 @@ from typing import Any, Dict, Iterable, List, Optional
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.evaluation import BERTScoreMetric, BLEUMetric, ROUGEMetric
+from src.evaluation import BERTScoreMetric, BLEUMetric, LLMJudgeMetric, ROUGEMetric
+from src.llm import OllamaClient
+
+try:
+    from src.config import config
+except Exception:
+    config = None
 
 DEFAULT_OUTPUT_DIR = "benchmarking/runs"
-AVAILABLE_METRICS = ("rouge", "bleu", "bertscore")
+AVAILABLE_METRICS = ("rouge", "bleu", "bertscore", "llm_judge")
+
+# Composite score weights, adapted from Borovina & Misic (INFOTEH-JAHORINA 2026):
+# their formula is 0.2*Cosine + 0.3*BERTScore + 0.2*ROUGE-L + 0.3*(LLM/5).
+# We don't compute a standalone answer-embedding cosine metric here, so its
+# 0.2 weight is redistributed across BERTScore and the LLM judge.
+COMPOSITE_WEIGHTS = {"bertscore": 0.35, "rouge": 0.25, "llm_judge": 0.40}
 
 
 def iter_answers(answers_path: Path) -> Iterable[Dict[str, Any]]:
@@ -54,6 +66,7 @@ def calculate_metrics(
     metric_instances: Dict[str, Any],
 ) -> Dict[str, Any]:
     """Calculate selected metrics for one answer."""
+    question = answer.get("question", "")
     reference = answer.get("expected_answer", "")
     candidate = answer.get("actual_answer", "")
     scores: Dict[str, Any] = {}
@@ -69,6 +82,14 @@ def calculate_metrics(
         scores["bleu"] = metric_instances["bleu"].calculate(reference, candidate)
     if "bertscore" in metrics:
         scores["bertscore"] = metric_instances["bertscore"].calculate(reference, candidate)
+    if "llm_judge" in metrics:
+        scores["llm_judge"] = metric_instances["llm_judge"].calculate(reference, candidate, question=question)
+
+    if all(m in scores for m in COMPOSITE_WEIGHTS):
+        scores["composite"] = sum(
+            weight * (extract_primary_score(scores, metric) or 0.0) / (5.0 if metric == "llm_judge" else 1.0)
+            for metric, weight in COMPOSITE_WEIGHTS.items()
+        )
 
     return scores
 
@@ -108,6 +129,15 @@ def summarize_scores(scored_answers: List[Dict[str, Any]], metrics: List[str]) -
         ]
         metric_averages[metric] = average(values)
 
+    if all(m in metrics for m in COMPOSITE_WEIGHTS):
+        composite_values = [
+            score
+            for answer in successful
+            for score in [extract_primary_score(answer.get("scores", {}), "composite")]
+            if score is not None
+        ]
+        metric_averages["composite"] = average(composite_values)
+
     worst_by_rouge = []
     if "rouge" in metrics:
         worst_by_rouge = sorted(
@@ -132,7 +162,7 @@ def summarize_scores(scored_answers: List[Dict[str, Any]], metrics: List[str]) -
     }
 
 
-def build_metric_instances(metrics: List[str]) -> Dict[str, Any]:
+def build_metric_instances(metrics: List[str], args: argparse.Namespace) -> Dict[str, Any]:
     """Instantiate only requested metrics."""
     instances = {}
     if "rouge" in metrics:
@@ -141,6 +171,13 @@ def build_metric_instances(metrics: List[str]) -> Dict[str, Any]:
         instances["bleu"] = BLEUMetric()
     if "bertscore" in metrics:
         instances["bertscore"] = BERTScoreMetric()
+    if "llm_judge" in metrics:
+        judge_client = OllamaClient(
+            base_url=args.judge_base_url,
+            model=args.judge_model,
+            timeout=args.judge_timeout,
+        )
+        instances["llm_judge"] = LLMJudgeMetric(judge_client, num_samples=args.judge_samples)
     return instances
 
 
@@ -152,7 +189,7 @@ def score_run(args: argparse.Namespace) -> Path:
         raise FileNotFoundError(f"Missing answers file: {answers_path}")
 
     metrics = parse_metrics(args.metrics)
-    metric_instances = build_metric_instances(metrics)
+    metric_instances = build_metric_instances(metrics, args)
     answers = list(iter_answers(answers_path))
 
     scored_answers = []
@@ -211,6 +248,28 @@ def parse_args() -> argparse.Namespace:
         "--metrics",
         default="rouge",
         help=f"Comma-separated metrics or 'all'. Available: {', '.join(AVAILABLE_METRICS)}",
+    )
+    parser.add_argument(
+        "--judge-model",
+        default=getattr(config, "ollama_model", "mistral:7b"),
+        help="Ollama model used as the LLM judge (only used when --metrics includes llm_judge)",
+    )
+    parser.add_argument(
+        "--judge-base-url",
+        default=getattr(config, "ollama_base_url", "http://localhost:11434"),
+        help="Ollama base URL for the LLM judge",
+    )
+    parser.add_argument(
+        "--judge-timeout",
+        type=int,
+        default=getattr(config, "ollama_timeout", 300),
+        help="Timeout in seconds per judge call",
+    )
+    parser.add_argument(
+        "--judge-samples",
+        type=int,
+        default=1,
+        help="Number of judge calls to average per answer (reduces scoring variance at the cost of time)",
     )
     return parser.parse_args()
 
