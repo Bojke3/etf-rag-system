@@ -14,6 +14,7 @@ class RAGPipeline:
         self.retriever = retriever
         self.llm_client = llm_client
         self.embedding_model = embedding_model
+        self.preprocessor = TextPreprocessor()
     
     def process_query(self,
                      question: str,
@@ -26,9 +27,14 @@ class RAGPipeline:
         start_time = time.time()
         
         try:
+            # Corpus is transliterated to Latin script at ingestion time (see
+            # process_documents.py), so the query must match or retrieval
+            # silently degrades for Cyrillic input.
+            normalized_question = self.preprocessor.clean(question)
+
             # 1. Retrieve relevant documents
             retrieval_start = time.time()
-            retrieved_docs = self.retriever.retrieve(question, top_k)
+            retrieved_docs = self.retriever.retrieve(normalized_question, top_k)
             retrieval_time = time.time() - retrieval_start
             
             if not retrieved_docs:
@@ -45,13 +51,13 @@ class RAGPipeline:
             # 3. Build prompt
             from src.llm import PromptTemplate
             if prompt_strategy == "zero_shot":
-                prompt = PromptTemplate.format_zero_shot(question, context)
+                prompt = PromptTemplate.format_zero_shot(normalized_question, context)
             elif prompt_strategy == "few_shot":
-                prompt = PromptTemplate.format_few_shot(question, context, examples)
+                prompt = PromptTemplate.format_few_shot(normalized_question, context, examples)
             elif prompt_strategy == "chain_of_thought":
-                prompt = PromptTemplate.format_chain_of_thought(question, context)
+                prompt = PromptTemplate.format_chain_of_thought(normalized_question, context)
             else:
-                prompt = PromptTemplate.format_zero_shot(question, context)
+                prompt = PromptTemplate.format_zero_shot(normalized_question, context)
             
             logger.info("Retrieved chunks: %s", len(retrieved_docs))
 
