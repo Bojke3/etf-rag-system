@@ -34,12 +34,33 @@ class Config(BaseSettings):
     embedding_dir: str = "./data/embeddings"
     
     # Chunking Strategy
+    # chunk_strategy selects the chunker, its index and its retrieval path.
+    # "flat_512" is accepted as an alias for "flat_baseline".
+    chunk_strategy: str = "flat_baseline"
     chunk_size: int = 1000
     chunk_overlap: int = 150
-    
+
+    # OCR text repair (hyphenation, wrapped lines, page furniture, headers).
+    # Set to false to reproduce pre-cleanup chunk output exactly.
+    ocr_cleanup: bool = True
+
+    # Hierarchical chunking. Sizes are CHARACTERS, not tokens (~3.5 chars/token
+    # for Serbian): parent ~1024-1536 tokens, child ~256-384 tokens.
+    hier_parent_size: int = 4500
+    hier_parent_min: int = 3600
+    hier_child_size: int = 1200
+    hier_child_min: int = 900
+    hier_child_overlap_ratio: float = 0.12
+    # Expand a retrieved child chunk to its parent before building context.
+    hier_expand_to_parent: bool = True
+
     # Retrieval Configuration
     retrieval_top_k: int = 3
     retrieval_threshold: float = 0.0
+    # Character budget for the context handed to the LLM. Must be held equal
+    # across strategies when A/B testing, or the comparison measures context
+    # budget rather than chunking.
+    context_max_length: int = 6000
     
     # Logging
     log_level: str = "INFO"

@@ -24,10 +24,13 @@ def get_pipeline():
     """Initialize and return the RAG pipeline (once)."""
     global _pipeline
     if _pipeline is None:
+        from src.data.chunking import LEVEL_PARENT, resolve_strategy_id
         from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
-        from src.retrieval import SimpleRetriever
+        from src.retrieval import ParentAwareRetriever, SimpleRetriever, load_parent_store
         from src.llm import OllamaClient
         from src.rag import RAGPipeline
+
+        strategy_id = resolve_strategy_id(config.chunk_strategy)
 
         embedding_model = SentenceTransformerEmbedding(
             model_name=config.embedding_model,
@@ -35,9 +38,16 @@ def get_pipeline():
         )
         vector_store = FAISSVectorStore(embedding_dim=embedding_model.embedding_dim)
 
-        # Load persisted index if it exists
-        import os
-        if os.path.exists(config.vector_store_path):
+        # Load the index built for this chunking strategy. Falls back to the
+        # unnamed legacy index (index.faiss) when no per-strategy one exists.
+        if FAISSVectorStore.exists(config.vector_store_path, strategy_id):
+            vector_store.load(config.vector_store_path, name=strategy_id)
+        elif FAISSVectorStore.exists(config.vector_store_path):
+            app.logger.warning(
+                "No index for strategy %s — falling back to the legacy index. "
+                "Run scripts/index_documents.py --strategy %s to build it.",
+                strategy_id, strategy_id,
+            )
             vector_store.load(config.vector_store_path)
 
         retriever = SimpleRetriever(
@@ -45,6 +55,14 @@ def get_pipeline():
             vector_store=vector_store,
             threshold=config.retrieval_threshold,
         )
+
+        # Hierarchical strategies embed child chunks but feed the LLM their
+        # parents, looked up by id.
+        if config.hier_expand_to_parent:
+            parent_store = load_parent_store(config.vector_store_path, strategy_id)
+            if parent_store:
+                retriever = ParentAwareRetriever(retriever, parent_store)
+
         llm_client = OllamaClient(
             base_url=config.ollama_base_url,
             model=_selected_ollama_model,
@@ -54,6 +72,8 @@ def get_pipeline():
             retriever=retriever,
             llm_client=llm_client,
             embedding_model=embedding_model,
+            context_max_length=config.context_max_length,
+            chunk_strategy=strategy_id,
         )
     return _pipeline
 
@@ -77,6 +97,8 @@ def health():
         "llm_type": config.llm_type,
         "ollama_model": get_current_model(),
         "embedding_model": config.embedding_model,
+        "chunk_strategy": config.chunk_strategy,
+        "context_max_length": config.context_max_length,
     })
 
 

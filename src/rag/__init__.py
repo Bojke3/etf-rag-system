@@ -10,11 +10,16 @@ logger = logging.getLogger(__name__)
 class RAGPipeline:
     """Main RAG pipeline orchestration"""
     
-    def __init__(self, retriever, llm_client, embedding_model):
+    def __init__(self, retriever, llm_client, embedding_model,
+                 context_max_length=None, chunk_strategy=None):
         self.retriever = retriever
         self.llm_client = llm_client
         self.embedding_model = embedding_model
-        self.preprocessor = TextPreprocessor()
+        # Queries are normalised (transliterated) but never OCR-repaired — the
+        # cleanup passes exist to fix scanned documents, not user questions.
+        self.preprocessor = TextPreprocessor(ocr_cleanup=False)
+        self.context_max_length = context_max_length
+        self.chunk_strategy = chunk_strategy
     
     def process_query(self,
                      question: str,
@@ -46,7 +51,9 @@ class RAGPipeline:
             
             # 2. Build context
             from src.retrieval import ContextBuilder
-            context = ContextBuilder.build_context(retrieved_docs)
+            context = ContextBuilder.build_context(
+                retrieved_docs, max_length=self.context_max_length
+            )
             
             # 3. Build prompt
             from src.llm import PromptTemplate
@@ -90,17 +97,28 @@ class RAGPipeline:
                 "question": question,
                 "answer": answer,
                 "retrieved_chunks": len(retrieved_docs),
+                "chunk_strategy": self.chunk_strategy,
+                "context_chars": len(context),
                 "processing_time_ms": int(total_time * 1000),
                 "retrieval_time_ms": int(retrieval_time * 1000),
                 "generation_time_ms": int(generation_time * 1000),
             }
             
             if include_sources:
+                # chunk_id / parent_chunk_id / strategy_id are additive: existing
+                # consumers read document/score/text exactly as before, and
+                # retrieval-level metrics now have chunk-level ids to work with.
                 response["sources"] = [
                     {
                         "document": doc.get("document", "Unknown"),
                         "score": doc.get("score", 0),
-                        "text": doc.get("text", "")[:200]
+                        "text": doc.get("text", "")[:200],
+                        "chunk_id": doc.get("id", doc.get("chunk_id")),
+                        "parent_chunk_id": doc.get("parent_chunk_id"),
+                        "strategy_id": doc.get("strategy_id", self.chunk_strategy),
+                        "section": doc.get("section"),
+                        "page": doc.get("page"),
+                        "expanded_to_parent": doc.get("expanded_to_parent", False),
                     }
                     for doc in retrieved_docs
                 ]
