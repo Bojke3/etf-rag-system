@@ -190,7 +190,8 @@ def score_run(args: argparse.Namespace) -> Path:
 
     metrics = parse_metrics(args.metrics)
     metric_instances = build_metric_instances(metrics, args)
-    answers = list(iter_answers(answers_path))
+    # A resumed collection can append a successful retry after an error.
+    answers = list({answer['id']: answer for answer in iter_answers(answers_path)}.values())
 
     scored_answers = []
     for index, answer in enumerate(answers, start=1):
@@ -208,6 +209,7 @@ def score_run(args: argparse.Namespace) -> Path:
                 "error": answer.get("error", ""),
                 "source_document": answer.get("source_document"),
                 "source_section": answer.get("source_section"),
+                "reference_sources": answer.get("reference_sources", []),
                 "sources": answer.get("sources", []),
                 "timing": {
                     "processing_time_ms": answer.get("processing_time_ms"),

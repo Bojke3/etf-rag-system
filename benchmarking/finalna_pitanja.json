@@ -1,0 +1,1661 @@
+{
+  "questions": [
+    {
+      "id": "REAL_001",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "prijemni_i_upis",
+      "question": "Polagao sam i matematiku i fiziku: iz matematike imam 42, a iz fizike 55 poena. Koji rezultat mi se računa za ER, a koji za SI?",
+      "expected_answer": "Za Elektrotehniku i računarstvo računa se bolji rezultat, dakle 55 poena iz fizike. Za Softversko inženjerstvo računa se matematika, dakle 42 poena. Rezultati dva prijemna se ne sabiraju.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 7",
+          "pdf_pages": [
+            3
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "ER: 55 poena.",
+        "SI: 42 poena.",
+        "Ne sabirati rezultate."
+      ],
+      "disallowed_claims": [
+        "97 poena sa prijemnog.",
+        "Za SI se računa fizika."
+      ]
+    },
+    {
+      "id": "REAL_002",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "prijemni_i_upis",
+      "question": "Za prijemni spremam samo fiziku i nemam nagrade sa takmičenja. Da li time mogu da konkurišem i za SI?",
+      "expected_answer": "Za rangiranje na Softverskom inženjerstvu vrednuje se prijemni iz matematike, pa sama fizika nije dovoljna. Fizika se može vrednovati za Elektrotehniku i računarstvo.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 7",
+          "pdf_pages": [
+            3
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Za SI je potrebna matematika.",
+        "Fizika se vrednuje za ER."
+      ],
+      "disallowed_claims": [
+        "Fizika je dovoljna za SI."
+      ]
+    },
+    {
+      "id": "REAL_003",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "prijemni_i_upis",
+      "question": "Proseci u četiri razreda srednje su mi 4,20, 4,50, 4,80 i 5,00. Na prijemnom imam 40 poena. Koliko ukupno imam za rang-listu?",
+      "expected_answer": "Iz škole imaš (4,20 + 4,50 + 4,80 + 5,00) × 2 = 37,00 bodova. Sa 40 poena sa prijemnog ukupno imaš 77,00 bodova.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 9",
+          "pdf_pages": [
+            4
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Škola: 37,00.",
+        "Ukupno: 77,00."
+      ],
+      "disallowed_claims": [
+        "Množenje proseka sva četiri razreda sa dva umesto zbira."
+      ]
+    },
+    {
+      "id": "REAL_004",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "prijemni_i_upis",
+      "question": "Imam ukupno 52 boda za upis u prvu godinu. Je l to znači da sam sigurno na budžetu?",
+      "expected_answer": "Ne. Ispunjavaš minimum od 51 boda, ali moraš biti i rangiran u okviru odobrenog broja budžetskih mesta. Sam zbir od 52 boda ne garantuje budžet.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 9",
+          "pdf_pages": [
+            4
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Minimum je 51.",
+        "Potreban je plasman u budžetsku kvotu."
+      ],
+      "disallowed_claims": [
+        "52 boda garantuju budžet."
+      ]
+    },
+    {
+      "id": "REAL_005",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "prijemni_i_upis",
+      "question": "Za samofinansiranje je ostalo slobodnih mesta, ali imam ukupno 29 bodova. Da li mogu da se upišem po pravilniku o upisu?",
+      "expected_answer": "Ne po tom pravilu: za samofinansiranje je potrebno najmanje 30 bodova i mesto na rang-listi u okviru predviđenog broja mesta. Slobodno mesto ne ukida bodovni minimum.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 9",
+          "pdf_pages": [
+            4
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Minimum je 30.",
+        "Slobodna mesta ne ukidaju minimum."
+      ],
+      "disallowed_claims": [
+        "29 bodova je dovoljno ako ima mesta."
+      ]
+    },
+    {
+      "id": "REAL_006",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "prijemni_i_upis",
+      "question": "U četvrtom razredu sam dobio drugu nagradu na republičkom takmičenju iz informatike, kategorija A, u organizaciji Ministarstva i Društva matematičara Srbije. Želim i SI i ER. Da li sam za oba programa oslobođen prijemnog?",
+      "expected_answer": "Nagrada se za SI vrednuje kao maksimalan broj poena na prijemnom iz matematike. Za rangiranje na ER moraš polagati matematiku ili fiziku, ili oba ispita. I za SI moraš ispuniti uslove prijave i konkursa i prijaviti matematiku; oslobađanje se odnosi na izlazak na ispit.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 10",
+          "pdf_pages": [
+            4,
+            5
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Maksimalni poeni za SI.",
+        "Za ER mora polagati matematiku ili fiziku.",
+        "Prijava matematike i ostali uslovi konkursa ostaju obavezni."
+      ],
+      "disallowed_claims": [
+        "Nagrada iz informatike automatski oslobađa prijemnog i za ER.",
+        "Ne treba prijaviti ispit."
+      ]
+    },
+    {
+      "id": "REAL_007",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "prijemni_i_upis",
+      "question": "Prijavio sam ER kao prvu želju, ali bih posle rezultata prijemnog da stavim SI. Mogu li tada da promenim prvu želju?",
+      "expected_answer": "Ne. Prva želja može da se izrazi i menja samo u fazi prijave kandidata, prema članu 12 pravilnika o upisu.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 12",
+          "pdf_pages": [
+            6
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Promena samo u fazi prijave."
+      ],
+      "disallowed_claims": [
+        "Promena je moguća nakon rezultata prijemnog."
+      ]
+    },
+    {
+      "id": "REAL_008",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "prijemni_i_upis",
+      "question": "SI mi je bio prva želja i na njegovoj rang-listi sam u okviru broja budžetskih mesta. Da li ću se naći i na listi za ER?",
+      "expected_answer": "Prema pravilu o prvoj želji, kandidat koji je na programu prve želje rangiran u okviru broja budžetskih mesta nalazi se samo na listi tog programa. U opisanoj situaciji to je lista za SI.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 12",
+          "pdf_pages": [
+            6
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Samo lista SI u opisanoj situaciji."
+      ],
+      "disallowed_claims": [
+        "Svi kandidati se bez izuzetka nalaze na obe liste."
+      ]
+    },
+    {
+      "id": "REAL_009",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "prijemni_i_upis",
+      "question": "Preliminarna rang-lista za upis je izašla pre 20 sati i mislim da mi je mesto pogrešno. Kome i do kada mogu da se žalim?",
+      "expected_answer": "Žalba se podnosi Komisiji fakulteta u roku od 36 sati od objavljivanja preliminarne rang-liste. Ako je prošlo 20 sati, preostaje još 16 sati tog roka. Komisija donosi rešenje u roku od 24 sata od prijema žalbe.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 20",
+          "pdf_pages": [
+            9
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Komisiji fakulteta.",
+        "36 sati od objave preliminarne liste.",
+        "Još 16 sati.",
+        "Rešenje Komisije u roku od 24 sata od prijema."
+      ],
+      "disallowed_claims": [
+        "Prva žalba se podnosi direktno dekanu.",
+        "Rok počinje od prijemnog ispita."
+      ]
+    },
+    {
+      "id": "REAL_010",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "prijemni_i_upis",
+      "question": "Lična karta mi je istekla, ali imam važeći pasoš. Mogu li njime da se identifikujem na prijemnom?",
+      "expected_answer": "Da. Na prijemni se donosi važeća lična karta ili pasoš. Identitet mora biti utvrđen pre polaganja.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik o upisu studenata.pdf",
+          "section": "Član 18",
+          "pdf_pages": [
+            9
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Važeći pasoš je prihvatljiv.",
+        "Identitet se proverava pre ispita."
+      ],
+      "disallowed_claims": [
+        "Prihvata se isključivo lična karta."
+      ]
+    },
+    {
+      "id": "REAL_011",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Na drugoj sam godini i ove skolske godine sam skupio tacno 48 ESPB. Da li mi je budzet za sledecu godinu zagarantovan?",
+      "expected_answer": "Nije zagarantovan. Uz ostvarenih 48 ESPB iz upisanog programa, potrebno je da budeš rangiran u okviru odobrenog broja budžetskih mesta. Ako nisi u toj kvoti, status je samofinansirajući.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Članovi 38 i 39",
+          "pdf_pages": [
+            15
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "48 ESPB je bodovni uslov.",
+        "Neophodan je plasman u budžetsku kvotu.",
+        "Van kvote: samofinansiranje."
+      ],
+      "disallowed_claims": [
+        "48 ESPB automatski garantuje budžet."
+      ]
+    },
+    {
+      "id": "REAL_012",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Upisan sam po afirmativnoj meri i ove godine imam 36 ESPB. Da li i meni treba 48 za budžet sledeće godine?",
+      "expected_answer": "Za studente upisane po afirmativnoj meri, kao i za studente sa invaliditetom, član 38 predviđa pravo na budžetsko finansiranje naredne godine sa ostvarenih 36 ESPB u tekućoj godini.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 38",
+          "pdf_pages": [
+            15
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Prag za navedenu grupu je 36 ESPB u tekućoj godini."
+      ],
+      "disallowed_claims": [
+        "Svim studentima je neophodno 48 ESPB."
+      ]
+    },
+    {
+      "id": "REAL_013",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "U četvrtoj godini sam bio na budžetu, ali mi je ostalo nekoliko ispita posle redovnog trajanja studija. Da li odmah prelazim na samofinansiranje?",
+      "expected_answer": "Ne nužno. Student koji je u poslednjoj godini studija bio na budžetu zadržava pravo na budžetsko finansiranje najduže još godinu dana po isteku redovnog trajanja studija.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Članovi 38 i 39",
+          "pdf_pages": [
+            15
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Pravo najduže godinu dana posle redovnog trajanja.",
+        "Uslov: budžet u poslednjoj godini."
+      ],
+      "disallowed_claims": [
+        "Budžet se zadržava sve do diplomiranja bez vremenskog ograničenja."
+      ]
+    },
+    {
+      "id": "REAL_014",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "budzet_i_predmeti",
+      "question": "На буџету сам и до краја студија ми је остало укупно 20 ЕСПБ. Морам ли ипак да упишем 60?",
+      "expected_answer": "Ne. Minimum od 60 ESPB za budžetskog studenta ima izuzetak kada je do kraja programa ostalo manje od 60. Možeš upisati preostalih 20 ESPB.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 48",
+          "pdf_pages": [
+            20
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Izuzetak kada do kraja ostaje manje od 60.",
+        "Preostalih 20 ESPB je dovoljno u navedenoj situaciji."
+      ],
+      "disallowed_claims": [
+        "Mora dopuniti do 60 ESPB."
+      ]
+    },
+    {
+      "id": "REAL_015",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Samofinansiram se, ne studiram uz rad i do kraja imam još 100 ESPB. Mogu li da upišem samo 30 ESPB ove godine?",
+      "expected_answer": "Po članu 48, samofinansirajući student upisuje najmanje 37 ESPB, osim kada mu do kraja ostaje manje. Pošto ti ostaje 100 ESPB i ne primenjuje se status studenta uz rad, 30 nije dovoljno.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 48",
+          "pdf_pages": [
+            20
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Minimum 37 ESPB.",
+        "Opisani student nije obuhvaćen izuzecima."
+      ],
+      "disallowed_claims": [
+        "30 ESPB je minimum za sve samofinansirajuće studente."
+      ]
+    },
+    {
+      "id": "REAL_016",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Mogu da prijavim 40 ESPB iz treće godine, ali mi je ostao jedan ispit iz prve. Da li ispunjavam uslov da upišem treću godinu?",
+      "expected_answer": "Ne. Pored mogućnosti prijave najmanje 37 ESPB iz naredne godine, za upis treće godine moraju biti položeni svi ispiti iz prve godine. Jedan preostali ispit iz prve godine sprečava ispunjenje tog uslova.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 50",
+          "pdf_pages": [
+            21
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Potrebni svi ispiti prve godine.",
+        "40 ESPB ne zamenjuje taj dodatni uslov."
+      ],
+      "disallowed_claims": [
+        "Dovoljna je mogućnost prijave 37 ili više ESPB."
+      ]
+    },
+    {
+      "id": "REAL_017",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "budzet_i_predmeti",
+      "question": "Obnavljam godinu. Da li to znači da smem da slušam samo stare predmete i nijedan iz naredne godine?",
+      "expected_answer": "Ne. Možeš prijaviti i predmete naredne godine za koje ispunjavaš preduslove, uz obaveznu prijavu svih nepoloženih predmeta ranijih godina po njihovom prioritetu. Za samofinansirajuće studente postoje dodatna ograničenja uzimanja predmeta treće i četvrte godine ako ranije godine nisu očišćene i iz nižih godina može da se prijavi najmanje 37 ESPB. Eventualni izuzetak za ta ograničenja odobrava prodekan za nastavu.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Članovi 48 i 50",
+          "pdf_pages": [
+            20,
+            21,
+            22
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Mogući predmeti naredne godine uz preduslove.",
+        "Prvo prijaviti sve nepoložene iz ranijih godina.",
+        "Postoje dodatna ograničenja za samofinansirajuće studente i odobrenje izuzetka."
+      ],
+      "disallowed_claims": [
+        "Obnova zabranjuje sve nove predmete.",
+        "Može slobodno preskočiti nepoložene predmete ranijih godina."
+      ]
+    },
+    {
+      "id": "REAL_018",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "budzet_i_predmeti",
+      "question": "Nisam položio izborni predmet do početka sledeće školske godine i više ne želim da ga slušam. Mogu li da uzmem drugi izborni?",
+      "expected_answer": "Da. Nepoložen izborni predmet možeš ponovo prijaviti ili se opredeliti za drugi izborni predmet. Za nepoložen obavezni predmet ponovo prijavljuješ isti predmet.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 50",
+          "pdf_pages": [
+            22
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Izborni se može zameniti drugim izbornim.",
+        "Obavezni se ponovo prijavljuje."
+      ],
+      "disallowed_claims": [
+        "Svaki nepoložen predmet može da se zameni."
+      ]
+    },
+    {
+      "id": "REAL_019",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Semestar je već počeo, a izborni koji sam prijavio mi ne odgovara. Mogu li sam da ga zamenim drugim?",
+      "expected_answer": "Prijavljeni predmeti se po pravilu ne menjaju tokom školske godine. U izuzetnom slučaju, tokom semestra u kome se nastava održava, prodekan za nastavu može odobriti zamenu drugim predmetom iz istog semestra.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 50",
+          "pdf_pages": [
+            22
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Promena je izuzetak, uz odobrenje prodekana za nastavu.",
+        "Zamenski predmet mora biti iz istog semestra."
+      ],
+      "disallowed_claims": [
+        "Student može sam da promeni predmet u bilo kom trenutku."
+      ]
+    },
+    {
+      "id": "REAL_020",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Prosek mi je 8,2, ali sam prošle školske godine položio svih 60 ESPB. Ako mi dekan odobri 72 ESPB radi bržeg završavanja, da li plaćam dodatnih 12?",
+      "expected_answer": "Ne snosiš troškove dodatno prijavljenih ESPB po tom osnovu, jer si prethodne školske godine položio 60 ESPB. Uslov je prosek preko 8,5 ili položenih 60 ESPB prethodne godine, a odobreni obim ne sme preći 90 ESPB.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 51",
+          "pdf_pages": [
+            22
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Ne plaća dodatnih 12 po navedenom osnovu.",
+        "Uslovi su alternativni: prosek preko 8,5 ili 60 ESPB prethodne godine.",
+        "Najviše 90 ESPB uz odluku dekana."
+      ],
+      "disallowed_claims": [
+        "Obavezno mora imati i prosek preko 8,5."
+      ]
+    },
+    {
+      "id": "REAL_021",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "budzet_i_predmeti",
+      "question": "Uzeo sam fakultativni predmet preko programa i dobio desetku. Da li mi ta desetka podiže prosek?",
+      "expected_answer": "Ne. Fakultativni predmeti se navode u dodatku diplome kao dodatna informacija, ali ne ulaze u prosečnu ocenu.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 51",
+          "pdf_pages": [
+            22
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Ne ulazi u prosek.",
+        "Navodi se u dodatku diplome."
+      ],
+      "disallowed_claims": [
+        "Svaka desetka sa fakultativnog ulazi u prosek."
+      ]
+    },
+    {
+      "id": "REAL_022",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "budzet_i_predmeti",
+      "question": "Stekao sam uslov za treću godinu i prosek mi je 7,6. Želim da pređem na drugi modul ER-a. Da li mogu i kada se podnosi zahtev?",
+      "expected_answer": "Ispunjavaš uslove da podneseš molbu: stečen uslov za treću godinu i prosek najmanje 7,5. Promena se traži pri upisu naredne školske godine, a godina na novom modulu zavisi od priznatih ispita i ESPB. Komisija izuzetno može razmatrati molbu početkom prolećnog semestra, ali se upis na novi modul i tada vrši početkom naredne školske godine. Odobrenje nije automatsko.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 47",
+          "pdf_pages": [
+            19,
+            20
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Može podneti molbu, ne automatski preći.",
+        "Redovno pri upisu naredne školske godine.",
+        "Priznati ispiti određuju godinu na novom modulu.",
+        "Prolećno razmatranje ne znači odmah upis."
+      ],
+      "disallowed_claims": [
+        "Prosek 7,6 garantuje prelazak.",
+        "Usvojena prolećna molba znači trenutni upis novog modula."
+      ]
+    },
+    {
+      "id": "REAL_023",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "prelazak_i_mobilnost",
+      "question": "Studiram na drugom univerzitetu i do kraja svog programa imam još 54 ESPB. Mogu li sada da pređem na ETF bez prijemnog?",
+      "expected_answer": "Prema članu 43, student drugog univerziteta odnosno druge samostalne visokoškolske ustanove ne može se upisati tim putem ako mu je do kraja tamošnjeg programa ostalo 60 ili manje ESPB. Preostalih 54 ESPB potpada pod to ograničenje.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 43",
+          "pdf_pages": [
+            17,
+            18
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Ograničenje obuhvata 60 ili manje preostalih ESPB.",
+        "54 ESPB potpada pod ograničenje."
+      ],
+      "disallowed_claims": [
+        "Svako sa više od 60 već položenih ESPB može preći bez dodatnih uslova."
+      ]
+    },
+    {
+      "id": "REAL_024",
+      "type": "multi_document",
+      "difficulty": "hard",
+      "category": "skolarina",
+      "question": "Na ER-u sam samofinansirajući student. Upišem 30 ESPB novih predmeta i ponovo 12 ESPB nepoloženih iz prethodne godine. Ako je godišnja školarina za 60 ESPB 120.000 dinara i nemam druga oslobađanja, koliko iznosi školarina pre eventualne refundacije?",
+      "expected_answer": "Cena jednog ESPB u ovom primeru je 120.000 / 60 = 2.000 dinara. Novi predmeti koštaju 30 × 2.000 = 60.000 dinara, a ponovo upisani nepoloženi predmeti na ER-u plaćaju se 2/3: 12 × 2.000 × 2/3 = 16.000 dinara. Ukupno je 76.000 dinara pre eventualne refundacije.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Izmenjeni član 52",
+          "pdf_pages": [
+            2
+          ],
+          "role": "evidence"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 53",
+          "pdf_pages": [
+            23
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "2.000 dinara po ESPB.",
+        "Novi: 60.000.",
+        "Ponovni upis na ER: 16.000 uz faktor 2/3.",
+        "Ukupno 76.000 pre refundacije."
+      ],
+      "disallowed_claims": [
+        "84.000 bez primene umanjenja za ponovni upis.",
+        "2/3 se primenjuje i na sve nove predmete.",
+        "120.000 je stvarna objavljena školarina za tekuću godinu."
+      ]
+    },
+    {
+      "id": "REAL_025",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "skolarina",
+      "question": "Plaćam školarinu, a tokom prethodne školske godine mi je preminuo roditelj. Da li postoji mogućnost oslobađanja i kome predajem molbu?",
+      "expected_answer": "Možeš tražiti oslobađanje u visini 100% troškova tekuće godine koju upisuješ zbog smrtnog slučaja u užoj porodici tokom prethodne godine. Molbu sa dokazima podnosiš Studentskom odseku prilikom upisa godine, a rešenje donosi prodekan za nastavu.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 53",
+          "pdf_pages": [
+            23
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Moguće oslobađanje 100% troškova godine koju upisuje.",
+        "Molba sa dokazima Studentskom odseku pri upisu.",
+        "Rešenje donosi prodekan za nastavu."
+      ],
+      "disallowed_claims": [
+        "Oslobađanje se dodeljuje automatski bez molbe."
+      ]
+    },
+    {
+      "id": "REAL_026",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "ispiti_i_ocene",
+      "question": "Pao sam isti ispit tri puta. Mogu li da trazim polaganje pred komisijom i ko je formira?",
+      "expected_answer": "Da. Posle tri neuspešna polaganja istog ispita možeš tražiti polaganje pred komisijom. Komisiju formira prodekan za nastavu uz konsultacije sa šefom nadležne katedre.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 69",
+          "pdf_pages": [
+            30
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Pravo da traži komisiju posle tri neuspešna polaganja.",
+        "Formira prodekan uz konsultacije sa šefom katedre."
+      ],
+      "disallowed_claims": [
+        "Komisijsko polaganje automatski se zakazuje bez zahteva."
+      ]
+    },
+    {
+      "id": "REAL_027",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "ispiti_i_ocene",
+      "question": "Ocenu sa ispita sam dobio pre 30 sati. Mislim da ispit nije sproveden po pravilima. Kome podnosim prigovor i da li još imam vremena?",
+      "expected_answer": "Prigovor na ocenu zbog nepravilnog sprovođenja ispita podnosiš dekanu u roku od 36 sati od dobijanja ocene. Ako je prošlo 30 sati, ostalo je još 6 sati roka.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 70",
+          "pdf_pages": [
+            30
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Dekanu.",
+        "36 sati od dobijanja ocene.",
+        "Preostalo 6 sati."
+      ],
+      "disallowed_claims": [
+        "Rok je do kraja školske godine.",
+        "Rok teče od dana ispita umesto od dobijanja ocene."
+      ]
+    },
+    {
+      "id": "REAL_028",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "ispiti_i_ocene",
+      "question": "Dobio sam sedmicu, ispit je bio regularan, ali želim bolju ocenu. Kako tražim ponovno polaganje i da li mi sedmica ostaje ako se predomislim posle odobrenja?",
+      "expected_answer": "Zahtev podnosiš Studentskom odseku do kraja školske godine u kojoj si polagao ispit. O ponovnom polaganju odlučuje prodekan za nastavu. Ako odobri ponovno polaganje, prethodna sedmica se proglašava nevažećom; ne ostaje kao rezervna ocena. Ponovno polaganje se posebno plaća.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 71",
+          "pdf_pages": [
+            30,
+            31
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Studentskom odseku do kraja iste školske godine.",
+        "Odluka prodekana za nastavu.",
+        "Odobrenjem prethodna ocena postaje nevažeća.",
+        "Posebna naknada."
+      ],
+      "disallowed_claims": [
+        "Sedmica ostaje dok se ne dobije viša ocena.",
+        "Rok za ovaj zahtev je 36 sati."
+      ]
+    },
+    {
+      "id": "REAL_029",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "ispiti_i_ocene",
+      "question": "Propustio sam oba kolokvijuma iz jednog predmeta. Da li fakultet mora da mi omoguci da nadoknadim oba u prvom roku?",
+      "expected_answer": "Obavezno pravo na nadoknadu odnosi se samo na jedan kolokvijum po predmetu, u prvom ispitnom roku nakon odgovarajućeg semestra, uz prijavu preko studentskih servisa. Nastavnici mogu organizovati dodatne nadoknade, ali iz pravilnika ne sledi obaveza da ti nadoknade oba.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 62",
+          "pdf_pages": [
+            27
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Garantovana nadoknada jednog kolokvijuma po predmetu.",
+        "Prvi ispitni rok nakon semestra.",
+        "Prijava preko studentskih servisa.",
+        "Dodatne nadoknade su mogućnost."
+      ],
+      "disallowed_claims": [
+        "Obavezna nadoknada oba kolokvijuma.",
+        "Dodatne nadoknade su zabranjene."
+      ]
+    },
+    {
+      "id": "REAL_030",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "ispiti_i_ocene",
+      "question": "Nisam položio predmet iz prolećnog semestra do septembra. Ako izađem u februaru naredne školske godine, da li mi važe stari poeni sa kolokvijuma?",
+      "expected_answer": "Da. Za predmete iz prolećnog semestra predviđeno je polaganje i u februarskom roku naredne školske godine, a poeni iz predispitnih obaveza priznaju se i u tom roku.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 61",
+          "pdf_pages": [
+            26,
+            27
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Prolećni predmet može u februaru naredne godine.",
+        "Predispitni poeni važe i tada."
+      ],
+      "disallowed_claims": [
+        "Svi predispitni poeni bez izuzetka prestaju da važe u septembru.",
+        "Poeni automatski važe u svim rokovima naredne godine."
+      ]
+    },
+    {
+      "id": "REAL_031",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "ispiti_i_ocene",
+      "question": "Rezultati pisanog ispita su objavljeni danas u 12, a uvid je zakazan za 13 časova istog dana i tek je sada najavljen. Je li to u skladu sa pravilnikom?",
+      "expected_answer": "Nije. Termin uvida mora biti objavljen najkasnije uz rezultate pisanog ispita i najmanje 24 sata pre uvida. Najava samo sat vremena unapred ne ispunjava taj rok.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 68",
+          "pdf_pages": [
+            29
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Najmanje 24 sata pre uvida.",
+        "Termin najkasnije uz rezultate.",
+        "Jedan sat nije dovoljan."
+      ],
+      "disallowed_claims": [
+        "Dovoljno je da uvid bude najavljen zajedno sa rezultatima bez minimalnog razmaka."
+      ]
+    },
+    {
+      "id": "REAL_032",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "ispiti_i_ocene",
+      "question": "Imam ukupno tačno 50 poena iz predispitnih obaveza i završnog ispita. Da li je to šestica po skali iz pravilnika?",
+      "expected_answer": "Ne. Do 50 poena je ocena 5, odnosno ispit nije položen. Ocena 6 počinje od 51 poena.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 67",
+          "pdf_pages": [
+            29
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "50 poena znači ocenu 5.",
+        "Šestica je od 51 poena."
+      ],
+      "disallowed_claims": [
+        "50 poena je prolazna ocena."
+      ]
+    },
+    {
+      "id": "REAL_033",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "ispiti_i_ocene",
+      "question": "Испунио сам све обавезе и укупно имам 81 поен. Која је то оцена према скали у правилнику?",
+      "expected_answer": "Ukupno 81 poen pripada rasponu 81-90, što je ocena 9.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 67",
+          "pdf_pages": [
+            29
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Ocena 9 za 81 poen."
+      ],
+      "disallowed_claims": [
+        "81 poen je osmica ili desetka."
+      ]
+    },
+    {
+      "id": "REAL_034",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "ispiti_i_ocene",
+      "question": "Na predmetu kažu da svih 100 poena dobijamo samo na završnom ispitu, bez poena tokom semestra. Da li pravilnik predviđa takvu raspodelu?",
+      "expected_answer": "Ne. U ukupnih 100 poena, za predispitne aktivnosti i provere znanja u toku semestra mora biti predviđeno najmanje 30, a najviše 70 poena.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 58",
+          "pdf_pages": [
+            25,
+            26
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Predispitne obaveze: 30-70 od ukupno 100 poena.",
+        "Raspodela svih 100 samo na završni nije predviđena."
+      ],
+      "disallowed_claims": [
+        "Nastavnik može odrediti nula poena za predispitne obaveze."
+      ]
+    },
+    {
+      "id": "REAL_035",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "ispiti_i_ocene",
+      "question": "Ostao mi je samo jedan nepoložen ispit do kraja OAS. Imam li pravo na dodatno polaganje pred početak nove školske godine?",
+      "expected_answer": "Da. Student sa samo jednim preostalim nepoloženim ispitom ima pravo na dodatno ispitivanje u poslednjem ispitnom roku pre početka naredne školske godine.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 63",
+          "pdf_pages": [
+            27
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Pravo na dodatno ispitivanje.",
+        "Poslednji rok pre naredne školske godine."
+      ],
+      "disallowed_claims": [
+        "Može sam izabrati bilo koji datum dodatnog ispita."
+      ]
+    },
+    {
+      "id": "REAL_036",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "ispiti_i_ocene",
+      "question": "Od kolokvijuma je prošlo 18 dana, a rezultati nisu objavljeni. Postoji li rok za njihovu objavu?",
+      "expected_answer": "Da. Rezultati kolokvijuma moraju biti objavljeni najkasnije 15 dana od održavanja. U opisanoj situaciji taj rok je prekoračen za 3 dana.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 58",
+          "pdf_pages": [
+            26
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Rok 15 dana od kolokvijuma.",
+        "Prekoračenje 3 dana."
+      ],
+      "disallowed_claims": [
+        "Pravilnik ne određuje rok za rezultate kolokvijuma."
+      ]
+    },
+    {
+      "id": "REAL_037",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "mirovanje_i_status",
+      "question": "Одобрено ми је мировање године. Могу ли ипак да изађем на један испит или завршим лабораторијске вежбе док мировање траје?",
+      "expected_answer": "Ne. Tokom odobrenog mirovanja ne možeš polagati ispite, ostvarivati predispitne obaveze niti druge obaveze iz nastavnog procesa. Pravilo za polaganje posle dužeg opravdanog odsustva ne daje dozvolu za polaganje tokom odobrenog mirovanja.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 55",
+          "pdf_pages": [
+            24
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Tokom odobrenog mirovanja nema ispita ni predispitnih obaveza."
+      ],
+      "disallowed_claims": [
+        "Tokom mirovanja sme da polaže stare ispite.",
+        "Lab vežbe su dozvoljene jer nisu ispit."
+      ]
+    },
+    {
+      "id": "REAL_038",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "mirovanje_i_status",
+      "question": "Zbog teže bolesti želim da tražim mirovanje. Da li je dovoljno da samo predam molbu do kraja školske godine ili postoje posebni rokovi i uslovi odsustva?",
+      "expected_answer": "Zahtev se podnosi u roku od 30 dana od nastanka sprečenosti, a najkasnije do 1. juna za tekuću školsku godinu. Mirovanje se može odobriti samo kada je student propustio dva uzastopna ispitna roka ili bio sprečen da pohađa nastavu najmanje tri meseca. Teža bolest je jedan od predviđenih osnova.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Članovi 55 i 56",
+          "pdf_pages": [
+            24,
+            25
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "30 dana od nastanka sprečenosti.",
+        "Najkasnije 1. jun za tekuću godinu.",
+        "Dva uzastopna roka ili najmanje tri meseca sprečenosti za nastavu.",
+        "Teža bolest je osnov."
+      ],
+      "disallowed_claims": [
+        "Dovoljno je podneti zahtev do kraja školske godine.",
+        "Nema uslova u pogledu propuštenih rokova ili nastave."
+      ]
+    },
+    {
+      "id": "REAL_039",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "mirovanje_i_status",
+      "question": "Vec sam jednom na ovom programu dobio mirovanje jer nisam mogao da platim skolarinu. Mogu li sledece godine ponovo da ga trazim po istom finansijskom osnovu?",
+      "expected_answer": "Po tom osnovu mirovanje se može odobriti u trajanju od jedne školske godine i samo jednom tokom studija na istom programu. Zato drugi put ne možeš ostvariti mirovanje po istom osnovu nemogućnosti plaćanja školarine.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 55",
+          "pdf_pages": [
+            24
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Jednom na istom programu.",
+        "U trajanju jedne školske godine."
+      ],
+      "disallowed_claims": [
+        "Finansijsko mirovanje može se neograničeno obnavljati."
+      ]
+    },
+    {
+      "id": "REAL_040",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "mirovanje_i_status",
+      "question": "Redovan sam student četvorogodišnjeg programa i nemam poseban status. Od upisa je prošlo osam školskih godina, od kojih sam jednu celu godinu bio u odobrenom mirovanju. Da li sam time već potrošio osmogodišnji rok i mogu li da tražim produženje?",
+      "expected_answer": "Godina odobrenog mirovanja ne ulazi u rok, pa je u opisanom primeru iskorišćeno sedam godina tog roka. Na lični zahtev podnet pre isteka roka može se odobriti produženje do trostrukog trajanja programa, odnosno do 12 školskih godina koje se računaju u rok. Produženje nije automatsko.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 57",
+          "pdf_pages": [
+            25
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Odobreno mirovanje se ne računa.",
+        "Iskorišćeno sedam godina roka.",
+        "Zahtev za produženje pre isteka.",
+        "Moguće do trostrukog trajanja, 12 godina, uz odobrenje."
+      ],
+      "disallowed_claims": [
+        "Status je već prestao samo zato što je kalendarski prošlo osam godina.",
+        "Svima se automatski odobrava 12 godina."
+      ]
+    },
+    {
+      "id": "REAL_041",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "zavrsni_rad",
+      "question": "Završni rad mi je gotov, ali imam još jedan nepoložen ispit. Mogu li prvo da prijavim odbranu pa da ispit položim kasnije?",
+      "expected_answer": "Ne. Za prijavu odbrane moraš imati položene sve ispite i ispunjene sve obaveze predviđene studijskim programom. Studentski odsek na obrascu overava ispunjenost tih uslova.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 28",
+          "pdf_pages": [
+            11
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Svi ispiti i ostale obaveze pre prijave odbrane.",
+        "Studentski odsek overava ispunjenost uslova."
+      ],
+      "disallowed_claims": [
+        "Dozvoljena je prijava odbrane sa jednim nepoloženim ispitom."
+      ]
+    },
+    {
+      "id": "REAL_042",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "zavrsni_rad",
+      "question": "Temu završnog sam prijavio pre 13 meseci i nisam dobio produženje. Mogu li samo da nastavim sa istom temom?",
+      "expected_answer": "Redovni rok za odbranu je jedna godina od prijave teme; ako se ne odbrani u tom roku, mora se uzeti nova tema. Izuzetno se, na zahtev i iz opravdanih razloga, uz odobrenje šefa odseka rok može produžiti najviše šest meseci. Bez odobrenog produženja ne možeš pretpostaviti da stara tema i dalje važi.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 26",
+          "pdf_pages": [
+            10,
+            11
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Rok jedna godina od prijave teme.",
+        "Bez produženja: nova tema.",
+        "Izuzetno do šest meseci na zahtev uz odobrenje šefa odseka."
+      ],
+      "disallowed_claims": [
+        "Tema automatski važi 18 meseci.",
+        "Pravilnik garantuje retroaktivno produženje nakon isteka."
+      ]
+    },
+    {
+      "id": "REAL_043",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "zavrsni_rad",
+      "question": "Već sam jednom promenio temu završnog rada uz odobrenje šefa odseka. Mogu li ponovo da je promenim zato što sam našao zanimljiviju?",
+      "expected_answer": "Član 26 dozvoljava promenu teme uz odobrenje šefa odseka samo jedanput. Druga dobrovoljna promena teme po tom pravilu nije predviđena.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 26",
+          "pdf_pages": [
+            10
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Promena teme samo jedanput uz odobrenje."
+      ],
+      "disallowed_claims": [
+        "Neograničen broj promena ako šef odseka odobri."
+      ]
+    },
+    {
+      "id": "REAL_044",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "verzije_pravila",
+      "question": "Profesor nije angažovan na mom modulu, a njegov predmet sa drugog modula sam slušao, ali nisam položio. Može li da mi bude mentor prema izmeni iz oktobra 2025?",
+      "expected_answer": "Ne po tom osnovu. Izmena člana 26 iz oktobra 2025. zahteva da je nastavnik angažovan na predmetu drugog modula koji je student pratio i položio. Samo slušanje nije dovoljno. Druga mogućnost je da nastavnik bude angažovan na predmetu studentovog modula, što u pitanju nije slučaj.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Izmena člana 26, stav 3",
+          "pdf_pages": [
+            1
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Za drugi modul predmet mora biti praćen i položen.",
+        "Samo slušanje nije dovoljno."
+      ],
+      "disallowed_claims": [
+        "Dovoljno je da je student slušao predmet.",
+        "Dovoljno je da je samo izlazio na ispit."
+      ]
+    },
+    {
+      "id": "REAL_045",
+      "type": "multi_document",
+      "difficulty": "hard",
+      "category": "verzije_pravila",
+      "question": "Položio sam predmet drugog modula kod profesora A, ali bih završni radio kod profesora B koji je takođe angažovan na tom predmetu. B nije na mom modulu. Da li to dopušta izmena iz oktobra 2025?",
+      "expected_answer": "Da, ako si taj predmet pratio i položio i profesor B je na njemu angažovan. Izmenjeni član 26 vezuje uslov za angažovanje nastavnika na predmetu koji si pratio i položio, pa mentor ne mora biti baš nastavnik kod koga si polagao. I dalje važi da tema završnog rada mora biti iz oblasti modula koji si upisao.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Izmena člana 26, stav 3",
+          "pdf_pages": [
+            1
+          ],
+          "role": "evidence"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 26, stav 2",
+          "pdf_pages": [
+            10
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "B može biti mentor uz praćen i položen predmet na kome je angažovan.",
+        "Nije neophodno da je B lično ispitivao studenta.",
+        "Tema i dalje iz oblasti upisanog modula."
+      ],
+      "disallowed_claims": [
+        "Mentor mora biti baš profesor A.",
+        "Izmena ukida ograničenje oblasti teme."
+      ]
+    },
+    {
+      "id": "REAL_046",
+      "type": "multi_document",
+      "difficulty": "hard",
+      "category": "verzije_pravila",
+      "question": "U prečišćenom pravilniku iz 2023. piše da se praksa i završni plaćaju pri prijavljivanju završnog rada. Da li mogu to isto da tvrdim na osnovu teksta posle izmene iz oktobra 2025?",
+      "expected_answer": "Ne. Izmena iz oktobra 2025. zamenjuje član 52 i izostavlja raniju rečenicu da se školarina za praksu i završni rad plaća u trenutku prijavljivanja završnog rada. Formula srazmerna broju upisanih ESPB ostaje. Novi tekst ne navodi konkretan zamenski rok plaćanja, pa se on ne može utvrditi iz same te izmene.",
+      "expected_behavior": "partial_answer",
+      "sources": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Zamena člana 52",
+          "pdf_pages": [
+            1,
+            2
+          ],
+          "role": "evidence"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 52 pre izmene",
+          "pdf_pages": [
+            22,
+            23
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Stara rečenica o trenutku plaćanja je izostavljena.",
+        "Formula ostaje.",
+        "Nov konkretan rok nije naveden."
+      ],
+      "disallowed_claims": [
+        "Stari trenutak plaćanja ostao je izričito propisan.",
+        "Izmena propisuje konkretan novi datum ili broj rata."
+      ]
+    },
+    {
+      "id": "REAL_047",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "verzije_pravila",
+      "question": "Da li u izmeni iz oktobra 2025. piše da mogu da dobijem nazad 50% dela školarine za praksu i završni rad? Da li taj dokument objašnjava i kako da podnesem zahtev?",
+      "expected_answer": "U obrazloženju izmene navodi se da promena člana 52 omogućava refundaciju od 50% i za deo školarine koji potiče od ESPB za stručnu praksu i završni rad. Dokument ne opisuje postupak podnošenja zahteva, rokove, potrebna dokumenta niti sve uslove za ostvarivanje refundacije.",
+      "expected_behavior": "partial_answer",
+      "sources": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Obrazloženje izmene člana 52",
+          "pdf_pages": [
+            2
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Obrazloženje pominje 50% i za praksu i završni.",
+        "Postupak i potpuni uslovi nisu navedeni."
+      ],
+      "disallowed_claims": [
+        "Dokument garantuje automatsku isplatu svakom studentu.",
+        "Izmišljeni rok, formular ili portal za refundaciju."
+      ]
+    },
+    {
+      "id": "REAL_048",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "praksa_i_mobilnost",
+      "question": "Upisao sam ETF 2021. i nasao firmu u inostranstvu za strucnu praksu. Da li to moze da se prizna i sta treba da proverim i predam?",
+      "expected_answer": "Praksa može da se obavi i u inostranstvu. Pre izbora organizacije treba da konsultuješ rukovodioca prakse na svom modulu da proveriš priznavanje aktivnosti. Potrebno je najmanje 90 časova prakse, izveštaj studenta i potvrda odgovornog lica sa potpisom i pečatom organizacije. Priznata praksa nosi 2 ESPB i opisnu ocenu „priznaje se”.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 19",
+          "pdf_pages": [
+            8
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Dozvoljena praksa u inostranstvu.",
+        "Pre izbora konsultovati rukovodioca prakse.",
+        "Najmanje 90 časova za ovu generaciju.",
+        "Izveštaj i potvrda sa potpisom i pečatom.",
+        "2 ESPB, opisna ocena."
+      ],
+      "disallowed_claims": [
+        "Svaki rad u inostranstvu automatski se priznaje.",
+        "Za upisane 2021. dovoljno je 80 sati."
+      ]
+    },
+    {
+      "id": "REAL_049",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "praksa_i_mobilnost",
+      "question": "Ja sam upisao 2019/2020, a kolega 2021/2022. Obojica smo odradili po 80 sati stručne prakse. Da li je to dovoljan broj sati za obojicu?",
+      "expected_answer": "Za tebe, upisanog pre 2020/2021, prelazna odredba propisuje najmanje 80 sati. Za kolegu upisanog 2021/2022 primenjuje se minimum od 90 časova, pa mu nedostaje još 10. Ispunjen broj sati sam po sebi ne zamenjuje ostale uslove priznavanja, poput izveštaja i potvrde organizacije.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Članovi 19 i 73",
+          "pdf_pages": [
+            8,
+            31
+          ],
+          "role": "evidence"
+        },
+        {
+          "document": "Odluka o izmenama i dopunama Pravilnika o OAS.pdf",
+          "section": "Član 6 - izmena člana 73",
+          "pdf_pages": [
+            3
+          ],
+          "role": "corroborating"
+        }
+      ],
+      "required_facts": [
+        "Generacija 2019/2020: minimum 80.",
+        "Generacija 2021/2022: minimum 90, nedostaje 10.",
+        "Ostali uslovi priznavanja ostaju."
+      ],
+      "disallowed_claims": [
+        "Isti minimum od 80 za sve generacije.",
+        "90 sati važi i za sve upisane pre 2020/2021."
+      ]
+    },
+    {
+      "id": "REAL_050",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "praksa_i_mobilnost",
+      "question": "Planiram semestar na razmeni i našao sam predmete slične našim. Šta treba da dogovorim pre prijave da bi mi ispiti bili priznati po povratku?",
+      "expected_answer": "Pre prijave za mobilnost kontaktiraš nastavnike najbližih odgovarajućih predmeta na ETF-u radi procene podudarnosti sadržaja. Na osnovu njihovih saglasnosti prodekan za nastavu potpisuje Ugovor o učenju. Priznavanje ugovorenih položenih predmeta garantuje se ako po povratku dostaviš odgovarajući transkript ocena.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 34",
+          "pdf_pages": [
+            13
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Kontaktirati predmetne nastavnike pre prijave.",
+        "Saglasnosti i Ugovor o učenju koji potpisuje prodekan.",
+        "Transkript ocena po povratku."
+      ],
+      "disallowed_claims": [
+        "Sličan naziv predmeta sam po sebi garantuje priznavanje.",
+        "Dovoljno je javiti se tek po povratku."
+      ]
+    },
+    {
+      "id": "REAL_051",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "rangiranje",
+      "question": "Za budžetsko rangiranje imam dve godine studiranja bez mirovanja i zbir svih doprinosa e × (1 + r) × ocena jednak 990, bez fakultativnih predmeta. Kolika mi je srednja ponderisana ocena po izmeni člana 49 iz 2020?",
+      "expected_answer": "Po toj formuli zbir se deli sa S × 60. Za S = 2 dobija se 990 / (2 × 60) = 8,25. To je srednja ponderisana ocena za rangiranje, a ne automatska potvrda da si u budžetskoj kvoti.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Tačka I - izmenjeni član 49",
+          "pdf_pages": [
+            1
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Imenilac 2 × 60 = 120.",
+        "Rezultat 8,25."
+      ],
+      "disallowed_claims": [
+        "990 se deli samo sa 60.",
+        "8,25 garantuje budžetsko mesto."
+      ]
+    },
+    {
+      "id": "REAL_052",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "rangiranje",
+      "question": "Predmet sam prvi put upisao prošle školske godine, pa ga ponovo upisao ove. Položio sam ga u prvom roku ove godine. Dobijam li stimulativni faktor 0,1 za budžetsko rangiranje?",
+      "expected_answer": "Ne. Faktor 0,1 za prvi ili drugi odgovarajući rok dobijaju samo studenti koji su predmet položili u školskoj godini kada su ga prvi put upisali. Pošto je predmet prvi put upisan prethodne godine, za ovaj ispit faktor je 0.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 49",
+          "pdf_pages": [
+            21
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Prvi upis mora biti u istoj školskoj godini kada je ispit položen.",
+        "U opisanom slučaju r = 0."
+      ],
+      "disallowed_claims": [
+        "Svako polaganje u prvom roku dobija 0,1.",
+        "Za budžetsko rangiranje važi faktor 0,2 iz rangiranja za module."
+      ]
+    },
+    {
+      "id": "REAL_053",
+      "type": "single_document",
+      "difficulty": "easy",
+      "category": "nastava",
+      "question": "Počela je druga nedelja semestra, a plan rada za predmet još nije javno dostupan. Do kada nastavnik treba da objavi plan sa obavezama i načinom ocenjivanja?",
+      "expected_answer": "Plan rada na predmetu mora biti javno dostupan studentima najkasnije u prvoj sedmici semestra. Plan obuhvata predispitne obaveze, način ocenjivanja i druge podatke o predmetu, pa je u opisanoj situaciji rok već istekao.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 11",
+          "pdf_pages": [
+            5
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Najkasnije prva sedmica semestra.",
+        "Plan uključuje obaveze i ocenjivanje."
+      ],
+      "disallowed_claims": [
+        "Plan se može prvi put objaviti neposredno pred ispit."
+      ]
+    },
+    {
+      "id": "REAL_054",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "nastava",
+      "question": "Profesor je jedan termin konsultacija zamenio mejlom. Ako mu pitanje o gradivu pošaljem sa zvanične fakultetske adrese, da li ima obavezu da odgovori i u kom roku?",
+      "expected_answer": "Jedan termin konsultacija može biti zamenjen konsultacijama elektronskom poštom. U tom slučaju postoji obaveza odgovora na pitanja poslata sa zvanične fakultetske adrese. Član 20 ne određuje konkretan rok odgovora u satima ili danima.",
+      "expected_behavior": "partial_answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 20",
+          "pdf_pages": [
+            8,
+            9
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Dozvoljena zamena jednog termina mejlom.",
+        "Obavezan odgovor na pitanja sa zvanične fakultetske adrese.",
+        "Konkretan rok nije naveden."
+      ],
+      "disallowed_claims": [
+        "Mora da odgovori za 24 ili 48 sati.",
+        "Može zameniti sve termine konsultacija mejlom."
+      ]
+    },
+    {
+      "id": "REAL_055",
+      "type": "single_document",
+      "difficulty": "hard",
+      "category": "mirovanje_i_status",
+      "question": "Imao sam celu školsku godinu odobrenog mirovanja. Da li mi se ona računa i u broj godina za budžetsko rangiranje i u rok za završetak studija?",
+      "expected_answer": "Ne računa se ni u jednom od ta dva obračuna. Član 49 iz broja godina S za budžetsko rangiranje isključuje godine provedene u statusu mirovanja, a član 57 iz roka za završetak studija isključuje vreme odobrenog mirovanja.",
+      "expected_behavior": "answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Članovi 49 i 57",
+          "pdf_pages": [
+            21,
+            25
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Isključena iz S za budžetsko rangiranje.",
+        "Isključena iz roka za završetak studija."
+      ],
+      "disallowed_claims": [
+        "Mirovanje se računa kao godina studiranja za budžetski rang.",
+        "Mirovanje automatski garantuje budžet po povratku."
+      ]
+    },
+    {
+      "id": "REAL_056",
+      "type": "out_of_scope",
+      "difficulty": "medium",
+      "category": "nedostajuci_podaci",
+      "question": "Kolika je tačno godišnja školarina za SI za školsku 2026/2027, u dinarima?",
+      "expected_answer": "U priloženim dokumentima nema odluke sa iznosom godišnje školarine za SI za 2026/2027. Dokument određuje način obračuna i ko utvrđuje godišnju školarinu, ali za konkretan iznos potrebna je odgovarajuća odluka o školarini za tu školsku godinu.",
+      "expected_behavior": "abstain",
+      "sources": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+          "section": "Izmenjeni član 52",
+          "pdf_pages": [
+            2
+          ],
+          "role": "context_only"
+        }
+      ],
+      "required_facts": [
+        "Traženi iznos za 2026/2027 nije dat.",
+        "Potrebna odluka za taj program i školsku godinu."
+      ],
+      "disallowed_claims": [
+        "Navođenje pretpostavljenog iznosa školarine.",
+        "Tvrdnja da SI nema školarinu."
+      ]
+    },
+    {
+      "id": "REAL_057",
+      "type": "out_of_scope",
+      "difficulty": "medium",
+      "category": "nedostajuci_podaci",
+      "question": "Kog datuma i u kojoj sali je ispit iz Matematike 1 u septembarskom roku 2026?",
+      "expected_answer": "Priloženi pravilnici ne sadrže konkretan raspored Matematike 1 za septembar 2026. Potreban je raspored ispita odnosno odgovarajuće obaveštenje za taj rok. Pravilo o ispitnim rokovima nije dovoljno da se utvrde datum i sala.",
+      "expected_behavior": "abstain",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 60",
+          "pdf_pages": [
+            26
+          ],
+          "role": "context_only"
+        }
+      ],
+      "required_facts": [
+        "Nema konkretnog datuma i sale u korpusu.",
+        "Potreban raspored za konkretan rok."
+      ],
+      "disallowed_claims": [
+        "Izmišljeni datum, vreme ili sala."
+      ]
+    },
+    {
+      "id": "REAL_058",
+      "type": "single_document",
+      "difficulty": "medium",
+      "category": "nedostajuci_podaci",
+      "question": "Da li smem da koristim kalkulator na ispitu iz Osnova elektrotehnike 1?",
+      "expected_answer": "Iz ovih pravilnika se ne može utvrditi da li je kalkulator dozvoljen baš na tom predmetu. Predmetni nastavnik odlučuje koja pomoćna sredstva smeju da se koriste i o tome obaveštava studente na početku nastave. Potrebno je proveriti pravila ili obaveštenje za taj predmet.",
+      "expected_behavior": "partial_answer",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 65",
+          "pdf_pages": [
+            28
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "Nije moguće dati određeno da/ne za konkretan predmet.",
+        "Odlučuje predmetni nastavnik.",
+        "Proveriti pravila predmeta."
+      ],
+      "disallowed_claims": [
+        "Kalkulator je na OET1 sigurno dozvoljen.",
+        "Kalkulator je na OET1 sigurno zabranjen."
+      ]
+    },
+    {
+      "id": "REAL_059",
+      "type": "clarification",
+      "difficulty": "hard",
+      "category": "nedostajuci_podaci",
+      "question": "Imam 60 ESPB na drugom fakultetu. Mogu li bez prijemnog da pređem na ETF i budem odmah na budžetu?",
+      "expected_answer": "Sam podatak o 60 ESPB nije dovoljan za potvrdu prelaska. Potrebno je razjasniti da li su to osnovne akademske studije iz oblasti elektrotehničkog i računarskog inženjerstva, koliko ESPB je ostalo do završetka, kao i uslove i priznavanje ispita. Ako je reč o posebnom upisu bez prijemnog iz člana 43, upis je samo u statusu samofinansirajućeg studenta, pa po tom osnovu nije moguć neposredan upis na budžet.",
+      "expected_behavior": "clarify",
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 43",
+          "pdf_pages": [
+            17,
+            18
+          ],
+          "role": "evidence"
+        }
+      ],
+      "required_facts": [
+        "60 ESPB nije dovoljan podatak.",
+        "Tražiti oblast i vrstu studija i preostali broj ESPB.",
+        "Priznavanje i dodatni uslovi moraju se proveriti.",
+        "Poseban upis iz člana 43 je samofinansirajući."
+      ],
+      "disallowed_claims": [
+        "Svako sa 60 ESPB može odmah preći na budžet.",
+        "Bez dodatnih podataka definitivno odobriti ili odbiti ceo prelazak."
+      ]
+    },
+    {
+      "id": "REAL_060",
+      "type": "out_of_scope",
+      "difficulty": "easy",
+      "category": "nedostajuci_podaci",
+      "question": "Možeš li da proveriš koju sam ocenu dobio iz Programiranja 1 i koliko trenutno imam ukupno ESPB?",
+      "expected_answer": "To se ne može utvrditi iz priloženih pravilnika, jer oni ne sadrže tvoje lične rezultate ispita ni evidenciju ostvarenih ESPB. Potrebna je tvoja studentska evidencija ili podaci iz nje.",
+      "expected_behavior": "abstain",
+      "sources": [],
+      "required_facts": [
+        "Pravilnici ne sadrže lične ocene ni ukupne ESPB.",
+        "Potrebna lična studentska evidencija."
+      ],
+      "disallowed_claims": [
+        "Izmišljanje ocene ili ukupnog broja ESPB.",
+        "Tvrdnja da je sistem već pristupio studentskom nalogu."
+      ]
+    }
+  ]
+}

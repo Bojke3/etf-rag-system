@@ -1,5 +1,96 @@
 # Setup i Instalacija
 
+## Prikupljanje benchmark odgovora: laptop ili fakultetski server
+
+Pokreni iz korena projekta u projektnom Python okruženju:
+
+```powershell
+python scripts/collect_benchmark_answers.py
+```
+
+Skripta najpre pita da li LLM radi lokalno ili preko SSH-a, zatim prikazuje
+instalirane modele na izabranoj Ollami. Podrazumevani skup je
+`benchmarking/finalna_pitanja.json`. U oba režima embedding model, pretraga
+lokalnog indeksa i rezultati ostaju na laptopu. Preko SSH-a šalju se pitanje,
+pronađeni odlomci i prompt, a generisanje radi na serveru. Flask aplikacija
+ne mora biti pokrenuta. Potreban je već napravljen lokalni vektorski indeks.
+
+U svoj `.env` dodaj podešavanja servera (stvarne vrednosti dobijaš od fakulteta):
+
+```dotenv
+BENCHMARK_EXECUTION=ask
+SSH_HOST=adresa-servera
+SSH_USER=korisnicko-ime
+SSH_PORT=22
+SSH_LOCAL_PORT=11435
+SSH_OLLAMA_HOST=127.0.0.1
+SSH_OLLAMA_PORT=11434
+SSH_OLLAMA_MODEL=mistral:latest
+SSH_STARTUP_TIMEOUT=120
+# Opciono; koristi se i SSH agent ili ~/.ssh/config:
+# SSH_IDENTITY_FILE=C:/Users/ime/.ssh/id_ed25519
+```
+
+Preporučen način prijave je SSH ključ/agent. Lozinku ne upisuj u `.env`.
+Ako server zahteva lozinku ili ključ ima passphrase, OpenSSH je traži u
+interaktivnoj konzoli. Pri prvom povezivanju proveri fingerprint servera sa
+administratorom i potvrdi ga u OpenSSH-u. Možeš koristiti i `Host` alias iz
+`~/.ssh/config`, uz prazan `SSH_USER`; za nestandardni port postavi `SSH_PORT`.
+Skripta koristi postojeći `ssh` program, otvara samo lokalni loopback port i
+ne menja konfiguraciju niti pokreće Ollamu na serveru. Ollama tamo mora već
+raditi, a SSH nalog mora imati dozvoljen TCP forwarding. Tunel se zatvara i
+pri grešci ili prekidu pomoću Ctrl+C. Promeni `SSH_LOCAL_PORT` ako je zauzet.
+
+Za automatski izbor servera postavi `BENCHMARK_EXECUTION=ssh`. Za rad bez
+pitanja o modelu koristi `--model`; bez interaktivnog terminala model se uzima
+iz odgovarajućeg podešavanja u `.env` i mora već biti instaliran. Primeri:
+
+```powershell
+# Kratak lokalni test
+python scripts/collect_benchmark_answers.py --execution local --model mistral:7b --limit 3 --run-id local_mistral_smoke
+
+# Isti model na serveru, pa dva poređenja
+python scripts/collect_benchmark_answers.py --execution ssh --model mistral:latest --top-k 5 --run-id ssh_mistral_topk5
+python scripts/collect_benchmark_answers.py --execution ssh --model qwen3.5:latest --top-k 5 --run-id ssh_qwen35_topk5
+python scripts/collect_benchmark_answers.py --execution ssh --model mistral-small:latest --top-k 5 --run-id ssh_mistral_small_topk5
+
+# Raniji način rada preko već pokrenute Flask aplikacije
+python scripts/collect_benchmark_answers.py --execution api --endpoint http://localhost:8000/query
+```
+
+`--model` u lokalnom/SSH režimu stvarno bira model za generisanje. U API
+režimu proverava se model aktivan u Flask aplikaciji; skripta ne menja njen
+globalni izbor modela. Sam `--endpoint` takođe bira API režim.
+
+Podešavanja `OLLAMA_TEMPERATURE`, `OLLAMA_TOP_P`, `OLLAMA_MAX_TOKENS` i
+`OLLAMA_TIMEOUT` koriste se u lokalnom i SSH režimu. Generacione opcije sada
+se šalju u Ollaminom polju `options`; stari klijent ih je slao na vrhu zahteva,
+pa raniji rezultati nisu pouzdan dokaz da su te vrednosti bile primenjene.
+Ponovi baseline sa novim klijentom. Opciono `OLLAMA_THINK` kontroliše thinking
+kod podržanih modela (`true`/`false`, ili `low`/`medium`/`high` za GPT-OSS).
+Ako nije zadato, koristi se podrazumevano ponašanje modela. Za Mistral nemoj
+zadavati ovu opciju. Pri promeni modela proveri podršku i drži podešavanja
+eksperimenta zabeleženim; veći izlazni budžet može biti potreban thinking modelu.
+
+Rezultati se čuvaju u `benchmarking/runs/<run-id>/`. Konfiguracija beleži
+stvarni naziv i digest modela iz `/api/tags`, generacione opcije, otisak promptova
+i skupa pitanja. To je bitno jer se sadržaj taga `latest` može promeniti.
+API režim može proveriti naziv modela, ali ne beleži njegov digest i generacione
+opcije servera; za kontrolisano poređenje koristi local/ssh režime.
+
+Ponovnim pokretanjem istog `--run-id` preskaču se uspešni odgovori, a greške
+se pokušavaju ponovo. Poslednji pokušaj po pitanju koristi se u sažetku i
+ocenjivanju. Promena modela, promptova, skupa ili relevantnih podešavanja
+zahteva novi `--run-id`, kao i nastavak starih rezultata bez novih metapodataka.
+Prekid može ostaviti pitanje bez sačuvanog odgovora; ono se ponavlja. Ako
+SSH vezu prekineš tokom generisanja, udaljena obrada može potrajati dok server
+ne primeti prekid. Lozinke i sadržaj SSH ključa ne ulaze u rezultate.
+
+GPU se koristi prema konfiguraciji i raspoloživoj memoriji serverske Ollame;
+SSH sam po sebi ne garantuje GPU izvršavanje. Proveri `ollama ps` na serveru
+tokom generisanja. Vreme generisanja mereno sa laptopa uključuje SSH/mrežni
+prenos i eventualno čekanje na deljenom serveru, pa ga odvoji od ocene kvaliteta.
+
 ## 📋 Preduslov
 
 - Python 3.10+

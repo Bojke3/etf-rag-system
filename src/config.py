@@ -2,7 +2,7 @@
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union, Literal
 
 class Config(BaseSettings):
     """Main configuration class"""
@@ -19,6 +19,19 @@ class Config(BaseSettings):
     ollama_top_p: float = 0.9
     ollama_max_tokens: int = 512
     ollama_timeout: int = 900
+    ollama_think: Optional[Union[bool, Literal["low", "medium", "high"]]] = None
+
+    # Answer collection: retrieval stays local; SSH forwards only Ollama traffic.
+    benchmark_execution: str = "ask"
+    ssh_host: str = ""
+    ssh_user: str = ""
+    ssh_port: int = 22
+    ssh_identity_file: str = ""
+    ssh_local_port: int = 11435
+    ssh_ollama_host: str = "127.0.0.1"
+    ssh_ollama_port: int = 11434
+    ssh_ollama_model: str = "mistral:latest"
+    ssh_startup_timeout: int = 120
     
     # Embedding Configuration
     embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
