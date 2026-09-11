@@ -3,6 +3,8 @@ import os
 from pathlib import Path
 from typing import List, Optional
 
+from .preprocessing import PAGE_SEPARATOR
+
 logger = logging.getLogger(__name__)
 
 DEFAULT_OCR_LANGUAGES = ["rs_cyrillic", "en"]
@@ -108,4 +110,5 @@ class OCRHandler:
             logger.warning("OCR failed for %s: %s", path, exc)
             return ""
 
-        return "\n".join(text_parts)
+        # Pages are joined with a form feed so page boundaries reach the chunkers.
+        return PAGE_SEPARATOR.join(text_parts)

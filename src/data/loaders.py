@@ -6,6 +6,7 @@ from typing import Dict, Type
 
 from .document import Document
 from .ocr import OCRHandler
+from .preprocessing import PAGE_SEPARATOR
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,9 @@ class PDFLoader(DocumentLoader):
                     page_text = page.extract_text() or ""
                     text_parts.append(page_text)
 
-            text = "\n".join(text_parts)
+            # Join with a form feed so page boundaries survive preprocessing and
+            # chunking can derive real page numbers.
+            text = PAGE_SEPARATOR.join(text_parts)
         except Exception as exc:
             logger.warning("PDF text extraction failed for %s: %s", path, exc)
 
