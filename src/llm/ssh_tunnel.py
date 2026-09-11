@@ -17,7 +17,7 @@ def list_models(base_url, timeout=5):
         data = json.load(response)
     models = data.get('models')
     if not isinstance(models, list):
-        raise ValueError('Ollama /api/tags nije vratio listu modela.')
+        raise ValueError('Ollama /api/tags did not return a model list.')
     return models
 
 
@@ -32,13 +32,13 @@ class SSHTunnel:
                  remote_host='127.0.0.1', remote_port=11434, startup_timeout=120):
         for value in (host, remote_host):
             if not value or value.startswith('-') or not re.fullmatch(r'[\w.:-]+', value):
-                raise ValueError('Neispravan SSH host ili adresa udaljene Ollame.')
+                raise ValueError('Invalid SSH host or remote Ollama address.')
         if user and (user.startswith('-') or not re.fullmatch(r'[\w.-]+', user)):
-            raise ValueError('Neispravno SSH korisnicko ime.')
+            raise ValueError('Invalid SSH username.')
         if any(not 1 <= int(p) <= 65535 for p in (port, local_port, remote_port)):
-            raise ValueError('Port mora biti izmedju 1 i 65535.')
+            raise ValueError('Ports must be between 1 and 65535.')
         if startup_timeout <= 0:
-            raise ValueError('SSH startup timeout mora biti pozitivan.')
+            raise ValueError('SSH startup timeout must be positive.')
         self.host, self.user, self.port = host, user, port
         self.identity_file = identity_file
         self.local_port, self.remote_host, self.remote_port = local_port, remote_host, remote_port
@@ -49,7 +49,7 @@ class SSHTunnel:
     def command(self):
         executable = shutil.which('ssh')
         if not executable:
-            raise RuntimeError('OpenSSH nije pronadjen. Instaliraj/ukljuci OpenSSH Client.')
+            raise RuntimeError('OpenSSH was not found. Install or enable OpenSSH Client.')
         remote = f'[{self.remote_host}]' if ':' in self.remote_host else self.remote_host
         command = [executable, '-N', '-T', '-o', 'ExitOnForwardFailure=yes',
                    '-o', 'ConnectTimeout=15', '-o', 'ServerAliveInterval=30',
@@ -62,7 +62,7 @@ class SSHTunnel:
         if self.identity_file:
             key = Path(self.identity_file).expanduser()
             if not key.is_file():
-                raise ValueError(f'SSH kljuc ne postoji: {key}')
+                raise ValueError(f'SSH identity file does not exist: {key}')
             command.extend(['-i', str(key)])
         command.append(self.host)
         return command
@@ -75,23 +75,23 @@ class SSHTunnel:
             try:
                 probe.bind(('127.0.0.1', self.local_port))
             except OSError as exc:
-                raise RuntimeError(f'Lokalni port {self.local_port} je zauzet; promeni SSH_LOCAL_PORT.') from exc
+                raise RuntimeError(f'Local port {self.local_port} is already in use; change SSH_LOCAL_PORT.') from exc
         try:
-            print(f'Povezivanje na {self.host}; OpenSSH moze traziti potvrdu servera ili lozinku.', flush=True)
+            print(f'Connecting to {self.host}; OpenSSH may prompt for host verification or a password.', flush=True)
             # No shell, detached windows, passwords in arguments, or remote commands.
             self.process = subprocess.Popen(self.command())
             deadline = time.monotonic() + self.startup_timeout
             while time.monotonic() < deadline:
                 if self.process.poll() is not None:
-                    raise RuntimeError('SSH povezivanje nije uspelo. Proveri poruku OpenSSH-a iznad.')
+                    raise RuntimeError('SSH connection failed. Check the OpenSSH message above.')
                 try:
                     list_models(self.base_url, timeout=1)
                     if self.process.poll() is not None:
-                        raise RuntimeError('SSH tunel je prekinut tokom povezivanja.')
+                        raise RuntimeError('The SSH tunnel disconnected during startup.')
                     return self
                 except (OSError, ValueError):
                     time.sleep(0.2)
-            raise RuntimeError('Isteklo je vreme za SSH/Ollama. Proveri prijavu i udaljeni Ollama port.')
+            raise RuntimeError('SSH/Ollama startup timed out. Check authentication and the remote Ollama port.')
         except BaseException:
             self.close()
             raise

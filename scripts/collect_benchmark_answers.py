@@ -98,7 +98,7 @@ def collect_answer(
             timeout=timeout,
         )
         if api_result.get("status") == "success" and not api_result.get("answer", "").strip():
-            api_result = {**api_result, "status": "error", "error": "Model nije vratio tekst odgovora."}
+            api_result = {**api_result, "status": "error", "error": "The model returned no answer text."}
         return {
             "id": question_item["id"],
             "type": question_item.get("type"),
@@ -241,10 +241,10 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
         immutable = ("benchmark_sha256", "backend", "top_k", "prompt_strategy", "model", "component_config")
         changed = [key for key in immutable if existing_config.get(key) != run_config.get(key)]
         if changed:
-            raise ValueError(f'Run ima drugaciju konfiguraciju ({", ".join(changed)}). Koristi novi --run-id.')
+            raise ValueError(f'The run has a different configuration ({", ".join(changed)}). Use a new --run-id.')
         run_config["created_at"] = existing_config.get("created_at", run_config["created_at"])
     elif answers_path.exists():
-        raise ValueError('Postoje odgovori bez run_config.json. Koristi novi --run-id.')
+        raise ValueError('Answers exist without run_config.json. Use a new --run-id.')
     write_json(config_path, run_config)
 
     completed_ids = set() if args.no_resume else load_completed_ids(answers_path)
@@ -313,9 +313,9 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser.add_argument("--no-resume", action="store_true", help="Do not skip ids already present in answers.jsonl")
     args = parser.parse_args(argv)
     if args.limit is not None and args.limit < 1:
-        parser.error('--limit mora biti pozitivan.')
+        parser.error('--limit must be positive.')
     if args.top_k < 1 or args.timeout < 1:
-        parser.error('--top-k i --timeout moraju biti pozitivni.')
+        parser.error('--top-k and --timeout must be positive.')
     return args
 
 
@@ -331,10 +331,10 @@ def main():
         if summary['failed_questions']:
             return 1
     except KeyboardInterrupt:
-        print('\nPrekinuto. Sacuvani odgovori ostaju; ponovi isti --run-id za nastavak.')
+        print('\nInterrupted. Saved answers are preserved; use the same --run-id to resume.')
         return 130
     except Exception as exc:
-        print(f'Greska: {exc}', file=sys.stderr)
+        print(f'Error: {exc}', file=sys.stderr)
         return 1
     return 0
 

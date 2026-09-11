@@ -55,10 +55,10 @@ class ExecutionTests(unittest.TestCase):
         selected, record = execution.choose_model(MODELS, 'mistral', '')
         self.assertEqual(selected, 'mistral:latest')
         self.assertEqual(record['digest'], 'sha256:abc')
-        with self.assertRaisesRegex(ValueError, 'nije instaliran'):
+        with self.assertRaisesRegex(ValueError, 'is not installed'):
             execution.choose_model(MODELS, 'not-installed', 'mistral:latest')
         with patch('sys.stdin.isatty', return_value=False):
-            with self.assertRaisesRegex(ValueError, 'Podrazumevani model'):
+            with self.assertRaisesRegex(ValueError, 'Default model'):
                 execution.choose_model(MODELS, None, 'mistral:7b')
         with patch('sys.stdin.isatty', return_value=True), patch('builtins.input', return_value='2'):
             selected, _ = execution.choose_model(MODELS, None, 'mistral:latest')
@@ -67,7 +67,7 @@ class ExecutionTests(unittest.TestCase):
     def test_api_does_not_silently_relabel_another_model(self):
         args = SimpleNamespace(execution='api', endpoint='http://localhost:8000/query', model='qwen3.5:latest')
         with patch.object(execution, 'urlopen', return_value=io.BytesIO(b'{"ollama_model":"mistral:latest"}')):
-            with self.assertRaisesRegex(ValueError, 'API koristi'):
+            with self.assertRaisesRegex(ValueError, 'The API uses'):
                 with execution.prepare_execution(args, None):
                     self.fail('Different model should fail')
 
@@ -133,7 +133,7 @@ class TunnelTests(unittest.TestCase):
             listener.bind(('127.0.0.1', 0))
             listener.listen()
             with patch('subprocess.Popen') as launch:
-                with self.assertRaisesRegex(RuntimeError, 'zauzet'):
+                with self.assertRaisesRegex(RuntimeError, 'already in use'):
                     with SSHTunnel('faculty', local_port=listener.getsockname()[1]):
                         self.fail('Port conflict should fail')
                 launch.assert_not_called()
@@ -159,7 +159,7 @@ class TunnelTests(unittest.TestCase):
              patch('subprocess.Popen', return_value=process), \
              patch.object(SSHTunnel, 'command', return_value=['ssh', 'faculty']), \
              patch('src.llm.ssh_tunnel.list_models') as models:
-            with self.assertRaisesRegex(RuntimeError, 'SSH povezivanje'):
+            with self.assertRaisesRegex(RuntimeError, 'SSH connection failed'):
                 with SSHTunnel('faculty'):
                     self.fail('Failed auth should not enter')
             models.assert_not_called()
@@ -171,7 +171,7 @@ class TunnelTests(unittest.TestCase):
              patch('subprocess.Popen', return_value=process), \
              patch.object(SSHTunnel, 'command', return_value=['ssh', 'faculty']), \
              patch('src.llm.ssh_tunnel.time.monotonic', side_effect=[0, 200]):
-            with self.assertRaisesRegex(RuntimeError, 'Isteklo'):
+            with self.assertRaisesRegex(RuntimeError, 'timed out'):
                 with SSHTunnel('faculty'):
                     self.fail('Timeout should not enter')
             process.terminate.assert_called_once()
@@ -247,7 +247,7 @@ class CollectionTests(unittest.TestCase):
         run = self.run_collection(Mock(return_value={'status': 'success', 'answer': 'Odgovor'}))
         before = (run / 'run_config.json').read_bytes()
         self.metadata['model_digest'] = 'different-weights'
-        with self.assertRaisesRegex(ValueError, 'novi --run-id'):
+        with self.assertRaisesRegex(ValueError, 'new --run-id'):
             self.run_collection(Mock())
         self.assertEqual((run / 'run_config.json').read_bytes(), before)
 

@@ -1,0 +1,564 @@
+{
+  "run_id": "baselineNo1",
+  "conclusion": "Postoje i promašaji pretrage, i gubitak već pronađenih dokaza pri sastavljanju konteksta, i greške Mistrala kada je pravilo prisutno. Osnovni tok radi, ali ovaj rezultat ne potvrđuje dovoljno pouzdan kvalitet odgovaranja. Sama promena LLM-a ne rešava sve tri grupe problema.",
+  "scope": "Reconstruction for all 60 questions; manual causal review of 25 selected cases. No overall answer-accuracy or chunk-recall score is claimed.",
+  "method": "Each saved 200-character source preview was matched uniquely, together with document name, to current index metadata. Current ContextBuilder was then applied to the original ranking. No retrieval or LLM call was repeated.",
+  "limitations": [
+    "The run did not save full chunks or the actual prompt/context. Reconstruction assumes the remainder of each matching chunk and context-building code are unchanged since collection.",
+    "Benchmark and prompt-file hashes match the recorded run, but the run did not record an index hash or a context-builder hash.",
+    "Selected diagnostic cases are not a random sample and their distribution must not be reported as full-run failure percentages.",
+    "Finding a reference document is not evidence that its relevant article or all required facts were retrieved."
+  ],
+  "verification": {
+    "benchmark_hash_matches": true,
+    "prompts_hash_matches": true,
+    "current_metadata_sha256": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65",
+    "current_index_sha256": "b3e799a872701027e13a189297222a94500f15b02504d5dd41316d7890449708",
+    "current_context_builder_sha256": "ee10ca2176df71ac087ff47011895ec260259bcde95e20bff042a2facc14a129",
+    "unique_source_matches": 300
+  },
+  "summary": {
+    "question_count": 60,
+    "indexed_chunk_count": 205,
+    "indexed_document_count": 7,
+    "context_text_budget_characters": 2000,
+    "questions_by_number_of_chunks_at_least_partially_included": {
+      "2": 52,
+      "3": 8
+    },
+    "questions_with_rank_at_least_partially_included": {
+      "1": 60,
+      "2": 60,
+      "3": 8,
+      "4": 0,
+      "5": 0
+    },
+    "mean_fraction_of_retrieved_text_in_context": 0.407,
+    "manual_case_count": 25
+  },
+  "index_consistency_check": {
+    "method": "Compare 12 evenly spaced stored vectors with fresh embeddings of identical metadata text; cached models only; existing index is not modified.",
+    "results": [
+      {
+        "model": "all-MiniLM-L6-v2",
+        "sample_ids": [
+          0,
+          18,
+          37,
+          55,
+          74,
+          92,
+          111,
+          129,
+          148,
+          166,
+          185,
+          204
+        ],
+        "same_text_cosine_similarities": [
+          1.0,
+          1.0000001192092896,
+          1.0,
+          1.0,
+          1.0,
+          1.0000001192092896,
+          1.0,
+          1.000000238418579,
+          1.0,
+          1.0000001192092896,
+          1.0,
+          1.0
+        ],
+        "minimum": 1.0,
+        "mean": 1.0
+      },
+      {
+        "model": "paraphrase-multilingual-MiniLM-L12-v2",
+        "sample_ids": [
+          0,
+          18,
+          37,
+          55,
+          74,
+          92,
+          111,
+          129,
+          148,
+          166,
+          185,
+          204
+        ],
+        "same_text_cosine_similarities": [
+          0.3711421489715576,
+          0.26015278697013855,
+          0.2284458577632904,
+          0.24398770928382874,
+          0.13590580224990845,
+          0.202839195728302,
+          0.19301727414131165,
+          0.2386835366487503,
+          0.22161215543746948,
+          0.31744450330734253,
+          0.3077991008758545,
+          0.30346375703811646
+        ],
+        "minimum": 0.13590580224990845,
+        "mean": 0.25204116106033325
+      }
+    ]
+  },
+  "embedding_observation": {
+    "run_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "note": "The publisher labels the current model English. A multilingual model is a candidate for a separate retrieval experiment; improvement has not been measured in this audit. Changing embedding models requires rebuilding the index even if dimensions match.",
+    "sources": [
+      "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    ]
+  },
+  "recommended_next_experiments": [
+    "Save full retrieved chunks, chunk IDs, source metadata and exact context for every new run.",
+    "Keep retrieval and Mistral fixed; test a context budget that fits all five current chunks without cutting a rule mid-sentence.",
+    "Use manually selected complete evidence as context on diagnostic questions, with fixed generation settings, to isolate model errors.",
+    "Verify index/model consistency, then evaluate a multilingual embedding model in a separate rebuilt index on retrieval alone.",
+    "Preserve article boundaries and document versions; repair extracted tables/formulas and evaluate duplicate suppression or reranking.",
+    "Compare LLMs only on identical saved contexts; lower temperature for a more controlled run, without assuming it repairs retrieval."
+  ],
+  "cases": [
+    {
+      "id": "REAL_001",
+      "question": "Polagao sam i matematiku i fiziku: iz matematike imam 42, a iz fizike 55 poena. Koji rezultat mi se računa za ER, a koji za SI?",
+      "expected_answer": "Za Elektrotehniku i računarstvo računa se bolji rezultat, dakle 55 poena iz fizike. Za Softversko inženjerstvo računa se matematika, dakle 42 poena. Rezultati dva prijemna se ne sabiraju.",
+      "actual_answer": " U ovom kontekstu nisam pronašao odgovor na pitanje o tome koji rezultat se računa za ER (Elektrotehnički ispit) i SI (Fizika ispit). Te podatke nisu dostupne u kontekstu.\n\nAko bi student pružio informacije o tome koji tip studija ima, možda bi se moglo odrediti kako se računa rezultat za ER i SI. Na primer, ako je studij Elektrotehnika, onda su rezultati u obliku proseka za sva predmeta izračunati za ER, dok su rezultati u obliku bodova za određene predmete uključeni u SI.\n\nStoga, ako bi student navodio da ima studij Elektrotehnike, mogao bi se računati rezultat za ER (prelazna oceni) na temelju proseka svih predmeta, a rezultat za SI (završna oceni) na temelju bodova koji je stekao pojedinačno za matematiku i fiziku. Ako bi student imao drugi studij, možda bi se moralo prilagoditi računanje rezultata prema pravilima tog studija.\n\nU ovom kontekstu ne može da se utvrdi kako se računa rezultat za ER i SI, pa je potrebno dobiti dodatne informacije o tipu studija studenta.",
+      "diagnosis": "context_loss",
+      "explanation": "Pravilo ER/SI postoji u trećem pronađenom odlomku, ali taj odlomak ne ulazi u kontekst. Model zatim i izmišlja značenje skraćenica.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik o upisu studenata",
+          "chunk_id": 5,
+          "retrieved_rank": 3,
+          "context_characters_used": 0,
+          "text": "propisima koji su vazili do stupanja na snagu Zakona. Redosled kandidata za upis U prvu godinu utvrd uje ce na osnovu opsteg uspeha postignutog U srednjem obrazovanju rezultata postignutih na prijemnom ispitu prema merilima utvrd enim OVIM pravilnikom konkursom za upis na studijske programe:\nPrijemni ucnum\nClan 7\nKandidat za upis polaze prijemni ispit Prijemni ispit ce polaze iz: 1) matematike; 2) fizike Kanditati mogu polagati prijemni ispit iz jednog ili oba predmeta Prijemni ispit obuhvata programske sadrzaje predmeta koji ce izucavaju u srednjoj skoli u cetvorogodisnjem trajanju Programski sadrzaji matematike Ha prijemnom ispitu dati su u Prilogu A ovog Pravilnika. Programski sadrzaji fizike na prijemnom ispitu dati sy u Prilogu B ovog Pravilnika, Za studijski program Elektrotehnika i racunarstvo vrednuje ce bolji rezultat ostvaren na prijemnom ispitu iz matematike ili fizike. Za studijski program Softversko inzenjerstvo vrednuje ce rezultat ostvaren na prijemnom ispitu iz matematike Lice ca invaliditeto"
+        }
+      ]
+    },
+    {
+      "id": "REAL_003",
+      "question": "Proseci u četiri razreda srednje su mi 4,20, 4,50, 4,80 i 5,00. Na prijemnom imam 40 poena. Koliko ukupno imam za rang-listu?",
+      "expected_answer": "Iz škole imaš (4,20 + 4,50 + 4,80 + 5,00) × 2 = 37,00 bodova. Sa 40 poena sa prijemnog ukupno imaš 77,00 bodova.",
+      "actual_answer": " U ovom kontekstu ne postoji informacija o tome hoće li se proseci u četiri razreda računati pojedinačno ili kao ukupni prosek. Ako bi se brojali pojedinačno, ukupan prosek bi se dobio sumiranjem prosecaka svih četiri razreda i dijeljenjem sa četiri (4,20+4,50+4,80+5,00/4=4.6), ako bi se brojali kao ukupni prosek, to znači da je ukupan prosecak svih ocena na prijemnom ispitu 4,6 (ukupno 40 poena). Ukoliko se ne koristi srednja težina, a ukupni prosecak broji se kao jedinica ocena, student ima 4,6 poena za prijemnu listu. Ako bi se upotrebljavao srednji prosek svih četiri razreda (4,6), student bi imao 4,6 poena za prijemnu listu. Međutim, ove informacije nisu dostupne iz konteksta, pa je potrebno postaviti kratko pitanje za dopunu: \"U ovom kontekstu se ukupni prosecak broji pojedinačno ili kao jedinica ocena?\"",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Formula za srednjoškolske bodove postoji u indeksu, ali nije među pet rezultata. Kontekst počinje praksom i dobrovoljnim radom. Model ipak pokušava pogrešan račun.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik o upisu studenata",
+          "chunk_id": 9,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "stav 4 Statuta Univerziteta.\nNacin booovanja\nClan 9\nKandidat za upis na studijski program mozs ostvariti najvise 100 bodova i to PO osnovu opsteg uspeha u srednjoj SKOLI PO osnovu rszultata postignutog na prijemnom ispitu, Pod opstim uspehom u srednjoj skoli podrazumeva ce zbir prosecnih ocena u svakom razredu srednje skole pomnozen ca dva: Po ovom osnovu kandidat moze steci najmanje 16, najvise 40 bodova. Opsti uspeh u srednjoj skoli racuna se zaokruzivanjem na dve dscimale; Preracunavanje inostranih ocena u sistem ocenjivanja u Republici Srbiji radi Centralna komisija Fakulteta u vreme prijsma dokumenata Preracunavanje ce radi linearnom interpolacijom ocena na osnovu preslikavanja opsega [minimalna prolazna strana ocena, maksimalna prolazna strana ocena_ U opseg [2,5] Ha prijsmnom ispitu kandidat moze steci od 0 do 60 bodova. Kandidat ce moze upisati na studijski program U statusu studenta koji ce finansira iz budzeta ukoliko ce nalazi na rang listI DO broja odobrenog za upis kandidata na teret budzeta i ak"
+        }
+      ]
+    },
+    {
+      "id": "REAL_009",
+      "question": "Preliminarna rang-lista za upis je izašla pre 20 sati i mislim da mi je mesto pogrešno. Kome i do kada mogu da se žalim?",
+      "expected_answer": "Žalba se podnosi Komisiji fakulteta u roku od 36 sati od objavljivanja preliminarne rang-liste. Ako je prošlo 20 sati, preostaje još 16 sati tog roka. Komisija donosi rešenje u roku od 24 sata od prijema žalbe.",
+      "actual_answer": " Prema dostupnom kontekstu, u slučaju da student misli da mu je mesto pogrešno na izlazištoj rang-listi za upis, može se žaliti Fakultetu. Roqev za žalbu nije naveden, tako da bi student trebao kontaktirati fakultetske službe sa poznatim rokom za upotrebu prava na žalbu. Ne zna se do kada može se žaliti prema dostupnom kontekstu.",
+      "diagnosis": "context_loss",
+      "explanation": "Rok od 36 sati i žalba Komisiji nalaze se na petom mestu; model ne dobija taj tekst.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik o upisu studenata",
+          "chunk_id": 24,
+          "retrieved_rank": 5,
+          "context_characters_used": 0,
+          "text": "sdbe u slucaju tehnickih gresaka U roku koji odredi fakultet Po isteku tog roka; podaci koji podrazumevaju uspeh na prethodnim nivoima obrazovanja smatraju ce konacnim; Nakon prijemnog ispita Fakultet objavljuje preliminarnu rang listu za svaki pojedinacni studijski program; na oglasnoj tabli i internet stranici fakulteta u roku koji je utvrd en konkursom\nZalba kandudama\nClan 20\nKandidat moze podneti zalbu na regularnost postupka utvrd enog konkursom; regularnost prijemnog ispita ili na svoje mesto na rang listi u roku od 36 sati od objavljivanja prsliminarne rang liste na fakultetu Zalba ce podnosi Komisiji fakulteta, koja donosi resenje po zalbi y roku od 24 sata od prijema zalbe: Kandidat nezadovoljan resenjem I3 stava 2, ovOG clana, ima pravo da u drugostepenom postupku ulozi zalbu dekanu fakulteta; U roku od 24 casa od isteka roka za donosenje resenja iz stava 2 ovog clana Dekan; donosi konacnu odluku U roku od 24 casa od prijema zalbe i odluku dostavlja kandidatu i Komisiji fakulteta \nClan 21\nNakon odlu"
+        }
+      ]
+    },
+    {
+      "id": "REAL_012",
+      "question": "Upisan sam po afirmativnoj meri i ove godine imam 36 ESPB. Da li i meni treba 48 za budžet sledeće godine?",
+      "expected_answer": "Za studente upisane po afirmativnoj meri, kao i za studente sa invaliditetom, član 38 predviđa pravo na budžetsko finansiranje naredne godine sa ostvarenih 36 ESPB u tekućoj godini.",
+      "actual_answer": " Ne, pošto ste upisani po afirmativnoj meri i u ovoj godini ste ostvarili 36 ESPB bodova, nema potrebe da za budžet sledeće godine postizate 48 bodova. Ovakav status je važeći i za studente sa invaliditetom po menadžmentu studija na Elektrotehničkom fakultetu.",
+      "diagnosis": "grounded_core_correct",
+      "explanation": "Pravilo o 36 ESPB za afirmativnu meru ulazi iz drugog odlomka. Model daje ispravan osnovni odgovor.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 32,
+          "retrieved_rank": 2,
+          "context_characters_used": 977,
+          "text": "izvoditi po posebnom programu, koji donosi Vece Fakulteta \nna pocetku svake skolske godine. \n 15 \n \nStatus budzetskog studenta \nClan 38. \n Status budzetskog studenta ima student: \n1. upisan na osnovne akademske studije, rangiran na konkursu za upis kao \n takav, u skolskoj godini na koju je upisan po konkursu; \n 2. koji je u tekucoj skolskoj godini ostvario 48 ESPB bodova iz \nupisanog \n studijskog programa a koji je rangiran u okviru odobrenog broja mesta \n iz budzeta. \n Studenti sa invaliditetom i studenti upisani po afirmativnoj meri \nkoji u tekucoj skolskoj godini ostvare 36 ESPB bodova imaju pravo da se u \nnarednoj skolskoj godini finansiraju iz budzeta. \nRangiranje studenata iz stava 1 tacka 2 ovog clana obuhvata studente \nupisane iste skolske godine na odred eni studijski program, a vrsi se polazeci \nod broja ostvarenih ESPB bodova i postignutog uspeha u savlad ivanju \nstudijskog programa, na nacin i po postupku utvrd enim clanom 49 ovog \nPravilnika. \nStudent koji u poslednjoj godini studija ima status s"
+        }
+      ]
+    },
+    {
+      "id": "REAL_018",
+      "question": "Nisam položio izborni predmet do početka sledeće školske godine i više ne želim da ga slušam. Mogu li da uzmem drugi izborni?",
+      "expected_answer": "Da. Nepoložen izborni predmet možeš ponovo prijaviti ili se opredeliti za drugi izborni predmet. Za nepoložen obavezni predmet ponovo prijavljuješ isti predmet.",
+      "actual_answer": " Da, u skladu sa pravilima prijave predmeta, student koji ne polozi izborni predmet do početka sledeće školske godine može ponovo prijaviti isti ili se opredeliti za drugi izborni predmet. Ovakvo prijavljivanje se odnosi na predmete koji su u obimu izbornih studijskih poena (ESPB).",
+      "diagnosis": "grounded_core_correct",
+      "explanation": "Mogućnost zamene nepoloženog izbornog predmeta nalazi se u prvom odlomku. Osnovni odgovor je tačan.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 51,
+          "retrieved_rank": 1,
+          "context_characters_used": 1024,
+          "text": "ijskim programom, u skladu sa pravilima prijave \npredmeta iz clana 48 ovog Pravilnika. \nStudent koji ne polozi ispit iz obaveznog predmeta do pocetka naredne \nskolske godine, prijavljuje isti predmet. \nStudent koji ne polozi izborni predmet do pocetka naredne skolske \ngodine, moze ponovo prijaviti isti ili se opredeliti za drugi izborni \npredmet. \nPo isteku rokova za prijavljivanje predmeta koje studenti zele da \nprijave, formiraju se spiskovi studenata po predmetima i objavljuju na \nservisima kojima mogu pristupiti nastavnici Fakulteta. Predmeti koje je \nstudent prijavio, po pravilu se ne mogu menjati u toku skolske godine. U \nizuzetnim slucajevima, u toku semestra u kome se odrzava nastava, prodekan za \nnastavu moze odobriti zamenu predmeta za drugi predmet iz istog semestra. \n \nClan 51. \nU cilju brzeg zavrsavanja studija, uspesnim studentima moze se \nomoguciti, na osnovu odluke dekana, prijavljivanje i vise od 60 ESPB bodova, \nali ne vise od 90 ESPB bodova. \nUkoliko student ima prosek preko 8,5 ili je polo"
+        }
+      ]
+    },
+    {
+      "id": "REAL_024",
+      "question": "Na ER-u sam samofinansirajući student. Upišem 30 ESPB novih predmeta i ponovo 12 ESPB nepoloženih iz prethodne godine. Ako je godišnja školarina za 60 ESPB 120.000 dinara i nemam druga oslobađanja, koliko iznosi školarina pre eventualne refundacije?",
+      "expected_answer": "Cena jednog ESPB u ovom primeru je 120.000 / 60 = 2.000 dinara. Novi predmeti koštaju 30 × 2.000 = 60.000 dinara, a ponovo upisani nepoloženi predmeti na ER-u plaćaju se 2/3: 12 × 2.000 × 2/3 = 16.000 dinara. Ukupno je 76.000 dinara pre eventualne refundacije.",
+      "actual_answer": " Student sam samofinansirajući je i plati skolarinu po formuli: $ S = Nx 60 gde je S ukupna suma koju student placa, a N broj ESPB bodova za predmete koje upisuje. U trenutnom kontekstu, student upisuje ukupno 30 + 12 = 42 ESPB novih i nepoloženih predmeta. Ako je godišnja skolarina za 60 ESPB 120.000 dinara, onda bi se za 42 ESPB platio:\n$ S = Nx 60 = 42 x 60 = 2520.000 dinara\nOvdje nisu uzeti u obzir moguća oslobođenja koja student može da ima, ni mogućnost refundacije za fakultativne predmete ako student ima prosek preko 8,5 ili je polozio predmete u obimu 60 ESPB u prethodnoj skolskoj godini.\nUkoliko student ima oslobođenja ili refundaciju, onda bi se ukupna platena suma može izmeniti.",
+      "diagnosis": "damaged_text_and_incomplete_retrieval",
+      "explanation": "Model dobija oštećenu formulu 'S = Nx 60'. Odredba o plaćanju 2/3 za ponovo upisane predmete nije u top 5. Pogrešan obračun ima više uzroka; ne treba ga pripisati samo računanju modela.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik o osnovnim akademskim studijama",
+          "chunk_id": 50,
+          "retrieved_rank": 1,
+          "context_characters_used": 1023,
+          "text": "koje nose TI predmeti Fakultativni predmeti ce navode u dodatku diplome kao dodatna informacija; ali ce ne uracunavaju u prosecnu ocenu. Ukoliko student ima prosek preko 8,5 ili je polozio predmete u obimu 60 ESPB u toku prethodne skolske godine; oslobad a ce placanja nadoknade za ove fakultativne predmete: Student koji u TOKU tekuce skolske godine ne POLOZI fakultativne predmete koje je upisao, u narednoj skolskoj godini moze upisati iste ili druge predmete za koje ce opredeli saglasno stavu 2 ovog clana\n23\nSkolarina\nClan 52.\nStudent U statusu samofinansirajuceg studenta placa skolarinu prema formuli: $ S = Nx 60 gde je S suma koju student placa; N broj ESPB bodova za predmete i ostale obaveze (strucna praksa; zavrsni rad) koje student upisuje a $ godisnja skolarina za odgovarajuci studijski program; koju svojom odlukom odred uje Savet fakulteta; na predlog Veca Fakulteta: Skolarina za strucnu praksu i zavrsni rad placa ce u trenutku prijavljivanja zavrsnog rada:\nClan 53. Student koji placa skolarinu moze b"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 54,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "je donosi prodekan za \nnastavu, a molba sa dokazima podnosi se Studentskom odseku prilikom upisa \ngodine. \nStudent upisan na studijski program Elektrotehnika i racunarstvo koji \nse sam finansira moze biti oslobod en placanja dela skolarine za godinu koju \nupisuje, na osnovu socijalnog statusa, ukoliko pri upisu podnese molbu sa \ndokazima o losem imovnom stanju. Oslobad anje od skolarine po ovom osnovu \nstudent moze ostvariti samo jednom za istu skolsku godinu, a najvise u iznosu \nod ukupno jedne cele skolarine tokom studija. Studenti koji su u skolskoj \ngodini prvi put upisani u prvu studijsku godinu ne mogu po ovom osnovu biti \noslobod eni placanja dela skolarine. Odgovarajuce resenje donosi prodekan \nza nastavu. \nStudent osnovnih akademskih studija Elektrotehnika i racunarstvo koji \nu skolskoj godini ponovo upisuje nepolozene predmete iz prethodne skolske \ngodine, a sam se finansira, placa 2/3 dela skolarine za te predmete. \n \n \nPrava i obaveze studenata \nClan 54. \nStudenti imaju pravo: \n na upis, kvalitet"
+        }
+      ]
+    },
+    {
+      "id": "REAL_028",
+      "question": "Dobio sam sedmicu, ispit je bio regularan, ali želim bolju ocenu. Kako tražim ponovno polaganje i da li mi sedmica ostaje ako se predomislim posle odobrenja?",
+      "expected_answer": "Zahtev podnosiš Studentskom odseku do kraja školske godine u kojoj si polagao ispit. O ponovnom polaganju odlučuje prodekan za nastavu. Ako odobri ponovno polaganje, prethodna sedmica se proglašava nevažećom; ne ostaje kao rezervna ocena. Ponovno polaganje se posebno plaća.",
+      "actual_answer": " Ako želite ponovno polagati ispit kako biste stekli bolju ocenu, morate podneti zahtev za ponovno polaganje ispita prema pravilima navedenim u članu 71. Zahtev se podnosi Studentskom odseku do kraja skolske godine u kojoj je ispit polagao. Prodekan za nastavu donosi odluku o ponovnom polaganju ispita, a u slučaju da ponovno polaganje ispita bude odobreno, prethodno dobijena ocena proglasava se nevazecom. Ako ponovo polažete ispit, morate platiti posebnu naknadu troškova. Ukoliko ponovno polaganje ispita bude odobreno, sedmica koju ste dobili ostaje, jer se prethodna ocena proglasi nevazecom.",
+      "diagnosis": "generation_error",
+      "explanation": "Procedura i poništavanje prethodne ocene ulaze u kontekst. Model ih navodi, a zatim zaključkom tvrdi da sedmica ostaje; odgovor je kontradiktoran.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 72,
+          "retrieved_rank": 2,
+          "context_characters_used": 976,
+          "text": "vog clana. \n \n \nZahtev za ponovno polaganje ispita \nClan 71. \nStudent koji nije zadovoljan prelaznom ocenom na ispitu, ima pravo da \npodnese zahtev za ponovno polaganje ispita. \nStudent zahtev podnosi Studentskom odseku do kraja skolske godine u \nkojoj je ispit polagao. \nProdekan za nastavu donosi odluku o ponovnom polaganju ispita. U \nslucaju da ponovno polaganje ispita bude odobreno, prethodno dobijena ocena \nproglasava se nevazecom. \n 31 \nStudent koji ponovo polaze ispit placa posebnu naknadu troskova. \n \n \nV. PRELAZNE I ZAVRSNE ODREDBE \n \nClan 72. \nOvaj pravilnik se objavljuje na sajtu Fakulteta, a stupa na snagu 8 dana \nod dana objavljivanja. \nIzuzetno, na studente upisane pre skolske 2020/2021. godine ( odnosno \npre stupanja na snagu nastavnih planova po novoj akreditaciji) u okviru \nstudijskog programa osnovnih akademskih studija Elektrotehnika i racunarstvo \nprimenjuje se podela na module i smerove i koriste se odgovarajuci nazivi u \nskladu sa do sada vazecim Pravilnikom i to: \n umesto novog naziva m"
+        }
+      ]
+    },
+    {
+      "id": "REAL_031",
+      "question": "Rezultati pisanog ispita su objavljeni danas u 12, a uvid je zakazan za 13 časova istog dana i tek je sada najavljen. Je li to u skladu sa pravilnikom?",
+      "expected_answer": "Nije. Termin uvida mora biti objavljen najkasnije uz rezultate pisanog ispita i najmanje 24 sata pre uvida. Najava samo sat vremena unapred ne ispunjava taj rok.",
+      "actual_answer": " Da, to je u skladu sa pravilnikom. Pitanje o uvidu se najavljuje danas (13 časova), a zadatak za ispit je već objavljen (danas 12 časova). Prema Pravilniku, rezultati pisanog ispita treba da budu objavljeni pre uvida. Međutim, pravilnik ne navodi rok za najavljivanje zadatka i datuma uvida, pa se ovaj kontekst ne odnosi na to.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Pravilo najave uvida najmanje 24 sata unapred postoji u indeksu, ali nije u top 5. Model bez osnova odobrava opisani termin.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 69,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "cena \n91-100 poena 10 odlican A+ \n81-90 poena 9 izuzetno dobar A \n71-80 poena 8 vrlo dobar B \n61-70 poena 7 dobar C \n51-60 poena 6 dovoljan D \ndo 50 poena/ 5 nije polozio F \n \n \nU evidenciju i indeks studenta unose se prelazne ocene (od 6 do 10), a \nocena 5 (nije polozio) upisuje se samo u evidenciju. \nU slucaju kada je student zbog koriscenja nedozvoljenih sredstava na \nispitu ili nedolicnog ponasanja i ometanja drugih studenata udaljen sa \nispita, u zapisnik o polaganju ispita se unosi posebna sifra za udaljavanje \nsa ispita i smatra se da student nije polozio ispit. \n \n \nObjavljivanje rezultata ispita \nClan 68. \nTermin uvida u pregledane zadatke nakon pismenog ispita mora biti \nobjavljen najkasnije u trenutku isticanja rezultata pismenog ispita, a najmanje \n24 sata pre odrzavanja uvida u zadatke. \nAko se ispit polaze pismeno i usmeno, uvid u zadatke pismenog dela \nispita mora se omoguciti studentima koji nisu pozvani na usmeni deo ispita \nnajkasnije do trenutka odrzavanja usmenog dela ispita. \nZadaci sa pi"
+        }
+      ]
+    },
+    {
+      "id": "REAL_032",
+      "question": "Imam ukupno tačno 50 poena iz predispitnih obaveza i završnog ispita. Da li je to šestica po skali iz pravilnika?",
+      "expected_answer": "Ne. Do 50 poena je ocena 5, odnosno ispit nije položen. Ocena 6 počinje od 51 poena.",
+      "actual_answer": " U ovom kontekstu nisam pronašao odgovor u dostupnom kontekstu. Upravo, navedeni kontekst ne sadrži informacije o broju poena koje čine šestica po skali. Ako bi se to izjasnila kasnije, potrebno bi postaviti pitanje za dopunu.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Skala sa granicom 50/51 nije pronađena. Uzdržavanje je razumljivo u odnosu na dobijeni kontekst, ali RAG nije odgovorio na pitanje koje korpus pokriva.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 69,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "cena \n91-100 poena 10 odlican A+ \n81-90 poena 9 izuzetno dobar A \n71-80 poena 8 vrlo dobar B \n61-70 poena 7 dobar C \n51-60 poena 6 dovoljan D \ndo 50 poena/ 5 nije polozio F \n \n \nU evidenciju i indeks studenta unose se prelazne ocene (od 6 do 10), a \nocena 5 (nije polozio) upisuje se samo u evidenciju. \nU slucaju kada je student zbog koriscenja nedozvoljenih sredstava na \nispitu ili nedolicnog ponasanja i ometanja drugih studenata udaljen sa \nispita, u zapisnik o polaganju ispita se unosi posebna sifra za udaljavanje \nsa ispita i smatra se da student nije polozio ispit. \n \n \nObjavljivanje rezultata ispita \nClan 68. \nTermin uvida u pregledane zadatke nakon pismenog ispita mora biti \nobjavljen najkasnije u trenutku isticanja rezultata pismenog ispita, a najmanje \n24 sata pre odrzavanja uvida u zadatke. \nAko se ispit polaze pismeno i usmeno, uvid u zadatke pismenog dela \nispita mora se omoguciti studentima koji nisu pozvani na usmeni deo ispita \nnajkasnije do trenutka odrzavanja usmenog dela ispita. \nZadaci sa pi"
+        }
+      ]
+    },
+    {
+      "id": "REAL_033",
+      "question": "Испунио сам све обавезе и укупно имам 81 поен. Која је то оцена према скали у правилнику?",
+      "expected_answer": "Ukupno 81 poen pripada rasponu 81-90, što je ocena 9.",
+      "actual_answer": " Prema kontekstu nisam pronašao odgovor u dostupnom kontekstu. U ovom slučaju, ne postoji informacija o tome kako su poeni podeljeni na skali za kolokvijum na Elektrotehničkom fakultetu. Zato je nemoguće odrediti ocenu sa 81 poen. Ako biste imali detaljnije informacije o tome kako su poeni podeljeni, mogao bih da odgovorim na taj deo pitanja.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Skala 81–90 = 9 postoji u indeksu, ali nijedan od ovih odlomaka nije među pet rezultata.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 68,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "zava su \nzatvorena i u nju mogu da ud u samo predmetni nastavnici, saradnici i dezurni, \na izuzetno i druge osobe zaposlene na Fakultetu uz odobrenje predmetnog \nnastavnika. \n 29 \nDezurni na pismenom ispitu duzan je da udalji studenta koji na bilo koji \nnacin ometa normalno odrzavanje ispita ili se sluzi nedozvoljenim \nsredstvima pri izradi zadataka i odgovaranju na pitanja. U slucaju kada \ndezurni udalji studenta sa ispita, duzan je da o tome obavesti predmetnog \nnastavnika, cija je obaveza da podnese prijavu disciplinskoj komisiji. \n \nFormiranje ocene \nClan 67. \nUspeh studenta na ispitu izrazava se od 5 (nije polozio) do 10 (odlican). \nKonacna ocena na ispitu zasnovana je na ukupnom broju poena koje je \nstudent stekao ispunjavanjem predispitnih obaveza i polaganjem ispita, a \nutvrd uje se prema sledecoj skali: \n \n \nbroj poena brojcana ocena opis ocene slovna ocena \n91-100 poena 10 odlican A+ \n81-90 poena 9 izuzetno dobar A \n71-80 poena 8 vrlo dobar B \n61-70 poena 7 dobar C \n51-60 poena 6 dovoljan D \ndo 50 p"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 69,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "cena \n91-100 poena 10 odlican A+ \n81-90 poena 9 izuzetno dobar A \n71-80 poena 8 vrlo dobar B \n61-70 poena 7 dobar C \n51-60 poena 6 dovoljan D \ndo 50 poena/ 5 nije polozio F \n \n \nU evidenciju i indeks studenta unose se prelazne ocene (od 6 do 10), a \nocena 5 (nije polozio) upisuje se samo u evidenciju. \nU slucaju kada je student zbog koriscenja nedozvoljenih sredstava na \nispitu ili nedolicnog ponasanja i ometanja drugih studenata udaljen sa \nispita, u zapisnik o polaganju ispita se unosi posebna sifra za udaljavanje \nsa ispita i smatra se da student nije polozio ispit. \n \n \nObjavljivanje rezultata ispita \nClan 68. \nTermin uvida u pregledane zadatke nakon pismenog ispita mora biti \nobjavljen najkasnije u trenutku isticanja rezultata pismenog ispita, a najmanje \n24 sata pre odrzavanja uvida u zadatke. \nAko se ispit polaze pismeno i usmeno, uvid u zadatke pismenog dela \nispita mora se omoguciti studentima koji nisu pozvani na usmeni deo ispita \nnajkasnije do trenutka odrzavanja usmenog dela ispita. \nZadaci sa pi"
+        }
+      ]
+    },
+    {
+      "id": "REAL_034",
+      "question": "Na predmetu kažu da svih 100 poena dobijamo samo na završnom ispitu, bez poena tokom semestra. Da li pravilnik predviđa takvu raspodelu?",
+      "expected_answer": "Ne. U ukupnih 100 poena, za predispitne aktivnosti i provere znanja u toku semestra mora biti predviđeno najmanje 30, a najviše 70 poena.",
+      "actual_answer": " Da, pravilnik predviđa takvu raspodelu poena po predispitnim obavezama i ispitu na predmetu koju je upisano u Clan 59. Prema tome, studentima nije dodeljeno ništa od ukupno 100 poena za predispozicijske zadaće, već samo na završnom ispitu koji se polaže po Clanu 64. Ovde je važno napomenuti da pravilnik ne navodi nikakve specifične detalje o raspodeli poena za završni ispit, tako da se može pretpostaviti da su to detalji koji se obrazlažu tokom nastave (Clan 59). Ako se studenti žele jasnije informisati o raspodeli poena za završni ispit, treba obratiti se načinom upoznavanja sa nacinom formiranja konacne ocene (Clan 59).",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Odredba o 30–70 predispitnih poena nije pronađena. Model iz povezanog, ali nedovoljnog teksta izvodi pogrešan zaključak da je dozvoljeno svih 100 poena na ispitu.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 60,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "se utvrd uje na \nzavrsnom ispitu u skladu sa Zakonom, Statutom Fakulteta, aktima \nUniverziteta i ovim Pravilnikom. \nOcenjivanje se vrsi dodeljivanjem poena za svaki oblik aktivnosti i \nprovere znanja u toku nastave i na ispitu, na kome se utvrd uje konacna ocena. \nStudijskim programom i programima predmeta utvrd uje se srazmera poena \nstecenih u predispitnim obavezama i na ispitu. \nProvere znanja u okviru predispitnih obaveza studenata vrse se u toku \nsemestra u kome se izvodi nastava iz predmeta. U strukturi ukupnog broja poena \n 26 \nnajmanje 30, a najvise 70 poena mora biti predvid eno za aktivnosti i provere \nznanja u toku semestra ( predispitne obaveze). Ukupno 100 poena se stice \nispunjavanjem predispitnih obaveza i polaganjem ispita. \nKolokvijumi se mogu odrzavati u vreme nastave ili u posebnim \nterminima van vremena odrzavanja nastave, u skladu sa planom rada na \npredmetu. Ukoliko je moguce, tokom semestra se predavanja i vezbe mogu \nprekinuti po pravilu najvise 7 dana, radi organizovanja kolokvijuma n"
+        }
+      ]
+    },
+    {
+      "id": "REAL_036",
+      "question": "Od kolokvijuma je prošlo 18 dana, a rezultati nisu objavljeni. Postoji li rok za njihovu objavu?",
+      "expected_answer": "Da. Rezultati kolokvijuma moraju biti objavljeni najkasnije 15 dana od održavanja. U opisanoj situaciji taj rok je prekoračen za 3 dana.",
+      "actual_answer": " Da, postoji rok za objavu rezultata kolokvijuma. Prema Clanu 60, rezultati kolokvijuma moraju biti objavljeni najkasnije u roku od 15 dana od dana održavanja kolokvijuma. U ovom slučaju, rezultati moraju biti objavljeni najkasnije do danas plus 3 dana (zbog ponedeljka), jer su prošlo 18 dana od održavanja kolokvijuma. Ako nisu objavljeni, studenti treba da se jave nastavniku i zahtevaju objavu rezultata u skladu sa propisima.",
+      "diagnosis": "generation_error",
+      "explanation": "Rok od 15 dana nalazi se u prvom odlomku. Model ga čita, ali nakon proteklih 18 dana tvrdi da ima još tri dana i izmišlja ponedeljak.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 61,
+          "retrieved_rank": 1,
+          "context_characters_used": 1024,
+          "text": "rada na \npredmetu. Ukoliko je moguce, tokom semestra se predavanja i vezbe mogu \nprekinuti po pravilu najvise 7 dana, radi organizovanja kolokvijuma na \npredmetima koje slusa veliki broj studenata. \nRezultati kolokvijuma moraju da budu objavljeni najkasnije u roku od 15 \ndana od dana odrzavanja kolokvijuma. \nU toku ispitnog roka, odnosno u danima predvid enim za kolokvijume ne \nmoze se sprovoditi ni je dan o blik nastave ( predavanja, vezbe na tabli, \nlaboratorijske vezbe). \nClan 59. \nNastavnik je duzan da na pocetku nastave upozna studente sa: \n strukturom raspodele poena po predispitnim obavezama i ispitu; \n nacinom odrzavanja i sadrzajem ispita; \n nacinom formiranja konacne ocene. \nNastavnik je duzan da na kraju realizacije aktivne nastave obavesti \nstudente o ukupnom broju poena koje su ostvarili realizacijom predispitnih \nobaveza. \nNastavnik je duzan da vodi dokumentaciju o predispitnim obavezama \nstudenata i da je cuva do kraja skolske godine. \n \n \nIspitni rokovi i nacin polaganja ispita \nClan 60. \nB"
+        }
+      ]
+    },
+    {
+      "id": "REAL_038",
+      "question": "Zbog teže bolesti želim da tražim mirovanje. Da li je dovoljno da samo predam molbu do kraja školske godine ili postoje posebni rokovi i uslovi odsustva?",
+      "expected_answer": "Zahtev se podnosi u roku od 30 dana od nastanka sprečenosti, a najkasnije do 1. juna za tekuću školsku godinu. Mirovanje se može odobriti samo kada je student propustio dva uzastopna ispitna roka ili bio sprečen da pohađa nastavu najmanje tri meseca. Teža bolest je jedan od predviđenih osnova.",
+      "actual_answer": " Da, zahtev za mirovanje može biti podnet do kraja školske godine, međutim, ukoliko ste zaposleni na fakultetu, potrebno je upozoriti da se rokovi i uslovi odsustva odnosno mirovanja na fakultetu razlikuju od onih koje vlasnopravni student mora da poštiće. Ukoliko ste zaposleni, preporučujemo da tražite detaljne informacije o rokovima i uslovima mirovanja na fakultetu kod odgovarajućeg odsjeka ili upravljenju.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Rok od 30 dana, granica 1. jun i uslovi odsustva postoje u indeksu, ali nisu pronađeni. Kontekst je o upisu i žalbama na prijemni.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 57,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": ". \n \nStudentu se moze odobriti mirovanje i u slucaju nemogucnosti placanja \nskolarine u trajanju od jedne skolske godine i to jednom u toku studija na istom \nstudijskom programu, zbog nedostatka materijalnih sredstava, u skladu sa \nmerilima koje utvrdi Fakultet. \n Studentkinji koja je u postupku biomedicinski potpomognutog oplod enja, \nna njen zahtev, odobrava se mirovanje prava i obaveza. \n Tokom odobrenog mirovanja, student ne moze da polaze ispite ili \nostvaruje predispitne obaveze i druge obaveze iz nastavnog procesa. \nStudent koji je bio sprecen da prati nastavu, izvrsava predispitne \nobaveze i da polaze ispit zbog bolesti ili odsustva zbog strucnog \nusavrsavanja u trajanju od najmanje tri meseca, moze polagati ispite pod \nuslovima koje propisu predmetni nastavnik i prodekan za nastavu. \nClan 56. \nZahtev za mirovanje prava i obaveza student podnosi u roku od 30 dana \nod dana nastanka sprecenosti, a najkasnije do 1. juna za tekucu skolsku godinu. \n 25 \nMirovanje se moze odobriti samo u slucajevima kada je"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 58,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "d 30 dana \nod dana nastanka sprecenosti, a najkasnije do 1. juna za tekucu skolsku godinu. \n 25 \nMirovanje se moze odobriti samo u slucajevima kada je student \npropustio dva sukcesivna ispitna roka, ili bio sprecen da pohad a nastavu \nnajmanje tri meseca. \n \nPrestanak statusa studenta \nClan 57. \nStatus studenta prestaje ako student ne zavrsi studije u roku od osam \nskolskih godina, za studijski program koji traje cetiri skolske godine. \nAko je studijski program zapoceo u prolecnom semestru, rok iz stava 1 ovog \nclana se racuna od pocetka tog semestra. \nU rok iz st. 1 i 2 ovog clana ne racuna se vreme mirovanja prava i obaveza, \nodobrenog studentu u skladu sa Statutom Fakulteta. \n Studentu se na licni zahtev, podnet pre isteka roka iz st. 1 i 2 ovog clana, \nmoze produziti rok za zavrsetak studija do isteka roka u trostrukom broju \nskolskih godina potrebnih za realizaciju studijskog programa. \nPrestanak statusa studenta zbog neblagovremenog zavrsetka studija \nkonstatuje dekan resenjem sa dejstvom od prvog nared"
+        }
+      ]
+    },
+    {
+      "id": "REAL_041",
+      "question": "Završni rad mi je gotov, ali imam još jedan nepoložen ispit. Mogu li prvo da prijavim odbranu pa da ispit položim kasnije?",
+      "expected_answer": "Ne. Za prijavu odbrane moraš imati položene sve ispite i ispunjene sve obaveze predviđene studijskim programom. Studentski odsek na obrascu overava ispunjenost tih uslova.",
+      "actual_answer": " U vašem slučaju, ako ste upisani na studij nakon akreditacije za 2020/21 godinu, nema ograničenja da ne prvi položite nepoložen ispit i zatim obavite odbranu rada. Međutim, ukoliko ste upisani prije stupanja na snagu novih nastavnih planova (pre 2020/21), važeći Pravilnik zahteva da se zadaci sa pismenog ispita čuvaju do pocetka narednog ispitnog roka, te u tom slučaju možete prvo da obavite odbranu rada, ali morate da položite nepoložen ispit pre početka narednog ispitnog roka.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Uslov svih položenih ispita za prijavu odbrane nije u top 5. Model izmišlja razliku po generaciji upisa.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 23,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "rukovodiocu izrade zavrsnog rada, a \njedan primerak rada u elektronskoj formi na CD- u ili DVD- u Studentskom \nodseku. \nZavrsni rad moze biti napisan na srpskom ili na engleskom jeziku, u \nskladu sa odredbama Zakona i Statuta Fakulteta. \nZa prijavu odbrane zavrsnog rada student mora imati polozene sve \nispite i ispunjene sve obaveze predvid ene studijskim programom. \nPrijava odbrane zavrsnog rada se vrsi na propisanom obrascu \nFakulteta, na kome Studentski odsek overava ispunjenost uslova iz prethodnog \nstava. \nClan 29. \nOdbrana zavrsnog rada je javna i vrsi se u prostorijama \nElektrotehnickog fakulteta. Komisija se sastoji od najmanje dva clana, od kojih \nje jedan rukovodilac izrade zavrsnog rada, a drugi nastavnik, asistent sa \ndoktoratom, asistent ili saradnik u nastavi. Najmanje jedan clan komisije je sa \nkatedre nadlezne za podrucje ( modul) odnosno smer ( podmodul) studijskog \nprograma na koji je student upisan. \nJavna odbrana rada se sastoji od usmene prezentacije rada od strane \nstudenta, postavljanja"
+        }
+      ]
+    },
+    {
+      "id": "REAL_043",
+      "question": "Već sam jednom promenio temu završnog rada uz odobrenje šefa odseka. Mogu li ponovo da je promenim zato što sam našao zanimljiviju?",
+      "expected_answer": "Član 26 dozvoljava promenu teme uz odobrenje šefa odseka samo jedanput. Druga dobrovoljna promena teme po tom pravilu nije predviđena.",
+      "actual_answer": " Da, možeš ponovo promeniti temu završnog rada. Prema pravilima koje su navođene u kontekstu, student može jednom da promeni temu uz odobrenje šefa odseka. Takođe, isti pravila kažu da se student mora odbraniti završnog rada unutar roku od jedne godine od dana prijave teme. Ako nisi odbranio prethodni rad u roku, možeš ponovo da promenis temu uz novo odobrenje šefa odseka. Međutim, nekih 3 godina nakon poslednje odbrane završnog rada, iste teme se ne mogu odobriti.",
+      "diagnosis": "generation_error",
+      "explanation": "Prvi odlomak izričito kaže da se tema može promeniti samo jedanput. Model ipak odobrava ponovnu dobrovoljnu promenu, mešajući je sa posledicom isteka roka.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 22,
+          "retrieved_rank": 1,
+          "context_characters_used": 1023,
+          "text": "e. \nStudent moze po odobrenju sefa odseka da promeni temu zavrsnog rada. \nTema se moze promeniti samo jedanput. \nStudent je u obavezi da odbrani zavrsni rad u roku od jedne godine od \ndana prijave teme. U suprotnom, student mora da uzme novu temu. Studentu se \nmoze na njegov zahtev, izuzetno u opravdanim slucajevima, po odobrenju sefa \n 11 \nodseka, odobriti produzenje roka za odbranu zavrsnog rada, ali najvise za \nsest meseci. \nIste teme se ne mogu odobriti u periodu od 3 godine od poslednje \nodbrane. \nClan 27. \nStudent i nastavnik se dogovaraju oko sadrzaja zavrsnog rada, a zatim \nnastavnik dodeljuje temu studentu i daje mu uputstva za izradu zavrsnog rada. \nRadno angazovanje studenta na izradi zavrsnog rada po pravilu iznosi \n5 radnih nedelja. \nClan 28. \nPo zavrsetku izrade zavrsnog rada, student predaje dva primerka rada \nu pisanoj formi, spiralno ukoricena, rukovodiocu izrade zavrsnog rada, a \njedan primerak rada u elektronskoj formi na CD- u ili DVD- u Studentskom \nodseku. \nZavrsni rad moze biti napisan"
+        }
+      ]
+    },
+    {
+      "id": "REAL_044",
+      "question": "Profesor nije angažovan na mom modulu, a njegov predmet sa drugog modula sam slušao, ali nisam položio. Može li da mi bude mentor prema izmeni iz oktobra 2025?",
+      "expected_answer": "Ne po tom osnovu. Izmena člana 26 iz oktobra 2025. zahteva da je nastavnik angažovan na predmetu drugog modula koji je student pratio i položio. Samo slušanje nije dovoljno. Druga mogućnost je da nastavnik bude angažovan na predmetu studentovog modula, što u pitanju nije slučaj.",
+      "actual_answer": " Uzimajući u obzir dati kontekst, nije moguće da profesor koji nije angažovan na vašem modulu bude mentorom za završni rad. Prema pravilniku, student može uzeti završni rad samo kod nastavnika koji je angažovan na nekom od predmeta izbornog područja modula studijskog programa na kome je student upisan. Ako želite da ste mentor za svoje završno radove, potrebno je se upisati na modul sa profesorom koji je angažovan na tom modulu ili na nekom predmetu izbornog područja drugog studijskog programa.\n\nIzmena iz oktobra 2025 nije dato u kontekstu, pa nisam u mogućnosti da o tome detaljnije odgovorim.",
+      "diagnosis": "context_loss",
+      "explanation": "Nova odredba 'pratio i položio' je treći rezultat i potpuno otpada. Model dobija stariji tekst. Datum izmene takođe nije sačuvan uz ovaj odlomak kao metapodatak konteksta.",
+      "evidence_chunks": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+          "chunk_id": 1,
+          "retrieved_rank": 3,
+          "context_characters_used": 0,
+          "text": "kome je student upisan; ili kod nastavnika kod koga je polagao predmet koji pripada drugom izbornom podrucju modulu osnovnih studija:\nce brise i umesto njega unosi ce sledeci tekst:\nStudent moze uzeti zavrsni rad samo kod nastavnika koji je angazovan na nekom od predmeta izbornog podrucja - modula studijskog programa na kome je student upisan, ili na predmetu koji je student pratio i polozio, koji pripada drugom izbornom podrucju modulu osnovnih studija:\nU clanu 52. tekst koji glasi:\n,Student u statusu samofinansirajuceg studenta placa skolarinu prema formuli:\n; 5 = N h 60\ngde je S suma koju student placa; N broj ESPB bodova za predmete I ostale obaveze (strucna praksa; zavrsni rad) koje student upisuje; $ godisnja skolarina za\nodgovarajuci studijski program; koju svojom odlukom odred uje Savet fakulteta; na predlog Beca Fakulteta Skolarina za strucnu praksu i zavrsni rad placa ce u trenutku prijavljivanja zavrsnog rada.\nce brise i umesto njega unosi ce sledeci tekst:\nStudent y statusu samofinansirajuceg stu"
+        }
+      ]
+    },
+    {
+      "id": "REAL_045",
+      "question": "Položio sam predmet drugog modula kod profesora A, ali bih završni radio kod profesora B koji je takođe angažovan na tom predmetu. B nije na mom modulu. Da li to dopušta izmena iz oktobra 2025?",
+      "expected_answer": "Da, ako si taj predmet pratio i položio i profesor B je na njemu angažovan. Izmenjeni član 26 vezuje uslov za angažovanje nastavnika na predmetu koji si pratio i položio, pa mentor ne mora biti baš nastavnik kod koga si polagao. I dalje važi da tema završnog rada mora biti iz oblasti modula koji si upisao.",
+      "actual_answer": " Prema kontekstu, student može uzeti završni rad kod nastavnika koji je angažovan na nekom od predmeta izbornog područja modula studijskog programa na kome je student upisan, ili kod nastavnika koji je polagao predmet koji pripada drugom izbornom području modulu osnovnih studija. U ovom slučaju, student je položio predmet drugog modula kod profesora A, ali bi želeo da radi završni rad kod profesora B koji je takođe angažovan na tom predmetu. Međutim, profesor B nije na studentovom modulu. Prema tome, ako bi se tražila izmena, to bi trebalo da bude u oktobru 2025, prema pravilima koja su navoda u kontekstu. Međutim, kontekst ne nudi informaciju o moćnosti katedre da odobри izmene van roka određenog u Pravilniku.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Potrebna odredba izmene iz 2025. nije među pet rezultata. Stariji tekst ne omogućava pouzdan odgovor na pitanje o novoj verziji.",
+      "evidence_chunks": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+          "chunk_id": 1,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "kome je student upisan; ili kod nastavnika kod koga je polagao predmet koji pripada drugom izbornom podrucju modulu osnovnih studija:\nce brise i umesto njega unosi ce sledeci tekst:\nStudent moze uzeti zavrsni rad samo kod nastavnika koji je angazovan na nekom od predmeta izbornog podrucja - modula studijskog programa na kome je student upisan, ili na predmetu koji je student pratio i polozio, koji pripada drugom izbornom podrucju modulu osnovnih studija:\nU clanu 52. tekst koji glasi:\n,Student u statusu samofinansirajuceg studenta placa skolarinu prema formuli:\n; 5 = N h 60\ngde je S suma koju student placa; N broj ESPB bodova za predmete I ostale obaveze (strucna praksa; zavrsni rad) koje student upisuje; $ godisnja skolarina za\nodgovarajuci studijski program; koju svojom odlukom odred uje Savet fakulteta; na predlog Beca Fakulteta Skolarina za strucnu praksu i zavrsni rad placa ce u trenutku prijavljivanja zavrsnog rada.\nce brise i umesto njega unosi ce sledeci tekst:\nStudent y statusu samofinansirajuceg stu"
+        }
+      ]
+    },
+    {
+      "id": "REAL_047",
+      "question": "Da li u izmeni iz oktobra 2025. piše da mogu da dobijem nazad 50% dela školarine za praksu i završni rad? Da li taj dokument objašnjava i kako da podnesem zahtev?",
+      "expected_answer": "U obrazloženju izmene navodi se da promena člana 52 omogućava refundaciju od 50% i za deo školarine koji potiče od ESPB za stručnu praksu i završni rad. Dokument ne opisuje postupak podnošenja zahteva, rokove, potrebna dokumenta niti sve uslove za ostvarivanje refundacije.",
+      "actual_answer": " U izmeni iz oktobra 2025., u kontekstu nisam pronašao informacije o tome da li studenti mogu da dobijaju nazad 50% dela školarine za praksu i završni rad. Takođe, taj dokument ne objašnjava kako podnesiti zahtev za to.",
+      "diagnosis": "context_loss",
+      "explanation": "Rečenica o refundaciji 50% jeste u trećem rezultatu, ali ne stiže do modela. Zato model kaže da je nije pronašao.",
+      "evidence_chunks": [
+        {
+          "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+          "chunk_id": 3,
+          "retrieved_rank": 3,
+          "context_characters_used": 0,
+          "text": "stvare refundaciju od 50% i za onaj deo skolarine koji proistice iz ESPB za strucnu praksu i zavrsni rad.\nU skladu ca ovlascenjima i nadleznostima Nastavno-naucnog i Izbornog veca Elektrotehnickog fakulteta, a na predlog Komisije za studije prvog stepena, doneta je odluka kao u dispozitivu .\nDNA Dostaviti Arhivi; Studentskom odseku, VdD: prodekana za nastavu, Odseku za kadrovske i opste poslove\ntrciremila J. Ziskakis Djurd evuc\n6 l I K a\nPredsedavajuci Nastavno-naucnog veca & 6 9 ZWL + k 6 € . 0 G F A 7 Prof. dr Ped a Mihailovic"
+        }
+      ]
+    },
+    {
+      "id": "REAL_048",
+      "question": "Upisao sam ETF 2021. i nasao firmu u inostranstvu za strucnu praksu. Da li to moze da se prizna i sta treba da proverim i predam?",
+      "expected_answer": "Praksa može da se obavi i u inostranstvu. Pre izbora organizacije treba da konsultuješ rukovodioca prakse na svom modulu da proveriš priznavanje aktivnosti. Potrebno je najmanje 90 časova prakse, izveštaj studenta i potvrda odgovornog lica sa potpisom i pečatom organizacije. Priznata praksa nosi 2 ESPB i opisnu ocenu „priznaje se”.",
+      "actual_answer": " U ovom kontekstu, navedeno je da Fakultet upisuje kandidate koji su završili medunarodno priznatu srednju školu i za one deo skolarine koji proistječe iz ESPB za stručnu praksu i zavrsni rad se može refundovati 50%. Međutim, kontekst ne navede detaljne informacije o tome kako treba priznavati stručnu praksu iz inostranstva za ovu refundaciju.\n\nKako bi ste možda priznali stručnu praksu iz inostranstva, molim vas da kontaktujete Studentski odsek ili Komisiju za studije prvog stepena na Elektrotehnickom fakultetu u Beogradu kako bi dobili detaljne informacije o tome kako treba da priznavate stručnu praksu iz inostranstva i zahtevali eventualnu refundaciju skolarine koja proistječe iz ESPB za stručnu praksu i zavrsni rad.\n\nTakođe, molim vas da proverite da li je ta firma medunarodno priznata i provjerite da li ste imali potrebne dokumente koji će vam omogućiti da priznate stručnu praksu.",
+      "diagnosis": "retrieval_miss",
+      "explanation": "Odredbe o praksi u inostranstvu i 90 časova nisu pronađene. Model meša temu sa stranim srednjim školama i refundacijom školarine.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 16,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "ne i sposobnosti primenljive u \nstruci. \n \nPrakticna nastava \nClan 19. \nPrakticna nastava ( strucna praksa, nastavne posete i drugi oblici \nnastave koji omogucavaju sticanje propisanih znanja i vestina) predstavlja \noblik nastave u kome studenti sticu sira prakticna znanja, vestine i \nsposobnosti. Ujedno se tim oblikom nastave vrsi prakticna primena stecenih \nznanja i vestina iz pred enog gradiva, pod nadzorom strucnog lica. \nStrucna praksa se po pravilu obavlja u 8. semestru, ali se studentima \nizuzetno moze dozvoliti da strucnu praksu obave od trenutka upisa u drugu \ngodinu studija. \nStudent samostalno bira organizaciju iz drzavnog, privatnog ili javnog \nsektora u kojoj ce obaviti strucnu praksu. Strucna praksa se moze obaviti i u \ninostranstvu. \nPotrebno je da student pre izbora organizacije u kojoj ce raditi praksu \nkonsultuje rukovodioca prakse na odgovarajucem modulu kako bi proverio da li \nse predvid ene aktivnosti mogu priznati kao strucna praksa. Na zahtev studenta \nizdaje se pismeni uput za strucnu"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 17,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "ucem modulu kako bi proverio da li \nse predvid ene aktivnosti mogu priznati kao strucna praksa. Na zahtev studenta \nizdaje se pismeni uput za strucnu praksu, koji overava ovlasceno lice u \norganizaciji u kojoj je praksa obavljena. \nPo obavljenoj strucnoj praksi od najmanje 90 casova, a na osnovu \nizvestaja studenta i potvrde odgovornog lica koje potpisom i pecatom \norganizacije potvrd uje da je praksa obavljena, studentu se dodeljuju 2 ESPB \nboda za obavljenu strucnu praksu. Strucna praksa se ne ocenjuje numericki, vec \nopisno, ocenom ''priznaje se''. \n \nKonsultacije \nClan 20. \nKonsultacije su oblik individualne nastave kojim nastavnik ili \nsaradnik, u neposrednom kontaktu sa studentom, pojasnjava studentu slozene \ndelove gradiva i pruza pomoc u resavanju odred enih problema, kao i pri \nizradi seminarskih i zavrsnih radova. \n 9 \nKonsultacije obavljaju nastavnici, asistenti sa doktoratom, asistenti i \nsaradnici u nastavi. \nNastavnik mora ukupno obezbediti najmanje dva sata konsultacija \nsedmicno, a asistenti s"
+        }
+      ]
+    },
+    {
+      "id": "REAL_053",
+      "question": "Počela je druga nedelja semestra, a plan rada za predmet još nije javno dostupan. Do kada nastavnik treba da objavi plan sa obavezama i načinom ocenjivanja?",
+      "expected_answer": "Plan rada na predmetu mora biti javno dostupan studentima najkasnije u prvoj sedmici semestra. Plan obuhvata predispitne obaveze, način ocenjivanja i druge podatke o predmetu, pa je u opisanoj situaciji rok već istekao.",
+      "actual_answer": " Po nađenom kontekstu, predmetni nastavnik je dužan da objavi plan rada najkasnije u prvom semestru u kojem će izvoditi nastavu iz predmeta (5. godina studija). Trenutno se nalazimo u drugom semestru, pa je nastavnik dužan da objavi plan rada za ovaj predmet najkasnije na početku idućeg akademskog godine.\n\nFormulisanje odgovora: Zakonitost - Pravila studiranja; Situacija studenta - Nekoliko semestara iza prve sedmice iduće akademske godine; Sistemska pravila fakulteta - Zahtev da se plan rada objavi najkasnije u prvom semestru kada će nastavnik izvoditi nastavu.\nZa računanje: Očekujemo da će predmetni nastavnik da pripremi i objavi plan rada za predmet u idućoj akademskoj godini, po nađenim pravilima studiranja fakulteta.\nDokument - Pravila studiranja (dostupno na službenoj strani Elektrotehničkog fakulteta); Član - 12. i 11.",
+      "diagnosis": "generation_error",
+      "explanation": "Prvi odlomak sadrži jasan rok 'najkasnije u prvoj sedmici semestra'. Model ga pretvara u prvi semestar/narednu akademsku godinu.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik o osnovnim akademskim studijama",
+          "chunk_id": 9,
+          "retrieved_rank": 1,
+          "context_characters_used": 1024,
+          "text": "et predmetni nastavnik je duzan da utvrdi plan rada. Plan rada ukljucuje: osnovne podatke predmetu: naziv; godina; fond casova; broj ESPB bodova; preduslove za prijavljivanje predmeta; ciljeve predmeta; sadrzaj i strukturu predmeta; plan izvod enja nastave (predavanja i vezbe); predispitne obaveze studenata; broj i okvirne termine odrzavanja kolokvijuma; nacin ocenjivanja; udzbenike; odnosno obaveznu i dopunsku literaturu; nacin oglasavanja obavestenja u vezi ca predmetom (poput oglasne table; sajta predmeta; mejl liste, .) imena nastavnika i saradnika angazovanih na predmetu. Predmetni nastavnik je u obavezi da plan rada na predmetu ucini javno dostupnim studentima najkasnije u prvoj sedmici semestra u kome ce izvodi nastava iz predmeta:\n5\nAngazovanje studenata u toku skolske godine\nClan 12.\nSvaki predmet IZ studijskog programa iskazuje ce brojem ESPB bodova; obim studija izrazava ce zbirom ESPB bodova: Zbir OD 60 ESPB bodova odgovara prosecnom ukupnom angazovanju studenta u obimu 40-casovne radne nedelje to"
+        }
+      ]
+    },
+    {
+      "id": "REAL_054",
+      "question": "Profesor je jedan termin konsultacija zamenio mejlom. Ako mu pitanje o gradivu pošaljem sa zvanične fakultetske adrese, da li ima obavezu da odgovori i u kom roku?",
+      "expected_answer": "Jedan termin konsultacija može biti zamenjen konsultacijama elektronskom poštom. U tom slučaju postoji obaveza odgovora na pitanja poslata sa zvanične fakultetske adrese. Član 20 ne određuje konkretan rok odgovora u satima ili danima.",
+      "actual_answer": " Da, profesor ima obavezu da odgovori na pitanja koje student pošalje sa zvanične fakultetske adrese elektronske poste. Ova obaveza se primene ako je termin konsultacija zamenjen mejlom, i u tom slučaju profesor mora da odgovori na sva pitanja koje student postavi. Ovakav obavezni odgovor mora biti dostavljen u roku od 24 casa od prijema pitanja na zvaničnu fakultetsku adresu elektronske poste.",
+      "diagnosis": "generation_error",
+      "explanation": "Obaveza odgovora mejlom ulazi u kontekst. Model dodaje rok od 24 sata koji ta odredba ne propisuje. U prvom odlomku postoji 24 sata, ali za žalbu na prijemni: moguć prenos uslova iz nepovezanog pravila.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 18,
+          "retrieved_rank": 2,
+          "context_characters_used": 976,
+          "text": ", asistenti sa doktoratom, asistenti i \nsaradnici u nastavi. \nNastavnik mora ukupno obezbediti najmanje dva sata konsultacija \nsedmicno, a asistenti sa doktoratom, asistenti i saradnici u nastavi najmanje \ntri sata sedmicno. Nastavnici, asistenti sa doktoratom, asistenti i \nsaradnici u nastavi moraju obezbediti termine za konsultacije u dva \nrazlicita radna dana. Termini za konsultacije treba da budu usklad eni sa \nrasporedom nastave i dostupni studentima. Vreme konsultacija objavljuje se \nispred odgovarajuceg kabineta ili laboratorije ili na sajtu Fakulteta. Jedan \ntermin konsultacija moze se zameniti konsultacijama pomocu elektronske \nposte, pri cemu su nastavnici i saradnici obavezni da odgovore na sva \npostavljena pitanja koje student postavi sa zvanicne fakultetske adrese \nelektronske poste. \n \nKolokvijumi \nClan 21. \nKolokvijumi su oblik nastave u kome studenti samostalno resavaju \nodred ene zadatke i/ili odgovaraju na pitanja radi provere stecenih znanja iz \npred enog gradiva. \nKolokvijumi mogu biti pis"
+        }
+      ]
+    },
+    {
+      "id": "REAL_056",
+      "question": "Kolika je tačno godišnja školarina za SI za školsku 2026/2027, u dinarima?",
+      "expected_answer": "U priloženim dokumentima nema odluke sa iznosom godišnje školarine za SI za 2026/2027. Dokument određuje način obračuna i ko utvrđuje godišnju školarinu, ali za konkretan iznos potrebna je odgovarajuća odluka o školarini za tu školsku godinu.",
+      "actual_answer": " Nisam pronašao odgovor u dostupnom kontekstu o godišnjoj školarini za SI za školsku 2026/2027, jer kontekst se ne odnosi na taj podatak. Informacije o godišnjoj školarini su dostupne u odgovarajućim dokumentima Fakulteta i Univerziteta, a neophodna bi junačka upotreba za traženje toga podatka.",
+      "diagnosis": "appropriate_abstention",
+      "explanation": "Model ne izmišlja iznos školarine za 2026/2027, koji benchmark označava kao nedostupan u dokumentima.",
+      "evidence_chunks": []
+    },
+    {
+      "id": "REAL_057",
+      "question": "Kog datuma i u kojoj sali je ispit iz Matematike 1 u septembarskom roku 2026?",
+      "expected_answer": "Priloženi pravilnici ne sadrže konkretan raspored Matematike 1 za septembar 2026. Potreban je raspored ispita odnosno odgovarajuće obaveštenje za taj rok. Pravilo o ispitnim rokovima nije dovoljno da se utvrde datum i sala.",
+      "actual_answer": " Prema datom kontekstu, nisam pronašao odgovor u dostupnom kontekstu o datumu i sali za ispit iz Matematike 1 u septembarskom roku 2026. Datum i sala za ispite se ne spominju u kontekstu koji je naveden.",
+      "diagnosis": "appropriate_abstention",
+      "explanation": "Model ne izmišlja datum i salu ispita, koje pravilnici ne sadrže.",
+      "evidence_chunks": []
+    },
+    {
+      "id": "REAL_058",
+      "question": "Da li smem da koristim kalkulator na ispitu iz Osnova elektrotehnike 1?",
+      "expected_answer": "Iz ovih pravilnika se ne može utvrditi da li je kalkulator dozvoljen baš na tom predmetu. Predmetni nastavnik odlučuje koja pomoćna sredstva smeju da se koriste i o tome obaveštava studente na početku nastave. Potrebno je proveriti pravila ili obaveštenje za taj predmet.",
+      "actual_answer": " Zasnivanjem na pravilima navedenim u kontekstu, student ne sme da koristi kalkulator na ispitu iz Osnova elektrotehnike 1 jer se ispit polaze samo pismeno i nije navedeno da je dopuštena upotreba kalkulatora.",
+      "diagnosis": "retrieval_miss_and_unsupported_claim",
+      "explanation": "Odredba o tome da nastavnik određuje dozvoljena pomagala nije pronađena. Model zatim nedostatak dozvole pogrešno pretvara u zabranu kalkulatora.",
+      "evidence_chunks": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 66,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "e da dostavi nalaz i misljenje \nlekara-specijaliste Studentske poliklinike na osnovu koga ce dekan doneti \nodluku o mestu i nacinu polaganja ispita. \n \n \nPocetak i tok ispita \nClan 65. \nPrilikom polaganja ispita identitet studenta utvrd uje se na osnovu \nindeksa. Izuzetno, ukoliko je tako predvid eno planom rada na predmetu, \nnastavnik ima pravo da identitet studenta pored indeksa utvrdi i na osnovu \nlicne karte, pasosa ili drugog vazeceg identifikacionog dokumenta. \nStudent je duzan da na ispit donese svoj indeks (radi identifikacije) i \npropisanu vezbanku za zadatke na pismenom ispitu. Propisana vezbanka nije \nobavezna ako se pismeni deo ispita radi na racunarima ili na listu sa \nzadacima, o cemu predmetni nastavnik obavestava studente na pocetku nastave \n(u planu rada na predmetu). \nPredmetni nastavnik odlucuje koja se pomocna sredstva mogu koristiti \nna ispitu (knjiga, tabele, dijagrami, kalkulatori i slicno) i o tome obavestava \nstudente na pocetku nastave na predmetu. \nClan 66. \nUsmeni ispit obavlja pre"
+        },
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": 67,
+          "retrieved_rank": null,
+          "context_characters_used": 0,
+          "text": "tu (knjiga, tabele, dijagrami, kalkulatori i slicno) i o tome obavestava \nstudente na pocetku nastave na predmetu. \nClan 66. \nUsmeni ispit obavlja predmetni nastavnik, odnosno ispitna komisija. \nKada se ispit polaze pismeno, ovlasceno lice Fakulteta odred uje \ndezurne koji se staraju o regularnosti sprovod enja ispita. \nZa vreme ispita student je duzan da se ponasa u skladu sa utvrd enim \npravilima ponasanja koja zabranjuju: \n izlazak iz prostorije i vracanje u prostoriju gde se ispit odrzava, \nustajanje sa mesta i kretanje po prostoriji; \n bilo kakvu komunikaciju, osim postavljanja pitanja nastavnicima i \nsaradnicima angazovanim na predmetu prilikom obilaska kandidata \nradi razjasnjenja nejasnoca u formulaciji zadataka; \n bilo koje druge aktivnosti i ponasanje koje remeti regularnost \nispita. \nZa vreme pismenog ispita vrata na prostoriji u kojoj se ispit odrzava su \nzatvorena i u nju mogu da ud u samo predmetni nastavnici, saradnici i dezurni, \na izuzetno i druge osobe zaposlene na Fakultetu uz odobrenje"
+        }
+      ]
+    },
+    {
+      "id": "REAL_060",
+      "question": "Možeš li da proveriš koju sam ocenu dobio iz Programiranja 1 i koliko trenutno imam ukupno ESPB?",
+      "expected_answer": "To se ne može utvrditi iz priloženih pravilnika, jer oni ne sadrže tvoje lične rezultate ispita ni evidenciju ostvarenih ESPB. Potrebna je tvoja studentska evidencija ili podaci iz nje.",
+      "actual_answer": " Da, možemo proveriti ocenu koje si dobio iz Programiranja 1 ako se to podatak nalazi u tvojoj službenoj akademskoj evidenciji na Fakultetu. Ukoliko je takve informacije dostupne, možeš nam reći broj tvoje matične oznake, godinu upisa na fakultet i broj učenika iz vaše grupe iz Programiranja 1 kako bismo mogli da pronađemo tu informaciju. ESPB (Elektrotehničko-tehnološki profesionalni bod) je ukupna ocena svih predmeta koje si uradio na Fakultetu, ako su taji podatci dostupni možemo da ti rečem koliko ESPB trenutno imaš.",
+      "diagnosis": "unsupported_capability_claim",
+      "explanation": "Model sugeriše da može da proveri ličnu evidenciju i traži identifikacione podatke, iako dostupni izvori sadrže pravilnike, a ne ocene studenta.",
+      "evidence_chunks": []
+    }
+  ]
+}
