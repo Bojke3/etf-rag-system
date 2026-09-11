@@ -46,25 +46,48 @@ class FAISSVectorStore(VectorStore):
 
         return results
 
-    def save(self, path: str) -> None:
-        """Save FAISS index"""
+    @staticmethod
+    def artifact_names(name=None):
+        """File names for an index, optionally namespaced by chunking strategy.
+
+        With no name this is the historical ``index.faiss`` / ``metadatas.json``
+        pair, so existing stores keep loading unchanged.
+        """
+        suffix = f"_{name}" if name else ""
+        return f"index{suffix}.faiss", f"metadatas{suffix}.json"
+
+    def save(self, path: str, name=None) -> None:
+        """Save FAISS index, optionally under a strategy-specific file name"""
         import faiss
         import json
         from pathlib import Path
+
+        index_file, metadata_file = self.artifact_names(name)
 
         Path(path).mkdir(parents=True, exist_ok=True)
-        faiss.write_index(self.index, str(Path(path) / "index.faiss"))
+        faiss.write_index(self.index, str(Path(path) / index_file))
 
-        with open(Path(path) / "metadatas.json", 'w') as f:
+        with open(Path(path) / metadata_file, 'w') as f:
             json.dump(self.metadatas, f)
 
-    def load(self, path: str) -> None:
-        """Load FAISS index"""
+    def load(self, path: str, name=None) -> None:
+        """Load FAISS index, optionally from a strategy-specific file name"""
         import faiss
         import json
         from pathlib import Path
 
-        self.index = faiss.read_index(str(Path(path) / "index.faiss"))
+        index_file, metadata_file = self.artifact_names(name)
 
-        with open(Path(path) / "metadatas.json", 'r') as f:
+        self.index = faiss.read_index(str(Path(path) / index_file))
+
+        with open(Path(path) / metadata_file, 'r') as f:
             self.metadatas = json.load(f)
+
+    @staticmethod
+    def exists(path: str, name=None) -> bool:
+        """Whether both artifacts for this index are present on disk"""
+        from pathlib import Path
+
+        index_file, metadata_file = FAISSVectorStore.artifact_names(name)
+        base = Path(path)
+        return (base / index_file).exists() and (base / metadata_file).exists()
