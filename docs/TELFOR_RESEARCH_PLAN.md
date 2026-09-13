@@ -84,7 +84,7 @@ Avoid interpreting a higher `top_k` as a larger effective context unless the sav
 
 ### Phase D: model comparison and curated-evidence probes
 
-Compare five available LLMs on identical saved contexts: `mistral:latest`, `qwen3.5:latest`, `mistral-small:latest`, `mistral-large:latest`, and `llama4:latest`. The larger models are explicitly included to measure whether they improve evidence use and answer quality enough to justify their latency. Verify actual model identities and server feasibility, and keep generation settings documented and fixed across the main comparison where supported.
+Compare five available LLMs on identical saved contexts: `mistral:latest`, `qwen3.5:latest`, `mistral-small:latest`, `mistral-large:latest`, and `qwen3.6:latest`. Reserve `llama4:latest` exclusively as the fixed judge with a Serbian rubric, subject to verification against human labels. The larger generation models are included to measure whether they improve evidence use and answer quality enough to justify their latency. Verify actual model identities and server feasibility, and keep generation settings documented and fixed across the main comparison where supported.
 
 On a selected diagnostic subset, supply manually verified, complete source passages directly. These curated-evidence probes estimate how models behave when retrieval failures are removed. Keep their results separate from normal end-to-end performance.
 

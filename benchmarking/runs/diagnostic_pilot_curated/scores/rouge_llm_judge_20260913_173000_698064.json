@@ -1,0 +1,219 @@
+{
+  "run_id": "diagnostic_pilot_curated",
+  "scored_at": "2026-09-13T17:30:00",
+  "metrics": [
+    "rouge",
+    "llm_judge"
+  ],
+  "answers_path": "benchmarking\\runs\\diagnostic_pilot_curated\\answers.jsonl",
+  "answers_sha256": "947c47b1a90180c55ec8e772c466a74ce14386b183d4f8a677e8b12b5def9fe8",
+  "evaluation_protocol": "reference_metrics_v3",
+  "diagnostic_config": {
+    "contexts_path": "benchmarking/diagnostic_contexts_pilot.json",
+    "contexts_sha256": "dfa975fead35c69daf632db8a56da8cadd8ebd7cb415f42ab0b959de671246f6",
+    "snapshot_manifest_sha256": "c68932b4a790be8d9d9535cf1e90d04acc72b61248620c872cebf1cc9fe85dea",
+    "mode": "curated",
+    "question_ids": [
+      "REAL_033",
+      "REAL_043"
+    ]
+  },
+  "judge": {
+    "profile": {
+      "schema_version": 1,
+      "model": "llama4:latest",
+      "digest_prefix": "bf31604e25c2",
+      "execution": "ssh",
+      "temperature": 0.0,
+      "top_p": 0.9,
+      "num_ctx": 16384,
+      "max_tokens": 32,
+      "samples": 1,
+      "seed": 42,
+      "think": null,
+      "prompt_sha256": "5d5a1400e59688b433935b12d88ffa5e009bd537a2820ebe4dc051f33b6d5a58",
+      "description": "Reserved evaluation model, excluded from the generator comparison. Uses a Serbian rubric. Digest prefix comes from the user-provided installed-model list; verify server feasibility and human agreement before freezing paper results."
+    },
+    "profile_sha256": "61855b0473faaf9581b0671443b244d7cf9a2c2cf33f6e1111f5737600b65044",
+    "model_digest": "bf31604e25c25d964e250bcf28a82bfbdbe88af5f236257fabb27629bb24c7f3",
+    "model_details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "llama4",
+      "families": [
+        "llama4"
+      ],
+      "parameter_size": "108.6B",
+      "quantization_level": "Q4_K_M"
+    },
+    "execution": "ssh",
+    "base_url": "http://127.0.0.1:11435"
+  },
+  "metric_implementation_sha256": {
+    "rouge": "a7275b7998c610536fda72639f58decd5eaad31d5e1f2f769506a0dd42c45f7a",
+    "llm_judge": "ea991c29ac1277c9f71a3c62549cb55bfab72392cf42cfda0c5b0585aa02eb55"
+  },
+  "summary": {
+    "total_answers": 2,
+    "successful_answers": 2,
+    "failed_answers": 0,
+    "metric_averages": {
+      "rouge": 0.13030560271646857,
+      "llm_judge": 3.0
+    },
+    "metric_valid_counts": {
+      "rouge": 2,
+      "llm_judge": 2
+    },
+    "metric_error_counts": {
+      "rouge": 0,
+      "llm_judge": 0
+    },
+    "worst_by_rougeL": [
+      {
+        "id": "REAL_033",
+        "status": "success",
+        "rougeL": 0.12903225806451613,
+        "error": ""
+      },
+      {
+        "id": "REAL_043",
+        "status": "success",
+        "rougeL": 0.13157894736842105,
+        "error": ""
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "REAL_033",
+      "type": "single_document",
+      "difficulty": "easy",
+      "question": "Испунио сам све обавезе и укупно имам 81 поен. Која је то оцена према скали у правилнику?",
+      "expected_answer": "Ukupno 81 poen pripada rasponu 81-90, što je ocena 9.",
+      "actual_answer": " Prema skali koja se navodi u pravilniku, sa 81 poenom student ima 9 brojcana ocenu, što odgovara slovnoj ocieni A.",
+      "status": "success",
+      "error": "",
+      "source_document": null,
+      "source_section": null,
+      "reference_sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 67",
+          "pdf_pages": [
+            29
+          ],
+          "role": "evidence"
+        }
+      ],
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": "curated_0",
+          "score": 0,
+          "text": "Clan 67. \nUspeh studenta na ispitu izrazava se od 5 (nije polozio) do 10 (odlican). \nKonacna ocena na ispitu zasnovana je na ukupnom broju poena koje je \nstudent stekao ispunjavanjem predispitnih obaveza i polaganjem ispita, a \nutvrd uje se prema sledecoj skali: \n \n \nbroj poena brojcana ocena opis ocene slovna ocena \n91-100 poena 10 odlican A+ \n81-90 poena 9 izuzetno dobar A \n71-80 poena 8 vrlo dobar B \n61-70 poena 7 dobar C \n51-60 poena 6 dovoljan D \ndo 50 poena/ 5 nije polozio F \n \n \nU evidenciju i indeks studenta unose se prelazne ocene (od 6 do 10), a \nocena 5 (nije polozio) upisuje se samo u evidenciju. \nU slucaju kada je student zbog koriscenja nedozvoljenih sredstava na \nispitu ili nedolicnog ponasanja i ometanja drugih studenata udaljen sa \nispita, u zapisnik o polaganju ispita se unosi posebna sifra za udaljavanje \nsa ispita i smatra se da student nije polozio ispit. \n \n \n"
+        }
+      ],
+      "context_mode": "curated",
+      "timing": {
+        "processing_time_ms": 1021,
+        "retrieval_time_ms": 0,
+        "generation_time_ms": 1013,
+        "wall_time_ms": 1021
+      },
+      "scores": {
+        "rouge": {
+          "rouge1": 0.19354838709677416,
+          "rouge2": 0.0,
+          "rougeL": 0.12903225806451613
+        },
+        "llm_judge": {
+          "score": 4.0,
+          "samples": [
+            {
+              "score": 4.0,
+              "raw_response": "4",
+              "generation": {
+                "prompt_eval_count": 586,
+                "eval_count": 2,
+                "done": true,
+                "done_reason": "stop",
+                "total_duration": 8669906923,
+                "load_duration": 180668887,
+                "prompt_eval_duration": 8200768849,
+                "eval_duration": 281027549
+              }
+            }
+          ],
+          "prompt": "Oceni sledeći JSON zapis:\n{\"Pitanje\": \"Испунио сам све обавезе и укупно имам 81 поен. Која је то оцена према скали у правилнику?\", \"Referentni odgovor\": \"Ukupno 81 poen pripada rasponu 81-90, što je ocena 9.\", \"Odgovor sistema\": \" Prema skali koja se navodi u pravilniku, sa 81 poenom student ima 9 brojcana ocenu, što odgovara slovnoj ocieni A.\", \"Obavezne činjenice\": [\"Ocena 9 za 81 poen.\"], \"Tvrdnje koje treba izbeći\": [\"81 poen je osmica ili desetka.\"], \"Očekivano ponašanje\": \"Odgovori na pitanje na osnovu dostupnih dokaza\"}\nOcena (samo broj od 0 do 5):",
+          "prompt_sha256": "5d5a1400e59688b433935b12d88ffa5e009bd537a2820ebe4dc051f33b6d5a58"
+        }
+      }
+    },
+    {
+      "id": "REAL_043",
+      "type": "single_document",
+      "difficulty": "easy",
+      "question": "Već sam jednom promenio temu završnog rada uz odobrenje šefa odseka. Mogu li ponovo da je promenim zato što sam našao zanimljiviju?",
+      "expected_answer": "Član 26 dozvoljava promenu teme uz odobrenje šefa odseka samo jedanput. Druga dobrovoljna promena teme po tom pravilu nije predviđena.",
+      "actual_answer": " Da, možete ponovno promeniti temu završnog rada zato što ste već jednom to učinili uz odobrenje šefa odseka. Međutim, u vezi sa pravilima studiranja, isti teme se ne mogu odobriti u periodu od 3 godine od poslednje odbrane, tako da bi vas trebalo da obratite pažnju na to da zanimljivija tema ne bude podvrgnuta istim ograničenjima.",
+      "status": "success",
+      "error": "",
+      "source_document": null,
+      "source_section": null,
+      "reference_sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+          "section": "Član 26",
+          "pdf_pages": [
+            10
+          ],
+          "role": "evidence"
+        }
+      ],
+      "sources": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "chunk_id": "curated_0",
+          "score": 0,
+          "text": "Student moze po odobrenju sefa odseka da promeni temu zavrsnog rada. \nTema se moze promeniti samo jedanput. \nStudent je u obavezi da odbrani zavrsni rad u roku od jedne godine od \ndana prijave teme. U suprotnom, student mora da uzme novu temu. Studentu se \nmoze na njegov zahtev, izuzetno u opravdanim slucajevima, po odobrenju sefa \n 11 \nodseka, odobriti produzenje roka za odbranu zavrsnog rada, ali najvise za \nsest meseci. \nIste teme se ne mogu odobriti u periodu od 3 godine od poslednje \nodbrane. \n"
+        }
+      ],
+      "context_mode": "curated",
+      "timing": {
+        "processing_time_ms": 1329,
+        "retrieval_time_ms": 0,
+        "generation_time_ms": 1329,
+        "wall_time_ms": 1329
+      },
+      "scores": {
+        "rouge": {
+          "rouge1": 0.13157894736842105,
+          "rouge2": 0.08108108108108109,
+          "rougeL": 0.13157894736842105
+        },
+        "llm_judge": {
+          "score": 2.0,
+          "samples": [
+            {
+              "score": 2.0,
+              "raw_response": "2",
+              "generation": {
+                "prompt_eval_count": 683,
+                "eval_count": 2,
+                "done": true,
+                "done_reason": "stop",
+                "total_duration": 9454614235,
+                "load_duration": 236000211,
+                "prompt_eval_duration": 8928452794,
+                "eval_duration": 282472216
+              }
+            }
+          ],
+          "prompt": "Oceni sledeći JSON zapis:\n{\"Pitanje\": \"Već sam jednom promenio temu završnog rada uz odobrenje šefa odseka. Mogu li ponovo da je promenim zato što sam našao zanimljiviju?\", \"Referentni odgovor\": \"Član 26 dozvoljava promenu teme uz odobrenje šefa odseka samo jedanput. Druga dobrovoljna promena teme po tom pravilu nije predviđena.\", \"Odgovor sistema\": \" Da, možete ponovno promeniti temu završnog rada zato što ste već jednom to učinili uz odobrenje šefa odseka. Međutim, u vezi sa pravilima studiranja, isti teme se ne mogu odobriti u periodu od 3 godine od poslednje odbrane, tako da bi vas trebalo da obratite pažnju na to da zanimljivija tema ne bude podvrgnuta istim ograničenjima.\", \"Obavezne činjenice\": [\"Promena teme samo jedanput uz odobrenje.\"], \"Tvrdnje koje treba izbeći\": [\"Neograničen broj promena ako šef odseka odobri.\"], \"Očekivano ponašanje\": \"Odgovori na pitanje na osnovu dostupnih dokaza\"}\nOcena (samo broj od 0 do 5):",
+          "prompt_sha256": "5d5a1400e59688b433935b12d88ffa5e009bd537a2820ebe4dc051f33b6d5a58"
+        }
+      }
+    }
+  ]
+}

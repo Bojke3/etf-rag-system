@@ -67,12 +67,19 @@ def choose_model(models, requested, default):
     return chosen, record
 
 
-def build_local_pipeline(config, base_url, model, timeout, context_max_chars=2000, num_ctx=None):
+def build_local_pipeline(config, base_url, model, timeout, context_max_chars=2000, num_ctx=None,
+                         retrieval_enabled=True):
     """Keep the same retriever/prompt pipeline on the laptop in both modes."""
-    from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
-    from src.retrieval import SimpleRetriever
     from src.llm import OllamaClient
     from src.rag import RAGPipeline
+
+    if not retrieval_enabled:
+        client = OllamaClient(base_url=base_url, model=model, timeout=timeout,
+                              temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
+                              top_p=config.ollama_top_p, think=config.ollama_think, num_ctx=num_ctx)
+        return RAGPipeline(None, client, None, context_max_chars=context_max_chars)
+    from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
+    from src.retrieval import SimpleRetriever
 
     index_dir = Path(config.vector_store_path)
     if not all((index_dir / name).is_file() for name in ('index.faiss', 'metadatas.json')):
@@ -97,6 +104,8 @@ def prepare_execution(args, config):
     mode = choose_execution(args.execution, getattr(config, 'benchmark_execution', 'ask'), args.endpoint)
     args.execution = mode
     if mode == 'api':
+        if getattr(args, 'diagnostic_contexts', None):
+            raise ValueError('Diagnostic collection requires --execution local or ssh.')
         if getattr(args, 'context_max_chars', None) is not None or getattr(args, 'num_ctx', None) is not None:
             raise ValueError('--context-max-chars and --num-ctx require --execution local or ssh; the existing API controls its own context settings.')
         endpoint = args.endpoint or 'http://localhost:8000/query'
@@ -144,18 +153,22 @@ def prepare_execution(args, config):
         model, model_record = choose_model(models, args.model, default_model)
         args.model, args.endpoint = model, base_url
         print(f'LLM: {model} | ID: {model_record.get("digest", "unknown")} | mode: {mode}', flush=True)
-        print('Loading the local embedding model and vector index...', flush=True)
+        curated = bool(getattr(args, 'diagnostic_contexts', None)) and args.diagnostic_mode == 'curated'
+        print('Using curated evidence; retrieval is bypassed.' if curated else
+              'Loading the local embedding model and vector index...', flush=True)
+        pipeline_options = {'retrieval_enabled': False} if curated else {}
         pipeline = build_local_pipeline(config, base_url, model, args.timeout,
-                                        context_max_chars=context_max_chars, num_ctx=num_ctx)
+                                        context_max_chars=context_max_chars, num_ctx=num_ctx, **pipeline_options)
         print(f'Retrieved context budget: {context_max_chars} characters (prompts excluded).', flush=True)
         print(f'Ollama context window: {num_ctx if num_ctx is not None else "server/model default"} tokens.', flush=True)
 
         def query_fn(**request):
             if tunnel is not None and tunnel.process.poll() is not None:
                 raise ConnectionError('The SSH tunnel disconnected. Reconnect and resume with the same --run-id.')
+            context_options = {'context_documents': request['context_documents']} if curated else {}
             result = pipeline.process_query(question=request['question'], top_k=request['top_k'],
                                             prompt_strategy=request['prompt_strategy'], include_sources=True,
-                                            include_diagnostics=True)
+                                            include_diagnostics=True, **context_options)
             details = result.get('diagnostics', {})
             if details.get('context_truncated'):
                 print(f'Warning: retrieved context was shortened from {details["full_context_chars"]} to '

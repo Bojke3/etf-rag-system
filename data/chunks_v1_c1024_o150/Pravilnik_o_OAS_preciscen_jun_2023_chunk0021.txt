@@ -1,0 +1,17 @@
+rad je samostalan rad studenta iz odred ene teme, cija se izrada 
+i odbrana vrse na kraju studijskog programa. 
+Zavrsni rad mora biti iz oblasti izbornog podrucja - modula koje je 
+student upisao. 
+Student moze uzeti zavrsni rad samo kod nastavnika koji je angazovan 
+na nekom od predmeta izbornog podrucja - modula studijskog programa na kome 
+je student upisan, ili kod nastavnika kod koga je polagao predmet koji pripada 
+drugom izbornom podrucju - modulu osnovnih studija. 
+Spisak tema za zavrsni rad i nastavnika koji su za njih odgovorni 
+utvrd uje katedra koja je nadlezna za izborno podrucje - modul, a preporucuje se 
+da spisak tema bude objavljen na sajtu katedre najkasnije do pocetka prolecnog 
+semestra. Katedra koja je nadlezna za izborno podrucje – modul moze propisati 
+proceduru za razmatranje tema koje su predlozili nastavnici koji nisu 
+clanovi te katedre. 
+Student moze po odobrenju sefa odseka da promeni temu zavrsnog rada. 
+Tema se moze promeniti samo jedanput. 
+Student je u obavezi da odbrani zavrs

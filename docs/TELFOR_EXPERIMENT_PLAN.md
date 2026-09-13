@@ -183,11 +183,13 @@ Use the faculty-server tags previously supplied by the user; check availability 
 | L1 | `qwen3.5:latest` | Different model family; verify the intended installed weights |
 | L2 | `mistral-small:latest` | Larger Mistral candidate; validate server memory and common context-window support |
 | L3 | `mistral-large:latest` | Large-model comparison requested by the user; installed artifact reported as 73 GB |
-| L4 | `llama4:latest` | Large-model comparison from another family requested by the user; installed artifact reported as 67 GB |
+| L4 | `qwen3.6:latest` | Additional Qwen candidate from the installed list; installed artifact reported as 23 GB; freeze its actual identity |
 
 For the main comparison, use **two saved-context configurations × five LLMs** on all 60 development questions: ten cells and 600 responses. The two Mistral cells from Phase 4 can be reused if every effective setting matches, leaving 480 additional calls. No retrieval should be rerun simply to change the LLM.
 
-L3 and L4 are part of the main requested comparison, not optional extras. The user's installed names identify candidates, but do not establish their exact architecture, quantization or runtime memory requirements. Before execution, record their digests and model metadata, check the available server memory, and verify actual GPU/CPU placement with the common context window. Installed file size is not a runtime memory estimate. Run models sequentially and report any offloading, since latency then reflects the deployed configuration as well as the model. If a candidate cannot run, document the feasibility result and revisit the execution setup rather than silently dropping it.
+Reserve `llama4:latest` exclusively as the fixed judge, outside the generator comparison, following the user's decision to separate these roles. Keep `mistral-large:latest` in the generator comparison; replace the earlier Llama4 generator slot with `qwen3.6:latest`. This is a proposed allocation, not a claim that Llama4 is the most accurate Serbian judge. Verify the installed variant, memory feasibility and agreement with human labels before freezing the evaluation protocol. The judge receives no generator name in its prompt, and scoring rejects known judge/generator model or digest overlap.
+
+The user's installed names identify candidates, but do not establish their exact architecture, quantization or runtime memory requirements. Before execution, record their digests and model metadata, check the available server memory, and verify actual GPU/CPU placement with the common context window. Installed file size is not a runtime memory estimate. Run models sequentially and report any offloading, since latency then reflects the deployed configuration as well as the model. If a candidate cannot run, document the feasibility result and revisit the execution setup rather than silently dropping it.
 
 The central comparison is whether the larger deployments improve strict accuracy, reduce unsupported claims, and resolve rule/exception or multi-passage failures enough to justify their measured latency. Report paired per-question gains and regressions against L0 and L2. Do not assume that a larger model must perform better. Use curated-evidence results to separate improved evidence use from failures caused by missing evidence in normal contexts.
 
@@ -245,7 +247,7 @@ Curated evidence is a diagnostic reference, not a guaranteed upper bound on accu
 | Encoder input-token/truncation logging | Missing | Add before interpreting size/model comparisons |
 | Boundary-preserving chunker | Missing | Implement and inspect before Phase 2B |
 | Retrieval-only batch collection and evidence scoring | Not yet a complete study workflow | Add collection and a manual/scored reference format before C1 |
-| Replay arbitrary saved contexts across LLMs | Only a specialized earlier probe exists | Add a general replay workflow before Phase 5 |
+| Replay curated source contexts across LLMs | Implemented in the collector with a two-case pilot | Review and freeze all 20 cases; arbitrary retrieval-run replay still needs a separate workflow |
 | Seed support and explicit per-model thinking settings | Incomplete | Implement requested options and record support before the controlled reference |
 | Human rubric, annotation table and profile selection | Not yet formalized | Freeze definitions before selecting winners |
 

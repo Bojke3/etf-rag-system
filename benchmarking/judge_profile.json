@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "model": "llama4:latest",
+  "digest_prefix": "bf31604e25c2",
+  "execution": "ssh",
+  "temperature": 0.0,
+  "top_p": 0.9,
+  "num_ctx": 16384,
+  "max_tokens": 32,
+  "samples": 1,
+  "seed": 42,
+  "think": null,
+  "prompt_sha256": "5d5a1400e59688b433935b12d88ffa5e009bd537a2820ebe4dc051f33b6d5a58",
+  "description": "Reserved evaluation model, excluded from the generator comparison. Uses a Serbian rubric. Digest prefix comes from the user-provided installed-model list; verify server feasibility and human agreement before freezing paper results."
+}

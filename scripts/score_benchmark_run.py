@@ -6,6 +6,7 @@ outputs under benchmarking/runs/<run_id>/scores/. It never calls the RAG API.
 
 import argparse
 import json
+import hashlib
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -14,7 +15,6 @@ from typing import Any, Dict, Iterable, List, Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.evaluation import BERTScoreMetric, BLEUMetric, LLMJudgeMetric, ROUGEMetric
-from src.llm import OllamaClient
 
 try:
     from src.config import config
@@ -76,18 +76,22 @@ def calculate_metrics(
             scores[metric] = {"error": "answer_status_not_success"}
         return scores
 
-    if "rouge" in metrics:
-        scores["rouge"] = metric_instances["rouge"].calculate(reference, candidate)
-    if "bleu" in metrics:
-        scores["bleu"] = metric_instances["bleu"].calculate(reference, candidate)
-    if "bertscore" in metrics:
-        scores["bertscore"] = metric_instances["bertscore"].calculate(reference, candidate)
-    if "llm_judge" in metrics:
-        scores["llm_judge"] = metric_instances["llm_judge"].calculate(reference, candidate, question=question)
+    for metric in metrics:
+        try:
+            if metric == "llm_judge":
+                scores[metric] = metric_instances[metric].calculate_details(
+                    reference, candidate, question=question,
+                    required_facts=answer.get("required_facts", []),
+                    disallowed_claims=answer.get("disallowed_claims", []),
+                    expected_behavior=answer.get("expected_behavior"))
+            else:
+                scores[metric] = metric_instances[metric].calculate(reference, candidate)
+        except Exception as exc:
+            scores[metric] = {"error": str(exc)}
 
-    if all(m in scores for m in COMPOSITE_WEIGHTS):
+    if all(extract_primary_score(scores, m) is not None for m in COMPOSITE_WEIGHTS):
         scores["composite"] = sum(
-            weight * (extract_primary_score(scores, metric) or 0.0) / (5.0 if metric == "llm_judge" else 1.0)
+            weight * extract_primary_score(scores, metric) / (5.0 if metric == "llm_judge" else 1.0)
             for metric, weight in COMPOSITE_WEIGHTS.items()
         )
 
@@ -101,6 +105,8 @@ def extract_primary_score(scores: Dict[str, Any], metric_name: str) -> Optional[
         return float(metric_scores)
     if not isinstance(metric_scores, dict):
         return None
+    if metric_scores.get("error"):
+        return None
 
     if metric_name == "rouge":
         value = metric_scores.get("rougeL")
@@ -108,6 +114,8 @@ def extract_primary_score(scores: Dict[str, Any], metric_name: str) -> Optional[
         value = metric_scores.get("f1")
     elif metric_name == "bleu":
         value = metric_scores
+    elif metric_name == "llm_judge":
+        value = metric_scores.get("score")
     else:
         value = None
 
@@ -150,6 +158,10 @@ def summarize_scores(scored_answers: List[Dict[str, Any]], metrics: List[str]) -
         "successful_answers": len(successful),
         "failed_answers": len(failed),
         "metric_averages": metric_averages,
+        "metric_valid_counts": {m: sum(extract_primary_score(a.get("scores", {}), m) is not None
+                                        for a in successful) for m in metrics},
+        "metric_error_counts": {m: sum(extract_primary_score(a.get("scores", {}), m) is None
+                                        for a in successful) for m in metrics},
         "worst_by_rougeL": [
             {
                 "id": answer.get("id"),
@@ -170,18 +182,31 @@ def build_metric_instances(metrics: List[str], args: argparse.Namespace) -> Dict
     if "bleu" in metrics:
         instances["bleu"] = BLEUMetric()
     if "bertscore" in metrics:
-        instances["bertscore"] = BERTScoreMetric()
+        instances["bertscore"] = BERTScoreMetric(model_type=getattr(args, "bertscore_model", "bert-base-multilingual-cased"))
     if "llm_judge" in metrics:
-        judge_client = OllamaClient(
-            base_url=args.judge_base_url,
-            model=args.judge_model,
-            timeout=args.judge_timeout,
-        )
-        instances["llm_judge"] = LLMJudgeMetric(judge_client, num_samples=args.judge_samples)
+        instances["llm_judge"] = LLMJudgeMetric(args.judge_client, num_samples=args.judge_samples)
     return instances
 
 
 def score_run(args: argparse.Namespace) -> Path:
+    metrics = parse_metrics(args.metrics)
+    if not metrics:
+        raise ValueError("Select at least one metric")
+    if not (Path(args.output_dir) / args.run_id / "answers.jsonl").is_file():
+        raise FileNotFoundError("Run answers were not found; collect answers before scoring")
+    if "llm_judge" in metrics:
+        from scripts.judge_execution import prepare_judge
+        run_dir = Path(args.output_dir) / args.run_id
+        args.generator_records = [answer.get("config", {}) for answer in iter_answers(run_dir / "answers.jsonl")]
+        if (run_dir / "run_config.json").is_file():
+            collection_config = json.loads((run_dir / "run_config.json").read_text(encoding="utf-8"))
+            args.generator_records.extend([collection_config, collection_config.get("backend", {})])
+        with prepare_judge(args, config):
+            return _score_run(args)
+    return _score_run(args)
+
+
+def _score_run(args: argparse.Namespace) -> Path:
     """Score a collected benchmark run and return the score path."""
     run_dir = Path(args.output_dir) / args.run_id
     answers_path = run_dir / "answers.jsonl"
@@ -211,6 +236,7 @@ def score_run(args: argparse.Namespace) -> Path:
                 "source_section": answer.get("source_section"),
                 "reference_sources": answer.get("reference_sources", []),
                 "sources": answer.get("sources", []),
+                "context_mode": answer.get("diagnostics", {}).get("context_mode", "retrieved"),
                 "timing": {
                     "processing_time_ms": answer.get("processing_time_ms"),
                     "retrieval_time_ms": answer.get("retrieval_time_ms"),
@@ -224,7 +250,7 @@ def score_run(args: argparse.Namespace) -> Path:
     scores_dir = run_dir / "scores"
     scores_dir.mkdir(parents=True, exist_ok=True)
     score_name = "_".join(metrics)
-    score_path = scores_dir / f"{score_name}.json"
+    score_path = scores_dir / f"{score_name}_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.json"
     summary = summarize_scores(scored_answers, metrics)
 
     output = {
@@ -232,6 +258,14 @@ def score_run(args: argparse.Namespace) -> Path:
         "scored_at": datetime.now().isoformat(timespec="seconds"),
         "metrics": metrics,
         "answers_path": str(answers_path),
+        "answers_sha256": hashlib.sha256(answers_path.read_bytes()).hexdigest(),
+        "evaluation_protocol": "reference_metrics_v3",
+        "diagnostic_config": json.loads((run_dir / 'run_config.json').read_text(encoding='utf-8')).get('diagnostic_config')
+            if (run_dir / 'run_config.json').exists() else None,
+        "judge": getattr(args, "judge_metadata", None) if "llm_judge" in metrics else None,
+        "metric_implementation_sha256": {name: hashlib.sha256((Path(__file__).resolve().parents[1] /
+            'src/evaluation' / filename).read_bytes()).hexdigest() for name, filename in
+            (("rouge", "rouge.py"), ("bleu", "bleu.py"), ("bertscore", "bertscore.py"), ("llm_judge", "llm_judge.py")) if name in metrics},
         "summary": summary,
         "results": scored_answers,
     }
@@ -242,7 +276,7 @@ def score_run(args: argparse.Namespace) -> Path:
     return score_path
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Score a collected ETF RAG benchmark run")
     parser.add_argument("--run-id", required=True, help="Run id under benchmarking/runs")
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="Directory containing benchmark runs")
@@ -253,13 +287,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--judge-model",
-        default=getattr(config, "ollama_model", "mistral:7b"),
-        help="Ollama model used as the LLM judge (only used when --metrics includes llm_judge)",
+        default=None,
+        help="Optional assertion of the fixed profile model; does not follow OLLAMA_MODEL",
     )
     parser.add_argument(
         "--judge-base-url",
-        default=getattr(config, "ollama_base_url", "http://localhost:11434"),
-        help="Ollama base URL for the LLM judge",
+        default=None,
+        help="Ollama URL for --judge-execution local (including an existing tunnel)",
     )
     parser.add_argument(
         "--judge-timeout",
@@ -270,11 +304,24 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--judge-samples",
         type=int,
-        default=1,
-        help="Number of judge calls to average per answer (reduces scoring variance at the cost of time)",
+        default=None,
+        help="Optional assertion of the fixed profile sample count",
     )
-    return parser.parse_args()
+    parser.add_argument("--judge-profile", default=None, help="Fixed judge JSON (default: benchmarking/judge_profile.json)")
+    parser.add_argument("--judge-execution", choices=["local", "ssh"], help="Override connection mode, not judge identity")
+    parser.add_argument("--bertscore-model", default="bert-base-multilingual-cased", help="Fixed multilingual BERTScore encoder")
+    return parser.parse_args(argv)
 
 
 if __name__ == "__main__":
-    score_run(parse_args())
+    try:
+        output = score_run(parse_args())
+        report = json.loads(output.read_text(encoding="utf-8"))
+        if any(report["summary"]["metric_error_counts"].values()):
+            sys.exit(1)
+    except KeyboardInterrupt:
+        print("Scoring interrupted.", file=sys.stderr)
+        sys.exit(130)
+    except Exception as exc:
+        print(f"Scoring failed: {exc}", file=sys.stderr)
+        sys.exit(1)

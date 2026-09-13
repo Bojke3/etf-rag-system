@@ -83,6 +83,7 @@ def collect_answer(
     timeout: int,
     query_fn=None,
     backend_info=None,
+    context_documents=None,
 ) -> Dict[str, Any]:
     """Send one question to /query and return the raw answer record."""
     started_at = datetime.now().isoformat(timespec="seconds")
@@ -96,6 +97,7 @@ def collect_answer(
             top_k=top_k,
             prompt_strategy=prompt_strategy,
             timeout=timeout,
+            **({'context_documents': context_documents} if context_documents is not None else {}),
         )
         if api_result.get("status") == "success" and not api_result.get("answer", "").strip():
             api_result = {**api_result, "status": "error", "error": "The model returned no answer text."}
@@ -105,6 +107,9 @@ def collect_answer(
             "difficulty": question_item.get("difficulty"),
             "question": question,
             "expected_answer": question_item["expected_answer"],
+            "required_facts": question_item.get("required_facts", []),
+            "disallowed_claims": question_item.get("disallowed_claims", []),
+            "expected_behavior": question_item.get("expected_behavior"),
             "actual_answer": api_result.get("answer", ""),
             "status": api_result.get("status", "unknown"),
             "error": api_result.get("error", ""),
@@ -197,7 +202,12 @@ def summarize_collection(answers_path: Path, total_questions: int, run_config: D
 def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_info=None) -> Path:
     """Collect benchmark answers and return the run directory."""
     questions = load_benchmark(args.benchmark)
-    questions_to_run = questions[: args.limit] if args.limit is not None else questions
+    from scripts.diagnostic_benchmark import select_questions
+    questions_to_run, diagnostic_config = select_questions(questions, args)
+    if diagnostic_config and (backend_info or {}).get('execution') not in ('local', 'ssh'):
+        raise ValueError('Diagnostic collection requires a local/SSH backend.')
+    if diagnostic_config:
+        print(f"Diagnostic subset: {len(questions_to_run)} questions | mode={args.diagnostic_mode}", flush=True)
 
     run_id = args.run_id or build_run_id(args.label)
     run_dir = Path(args.output_dir) / run_id
@@ -226,6 +236,7 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
         "limit": args.limit,
         "resume": not args.no_resume,
         "mode": "collect_answers",
+        "diagnostic_config": diagnostic_config,
         "component_config": build_answer_config(
             args.endpoint,
             args.top_k,
@@ -239,7 +250,7 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
     if config_path.exists() and not args.no_resume:
         existing_config = json.loads(config_path.read_text(encoding="utf-8"))
         # Never mix answers from different models/settings in a resumed run.
-        immutable = ("benchmark_sha256", "backend", "top_k", "prompt_strategy", "model", "component_config")
+        immutable = ("benchmark_sha256", "backend", "top_k", "prompt_strategy", "model", "component_config", "diagnostic_config")
         changed = [key for key in immutable if existing_config.get(key) != run_config.get(key)]
         if changed:
             raise ValueError(f'The run has a different configuration ({", ".join(changed)}). Use a new --run-id.')
@@ -271,6 +282,8 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
                 timeout=args.timeout,
                 query_fn=query_fn,
                 backend_info=backend_info,
+                context_documents=question_item.get('curated_documents') if diagnostic_config and
+                    args.diagnostic_mode == 'curated' else None,
             )
             f.write(json.dumps(answer, ensure_ascii=False) + "\n")
             f.flush()
@@ -313,6 +326,9 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser.add_argument("--run-id", help="Existing or new run id. Reusing it resumes by default")
     parser.add_argument("--label", default="baseline_topk3", help="Short label used when run id is generated")
     parser.add_argument("--limit", type=int, help="Only run the first N questions")
+    parser.add_argument("--diagnostic-contexts", help="Reviewed source-passage JSON; selects only its question IDs")
+    parser.add_argument("--diagnostic-mode", choices=["curated", "retrieved"], default="curated",
+                        help="Use curated evidence or normal retrieval on the same diagnostic subset")
     parser.add_argument("--top-k", type=int, default=get_config_value("retrieval_top_k", 3), help="Retrieval top_k")
     parser.add_argument("--context-max-chars", type=int, default=None,
                         help="Retrieved context character budget, including separators but excluding prompts/question; local/SSH only (default: CONTEXT_MAX_CHARS from .env, otherwise 2000)")
@@ -337,7 +353,8 @@ def main():
     try:
         args = parse_args()
         # Validate input before establishing a connection or loading models.
-        load_benchmark(args.benchmark)
+        from scripts.diagnostic_benchmark import select_questions
+        select_questions(load_benchmark(args.benchmark), args)
         with prepare_execution(args, config) as (query_fn, backend_info):
             run_dir = collect_benchmark_answers(args, query_fn=query_fn, backend_info=backend_info)
         summary = json.loads((run_dir / 'collection_summary.json').read_text(encoding='utf-8'))

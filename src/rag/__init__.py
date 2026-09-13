@@ -25,7 +25,8 @@ class RAGPipeline:
                      prompt_strategy: str = "zero_shot",
                      include_sources: bool = True,
                      examples: str = "",
-                     include_diagnostics: bool = False) -> Dict[str, Any]:
+                     include_diagnostics: bool = False,
+                     context_documents: Optional[List[Dict]] = None) -> Dict[str, Any]:
         """Process user query end-to-end"""
         
         start_time = time.time()
@@ -38,10 +39,11 @@ class RAGPipeline:
 
             # 1. Retrieve relevant documents
             retrieval_start = time.time()
-            retrieved_docs = self.retriever.retrieve(normalized_question, top_k)
-            retrieval_time = time.time() - retrieval_start
+            curated = context_documents is not None
+            retrieved_docs = context_documents if curated else self.retriever.retrieve(normalized_question, top_k)
+            retrieval_time = 0.0 if curated else time.time() - retrieval_start
             
-            if not retrieved_docs:
+            if not retrieved_docs and not curated:
                 return {
                     "status": "error",
                     "error": "No relevant documents found",
@@ -51,6 +53,8 @@ class RAGPipeline:
             # 2. Build context
             from src.retrieval import ContextBuilder
             context_details = ContextBuilder.build_context_details(retrieved_docs, self.context_max_chars)
+            if curated and context_details['context_truncated']:
+                raise ValueError('Curated evidence exceeds the context budget; increase --context-max-chars.')
             context = context_details['context']
             
             # 3. Build prompt
@@ -113,6 +117,9 @@ class RAGPipeline:
             if include_diagnostics:
                 response['diagnostics'] = {
                     **context_details,
+                    'context_mode': 'curated' if curated else 'retrieved',
+                    'context_source_coordinates': [{key: doc.get(key) for key in
+                        ('document', 'source_start', 'source_end')} for doc in retrieved_docs] if curated else [],
                     'system_prompt': PromptTemplate.SYSTEM,
                     'user_prompt': prompt,
                     'input_chars': len(PromptTemplate.SYSTEM) + len(prompt),

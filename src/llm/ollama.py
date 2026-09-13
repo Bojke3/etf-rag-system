@@ -14,7 +14,8 @@ class OllamaClient(LLMClient):
     def __init__(self, base_url: str = "http://localhost:11434", model: str = "mistral", timeout: int = 300,
                  temperature: float = 0.1, max_tokens: int = 2048,
                  top_p: Optional[float] = None, think: Optional[Union[bool, str]] = None,
-                 raise_errors: bool = False, num_ctx: Optional[int] = None):
+                 raise_errors: bool = False, num_ctx: Optional[int] = None,
+                 seed: Optional[int] = None):
         if num_ctx is not None and num_ctx < 1:
             raise ValueError('Ollama context window must be positive.')
         self.base_url = base_url
@@ -27,6 +28,7 @@ class OllamaClient(LLMClient):
         self.think = think
         self.raise_errors = raise_errors
         self.num_ctx = num_ctx
+        self.seed = seed
         self.last_response_metadata = {}
 
     def generate(self, prompt: str, temperature: Optional[float] = None,
@@ -51,6 +53,8 @@ class OllamaClient(LLMClient):
                 payload["options"]["top_p"] = self.top_p
             if self.num_ctx is not None:
                 payload["options"]["num_ctx"] = self.num_ctx
+            if self.seed is not None:
+                payload["options"]["seed"] = self.seed
             if self.think is not None:
                 payload["think"] = self.think
             if system:

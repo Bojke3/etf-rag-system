@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "snapshot": "data/extracted_v1",
+  "snapshot_manifest_sha256": "c68932b4a790be8d9d9535cf1e90d04acc72b61248620c872cebf1cc9fe85dea",
+  "description": "Two-case curated-evidence pilot. These source passages are supplied without the expected answer. Expand after reviewing the remaining cases.",
+  "cases": [
+    {
+      "question_id": "REAL_033",
+      "question_sha256": "27bc826cdb936b25b323f82236f1f13ad9aa3e621150dff1b92cdd22b74c8839",
+      "review_status": "ready",
+      "review_note": "Pilot based on the previously inspected grading-scale/topic-change evidence; source text is unchanged. No new full PDF audit was performed.",
+      "passages": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "start": 59993,
+          "end": 60887
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_043",
+      "question_sha256": "a048755c0a3079161e470c0612e4b575f7b9de55b0b723a51abc2501bde39053",
+      "review_status": "ready",
+      "review_note": "Pilot based on the previously inspected grading-scale/topic-change evidence; source text is unchanged. No new full PDF audit was performed.",
+      "passages": [
+        {
+          "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+          "start": 19232,
+          "end": 19736
+        }
+      ]
+    }
+  ]
+}
