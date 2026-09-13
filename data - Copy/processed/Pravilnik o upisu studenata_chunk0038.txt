@@ -1,0 +1,5 @@
+ov zakon: Toplota Specificne toplote gasa. Rad pri sirenju idealnog gasa. i II princip termodinamike Izobarska, izotermska i adijabatska promena stanja gasa. Karnoov ciklus. Toplotne masine
+8 Elektrokinetika Jacina i gustina struje: Elektromotorna sila. Elsktricna otpornost. Omov zakon Kirhofova pravila Hulov zakon Elektroliticka disocijacija, Faradejevi zakoni elektrolize.
+9 Sile i vrtlozno polje Dsfinicija ampera. Interakcija naelektrisanja u pokretu Magnetno polje; Vektor magnetns indukcije Magnetni fluks Magnetno polje strujnog provodnika Delovanje magnetnog polja Ha provodnik ca strujom: Amperov zakon Pravougaona struja kontura u magnetnom polju: Lorencova sila. Kretanj€ naelektrisanih cestica elektricnom magnetnom polju (osciloskop, akcelerator i betatron):
+10 Elektromagnetna indukcija Elektromagnetna indukcija Faradejev zakon elektromagnetne indukcije; Samoindukcija, Lencovo pravilo. Uzajamna indukcija. Transformator: Energija u kalemu:
+11. Oscilacije Harmonijske oscilacije. Oscilacije u mehanici Slobo

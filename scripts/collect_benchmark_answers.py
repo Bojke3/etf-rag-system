@@ -113,6 +113,7 @@ def collect_answer(
             "generation_time_ms": api_result.get("generation_time_ms"),
             "wall_time_ms": int((time.time() - wall_start) * 1000),
             "sources": api_result.get("sources", []),
+            "diagnostics": api_result.get("diagnostics", {}),
             "reference_sources": question_item.get("sources", []),
             "source_document": question_item.get("source_document"),
             "source_section": question_item.get("source_section"),
@@ -282,6 +283,12 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
                 f"| duration={duration} | status={answer.get('status')}",
                 flush=True,
             )
+            details = answer.get('diagnostics', {})
+            if details:
+                print(f"  Context: {details['context_chars']}/{details['full_context_chars']} chars "
+                      f"| full chunks={details['chunks_fully_included']} "
+                      f"| partial={details['chunks_partially_included']} | omitted={details['chunks_omitted']} "
+                      f"| input with prompts={details['input_chars']} chars", flush=True)
             if answer.get("status") != "success" and answer.get("error"):
                 print(f"[{index}/{len(questions_to_run)}] error {question_id}: {answer.get('error')}", flush=True)
 
@@ -307,6 +314,10 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser.add_argument("--label", default="baseline_topk3", help="Short label used when run id is generated")
     parser.add_argument("--limit", type=int, help="Only run the first N questions")
     parser.add_argument("--top-k", type=int, default=get_config_value("retrieval_top_k", 3), help="Retrieval top_k")
+    parser.add_argument("--context-max-chars", type=int, default=None,
+                        help="Retrieved context character budget, including separators but excluding prompts/question; local/SSH only (default: CONTEXT_MAX_CHARS from .env, otherwise 2000)")
+    parser.add_argument("--num-ctx", type=int, default=None,
+                        help="Ollama context window in tokens; local/SSH only (default: OLLAMA_NUM_CTX from .env, otherwise server/model default)")
     parser.add_argument("--prompt-strategy", default="zero_shot", help="Prompt strategy sent to /query")
     parser.add_argument("--model", default=None, help="Actual installed Ollama model to run; otherwise select interactively/use .env")
     parser.add_argument("--timeout", type=int, default=get_config_value("ollama_timeout", DEFAULT_TIMEOUT), help="HTTP timeout in seconds")
@@ -316,6 +327,8 @@ def parse_args(argv=None) -> argparse.Namespace:
         parser.error('--limit must be positive.')
     if args.top_k < 1 or args.timeout < 1:
         parser.error('--top-k and --timeout must be positive.')
+    if any(value is not None and value < 1 for value in (args.context_max_chars, args.num_ctx)):
+        parser.error('--context-max-chars and --num-ctx must be positive.')
     return args
 
 

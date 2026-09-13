@@ -1,5 +1,7 @@
 # TELFOR Research and Writing Plan
 
+**Operational update, 13 September 2026:** See [TELFOR Experiment Plan](TELFOR_EXPERIMENT_PLAN.md) for the proposed candidate values, phase order, checkpoints, diagnostic tests, workload and dated schedule. Its detailed protocol supersedes the preliminary experiment examples below.
+
 ## Purpose and working title
 
 **Working title:** *Effects of Context Quality and Language Model Selection on a Serbian-Language RAG System for University Regulations*
@@ -15,7 +17,7 @@ The project already implements the complete workflow: PDF processing, text chunk
 This supports a claim of technical feasibility. It does not yet establish reliable performance on realistic student questions. Current evidence identifies several distinct limitations:
 
 - Relevant evidence can be absent from the retrieved results even when it exists in the index.
-- The current 2,000-character context limit can remove evidence that retrieval has already found.
+- The initial 2,000-character context limit removed evidence that retrieval had already found. Context limits are now configurable; the subsequent 8,000-character run retained all five selected chunks for all 60 questions. This fixes context delivery, but does not establish aggregate answer accuracy.
 - Extracted text contains some damaged formulas and OCR errors.
 - Mistral sometimes misapplies a rule even when the relevant evidence is present.
 
@@ -28,9 +30,9 @@ Existing implementation defects must be described transparently. Fixing context 
 1. **Retrieval:** How do embedding model selection, chunking, and retrieval depth affect the availability of evidence required to answer Serbian-language regulatory questions?
 2. **Context construction:** How much retrieved evidence reaches the LLM, and how does preserving complete relevant passages affect answer quality?
 3. **Generation:** How do selected LLMs compare when given identical contexts, including manually verified sufficient evidence?
-4. **Optional extraction analysis:** On a small, verified subset, how does correcting OCR or parsing damage affect evidence retrieval and answer quality?
+4. **Optional source-label analysis:** Does adding verified document, article and version information to the selected context improve rule applicability and answer quality?
 
-Keep the first three questions as the main scope. Treat OCR as a bounded diagnostic experiment rather than a project to develop a new OCR system.
+Keep the first three questions as the main scope. Keep OCR output fixed as a realistic corpus limitation and label extraction-related failures. Leave additional source labels until the core experiments and first paper draft are complete.
 
 ## Dataset and reference answers
 
@@ -82,17 +84,17 @@ Avoid interpreting a higher `top_k` as a larger effective context unless the sav
 
 ### Phase D: model comparison and curated-evidence probes
 
-Choose two or three available LLMs and compare them on identical saved contexts. Keep generation settings documented and fixed across the main comparison where supported.
+Compare five available LLMs on identical saved contexts: `mistral:latest`, `qwen3.5:latest`, `mistral-small:latest`, `mistral-large:latest`, and `llama4:latest`. The larger models are explicitly included to measure whether they improve evidence use and answer quality enough to justify their latency. Verify actual model identities and server feasibility, and keep generation settings documented and fixed across the main comparison where supported.
 
 On a selected diagnostic subset, supply manually verified, complete source passages directly. These curated-evidence probes estimate how models behave when retrieval failures are removed. Keep their results separate from normal end-to-end performance.
 
-Use approximately 6–10 selected end-to-end configurations as a planning target. Repeat a small number of finalist configurations, for example three runs, to assess generation variability. Record seeds where supported and do not assume that a low temperature guarantees identical output.
+Use two selected saved-context configurations per model, giving ten model-comparison cells. Repeat a small number of finalist configurations, for example three runs, to assess generation variability. Record seeds where supported and do not assume that a low temperature guarantees identical output.
 
-### Optional Phase E: extraction quality
+### Optional Phase E: source and version labels
 
-Select a small set of passages with verified OCR or parsing damage. Preserve the original text and create a corrected counterpart checked against the PDF.
+Compare the chosen system with and without verified document, article and version labels in its context. Preserve the selected passages and generation model; record the additional label text and resulting input length.
 
-Compare original and corrected text with other settings held fixed. Re-index the corrected corpus for retrieval comparisons; use matched passages for generation-only comparisons. Report the subset size and avoid generalizing its findings to all documents.
+Run this optional comparison on development data only if time remains after the core results and first paper draft. Keep OCR and preprocessing unchanged. If held-out results have already been inspected, describe subsequent experiments as exploratory.
 
 ## Metrics and answer assessment
 
@@ -137,7 +139,7 @@ Planning date: **11 September 2026**. The published TELFOR 2026 full-paper deadl
 |---|---|---|
 | Days 1–5 | Verify references, prepare and freeze the test set, instrument full-context logging, establish baselines, review related work | Draft the introduction, research questions, and dataset/method description |
 | Days 6–11 | Screen retrieval and context configurations; inspect errors and select candidates | Draft the experimental setup and prepare provisional tables |
-| Days 12–17 | Compare LLMs, run curated-evidence probes, repeat finalists; conduct bounded OCR analysis only if feasible | Draft results and discussion with explicit links between evidence and claims |
+| Days 12–17 | Compare LLMs, run curated-evidence probes, repeat finalists; consider source labels only after core work is complete | Draft results and discussion with explicit links between evidence and claims |
 | Days 18–23 | Run final held-out evaluation, check labels and uncertainty, finalize figures, review with the supervisor | Complete the abstract and conclusion, revise the full paper, check formatting and submit |
 
 Server access makes multiple iterations feasible, but annotation, verification, and interpretation are likely to require more attention than simply launching runs. If time becomes constrained, reduce the number of configurations before reducing reference quality or final evaluation rigor.

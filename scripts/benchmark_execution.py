@@ -67,7 +67,7 @@ def choose_model(models, requested, default):
     return chosen, record
 
 
-def build_local_pipeline(config, base_url, model, timeout):
+def build_local_pipeline(config, base_url, model, timeout, context_max_chars=2000, num_ctx=None):
     """Keep the same retriever/prompt pipeline on the laptop in both modes."""
     from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
     from src.retrieval import SimpleRetriever
@@ -87,8 +87,9 @@ def build_local_pipeline(config, base_url, model, timeout):
     retriever = SimpleRetriever(embedding, store, threshold=config.retrieval_threshold)
     client = OllamaClient(base_url=base_url, model=model, timeout=timeout,
                           temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
-                          top_p=config.ollama_top_p, think=config.ollama_think, raise_errors=True)
-    return RAGPipeline(retriever, client, embedding)
+                          top_p=config.ollama_top_p, think=config.ollama_think, raise_errors=True,
+                          num_ctx=num_ctx)
+    return RAGPipeline(retriever, client, embedding, context_max_chars=context_max_chars)
 
 
 @contextmanager
@@ -96,6 +97,8 @@ def prepare_execution(args, config):
     mode = choose_execution(args.execution, getattr(config, 'benchmark_execution', 'ask'), args.endpoint)
     args.execution = mode
     if mode == 'api':
+        if getattr(args, 'context_max_chars', None) is not None or getattr(args, 'num_ctx', None) is not None:
+            raise ValueError('--context-max-chars and --num-ctx require --execution local or ssh; the existing API controls its own context settings.')
         endpoint = args.endpoint or 'http://localhost:8000/query'
         if not endpoint.rstrip('/').endswith('/query'):
             raise ValueError('The API endpoint must end with /query.')
@@ -112,6 +115,14 @@ def prepare_execution(args, config):
 
     if config is None:
         raise ValueError('Configuration could not be loaded. Check .env and the project Python dependencies.')
+    context_max_chars = getattr(args, 'context_max_chars', None)
+    if context_max_chars is None:
+        context_max_chars = getattr(config, 'context_max_chars', 2000)
+    num_ctx = getattr(args, 'num_ctx', None)
+    if num_ctx is None:
+        num_ctx = getattr(config, 'ollama_num_ctx', None)
+    if context_max_chars < 1 or (num_ctx is not None and num_ctx < 1):
+        raise ValueError('Context limits must be positive.')
     manager = nullcontext()
     base_url = config.ollama_base_url.rstrip('/')
     default_model = config.ollama_model
@@ -134,13 +145,21 @@ def prepare_execution(args, config):
         args.model, args.endpoint = model, base_url
         print(f'LLM: {model} | ID: {model_record.get("digest", "unknown")} | mode: {mode}', flush=True)
         print('Loading the local embedding model and vector index...', flush=True)
-        pipeline = build_local_pipeline(config, base_url, model, args.timeout)
+        pipeline = build_local_pipeline(config, base_url, model, args.timeout,
+                                        context_max_chars=context_max_chars, num_ctx=num_ctx)
+        print(f'Retrieved context budget: {context_max_chars} characters (prompts excluded).', flush=True)
+        print(f'Ollama context window: {num_ctx if num_ctx is not None else "server/model default"} tokens.', flush=True)
 
         def query_fn(**request):
             if tunnel is not None and tunnel.process.poll() is not None:
                 raise ConnectionError('The SSH tunnel disconnected. Reconnect and resume with the same --run-id.')
             result = pipeline.process_query(question=request['question'], top_k=request['top_k'],
-                                            prompt_strategy=request['prompt_strategy'], include_sources=True)
+                                            prompt_strategy=request['prompt_strategy'], include_sources=True,
+                                            include_diagnostics=True)
+            details = result.get('diagnostics', {})
+            if details.get('context_truncated'):
+                print(f'Warning: retrieved context was shortened from {details["full_context_chars"]} to '
+                      f'{details["context_chars"]} characters; increase --context-max-chars to retain all chunks.', flush=True)
             if result.get('status') == 'success' and not result.get('answer', '').strip():
                 result['status'] = 'error'
                 result['error'] = 'Ollama returned no answer. Check the model, connection, timeout, and output token budget.'
@@ -151,7 +170,10 @@ def prepare_execution(args, config):
             'model_details': model_record.get('details', {}),
             'generation_options': {'temperature': config.ollama_temperature,
                                    'num_predict': config.ollama_max_tokens,
-                                   'top_p': config.ollama_top_p, 'think': config.ollama_think},
+                                   'top_p': config.ollama_top_p, 'think': config.ollama_think,
+                                   'num_ctx': num_ctx},
+            'context_max_chars': context_max_chars,
+            'context_builder_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/retrieval/context.py').read_bytes()).hexdigest(),
             'prompts_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/llm/prompts.py').read_bytes()).hexdigest(),
         }
         yield query_fn, metadata

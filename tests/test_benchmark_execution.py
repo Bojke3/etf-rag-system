@@ -96,9 +96,11 @@ class ExecutionTests(unittest.TestCase):
                 self.assertEqual(result['answer'], 'Odgovor')
                 self.assertEqual(metadata['model_digest'], 'sha256:def')
                 self.assertEqual(metadata['generation_options']['num_predict'], 2048)
-                build.assert_called_once_with(cfg, tunnel.base_url, 'qwen3.5:latest', 45)
+                build.assert_called_once_with(cfg, tunnel.base_url, 'qwen3.5:latest', 45,
+                                              context_max_chars=2000, num_ctx=None)
                 pipeline.process_query.assert_called_once_with(question='Pitanje', top_k=5,
-                                                               prompt_strategy='zero_shot', include_sources=True)
+                                                               prompt_strategy='zero_shot', include_sources=True,
+                                                               include_diagnostics=True)
                 tunnel.process.poll.return_value = 1
                 with self.assertRaises(ConnectionError):
                     query(question='Pitanje', top_k=5, prompt_strategy='zero_shot')

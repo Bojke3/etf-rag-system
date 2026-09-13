@@ -1,0 +1,5 @@
+x (1 +r)x 0; spo = I=1 Sx 60
+gde je spo srednja ponderisana ocena, N ukupan broj predmeta studijskog programa koje je student polozio (ne racunajuci fakultativne predmete); ei broj ESPB bodova za predmet, 0; ocena koju je ostvario na ispitu, r stimulativni faktor, $ broj godina studiranja studenta od trenutka upisa (ne racunajuci godine koje je student proveo u statusu mirovanja): Stimulativne faktore dobijaju samo studenti koji sy ispite polozili u skolskoj godini kada su prvi put upisali predmet i to rO,1 ukoliko je student polozio isPIT u prvom ILI drugom ISPITNOM roku u kome je stekao pravo na polaganje ispita, reO ukoliko je ispit polozio u ostalim rokovima. Rangiranje ce vrsi na osnovu ukupnog broja bodova; koji odgovara srednjoj ponderisanoj oceni.
+Odluka 0 izmeni Pravilnika o osnovnim akademskim studijama ce objavljuje na sajtu Fakulteta, a stupa na snagu 8 dana od dana objavljivanja:
+Predsednik Nastavno-naucnog veca Ze 0 4 4 Prof: dr Milo Tomasevic t
+Ca

@@ -1,0 +1,5 @@
+cine 7 Trigonometrijske funkcije. Identiteti; jednacine i nejednacine Primena trigonometrije na trougao 8. Kompleksni brojevi: 9 Analiticka geometrija y ravni (prava, krug, slipsa, hiperbola i parabola) 10. Planimetrija (prvenstveno geomstrija trougla; cetvorougla kruga) 11 . Stereometrija (prizma, piramida, zarubljena piramida; valjak; kupa, zarubljena kupa, sfera i delovi sfere): 12. Kombinatorika Binomna formula Aritmeticka i geometrijska progresija 13. Pojam granicne vrednosti: Izvod i primena izvoda.
+14
+Prilog B: FIZIKA
+Prostor, vreme i kretanje Referentni sistem Vektor polozaja. Ravnomerno neravnomerno kretanje (pravolinijsko i krivolinijsko): Trenutna brzina Klasican princip sabiranja brzina Galilejeve transformacije). Ubrzanje. Kruzno kretanje
+2 Sila energija Impuls i sila. Osnovni zakon klasicne dinamike Slaganje sila: Zakon akcije reakcije: Dinamika kruznog kretanja Centripetalna sila Ubrazanja KOD kruznog kretanja- Rad kao skalarni proizvod: Energija (kineticka i potencijalna): Snaga Spoljasnje i u

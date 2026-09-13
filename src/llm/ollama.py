@@ -14,7 +14,9 @@ class OllamaClient(LLMClient):
     def __init__(self, base_url: str = "http://localhost:11434", model: str = "mistral", timeout: int = 300,
                  temperature: float = 0.1, max_tokens: int = 2048,
                  top_p: Optional[float] = None, think: Optional[Union[bool, str]] = None,
-                 raise_errors: bool = False):
+                 raise_errors: bool = False, num_ctx: Optional[int] = None):
+        if num_ctx is not None and num_ctx < 1:
+            raise ValueError('Ollama context window must be positive.')
         self.base_url = base_url
         self.model = model
         self.timeout = timeout
@@ -24,10 +26,13 @@ class OllamaClient(LLMClient):
         self.top_p = top_p
         self.think = think
         self.raise_errors = raise_errors
+        self.num_ctx = num_ctx
+        self.last_response_metadata = {}
 
     def generate(self, prompt: str, temperature: Optional[float] = None,
                  max_tokens: Optional[int] = None, system: str = "", **kwargs) -> str:
         """Generate response using Ollama"""
+        self.last_response_metadata = {}
         try:
             import requests
             temperature = self.temperature if temperature is None else temperature
@@ -44,6 +49,8 @@ class OllamaClient(LLMClient):
             }
             if self.top_p is not None:
                 payload["options"]["top_p"] = self.top_p
+            if self.num_ctx is not None:
+                payload["options"]["num_ctx"] = self.num_ctx
             if self.think is not None:
                 payload["think"] = self.think
             if system:
@@ -56,7 +63,11 @@ class OllamaClient(LLMClient):
             )
 
             if response.status_code == 200:
-                answer = response.json().get("response", "")
+                result = response.json()
+                self.last_response_metadata = {key: result.get(key) for key in (
+                    'prompt_eval_count', 'eval_count', 'done', 'done_reason',
+                    'total_duration', 'load_duration', 'prompt_eval_duration', 'eval_duration')}
+                answer = result.get("response", "")
                 logger.info("Ollama response length=%s chars", len(answer))
                 return answer
             else:

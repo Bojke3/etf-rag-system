@@ -10,18 +10,22 @@ logger = logging.getLogger(__name__)
 class RAGPipeline:
     """Main RAG pipeline orchestration"""
     
-    def __init__(self, retriever, llm_client, embedding_model):
+    def __init__(self, retriever, llm_client, embedding_model, context_max_chars=2000):
+        if context_max_chars < 1:
+            raise ValueError('Context character budget must be positive.')
         self.retriever = retriever
         self.llm_client = llm_client
         self.embedding_model = embedding_model
         self.preprocessor = TextPreprocessor()
+        self.context_max_chars = context_max_chars
     
     def process_query(self,
                      question: str,
                      top_k: int = 5,
                      prompt_strategy: str = "zero_shot",
                      include_sources: bool = True,
-                     examples: str = "") -> Dict[str, Any]:
+                     examples: str = "",
+                     include_diagnostics: bool = False) -> Dict[str, Any]:
         """Process user query end-to-end"""
         
         start_time = time.time()
@@ -46,7 +50,8 @@ class RAGPipeline:
             
             # 2. Build context
             from src.retrieval import ContextBuilder
-            context = ContextBuilder.build_context(retrieved_docs)
+            context_details = ContextBuilder.build_context_details(retrieved_docs, self.context_max_chars)
+            context = context_details['context']
             
             # 3. Build prompt
             from src.llm import PromptTemplate
@@ -99,11 +104,20 @@ class RAGPipeline:
                 response["sources"] = [
                     {
                         "document": doc.get("document", "Unknown"),
+                        "chunk_id": doc.get("chunk_id"),
                         "score": doc.get("score", 0),
-                        "text": doc.get("text", "")[:200]
+                        "text": doc.get("text", "") if include_diagnostics else doc.get("text", "")[:200]
                     }
                     for doc in retrieved_docs
                 ]
+            if include_diagnostics:
+                response['diagnostics'] = {
+                    **context_details,
+                    'system_prompt': PromptTemplate.SYSTEM,
+                    'user_prompt': prompt,
+                    'input_chars': len(PromptTemplate.SYSTEM) + len(prompt),
+                    'generation': dict(getattr(self.llm_client, 'last_response_metadata', {})),
+                }
             
             return response
         

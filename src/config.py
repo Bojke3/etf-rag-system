@@ -1,6 +1,7 @@
 """Configuration management for ETF RAG System"""
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 from pathlib import Path
 from typing import Optional, Union, Literal
 
@@ -19,6 +20,8 @@ class Config(BaseSettings):
     ollama_top_p: float = 0.9
     ollama_max_tokens: int = 512
     ollama_timeout: int = 900
+    # Token window; None leaves the Ollama server/model default in effect.
+    ollama_num_ctx: Optional[int] = Field(default=None, gt=0)
     ollama_think: Optional[Union[bool, Literal["low", "medium", "high"]]] = None
 
     # Answer collection: retrieval stays local; SSH forwards only Ollama traffic.
@@ -53,6 +56,8 @@ class Config(BaseSettings):
     # Retrieval Configuration
     retrieval_top_k: int = 3
     retrieval_threshold: float = 0.0
+    # Retrieved text and separators only; excludes prompts and the question.
+    context_max_chars: int = Field(default=2000, gt=0)
     
     # Logging
     log_level: str = "INFO"

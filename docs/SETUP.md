@@ -1,5 +1,64 @@
 # Setup i Instalacija
 
+## Benchmark context size (characters versus tokens)
+
+For local/SSH answer collection, configure these defaults in your actual `.env`:
+
+```dotenv
+CONTEXT_MAX_CHARS=8000
+OLLAMA_NUM_CTX=8192
+```
+
+`CONTEXT_MAX_CHARS` limits retrieved text **including separators**. It excludes
+the system prompt, question, prompt-template instructions and generated answer.
+`OLLAMA_NUM_CTX` is a separate Ollama setting measured in **tokens**, not
+characters. Leave room in that token window for the complete model input and
+the generated answer. `OLLAMA_MAX_TOKENS` controls the output budget; it is not
+the retrieved-context limit. There is no universal characters-to-tokens ratio.
+
+To collect a new Mistral run with five retrieved chunks:
+
+```powershell
+python scripts/collect_benchmark_answers.py --execution ssh --model mistral:latest --top-k 5 --context-max-chars 8000 --num-ctx 8192 --run-id baseline_context8k --label baseline_context8k
+```
+
+The CLI values override `.env` for this run. The other generation settings and
+the prompt strategy are unchanged unless explicitly configured differently.
+Both new options apply to `local` and `ssh` execution; they are rejected in
+`api` mode because an existing API controls its own settings.
+
+Five 1,024-character chunks require at most `5 * 1024 + 4 * 2 = 5128`
+characters with the current separator. Use the actual indexed chunk lengths,
+rather than assuming that a changed `CHUNK_SIZE` value describes an older index.
+When increasing `top_k`, ensure that the complete retrieved text fits:
+
+```text
+sum(chunk lengths) + separator lengths <= CONTEXT_MAX_CHARS
+tokens(complete input) + output allowance <= Ollama token window
+```
+
+The collector prints the actual/full context size and counts of full, partial
+and omitted chunks. If retrieved text is shortened, it emits an English warning.
+Increasing the limit permits more text; it does not pad shorter contexts.
+
+Each new local/SSH answer stores full source text and chunk IDs, plus
+`diagnostics.context`, `system_prompt`, `user_prompt`, `input_chars`, chunk usage,
+and available Ollama input/output token counts. `context_truncated: false`
+means the application retained all retrieved text; it does not independently
+prove that the server's tokenizer or model window retained all input. Ollama's
+reported counts are recorded for inspection, not estimated from character counts.
+`input_chars` excludes any additional formatting applied internally by Ollama.
+
+The effective character budget, requested token window and context-builder hash
+are saved in `run_config.json` under `backend`. Resuming with different limits
+is rejected; use a new run ID. Preserve `baselineNo1` for comparison. That old
+run used an implicit server token window, so report the newly explicit window
+alongside the application context-budget change. For subsequent controlled
+context-budget experiments, keep the token window fixed.
+
+See [Ollama context length](https://docs.ollama.com/context-length) and
+[generation API response fields](https://docs.ollama.com/api/generate).
+
 ## Prikupljanje benchmark odgovora: laptop ili fakultetski server
 
 Pokreni iz korena projekta u projektnom Python okruženju:
@@ -258,24 +317,23 @@ python -c "from src.llm.ollama_client import OllamaClient; c = OllamaClient(); p
 python -c "from src.embedding.embedder import EmbeddingModel; e = EmbeddingModel(); print(e.embed('test')[:5])"
 ```
 
-## 📝 Procesiranje Dokumenata
+## Document processing: three separate stages
 
-```bash
-# Procesiranje svih dokumenata iz data/documents/
-python scripts/process_documents.py
+See [the document pipeline guide](DATA_PIPELINE.md) for snapshot contents, validation and migration from existing chunks. Run extraction once, then reuse the saved text for every chunking experiment.
 
-# Opcije:
-python scripts/process_documents.py --input data/documents --output data/processed --chunk-size 512
+```powershell
+# 1. Extract native text and use the existing OCR fallback where needed.
+python scripts/extract_documents.py --input DataAkti --output data/extracted_v1 --ocr-languages rs_cyrillic,en
+
+# 2. Chunk the saved cleaned text; no OCR is performed.
+python scripts/chunk_documents.py --input data/extracted_v1 --output data/chunks_v1_c1024_o150 --chunk-size 1024 --overlap 150
+
+# 3. Embed chunks and create a separate index.
+python scripts/index_documents.py --input data/chunks_v1_c1024_o150 --output models/vectorstore_v1_c1024_o150 --model sentence-transformers/all-MiniLM-L6-v2 --device cpu
 ```
 
-## 🏗️ Gradnja Vector Store-a
+All outputs must be new or empty directories. Existing data and the application's configured index remain in place. `process_documents.py` is now a chunking-only alias; it no longer accepts PDFs or OCR options.
 
-```bash
-python scripts/build_vectorstore.py
-
-# Opcije:
-python scripts/build_vectorstore.py --input data/processed --output models/vectorstore --vector-store faiss
-```
 
 ## 🌐 Pokretanje Web Aplikacije
 
@@ -357,11 +415,11 @@ set PYTHONPATH=%PYTHONPATH%;%cd%
 
 **Rešenje:**
 ```bash
-# Smanjiti chunk size
-python scripts/process_documents.py --chunk-size 256
+# Reuse the saved text with smaller chunks and a separate output.
+python scripts/chunk_documents.py --input data/extracted_v1 --output data/chunks_v1_c256_o50 --chunk-size 256 --overlap 50
 
-# Ili procesirati po direktorijumima
-python scripts/process_documents.py --input data/documents/studies
+# For extraction memory issues, process a source subset into a separate snapshot.
+python scripts/extract_documents.py --input data/documents/studies --output data/extracted_studies
 ```
 
 ### Problem: "CUDA out of memory" (ako koristi GPU)

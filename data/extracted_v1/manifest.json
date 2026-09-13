@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "stage": "extraction",
+  "created_at": "2026-09-12T23:35:52.270153+00:00",
+  "input_directory": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti",
+  "settings": {
+    "enable_ocr": true,
+    "ocr_max_pages": null,
+    "ocr_languages": "rs_cyrillic,en",
+    "ocr_policy": "fallback_if_entire_pdf_has_no_text"
+  },
+  "implementation_sha256": {
+    "loaders.py": "8f615a0ab0949dd209174e34f7ac9ca4f06ae66631144ff639891b3395925368",
+    "ocr.py": "23ade315a5af3db44623cda1c26e9018021b04aa7e627145881cc309dc26bd74",
+    "preprocessing.py": "2513c53261a26d7b8e9246b282fdba02678ed025954fb6fa78a2ed4f7ef27c01"
+  },
+  "documents": [
+    {
+      "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+      "source": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+      "source_sha256": "68afc03564790fd6f2554b9e906653443710e77cdbe22a29a8e3f6b987b3d7a5",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+        "file_name": "Izmena Pravilnika o osnovnim akademskim studijama.pdf",
+        "file_type": "pdf",
+        "ocr_used": true
+      },
+      "raw_file": "raw/Izmena Pravilnika o osnovnim akademskim studijama.txt",
+      "raw_sha256": "48ecdde1b1265c0900a2044d4e720b4a85414d4667d63612160549534350f9c0",
+      "cleaned_file": "cleaned/Izmena Pravilnika o osnovnim akademskim studijama.txt",
+      "cleaned_sha256": "faf8444fba091c431bbe5f6ace882346aebf3f906cbc6c6603f66b563ee797be",
+      "raw_chars": 3166,
+      "cleaned_chars": 3156
+    },
+    {
+      "document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "source": "Odluka o izmenama i dopunama Pravilnika o OAS.pdf",
+      "source_sha256": "ea37a39f2cd5f2130f5a4f74fc2376a671c1bca8ae486a7b72a3ca731f4fd16c",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Odluka o izmenama i dopunama Pravilnika o OAS.pdf",
+        "file_name": "Odluka o izmenama i dopunama Pravilnika o OAS.pdf",
+        "file_type": "pdf",
+        "ocr_used": true
+      },
+      "raw_file": "raw/Odluka o izmenama i dopunama Pravilnika o OAS.txt",
+      "raw_sha256": "a3de3e4e771ff7c748ace2b4c2e548f73055b48b7e077f2c8e91bf6986de0147",
+      "cleaned_file": "cleaned/Odluka o izmenama i dopunama Pravilnika o OAS.txt",
+      "cleaned_sha256": "268800349c0b48bab9e31e3745827016c14316a3ee405b240974d0845f5f8392",
+      "raw_chars": 5587,
+      "cleaned_chars": 5627
+    },
+    {
+      "document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+      "source": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama.pdf",
+      "source_sha256": "2fe82fcbac838363f1de250484ae5bd5ff2158bb67976bbecc7ea3e694d5fde3",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Odluka o izmeni Pravilnika o osnovnim akademskim studijama.pdf",
+        "file_name": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama.pdf",
+        "file_type": "pdf",
+        "ocr_used": true
+      },
+      "raw_file": "raw/Odluka o izmeni Pravilnika o osnovnim akademskim studijama.txt",
+      "raw_sha256": "50d7f9f1608d68f14434e34a7c8b80c969917c17d2180ae9103688a6b39a9dd3",
+      "cleaned_file": "cleaned/Odluka o izmeni Pravilnika o osnovnim akademskim studijama.txt",
+      "cleaned_sha256": "f01a7fbd74f2ff61df3da4213244416b3dbbf6390dc2e7e41c6711c42598954d",
+      "raw_chars": 1834,
+      "cleaned_chars": 1850
+    },
+    {
+      "document": "Odluka_OAS_jun_23",
+      "source": "Odluka_OAS_jun_23.pdf",
+      "source_sha256": "13988380ba2a213e2508b58b8ad0b6799b8b0404c39510fe8e1b062a4dde7d51",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Odluka_OAS_jun_23.pdf",
+        "file_name": "Odluka_OAS_jun_23.pdf",
+        "file_type": "pdf",
+        "ocr_used": true
+      },
+      "raw_file": "raw/Odluka_OAS_jun_23.txt",
+      "raw_sha256": "8224d2dde8e591e76b8a7ce620d491e820fb17a4494c982d54e3043bb1968823",
+      "cleaned_file": "cleaned/Odluka_OAS_jun_23.txt",
+      "cleaned_sha256": "731be85394173e702448bb0460f393c9841e68ecfb265bb49672bc0240d36f3d",
+      "raw_chars": 954,
+      "cleaned_chars": 956
+    },
+    {
+      "document": "Pravilnik o osnovnim akademskim studijama",
+      "source": "Pravilnik o osnovnim akademskim studijama.pdf",
+      "source_sha256": "d68f7f232823f0e6d2b7ae25333dd1eb93d0bb699a633dd56fa85a70bde62284",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Pravilnik o osnovnim akademskim studijama.pdf",
+        "file_name": "Pravilnik o osnovnim akademskim studijama.pdf",
+        "file_type": "pdf",
+        "ocr_used": true
+      },
+      "raw_file": "raw/Pravilnik o osnovnim akademskim studijama.txt",
+      "raw_sha256": "b452d46b9b2a05a8b0443d8ca047a0a7dbb1fb75410ab3cf21141e00b193c8a9",
+      "cleaned_file": "cleaned/Pravilnik o osnovnim akademskim studijama.txt",
+      "cleaned_sha256": "10f0e3087be2b450edbd6b59f5e1ed55e869a52a9cd59299b69816fa0715162c",
+      "raw_chars": 62115,
+      "cleaned_chars": 62707
+    },
+    {
+      "document": "Pravilnik o upisu studenata",
+      "source": "Pravilnik o upisu studenata.pdf",
+      "source_sha256": "efb96e44be46e260ceadcf352cd4504ff123a1ab949be618b49f2fadd3643815",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Pravilnik o upisu studenata.pdf",
+        "file_name": "Pravilnik o upisu studenata.pdf",
+        "file_type": "pdf",
+        "ocr_used": true
+      },
+      "raw_file": "raw/Pravilnik o upisu studenata.txt",
+      "raw_sha256": "c0b39935729796755622ca2dba372481d7f6a8c0d6a3a46c3685f1f143bc0112",
+      "cleaned_file": "cleaned/Pravilnik o upisu studenata.txt",
+      "cleaned_sha256": "24ad8cd35ca3b11245518ca47c24df32fc15623d86e4e255281d4178a8de245d",
+      "raw_chars": 35530,
+      "cleaned_chars": 35708
+    },
+    {
+      "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "source": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+      "source_sha256": "eeb014ccba5c0bb5c479d97cee8e0a131581224fbd3c02581b8bf133a261ff1f",
+      "metadata": {
+        "source": "C:\\Users\\trnav\\Documents\\Fakultet\\RAG\\etf-rag-system\\DataAkti\\Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+        "file_name": "Pravilnik_o_OAS_preciscen_jun_2023.pdf",
+        "file_type": "pdf",
+        "ocr_used": false
+      },
+      "raw_file": "raw/Pravilnik_o_OAS_preciscen_jun_2023.txt",
+      "raw_sha256": "9a35532f33b878b6bcf6c6e6c5b4249061cefb89ee0bfa23b91090127f9f6c2b",
+      "cleaned_file": "cleaned/Pravilnik_o_OAS_preciscen_jun_2023.txt",
+      "cleaned_sha256": "daf8a29b3b1fd8b9d19c4fa910a955c0b6185b3a3a57b05bc91b6bfb579bb5b6",
+      "raw_chars": 65198,
+      "cleaned_chars": 65661
+    }
+  ]
+}
