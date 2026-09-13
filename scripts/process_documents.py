@@ -1,6 +1,10 @@
-"""Script to process documents
+"""Script to process documents.
 
-run:
+Two inputs are accepted and auto-detected:
+
+**Documents** (PDF/DOCX/TXT) — extraction, OCR and strategy-aware chunking in
+one pass::
+
     python scripts/process_documents.py --input DataAkti --output data/processed --strategy flat_baseline --ocr-languages rs_cyrillic,en
 
 Chunks land in a per-strategy subdirectory (``<output>/<strategy_id>/``) so two
@@ -9,6 +13,11 @@ chunking strategies can coexist as separate build artifacts:
     chunks.jsonl                 canonical: full chunk records with metadata
     <stem>_chunk<NNNN>.txt       flat strategies only, for eyeballing / legacy
 
+**An extraction snapshot** from ``extract_documents.py`` — this script then acts
+as stage 2 of the three-stage pipeline and delegates to ``chunk_documents.py``,
+which re-chunks the frozen text without re-running OCR and writes a chunk
+manifest. OCR flags belong to ``extract_documents.py`` in that flow; prefer
+``scripts/chunk_documents.py`` for new commands. See docs/DATA_PIPELINE.md.
 """
 
 import argparse
@@ -37,6 +46,12 @@ logger = logging.getLogger(__name__)
 CHUNKS_FILE = "chunks.jsonl"
 
 
+def is_extraction_snapshot(input_dir: str) -> bool:
+    """True for an extract_documents.py snapshot rather than raw documents."""
+    source = Path(input_dir)
+    return (source / "manifest.json").exists() and (source / "cleaned").is_dir()
+
+
 def process_documents(
     input_dir: str,
     output_dir: str,
@@ -49,6 +64,15 @@ def process_documents(
     ocr_cleanup: bool = True,
 ):
     """Process documents from input directory, chunking each with one strategy."""
+
+    if is_extraction_snapshot(input_dir):
+        # Stage 2 of the three-stage pipeline: the text is already frozen and
+        # hash-verified, so re-running extraction or OCR here would defeat it.
+        from src.data.stages import chunk_documents as chunk_snapshot
+
+        logger.info("Input is an extraction snapshot — chunking without re-running OCR")
+        chunk_snapshot(input_dir, output_dir, chunk_size, overlap)
+        return
 
     os.environ["ETF_RAG_ENABLE_OCR"] = "1" if enable_ocr else "0"
     if ocr_max_pages:

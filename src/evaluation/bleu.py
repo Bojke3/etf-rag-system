@@ -14,13 +14,13 @@ class BLEUMetric(Metric):
         """Calculate BLEU score"""
         try:
             from nltk.translate.bleu_score import sentence_bleu
-            from nltk.tokenize import word_tokenize
+            from .rouge import _tokenize
 
-            ref_tokens = word_tokenize(reference.lower())
-            cand_tokens = word_tokenize(candidate.lower())
+            ref_tokens = _tokenize(reference)
+            cand_tokens = _tokenize(candidate)
 
             score = sentence_bleu([ref_tokens], cand_tokens, weights=(0.25, 0.25, 0.25, 0.25))
             return float(score)
         except Exception as e:
             logger.error(f"Error calculating BLEU: {e}")
-            return 0.0
+            raise RuntimeError(f"BLEU calculation failed: {e}") from e

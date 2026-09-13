@@ -1,5 +1,155 @@
 # Setup i Instalacija
 
+## Benchmark context size (characters versus tokens)
+
+For local/SSH answer collection, configure these defaults in your actual `.env`:
+
+```dotenv
+CONTEXT_MAX_CHARS=8000
+OLLAMA_NUM_CTX=8192
+```
+
+`CONTEXT_MAX_CHARS` limits retrieved text **including separators**. It excludes
+the system prompt, question, prompt-template instructions and generated answer.
+`OLLAMA_NUM_CTX` is a separate Ollama setting measured in **tokens**, not
+characters. Leave room in that token window for the complete model input and
+the generated answer. `OLLAMA_MAX_TOKENS` controls the output budget; it is not
+the retrieved-context limit. There is no universal characters-to-tokens ratio.
+
+To collect a new Mistral run with five retrieved chunks:
+
+```powershell
+python scripts/collect_benchmark_answers.py --execution ssh --model mistral:latest --top-k 5 --context-max-chars 8000 --num-ctx 8192 --run-id baseline_context8k --label baseline_context8k
+```
+
+The CLI values override `.env` for this run. The other generation settings and
+the prompt strategy are unchanged unless explicitly configured differently.
+Both new options apply to `local` and `ssh` execution; they are rejected in
+`api` mode because an existing API controls its own settings.
+
+Five 1,024-character chunks require at most `5 * 1024 + 4 * 2 = 5128`
+characters with the current separator. Use the actual indexed chunk lengths,
+rather than assuming that a changed `CHUNK_SIZE` value describes an older index.
+When increasing `top_k`, ensure that the complete retrieved text fits:
+
+```text
+sum(chunk lengths) + separator lengths <= CONTEXT_MAX_CHARS
+tokens(complete input) + output allowance <= Ollama token window
+```
+
+The collector prints the actual/full context size and counts of full, partial
+and omitted chunks. If retrieved text is shortened, it emits an English warning.
+Increasing the limit permits more text; it does not pad shorter contexts.
+
+Each new local/SSH answer stores full source text and chunk IDs, plus
+`diagnostics.context`, `system_prompt`, `user_prompt`, `input_chars`, chunk usage,
+and available Ollama input/output token counts. `context_truncated: false`
+means the application retained all retrieved text; it does not independently
+prove that the server's tokenizer or model window retained all input. Ollama's
+reported counts are recorded for inspection, not estimated from character counts.
+`input_chars` excludes any additional formatting applied internally by Ollama.
+
+The effective character budget, requested token window and context-builder hash
+are saved in `run_config.json` under `backend`. Resuming with different limits
+is rejected; use a new run ID. Preserve `baselineNo1` for comparison. That old
+run used an implicit server token window, so report the newly explicit window
+alongside the application context-budget change. For subsequent controlled
+context-budget experiments, keep the token window fixed.
+
+See [Ollama context length](https://docs.ollama.com/context-length) and
+[generation API response fields](https://docs.ollama.com/api/generate).
+
+## Prikupljanje benchmark odgovora: laptop ili fakultetski server
+
+Pokreni iz korena projekta u projektnom Python okruženju:
+
+```powershell
+python scripts/collect_benchmark_answers.py
+```
+
+Skripta najpre pita da li LLM radi lokalno ili preko SSH-a, zatim prikazuje
+instalirane modele na izabranoj Ollami. Podrazumevani skup je
+`benchmarking/finalna_pitanja.json`. U oba režima embedding model, pretraga
+lokalnog indeksa i rezultati ostaju na laptopu. Preko SSH-a šalju se pitanje,
+pronađeni odlomci i prompt, a generisanje radi na serveru. Flask aplikacija
+ne mora biti pokrenuta. Potreban je već napravljen lokalni vektorski indeks.
+
+U svoj `.env` dodaj podešavanja servera (stvarne vrednosti dobijaš od fakulteta):
+
+```dotenv
+BENCHMARK_EXECUTION=ask
+SSH_HOST=adresa-servera
+SSH_USER=korisnicko-ime
+SSH_PORT=22
+SSH_LOCAL_PORT=11435
+SSH_OLLAMA_HOST=127.0.0.1
+SSH_OLLAMA_PORT=11434
+SSH_OLLAMA_MODEL=mistral:latest
+SSH_STARTUP_TIMEOUT=120
+# Opciono; koristi se i SSH agent ili ~/.ssh/config:
+# SSH_IDENTITY_FILE=C:/Users/ime/.ssh/id_ed25519
+```
+
+Preporučen način prijave je SSH ključ/agent. Lozinku ne upisuj u `.env`.
+Ako server zahteva lozinku ili ključ ima passphrase, OpenSSH je traži u
+interaktivnoj konzoli. Pri prvom povezivanju proveri fingerprint servera sa
+administratorom i potvrdi ga u OpenSSH-u. Možeš koristiti i `Host` alias iz
+`~/.ssh/config`, uz prazan `SSH_USER`; za nestandardni port postavi `SSH_PORT`.
+Skripta koristi postojeći `ssh` program, otvara samo lokalni loopback port i
+ne menja konfiguraciju niti pokreće Ollamu na serveru. Ollama tamo mora već
+raditi, a SSH nalog mora imati dozvoljen TCP forwarding. Tunel se zatvara i
+pri grešci ili prekidu pomoću Ctrl+C. Promeni `SSH_LOCAL_PORT` ako je zauzet.
+
+Za automatski izbor servera postavi `BENCHMARK_EXECUTION=ssh`. Za rad bez
+pitanja o modelu koristi `--model`; bez interaktivnog terminala model se uzima
+iz odgovarajućeg podešavanja u `.env` i mora već biti instaliran. Primeri:
+
+```powershell
+# Kratak lokalni test
+python scripts/collect_benchmark_answers.py --execution local --model mistral:7b --limit 3 --run-id local_mistral_smoke
+
+# Isti model na serveru, pa dva poređenja
+python scripts/collect_benchmark_answers.py --execution ssh --model mistral:latest --top-k 5 --run-id ssh_mistral_topk5
+python scripts/collect_benchmark_answers.py --execution ssh --model qwen3.5:latest --top-k 5 --run-id ssh_qwen35_topk5
+python scripts/collect_benchmark_answers.py --execution ssh --model mistral-small:latest --top-k 5 --run-id ssh_mistral_small_topk5
+
+# Raniji način rada preko već pokrenute Flask aplikacije
+python scripts/collect_benchmark_answers.py --execution api --endpoint http://localhost:8000/query
+```
+
+`--model` u lokalnom/SSH režimu stvarno bira model za generisanje. U API
+režimu proverava se model aktivan u Flask aplikaciji; skripta ne menja njen
+globalni izbor modela. Sam `--endpoint` takođe bira API režim.
+
+Podešavanja `OLLAMA_TEMPERATURE`, `OLLAMA_TOP_P`, `OLLAMA_MAX_TOKENS` i
+`OLLAMA_TIMEOUT` koriste se u lokalnom i SSH režimu. Generacione opcije sada
+se šalju u Ollaminom polju `options`; stari klijent ih je slao na vrhu zahteva,
+pa raniji rezultati nisu pouzdan dokaz da su te vrednosti bile primenjene.
+Ponovi baseline sa novim klijentom. Opciono `OLLAMA_THINK` kontroliše thinking
+kod podržanih modela (`true`/`false`, ili `low`/`medium`/`high` za GPT-OSS).
+Ako nije zadato, koristi se podrazumevano ponašanje modela. Za Mistral nemoj
+zadavati ovu opciju. Pri promeni modela proveri podršku i drži podešavanja
+eksperimenta zabeleženim; veći izlazni budžet može biti potreban thinking modelu.
+
+Rezultati se čuvaju u `benchmarking/runs/<run-id>/`. Konfiguracija beleži
+stvarni naziv i digest modela iz `/api/tags`, generacione opcije, otisak promptova
+i skupa pitanja. To je bitno jer se sadržaj taga `latest` može promeniti.
+API režim može proveriti naziv modela, ali ne beleži njegov digest i generacione
+opcije servera; za kontrolisano poređenje koristi local/ssh režime.
+
+Ponovnim pokretanjem istog `--run-id` preskaču se uspešni odgovori, a greške
+se pokušavaju ponovo. Poslednji pokušaj po pitanju koristi se u sažetku i
+ocenjivanju. Promena modela, promptova, skupa ili relevantnih podešavanja
+zahteva novi `--run-id`, kao i nastavak starih rezultata bez novih metapodataka.
+Prekid može ostaviti pitanje bez sačuvanog odgovora; ono se ponavlja. Ako
+SSH vezu prekineš tokom generisanja, udaljena obrada može potrajati dok server
+ne primeti prekid. Lozinke i sadržaj SSH ključa ne ulaze u rezultate.
+
+GPU se koristi prema konfiguraciji i raspoloživoj memoriji serverske Ollame;
+SSH sam po sebi ne garantuje GPU izvršavanje. Proveri `ollama ps` na serveru
+tokom generisanja. Vreme generisanja mereno sa laptopa uključuje SSH/mrežni
+prenos i eventualno čekanje na deljenom serveru, pa ga odvoji od ocene kvaliteta.
+
 ## 📋 Preduslov
 
 - Python 3.10+
@@ -167,24 +317,23 @@ python -c "from src.llm.ollama_client import OllamaClient; c = OllamaClient(); p
 python -c "from src.embedding.embedder import EmbeddingModel; e = EmbeddingModel(); print(e.embed('test')[:5])"
 ```
 
-## 📝 Procesiranje Dokumenata
+## Document processing: three separate stages
 
-```bash
-# Procesiranje svih dokumenata iz data/documents/
-python scripts/process_documents.py
+See [the document pipeline guide](DATA_PIPELINE.md) for snapshot contents, validation and migration from existing chunks. Run extraction once, then reuse the saved text for every chunking experiment.
 
-# Opcije:
-python scripts/process_documents.py --input data/documents --output data/processed --chunk-size 512
+```powershell
+# 1. Extract native text and use the existing OCR fallback where needed.
+python scripts/extract_documents.py --input DataAkti --output data/extracted_v1 --ocr-languages rs_cyrillic,en
+
+# 2. Chunk the saved cleaned text; no OCR is performed.
+python scripts/chunk_documents.py --input data/extracted_v1 --output data/chunks_v1_c1024_o150 --chunk-size 1024 --overlap 150
+
+# 3. Embed chunks and create a separate index.
+python scripts/index_documents.py --input data/chunks_v1_c1024_o150 --output models/vectorstore_v1_c1024_o150 --model sentence-transformers/all-MiniLM-L6-v2 --device cpu
 ```
 
-## 🏗️ Gradnja Vector Store-a
+All outputs must be new or empty directories. Existing data and the application's configured index remain in place. `process_documents.py` is now a chunking-only alias; it no longer accepts PDFs or OCR options.
 
-```bash
-python scripts/build_vectorstore.py
-
-# Opcije:
-python scripts/build_vectorstore.py --input data/processed --output models/vectorstore --vector-store faiss
-```
 
 ## 🌐 Pokretanje Web Aplikacije
 
@@ -266,11 +415,11 @@ set PYTHONPATH=%PYTHONPATH%;%cd%
 
 **Rešenje:**
 ```bash
-# Smanjiti chunk size
-python scripts/process_documents.py --chunk-size 256
+# Reuse the saved text with smaller chunks and a separate output.
+python scripts/chunk_documents.py --input data/extracted_v1 --output data/chunks_v1_c256_o50 --chunk-size 256 --overlap 50
 
-# Ili procesirati po direktorijumima
-python scripts/process_documents.py --input data/documents/studies
+# For extraction memory issues, process a source subset into a separate snapshot.
+python scripts/extract_documents.py --input data/documents/studies --output data/extracted_studies
 ```
 
 ### Problem: "CUDA out of memory" (ako koristi GPU)

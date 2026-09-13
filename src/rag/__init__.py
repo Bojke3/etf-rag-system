@@ -11,14 +11,16 @@ class RAGPipeline:
     """Main RAG pipeline orchestration"""
     
     def __init__(self, retriever, llm_client, embedding_model,
-                 context_max_length=None, chunk_strategy=None):
+                 context_max_chars=2000, chunk_strategy=None):
+        if context_max_chars < 1:
+            raise ValueError('Context character budget must be positive.')
         self.retriever = retriever
         self.llm_client = llm_client
         self.embedding_model = embedding_model
         # Queries are normalised (transliterated) but never OCR-repaired — the
         # cleanup passes exist to fix scanned documents, not user questions.
         self.preprocessor = TextPreprocessor(ocr_cleanup=False)
-        self.context_max_length = context_max_length
+        self.context_max_chars = context_max_chars
         self.chunk_strategy = chunk_strategy
     
     def process_query(self,
@@ -26,7 +28,9 @@ class RAGPipeline:
                      top_k: int = 5,
                      prompt_strategy: str = "zero_shot",
                      include_sources: bool = True,
-                     examples: str = "") -> Dict[str, Any]:
+                     examples: str = "",
+                     include_diagnostics: bool = False,
+                     context_documents: Optional[List[Dict]] = None) -> Dict[str, Any]:
         """Process user query end-to-end"""
         
         start_time = time.time()
@@ -39,10 +43,11 @@ class RAGPipeline:
 
             # 1. Retrieve relevant documents
             retrieval_start = time.time()
-            retrieved_docs = self.retriever.retrieve(normalized_question, top_k)
-            retrieval_time = time.time() - retrieval_start
+            curated = context_documents is not None
+            retrieved_docs = context_documents if curated else self.retriever.retrieve(normalized_question, top_k)
+            retrieval_time = 0.0 if curated else time.time() - retrieval_start
             
-            if not retrieved_docs:
+            if not retrieved_docs and not curated:
                 return {
                     "status": "error",
                     "error": "No relevant documents found",
@@ -51,9 +56,10 @@ class RAGPipeline:
             
             # 2. Build context
             from src.retrieval import ContextBuilder
-            context = ContextBuilder.build_context(
-                retrieved_docs, max_length=self.context_max_length
-            )
+            context_details = ContextBuilder.build_context_details(retrieved_docs, self.context_max_chars)
+            if curated and context_details['context_truncated']:
+                raise ValueError('Curated evidence exceeds the context budget; increase --context-max-chars.')
+            context = context_details['context']
             
             # 3. Build prompt
             from src.llm import PromptTemplate
@@ -111,9 +117,9 @@ class RAGPipeline:
                 response["sources"] = [
                     {
                         "document": doc.get("document", "Unknown"),
-                        "score": doc.get("score", 0),
-                        "text": doc.get("text", "")[:200],
                         "chunk_id": doc.get("id", doc.get("chunk_id")),
+                        "score": doc.get("score", 0),
+                        "text": doc.get("text", "") if include_diagnostics else doc.get("text", "")[:200],
                         "parent_chunk_id": doc.get("parent_chunk_id"),
                         "strategy_id": doc.get("strategy_id", self.chunk_strategy),
                         "section": doc.get("section"),
@@ -122,6 +128,17 @@ class RAGPipeline:
                     }
                     for doc in retrieved_docs
                 ]
+            if include_diagnostics:
+                response['diagnostics'] = {
+                    **context_details,
+                    'context_mode': 'curated' if curated else 'retrieved',
+                    'context_source_coordinates': [{key: doc.get(key) for key in
+                        ('document', 'source_start', 'source_end')} for doc in retrieved_docs] if curated else [],
+                    'system_prompt': PromptTemplate.SYSTEM,
+                    'user_prompt': prompt,
+                    'input_chars': len(PromptTemplate.SYSTEM) + len(prompt),
+                    'generation': dict(getattr(self.llm_client, 'last_response_metadata', {})),
+                }
             
             return response
         

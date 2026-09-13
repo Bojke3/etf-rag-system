@@ -1,8 +1,9 @@
 """Configuration management for ETF RAG System"""
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union, Literal
 
 class Config(BaseSettings):
     """Main configuration class"""
@@ -19,6 +20,21 @@ class Config(BaseSettings):
     ollama_top_p: float = 0.9
     ollama_max_tokens: int = 512
     ollama_timeout: int = 900
+    # Token window; None leaves the Ollama server/model default in effect.
+    ollama_num_ctx: Optional[int] = Field(default=None, gt=0)
+    ollama_think: Optional[Union[bool, Literal["low", "medium", "high"]]] = None
+
+    # Answer collection: retrieval stays local; SSH forwards only Ollama traffic.
+    benchmark_execution: str = "ask"
+    ssh_host: str = ""
+    ssh_user: str = ""
+    ssh_port: int = 22
+    ssh_identity_file: str = ""
+    ssh_local_port: int = 11435
+    ssh_ollama_host: str = "127.0.0.1"
+    ssh_ollama_port: int = 11434
+    ssh_ollama_model: str = "mistral:latest"
+    ssh_startup_timeout: int = 120
     
     # Embedding Configuration
     embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
@@ -57,10 +73,11 @@ class Config(BaseSettings):
     # Retrieval Configuration
     retrieval_top_k: int = 3
     retrieval_threshold: float = 0.0
-    # Character budget for the context handed to the LLM. Must be held equal
-    # across strategies when A/B testing, or the comparison measures context
-    # budget rather than chunking.
-    context_max_length: int = 6000
+    # Character budget for the retrieved text handed to the LLM (separators
+    # included; prompts and question excluded). Hold this FIXED across
+    # strategies when A/B testing, or the comparison measures context budget
+    # rather than chunking. See CONTEXT_MAX_CHARS in .env.example.
+    context_max_chars: int = Field(default=2000, gt=0)
     
     # Logging
     log_level: str = "INFO"

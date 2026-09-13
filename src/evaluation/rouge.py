@@ -2,14 +2,9 @@
 
 from collections import Counter
 from typing import Dict
-import logging
 import re
 
 from .base import Metric
-
-logger = logging.getLogger(__name__)
-_fallback_warning_logged = False
-
 
 def _tokenize(text: str) -> list[str]:
     return re.findall(r"\w+", text.lower(), flags=re.UNICODE)
@@ -66,21 +61,9 @@ class ROUGEMetric(Metric):
     """ROUGE metric implementation"""
 
     def calculate(self, reference: str, candidate: str) -> Dict[str, float]:
-        """Calculate ROUGE scores"""
-        try:
-            from rouge_score import rouge_scorer
+        """Use one Unicode-aware implementation regardless of installed packages.
 
-            scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
-            scores = scorer.score(reference, candidate)
-
-            return {
-                'rouge1': scores['rouge1'].fmeasure,
-                'rouge2': scores['rouge2'].fmeasure,
-                'rougeL': scores['rougeL'].fmeasure,
-            }
-        except Exception as e:
-            global _fallback_warning_logged
-            if not _fallback_warning_logged:
-                logger.warning(f"Using fallback ROUGE calculation: {e}")
-                _fallback_warning_logged = True
-            return _fallback_rouge(reference, candidate)
+        No English stemming or ASCII-only filtering. Different scripts still
+        count as different lexical forms; this is not a semantic metric.
+        """
+        return _fallback_rouge(reference, candidate)

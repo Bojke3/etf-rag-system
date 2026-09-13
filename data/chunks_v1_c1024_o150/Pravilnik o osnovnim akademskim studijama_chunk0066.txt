@@ -1,0 +1,5 @@
+dobar dobar dovoljan nije polozio
+slovna ocena A+ ;
+30
+U evidenciju i indeks studenta unose ce prelazne ocene (od 6 do 10), a ocena 5 (nije polozio) upisuje ce samo u evidenciju. u slucaju kada je student zbog koriscenja nedozvoljenih sredstava na ispitu ili nedolicnog ponasanja i ometanja drugih studenata udaljen ca ispita; U zapisnik 0 polaganju ispita ce unosi posebna sifra za udaljavanje ca ispIta i smatra ce da student nije polozio IsPIT.
+Objavljivanje rezultata ispita Clan 68 Rezultati pismenog dela ispita moraju da budu objavljeni najkasnije u roku od dana od dana odrzavanja ispita Ako ce ISPIT polaze pismeno usmeno; uvid u zadatke pismenog dela ispita mora ce omoguciti studentima koji nisu pozvani na usmeni deo isPita najkasnije 24 sata posle objavljivanja rezultata pismenog dela ispita; a termin za uvid ce mora zakazati do objavljivanja rezultata: Uvid u rezultate ispita omogucice ce studentima najkasnije 48 sati nakon objavljivanja rezultata ispita, pri cemu student bar 24 sata pre odrzavanja uvida

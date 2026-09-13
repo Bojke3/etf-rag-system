@@ -44,8 +44,10 @@ pip install -r requirements.txt
 # 3. Setup Ollama modela
 bash scripts/setup_ollama_models.sh
 
-# 4. Procesiranje dokumenata
-python scripts/process_documents.py
+# 4. Extract text, chunk the saved snapshot, then vectorize.
+python scripts/extract_documents.py --input DataAkti --output data/extracted
+python scripts/chunk_documents.py --input data/extracted --output data/chunks --chunk-size 1024 --overlap 150
+python scripts/index_documents.py --input data/chunks --output models/vectorstore
 
 # 5. Pokretanje web aplikacije
 python web/app.py
@@ -61,7 +63,7 @@ Dokumenti sa struktuom projekta: [ARCHITECTURE.md](docs/ARCHITECTURE.md)
 - Ekstraktori za PDF i Word dokumente
 - Preprocessing i čišćenje teksta
 - Chunking strategije
-- OCR layer (budućnost)
+- OCR fallback and reusable text snapshots; see [the three-stage pipeline](docs/DATA_PIPELINE.md)
 
 ### 2. **Embedding & Retrieval** (`src/embedding/`, `src/retrieval/`)
 - Embedding modeli (sentence-transformers)
