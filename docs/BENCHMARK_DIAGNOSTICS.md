@@ -1,5 +1,7 @@
 # Diagnostic collection and fixed-judge scoring
 
+**15 September update:** New collection records paths and hashes of its original benchmark and direct-retrieval index in `provenance.json`, without making per-run copies. `baseline_context8k` has received these references retrospectively without modifying raw answers. Scoring verifies the referenced files and joins missing reference criteria by exact ID/question/reference text. Its new scores therefore include criteria absent from historical scoring; rescore all compared runs under the same protocol. See [the run register](BENCHMARK_RUN_REGISTER.md) for the repetition command and provenance limits.
+
 Answer collection and scoring remain separate. The collector saves raw responses; scoring can be repeated without generating those answers again. Neither changing scripts nor preparing a context/profile file sends requests to models.
 
 ## Diagnostic pilot

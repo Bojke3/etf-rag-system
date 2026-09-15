@@ -81,6 +81,8 @@ def build_local_pipeline(config, base_url, model, timeout, context_max_chars=200
     from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
     from src.retrieval import SimpleRetriever
 
+    if getattr(config, 'chunk_strategy', 'flat_baseline') not in ('flat_baseline', 'flat_512'):
+        raise ValueError('Direct collection currently supports flat indexes only; hierarchical strategy integration is pending.')
     index_dir = Path(config.vector_store_path)
     if not all((index_dir / name).is_file() for name in ('index.faiss', 'metadatas.json')):
         raise ValueError('Local vector index not found. Process and index the documents first.')
@@ -96,7 +98,10 @@ def build_local_pipeline(config, base_url, model, timeout, context_max_chars=200
                           temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
                           top_p=config.ollama_top_p, think=config.ollama_think, raise_errors=True,
                           num_ctx=num_ctx)
-    return RAGPipeline(retriever, client, embedding, context_max_chars=context_max_chars)
+    from scripts.benchmark_provenance import retrieval_record
+    pipeline = RAGPipeline(retriever, client, embedding, context_max_chars=context_max_chars)
+    pipeline.collection_provenance = retrieval_record(config, embedding, store)
+    return pipeline
 
 
 @contextmanager
@@ -151,6 +156,8 @@ def prepare_execution(args, config):
     with manager as tunnel:
         models = list_models(base_url)
         model, model_record = choose_model(models, args.model, default_model)
+        if getattr(args, 'expected_model_digest', None) and model_record.get('digest') != args.expected_model_digest:
+            raise ValueError('Installed generator digest differs from the reference run. No answers generated.')
         args.model, args.endpoint = model, base_url
         print(f'LLM: {model} | ID: {model_record.get("digest", "unknown")} | mode: {mode}', flush=True)
         curated = bool(getattr(args, 'diagnostic_contexts', None)) and args.diagnostic_mode == 'curated'
@@ -159,6 +166,10 @@ def prepare_execution(args, config):
         pipeline_options = {'retrieval_enabled': False} if curated else {}
         pipeline = build_local_pipeline(config, base_url, model, args.timeout,
                                         context_max_chars=context_max_chars, num_ctx=num_ctx, **pipeline_options)
+        if getattr(args, 'repeat_from', None):
+            from scripts.benchmark_provenance import verify_saved_inputs
+            check = verify_saved_inputs(args.repeat_from, retriever=pipeline.retriever)
+            print(f'Reference verified: identical retrieval and prompts for {check["questions_checked"]} questions.', flush=True)
         print(f'Retrieved context budget: {context_max_chars} characters (prompts excluded).', flush=True)
         print(f'Ollama context window: {num_ctx if num_ctx is not None else "server/model default"} tokens.', flush=True)
 
@@ -189,4 +200,7 @@ def prepare_execution(args, config):
             'context_builder_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/retrieval/context.py').read_bytes()).hexdigest(),
             'prompts_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/llm/prompts.py').read_bytes()).hexdigest(),
         }
+        provenance = getattr(pipeline, 'collection_provenance', None)
+        if isinstance(provenance, dict):
+            metadata['retrieval_provenance'] = provenance
         yield query_fn, metadata

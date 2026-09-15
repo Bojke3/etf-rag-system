@@ -217,6 +217,8 @@ def _score_run(args: argparse.Namespace) -> Path:
     metric_instances = build_metric_instances(metrics, args)
     # A resumed collection can append a successful retry after an error.
     answers = list({answer['id']: answer for answer in iter_answers(answers_path)}.values())
+    from scripts.benchmark_provenance import add_reference_fields
+    answers = add_reference_fields(run_dir, answers)
 
     scored_answers = []
     for index, answer in enumerate(answers, start=1):
@@ -260,6 +262,8 @@ def _score_run(args: argparse.Namespace) -> Path:
         "answers_path": str(answers_path),
         "answers_sha256": hashlib.sha256(answers_path.read_bytes()).hexdigest(),
         "evaluation_protocol": "reference_metrics_v3",
+        "reference_benchmark_sha256": json.loads((run_dir / 'provenance.json').read_text(encoding='utf-8'))['inputs']['benchmark.json']['sha256']
+            if (run_dir / 'provenance.json').exists() else None,
         "diagnostic_config": json.loads((run_dir / 'run_config.json').read_text(encoding='utf-8')).get('diagnostic_config')
             if (run_dir / 'run_config.json').exists() else None,
         "judge": getattr(args, "judge_metadata", None) if "llm_judge" in metrics else None,

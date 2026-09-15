@@ -1,5 +1,7 @@
 # TELFOR Experiment Plan
 
+**15 September update:** See [Benchmark run register](BENCHMARK_RUN_REGISTER.md). The supervisor now requires five repetitions per compared configuration, replacing the three-repeat proposal below and invalidating its workload estimate. The immediate proposal is to complete the existing 8000-character, temperature-0.7 baseline series after compatibility checks; the larger-window, temperature-0.0 settings below describe a separate future configuration, not repetitions of that historical run. The web interface is outside the current benchmark priority.
+
 **Version:** proposed protocol, 13 September 2026.  
 **Language:** paper and research documentation in English; corpus, questions and answers in Serbian.  
 **Status:** planning only. This document does not launch experiments or change `.env`.

@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "recorded_at": "2026-09-15T20:31:37.716842+00:00",
+  "recording": "before_collection",
+  "inputs": {
+    "benchmark.json": {
+      "path": "benchmarking/finalna_pitanja.json",
+      "path_base": "project_root",
+      "sha256": "a88e35cb6d7b1b883065dfaebd48cc5883f1caba703b068257de5cca8131e78d"
+    },
+    "vectorstore/index.faiss": {
+      "path": "models/vectorstore/index.faiss",
+      "path_base": "project_root",
+      "sha256": "b3e799a872701027e13a189297222a94500f15b02504d5dd41316d7890449708"
+    },
+    "vectorstore/metadatas.json": {
+      "path": "models/vectorstore/metadatas.json",
+      "path_base": "project_root",
+      "sha256": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+    }
+  },
+  "embedding": {
+    "retriever": "SimpleRetriever",
+    "effective_strategy": "flat_legacy_or_staged",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_device": "cpu",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_dimension": 384,
+    "embedding_max_seq_length": 256,
+    "embedding_revision_note": "Resolved from loaded encoder config when available; null means unknown.",
+    "index_type": "IndexFlatIP",
+    "vector_count": 205,
+    "normalization": "L2-normalized document/query vectors; inner product search",
+    "files": {
+      "index.faiss": "b3e799a872701027e13a189297222a94500f15b02504d5dd41316d7890449708",
+      "metadatas.json": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+    },
+    "index_manifest_sha256": null
+  },
+  "runtime_observed_now": {
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "packages": {
+      "sentence-transformers": "5.5.0",
+      "transformers": "5.8.1",
+      "torch": "2.12.1",
+      "numpy": "2.4.5",
+      "faiss-cpu": "1.13.2",
+      "pydantic-settings": "2.14.1",
+      "requests": "2.34.2"
+    },
+    "git_revision": "878fbfa0e8fb552009cdf6cdac63781419fa6b8d",
+    "code_sha256": {
+      "src/__init__.py": "138822d601ea24d3ab472c661c92a85f5276bd5a5dafda67e7d3720ae3ec545c",
+      "src/chatbot/__init__.py": "5b76f06cd0b1e19a3f473a7f376e3bef274f4b691d864fecef7edb991fadf6a8",
+      "src/config.py": "ab390fd16df191e339a77dbcaf7f1bc077e68b9b98053123f36e04b6ef99ab3d",
+      "src/constants.py": "067cbcdaf7d6f15b3076b9ce881c0459fe38dabd649d0c05ab0fb1a2a29ffd95",
+      "src/data/__init__.py": "3e2612ade37d9eddd87ab83a51c4bb8e60f9064622cbbb41d315e9d6696e5e60",
+      "src/data/chunking/__init__.py": "b0081f3ef538481bf47a71edf2845c1a43f99ba6c29e45ab13dfef12f5650cdf",
+      "src/data/chunking/base.py": "364b94e21e2d3143aaca75747d1d2d59522e5fd901f428fb3b12d885c1d55490",
+      "src/data/chunking/flat.py": "bce793eec82c1e7b6c77d879d867a191395a198c75b94efadf28a1737ef2dd59",
+      "src/data/chunking/hierarchical.py": "351e598b7fdcada48a506c8b32ccb05c957bf291aed1ac5f0cf3425adcea666c",
+      "src/data/chunking/registry.py": "2034bf5533bb3bdc327dc7a31f699cf56fbdbbedccfed51a655af2ca978db0b5",
+      "src/data/chunking/splitters.py": "b240ebfc3d5811288a685659fd9fb606866c35acbe2ab569771a0348ded2fcbe",
+      "src/data/document.py": "2ec29fccc1656348aa327aa960f44fb8eafeb063076c4dad4cc32475f8f70573",
+      "src/data/loaders.py": "fb34d7ac81477ed255a9765f4e515abde05bf496e5f137e7adcba7062bc47cf8",
+      "src/data/ocr.py": "67e92b1a3fe7625303ddc138f2836d5fbb6d869c268163882caa8ebbfd513622",
+      "src/data/preprocessing.py": "00aa3b0eb6a0d8166a24720772b38d238f7a81b451647f91e84fc340ffb9f091",
+      "src/data/stages.py": "758ba44a969108acfcc83f2d2b2774bd88c42cccbf0075bcfedb0fc1a43af997",
+      "src/embedding/__init__.py": "b1af9fc3a9abf5d1dd3d7851bbb2fb24f729f1cacdd19ab7dcb33116a4e4a33d",
+      "src/embedding/base.py": "cbf69568bd0a8dde4ef3f306a5670d27623f345f36f044f09f2b9eb373d561d8",
+      "src/embedding/faiss_store.py": "e034ef27ccb90fa4abe3aa63585ff7021d4af4ab4565410d2bf5b5a5913fc6f5",
+      "src/embedding/sentence_transformer.py": "9fcd22d407a23a73b0b87c795dcec03edc9873476474b4961cf28370de621075",
+      "src/evaluation/__init__.py": "482d80de863644bc4c250c637e3b3ded10bc1547a8ace1af9797f6a5785e05a7",
+      "src/evaluation/base.py": "5416ef9830ec439d2ca6a5d98d56fe9364ef03b951ffac45d8e967ef0aa63faa",
+      "src/evaluation/bertscore.py": "1b7b46b67db91cb47598a41d36a3795a0c1f2cb0dc99f498f7358405f757dd80",
+      "src/evaluation/bleu.py": "d88be6ef5e80c910aa7b96cfc66b602de66b25001855ff2fe87f6a6174b0ca68",
+      "src/evaluation/evaluator.py": "ac8e48ffc39fa23b407719fa1b8602f2ccf2285698e06936a4d1fd9547cd23a7",
+      "src/evaluation/llm_judge.py": "ea991c29ac1277c9f71a3c62549cb55bfab72392cf42cfda0c5b0585aa02eb55",
+      "src/evaluation/rouge.py": "a7275b7998c610536fda72639f58decd5eaad31d5e1f2f769506a0dd42c45f7a",
+      "src/llm/__init__.py": "dc8f3601bdb531775fbbbc72252132699433c0a9e1da33850f08f7f357edd548",
+      "src/llm/base.py": "8f95e3b75237e8081bad1bc3d39edadd1d06ff8ff343c287b6f76bc240b407f4",
+      "src/llm/ollama.py": "dbb02b8830419abc9447647253e219b3604515f781b61fd90e37f913eb62a025",
+      "src/llm/prompts.py": "e54745269cf4e4a759a39c1f5d6dd554469fe8a18a4b1b79fd236f320f1048c0",
+      "src/llm/ssh_tunnel.py": "21ab647dcdcdd9a3e4bfa3389b8b01b6bb3cbed9b24e4c04be7666fca9d11234",
+      "src/rag/__init__.py": "27bf17989911c8a79eadc39f115cbcf3b6c29f09bf150808b55cc940fa335b26",
+      "src/retrieval/__init__.py": "c66834ae832a9ddf4c1d62131277c167a349705aaf71dbfa10d0246c5caec90c",
+      "src/retrieval/base.py": "236b8d32f004bd9e23298df666c12fdc3a2796caebde2fb5612d292067e2a2ce",
+      "src/retrieval/context.py": "42cff10c33f34e182f51f7c4700c4a5842b60bcc415d641af2b074787561cbde",
+      "src/retrieval/parent_aware.py": "56206f774dcf800083b4bcad91de4909947bf2324e6f233a663e4670f53a28f3",
+      "src/retrieval/simple.py": "48859d2216bde100bcc3bc9ec14ea36d116132a81d397e421fec4280799fc209",
+      "src/utils/__init__.py": "6229ef24d44c6bdb2372bb797a2b0b855acbf2165cb271144ce33530c0cd86e6",
+      "scripts/benchmark_execution.py": "8fb5e0606b8c200fa78704c8ee916135e029134fb9c0736224cae1319cb01229",
+      "scripts/benchmark_provenance.py": "03239b7e984612ae810146532966d59dda6f2854b94f87bca42f6bf17a8ea13c",
+      "scripts/chunk_documents.py": "3ba89ea16bba47f106b7bcc5136fef6d267d48dfec9225b2b37041903dc8d938",
+      "scripts/collect_benchmark_answers.py": "54dc161bc6a211e7b77e1f3f3f6a1f5c7f16f7a4cbb52b0f0aaa2944a7b113c6",
+      "scripts/diagnostic_benchmark.py": "1348484ab6d5919cc13c0b53c8b4f165678506a6bfd66a65ad62c652b43d305a",
+      "scripts/extract_documents.py": "709eca6233527f2d1b45a2fd5443334a7ad016e61a6841ea17a0362f2e0a304b",
+      "scripts/index_documents.py": "071959e89005ec5cbc092e7175f0883d97e782b7e178f05477a5b6693e9eadf2",
+      "scripts/judge_execution.py": "e81c00a9aaf0e1818b730a4cf493cd568c5507d8b1de4caf9a5a9b77dd902196",
+      "scripts/process_documents.py": "2e77f14cecb92a43e37c474e2a0b978db59e7fa4ea2297a5ee38b2c96a4adb4e",
+      "scripts/run_benchmark.py": "ad16fb3ffc2cad1e178f8d60ebaf816ec1199627f971546693b4bf7ab49e885e",
+      "scripts/score_benchmark_run.py": "2f2cbb4bbd3b066327f3308a009b98c98de4713a46bbaca0b4268efcb9a3dfe2"
+    },
+    "server_hardware": null,
+    "note": "Client runtime only. Server hardware/runtime is not inferred from model size."
+  },
+  "audit": null,
+  "historical_runtime_known": null
+}

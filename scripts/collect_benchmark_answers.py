@@ -39,9 +39,9 @@ def get_config_value(name: str, default: Any = None) -> Any:
 
 def load_completed_ids(answers_path: Path) -> Set[str]:
     """Read completed question ids from an existing answers JSONL file."""
-    completed = set()
+    statuses = {}
     if not answers_path.exists():
-        return completed
+        return set()
 
     with answers_path.open("r", encoding="utf-8") as f:
         for line in f:
@@ -53,9 +53,9 @@ def load_completed_ids(answers_path: Path) -> Set[str]:
             except json.JSONDecodeError:
                 continue
             question_id = answer.get("id")
-            if question_id and answer.get("status") == "success":
-                completed.add(question_id)
-    return completed
+            if question_id:
+                statuses[question_id] = answer.get('status')
+    return {key for key, status in statuses.items() if status == 'success'}
 
 
 def iter_answers(answers_path: Path) -> Iterable[Dict[str, Any]]:
@@ -133,6 +133,9 @@ def collect_answer(
             "difficulty": question_item.get("difficulty"),
             "question": question,
             "expected_answer": question_item["expected_answer"],
+            "required_facts": question_item.get("required_facts", []),
+            "disallowed_claims": question_item.get("disallowed_claims", []),
+            "expected_behavior": question_item.get("expected_behavior"),
             "actual_answer": "",
             "status": "error",
             "error": str(exc),
@@ -237,6 +240,7 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
         "resume": not args.no_resume,
         "mode": "collect_answers",
         "diagnostic_config": diagnostic_config,
+        "repeat_from": str(Path(args.repeat_from).resolve()) if getattr(args, 'repeat_from', None) else None,
         "component_config": build_answer_config(
             args.endpoint,
             args.top_k,
@@ -250,13 +254,19 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
     if config_path.exists() and not args.no_resume:
         existing_config = json.loads(config_path.read_text(encoding="utf-8"))
         # Never mix answers from different models/settings in a resumed run.
-        immutable = ("benchmark_sha256", "backend", "top_k", "prompt_strategy", "model", "component_config", "diagnostic_config")
+        immutable = ("benchmark_sha256", "backend", "top_k", "prompt_strategy", "model", "component_config", "diagnostic_config", "repeat_from")
         changed = [key for key in immutable if existing_config.get(key) != run_config.get(key)]
         if changed:
             raise ValueError(f'The run has a different configuration ({", ".join(changed)}). Use a new --run-id.')
         run_config["created_at"] = existing_config.get("created_at", run_config["created_at"])
     elif answers_path.exists():
         raise ValueError('Answers exist without run_config.json. Use a new --run-id.')
+    from scripts.benchmark_provenance import record_inputs
+    retrieval = (backend_info or {}).get('retrieval_provenance')
+    record_inputs(run_dir, args.benchmark,
+                  index_dir=get_config_value('vector_store_path') if retrieval else None,
+                  expected_files=retrieval.get('files') if retrieval else None,
+                  embedding=retrieval)
     write_json(config_path, run_config)
 
     completed_ids = set() if args.no_resume else load_completed_ids(answers_path)
@@ -324,6 +334,7 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser.add_argument("--endpoint", default=None, help="Existing RAG /query endpoint (selects api mode)")
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="Directory for benchmark runs")
     parser.add_argument("--run-id", help="Existing or new run id. Reusing it resumes by default")
+    parser.add_argument("--repeat-from", help="Reference run directory; use its recorded input paths/settings and verify all prompts before generation (requires a new run ID)")
     parser.add_argument("--label", default="baseline_topk3", help="Short label used when run id is generated")
     parser.add_argument("--limit", type=int, help="Only run the first N questions")
     parser.add_argument("--diagnostic-contexts", help="Reviewed source-passage JSON; selects only its question IDs")
@@ -349,9 +360,14 @@ def parse_args(argv=None) -> argparse.Namespace:
 
 
 def main():
+    global config
     from scripts.benchmark_execution import prepare_execution
     try:
         args = parse_args()
+        if getattr(args, 'repeat_from', None):
+            from scripts.benchmark_provenance import apply_repeat_settings
+            config = apply_repeat_settings(args, config)
+            print('Repeating recorded settings from the reference run; parameter defaults/overrides are replaced.', flush=True)
         # Validate input before establishing a connection or loading models.
         from scripts.diagnostic_benchmark import select_questions
         select_questions(load_benchmark(args.benchmark), args)

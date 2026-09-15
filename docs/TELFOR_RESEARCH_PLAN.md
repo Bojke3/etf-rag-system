@@ -1,5 +1,7 @@
 # TELFOR Research and Writing Plan
 
+**15 September update:** [Benchmark run register](BENCHMARK_RUN_REGISTER.md) records the current benchmark-first scope, naming convention, existing baseline candidate and supervisor's requirement for five repetitions. It supersedes the earlier three-repeat suggestion; historical baseline repetitions retain their original effective settings.
+
 **Operational update, 13 September 2026:** See [TELFOR Experiment Plan](TELFOR_EXPERIMENT_PLAN.md) for the proposed candidate values, phase order, checkpoints, diagnostic tests, workload and dated schedule. Its detailed protocol supersedes the preliminary experiment examples below.
 
 ## Purpose and working title
