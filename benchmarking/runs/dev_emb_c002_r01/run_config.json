@@ -1,0 +1,73 @@
+{
+  "run_id": "dev_emb_c002_r01",
+  "label": "baseline_topk3",
+  "created_at": "2026-09-18T01:26:53",
+  "benchmark": "benchmarking\\finalna_pitanja.json",
+  "benchmark_sha256": "a88e35cb6d7b1b883065dfaebd48cc5883f1caba703b068257de5cca8131e78d",
+  "backend": {
+    "execution": "ssh",
+    "model": "mistral:latest",
+    "model_digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+    "model_details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "llama",
+      "families": [
+        "llama"
+      ],
+      "parameter_size": "7.2B",
+      "quantization_level": "Q4_K_M"
+    },
+    "generation_options": {
+      "temperature": 0.7,
+      "num_predict": 2048,
+      "top_p": 0.9,
+      "think": null,
+      "num_ctx": 8192
+    },
+    "context_max_chars": 8000,
+    "context_builder_sha256": "42cff10c33f34e182f51f7c4700c4a5842b60bcc415d641af2b074787561cbde",
+    "prompts_sha256": "e54745269cf4e4a759a39c1f5d6dd554469fe8a18a4b1b79fd236f320f1048c0",
+    "retrieval_provenance": {
+      "retriever": "SimpleRetriever",
+      "effective_strategy": "flat_legacy_or_staged",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_device": "cpu",
+      "embedding_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+      "embedding_dimension": 1024,
+      "embedding_max_seq_length": 8192,
+      "embedding_revision_note": "Resolved from loaded encoder config when available; null means unknown.",
+      "index_type": "IndexFlatIP",
+      "vector_count": 205,
+      "normalization": "L2-normalized document/query vectors; inner product search",
+      "files": {
+        "index.faiss": "59853c616ad2181456616bb8dc7bba6b3c0ce791596cb73cbded6b2f7735b092",
+        "metadatas.json": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+      },
+      "index_manifest_sha256": "d2d6c4d8bbabefbff46a4d21226cedda83e57d9653872f21574af947686a30b0"
+    }
+  },
+  "endpoint": "http://127.0.0.1:11435",
+  "top_k": 5,
+  "prompt_strategy": "zero_shot",
+  "model": "mistral:latest",
+  "timeout": 900,
+  "limit": null,
+  "resume": true,
+  "mode": "collect_answers",
+  "diagnostic_config": null,
+  "repeat_from": null,
+  "component_config": {
+    "endpoint": "http://127.0.0.1:11435",
+    "top_k": 5,
+    "prompt_strategy": "zero_shot",
+    "model": "mistral:latest",
+    "timeout": 900,
+    "embedding_model": "BAAI/bge-m3",
+    "embedding_device": "cpu",
+    "chunk_size": 1024,
+    "chunk_overlap": 150,
+    "retrieval_threshold": 0.0,
+    "vector_store_path": "models/vectorstore_c002_c1024_o150"
+  }
+}
