@@ -180,26 +180,123 @@ prepisivanju u izveštaj, ne utiče na ocenjivanje.
 
 ---
 
-## Šta ostaje
+## Dogovoreni plan testiranja
 
-1. **Rubrika sudije** — dopuna da odustajanje protiv `expected_behavior="answer"` nije 4.0.
-   **Sada je pravi trenutak**: ocenjen je tek jedan run. Menjanje rubrike menja `prompt_sha256`
-   i traži ponovno ocenjivanje svega; posle 40 runova to je 11 sati.
-2. **Odluka o drugom generatoru** — `mistral-large` otpada zbog hardvera. Predlog `qwen3.5`.
-3. **Lokalno vs server** — nije izmereno koliko M5 treba po pitanju. Ako je uporediv, generisanje
-   može lokalno, bez SSH tunela; llama4 sudija svakako mora na server (67 GB).
-4. **Prikupljanje 40 runova** po `docs/TELFOR_RUN_MATRIX.md`.
-5. **Skripta za zbirnu tabelu** — prosek i standardna devijacija po konfiguraciji, za LaTeX.
-   Ne postoji; ima smisla tek kad se vidi kakve ocene izlaze.
+Pun opis sa komandama: **`docs/TELFOR_RUN_MATRIX.md`**. Ovde je suština i, važnije, **zašto** je
+tako odlučeno — da se sledeća sesija ne vraća na iste rasprave.
 
-## Sledeći koraci
+### Šta se menja, šta stoji
 
-1. Izmeriti M5 na jednom pravom pitanju (prekinuto) → odlučiti gde se generiše.
+Tri ose po dve vrednosti → **8 konfiguracija × 5 ponavljanja = 40 runova**, 2400 generisanja.
+
+| Osa | A | B |
+|---|---|---|
+| embedding | `all-MiniLM-L6-v2` | `BAAI/bge-m3` |
+| chunkovanje | `flat_baseline` | `hierarchical` |
+| generator | `mistral:latest` | **nije odlučeno** (vidi otvorena pitanja) |
+
+Nepromenjeno u svim granama: istih 60 pitanja (`finalna_pitanja.json`), `top_k=5`,
+budžet konteksta 22.000 znakova, `num_ctx=16384`, temperatura 0.7 / top_p 0.9, `zero_shot` prompt,
+5 ponavljanja.
+
+Oznake runova: `dev_combined_c101_r01` … `c108_r05`. Indeksi zadržavaju oznake `c001`–`c004` iz
+`models/registry.json`; runovi koriste poseban opseg `c1xx` da se dve stvari ne mešaju.
+
+### Odluke i razlozi
+
+**Sve se prikuplja iznova.** Postojećih 10 runova se ne koristi kao grana matrice. Odluka
+korisnika: "nek budu tu i višak, uzećemo šta nam treba". Time otpada rasprava da li se run na
+`num_ctx=8192` sme porediti sa runom na 16384. Stari runovi ostaju kao zasebno, validno poređenje
+embedinga na starom budžetu.
+
+**`top_k=5` za obe strategije, budžet dovoljan da se ništa ne odseca.** Ovo je predlog korisnika i
+bolji je od prvobitnog predloga da se izjednači `top_k` (8 za flat, 2 za hijerarhijski), zbog
+asimetrije ishoda:
+
+- Ako **flat pobedi** — zaključak je gotov i jači nego iz izjednačenog poređenja, jer je flat
+  pobedio uprkos tome što je dobio ~3,5 puta manje teksta (5.100 naspram 17.300 znakova).
+- Ako **hijerarhijski pobedi** — tek tada treba kontrolna grana: flat sa većim `top_k`, da se
+  odvoji "bolje sečenje" od "više teksta".
+
+Dodatni runovi se plaćaju **samo ako ih rezultat zatraži**. Odbačena je varijanta `top_k=20` za
+flat kao kontrola — to nije čista kontrola nego druga vrsta hendikepa (15 nebitnih pasusa unosi
+šum, pa se ne zna da li flat pada zbog sečenja ili zbog šuma).
+
+**Posledica koju treba prijaviti u radu:** na istom `top_k` dve strategije isporučuju bitno
+različitu količinu teksta. To je svojstvo strategije, ne greška postavke, ali mora u tabelu
+rezultata zajedno sa brojem isporučenih pasusa (kolektor ga snima po pitanju u `diagnostics`).
+
+Formulacija za rad: *"Za obe strategije `top_k=5`, uz budžet konteksta postavljen tako da nijedna
+nije odsecana; svaka isporučuje svojih pet najboljih pasusa u celini."*
+
+**Budžet 22.000, ne 20.000** — mereno, ne procenjeno: hijerarhijski maksimum je 20.908 znakova, a
+na budžetu 20.000 i dalje se odseca 11 od 60 pitanja. Na 21.000 nijedno. Uzeto 22.000 sa rezervom.
+
+**`num_ctx=16384`** — 22.000 znakova je ~9.016 tokena pri izmerenih **2.44 znaka po tokenu**
+(komentari u configu tvrde 3.5, što je pogrešno za srpski sa mistralovim tokenizerom). Plus prompt
+i 2.048 za odgovor ≈ 11.164 tokena, ostaje ~5.200 rezerve. Na starom `num_ctx=8192` prompt se ne
+bi uklopio i **Ollama bi ga tiho odsekla na serveru**, što je gore od kontrolisanog odsecanja.
+
+**Sudija je jedan i fiksan, ne unakrsan.** Razmatrano je da svaki generator ocenjuje onaj drugi.
+Odbačeno: tada svaki generator dobija **drugog sudiju**, pa se ne može razlikovati "bolji
+generator" od "blaži ocenjivač" — sudija postaje promenljiva baš na osi koja se meri. Ostaje
+`llama4:latest` rezervisan samo za ocenjivanje. Kod to i štiti: `judge_execution.py:42` odbija da
+oceni run čiji je generator iste porodice kao sudija, pa llama4 ne može istovremeno biti generator
+i sudija.
+
+**Redosled izvršavanja:** prvo prikupiti **sve** runove, pa tek onda oceniti sve odjednom. Svako
+prebacivanje između generatora i sudije košta ~30 s učitavanja modela od 67 GB.
+
+### Procena vremena
+
+| faza | trajanje |
+|---|---|
+| jedan run, generator na GPU | ~12 min |
+| 40 runova | ~8 h |
+| ocenjivanje svih 2400 odgovora (llama4, ~16 s/odgovor) | ~11 h |
+
+---
+
+## Šta ostaje za sledeću sesiju
+
+### Otvorena pitanja — traže odluku pre pokretanja
+
+1. **Drugi generator nije izabran.** Korisnik je tražio `mistral-large`; merenja pokazuju da na
+   ovom serveru daje 0.57 tok/s → ~72 h po runu, 15 dana za 5 ponavljanja. Korisnik je taj nalaz
+   dva puta osporio, pa je dogovoreno da se izmeri **jedno pravo pitanje** — to merenje
+   **nije izvršeno** (prekinuto). Dok se ne izvrši, osa generatora je otvorena.
+   Predlog koji stoji: `qwen3.5:latest` (6.6 GB, staje na GPU, druga porodica od mistrala, već je
+   na listi kandidata u run registru). Šta god da se izabere, treba zabeležiti i digest.
+
+2. **Gde se generiše — lokalno ili na serveru.** Mac ima `mistral:latest` i `qwen3.5:9b` sa
+   **identičnim ID-evima** kao server. Ako M5 bude uporediv po brzini, generisanje može lokalno,
+   bez SSH tunela i bez zavisnosti od Andrijinog naloga. llama4 sudija svakako mora na server —
+   67 GB ne staje u 24 GB. Merenje nije urađeno.
+   *Zabeleženo pre merenja, da se posle ne pametuje:* očekivanje je da M5 bude uporediv ili brži
+   za `mistral:latest`, jer model staje i na jednom i na drugom mestu.
+
+3. **Rubrika sudije.** Dopuniti da odustajanje kada je `expected_behavior="answer"` nije 4.0.
+   **Sada je pravi trenutak** — ocenjen je tačno jedan run. Izmena menja `prompt_sha256`, pa traži
+   ponovno ocenjivanje svega; posle 40 runova to je 11 sati.
+
+### Posao koji ne traži odluku
+
+4. **Prikupljanje 40 runova** po `docs/TELFOR_RUN_MATRIX.md`. Commit posle svake konfiguracije
+   (8 commita, ne 40), da pad na 30. runu ne odnese ništa.
+5. **Skripta za zbirnu tabelu** — prosek i standardna devijacija po konfiguraciji, spremno za
+   LaTeX. Ne postoji. Ima smisla tek kad se vidi kakve ocene izlaze.
+6. **PR za `hierarchical-benchmark`** i merge u `main`. Grana je pushovana, PR nije otvoren.
+7. **Sitnica:** `required_facts` se u fajlu sa ocenama prikazuje kao `None` iako je poslat sudiji.
+   Greška u prepisivanju u izveštaj, ne utiče na ocene, ali zbunjuje pri čitanju.
+
+### Preporučeni redosled
+
+1. Izmeriti jedno pitanje lokalno i na serveru → zatvara pitanja 1 i 2.
 2. Dopuniti rubriku sudije, pa **ponovo oceniti `dev_base_c001_r05`** i uporediti jedan-na-jedan:
-   REAL_002 mora da padne, REAL_001 (0.0) i REAL_004 (4.0) moraju da ostanu.
+   REAL_002 mora da padne, REAL_001 (0.0) i REAL_004 (4.0) moraju da ostanu gde jesu.
 3. Potvrditi drugi generator i njegov digest.
-4. Otvoriti PR za `hierarchical-benchmark` i umergovati u `main`.
-5. Pokrenuti matricu.
+4. Otvoriti PR i umergovati u `main` pre prikupljanja, da runovi budu vezani za stabilan kod.
+5. Pokrenuti matricu, pa oceniti sve odjednom.
 
 ## Kako nastaviti
 
