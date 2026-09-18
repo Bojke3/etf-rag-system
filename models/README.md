@@ -9,12 +9,14 @@ readable form.
 | `c001` | `vectorstore_c001_c1024_o150` | `sentence-transformers/all-MiniLM-L6-v2` | 384 | 205, from `data/chunks_v1_c1024_o150` | retrospective audit |
 | `c002` | `vectorstore_c002_c1024_o150` | `BAAI/bge-m3` | 1024 | 205, same chunk snapshot | build manifest |
 | `c003` | `vectorstore_c003_hier` | `sentence-transformers/all-MiniLM-L6-v2` | 384 | 176 children embedded, 51 parents held out | build manifest |
+| `c004` | `vectorstore_c004_hier_bge` | `BAAI/bge-m3` | 1024 | same 176 children, 51 parents | build manifest |
 
 All indexes are `IndexFlatIP` over L2-normalised vectors. `c001` and `c002` are built from the
 **same** 205 chunks — their `metadatas.json` hashes are identical — so only the encoder differs,
 which is what makes `c001` vs `c002` a controlled embedding comparison. `c003` shares `c001`'s
 encoder and is chunked from the same frozen extraction snapshot (`data/extracted_v1`), so
-`c001` vs `c003` isolates chunking. A strategy build names its files `index_<strategy>.faiss`;
+`c001` vs `c003` isolates chunking. `c004` completes the 2x2 — its `metadatas_hierarchical.json` and
+`parents_hierarchical.json` are byte-identical to `c003`'s, so only the vectors differ. A strategy build names its files `index_<strategy>.faiss`;
 the registry entry's `index_file` records which.
 
 ## Context budget is not comparable at equal top_k

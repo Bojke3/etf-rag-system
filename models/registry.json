@@ -74,6 +74,27 @@
       "runs": [],
       "provenance": "build_manifest",
       "provenance_note": "Built 18 September 2026 from the same frozen extraction snapshot as c001/c002 (data/extracted_v1), so chunking is the only factor that differs from c001. Only the 176 child chunks are embedded; the 51 parents are held out and substituted at retrieval time by ParentAwareRetriever. The build is deterministic: rebuilding from the same chunks.jsonl reproduced all three artifact hashes exactly. manifest.json is deliberately absent from the files checked by the registry audit because it carries a build timestamp."
+    },
+    "c004": {
+      "index_dir": "models/vectorstore_c004_hier_bge",
+      "index_file": "index_hierarchical.faiss",
+      "chunk_strategy": "hierarchical",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_dimension": 1024,
+      "embedding_max_seq_length": 8192,
+      "index_type": "IndexFlatIP",
+      "vector_count": 176,
+      "parent_count": 51,
+      "chunk_source": "data/chunks_v2_hier/hierarchical/chunks.jsonl",
+      "chunk_source_manifest_sha256": "affe133b752671494beef2ae6054abb20736e1ae2eb239d9f5481be7b3c0d789",
+      "files": {
+        "index_hierarchical.faiss": "977d85c96b6bb44986c6eacf7154fb8595c7508d3e9752c4e09474ae52e97152",
+        "metadatas_hierarchical.json": "c5ca7af2e16cb337b5a8ee5112dd60e0e7df71106ee670407b3ca70d049fe560",
+        "parents_hierarchical.json": "64bd175fb49cbbab22b9c478eba7e0ddba3493e1a00bc2012677569cac1b2da4"
+      },
+      "runs": [],
+      "provenance": "build_manifest",
+      "provenance_note": "Built 18 September 2026 from the same chunks.jsonl as c003, so metadatas_hierarchical.json and parents_hierarchical.json are byte-identical to c003's; only the vectors differ. Completes the 2x2: c001/c002 flat with each encoder, c003/c004 hierarchical with each encoder, all from the frozen extraction snapshot data/extracted_v1."
     }
   }
 }
