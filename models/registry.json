@@ -73,7 +73,7 @@
       },
       "runs": [],
       "provenance": "build_manifest",
-      "provenance_note": "Built 18 September 2026 from the same frozen extraction snapshot as c001/c002 (data/extracted_v1), so chunking is the only factor that differs from c001. Only the 176 child chunks are embedded; the 51 parents are held out and substituted at retrieval time by ParentAwareRetriever. scripts/index_documents.py writes no index manifest in strategy mode, so index_manifest_sha256 is null for this configuration; the chunk build manifest hash above covers its input."
+      "provenance_note": "Built 18 September 2026 from the same frozen extraction snapshot as c001/c002 (data/extracted_v1), so chunking is the only factor that differs from c001. Only the 176 child chunks are embedded; the 51 parents are held out and substituted at retrieval time by ParentAwareRetriever. The build is deterministic: rebuilding from the same chunks.jsonl reproduced all three artifact hashes exactly. manifest.json is deliberately absent from the files checked by the registry audit because it carries a build timestamp."
     }
   }
 }

@@ -223,3 +223,52 @@ def test_collection_records_relative_paths_and_resumes_legacy_paths(tmp_path, mo
     shutil.copytree(run, moved / 'runs' / 'new')
     monkeypatch.setattr(provenance, 'ROOT', moved)
     assert provenance.validate_inputs(moved / 'runs' / 'new')['benchmark.json'] == moved / 'questions.json'
+
+
+def test_windows_recorded_hash_verifies_after_line_ending_repair(tmp_path):
+    """A CRLF-recorded text input must not block an otherwise intact run."""
+    path = tmp_path / 'questions.json'
+    path.write_bytes(b'{"questions": []}\n')
+    crlf_digest = provenance.hashlib.sha256(b'{"questions": []}\r\n').hexdigest()
+
+    assert provenance.match_kind(path, provenance.sha256(path)) == 'exact'
+    assert provenance.match_kind(path, crlf_digest) == 'line_endings'
+    assert provenance.match_kind(path, '0' * 64) is None
+
+
+def test_renamed_index_directory_is_resolved_only_by_matching_hash(reference, monkeypatch):
+    run, _, _ = reference
+    record = provenance.read_json(run / 'provenance.json')
+    original = Path(record['inputs']['vectorstore/index.faiss']['path'])
+    moved = original.parent.parent / 'renamed'
+    original.parent.rename(moved)
+
+    monkeypatch.setattr(provenance, 'ROOT', moved.parent)
+    monkeypatch.setattr('src.embedding.load_registry',
+                        lambda *a, **k: {'cX': {'index_dir': 'renamed'}})
+    notes = []
+    paths = provenance.validate_inputs(run, notes=notes)
+    assert paths['vectorstore/index.faiss'] == (moved / 'index.faiss').resolve()
+    assert {n['match'] for n in notes} == {'relocated'}
+
+    (moved / 'index.faiss').write_bytes(b'different bytes entirely')
+    with pytest.raises(ValueError, match='missing or changed'):
+        provenance.validate_inputs(run)
+
+
+def test_repeating_a_hierarchical_run_restores_its_strategy():
+    """Repeating must not relabel a hierarchical reference as flat."""
+    flat = {'retrieval_provenance': {'effective_strategy': 'flat_legacy_or_staged'}}
+    hierarchical = {'retrieval_provenance': {'effective_strategy': 'hierarchical'}}
+    assert provenance.recorded_strategy(flat) == 'flat_baseline'
+    assert provenance.recorded_strategy({}) == 'flat_baseline'
+    assert provenance.recorded_strategy(hierarchical) == 'hierarchical'
+
+    paths = {'benchmark.json': Path('q.json'),
+             'vectorstore/index_hierarchical.faiss': Path('idx/index_hierarchical.faiss'),
+             'vectorstore/metadatas_hierarchical.json': Path('idx/metadatas_hierarchical.json'),
+             'vectorstore/parents_hierarchical.json': Path('idx/parents_hierarchical.json')}
+    index, metadata, parents = provenance.recorded_index(paths)
+    assert index.name == 'index_hierarchical.faiss'
+    assert metadata.name == 'metadatas_hierarchical.json'
+    assert parents.name == 'parents_hierarchical.json'

@@ -268,6 +268,26 @@ def index_strategy_chunks(
         with open(parents_path, "w", encoding="utf-8") as f:
             json.dump(parent_map, f, ensure_ascii=False)
 
+    # Strategy builds used to leave no index manifest, so provenance recorded a
+    # null index_manifest_sha256 for them while staged builds recorded one.
+    chunk_manifest_path = Path(input_dir) / "manifest.json"
+    write_manifest(output_dir, {
+        "schema_version": 1,
+        "stage": "indexing",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "chunk_directory": str(source_dir),
+        "chunk_manifest_sha256": (file_hash(chunk_manifest_path)
+                                  if chunk_manifest_path.is_file() else None),
+        "settings": {"embedding_model": model_name, "device": device,
+                     "batch_size": batch_size, "strategy": strategy_id},
+        "embedding_dimension": int(embedding_model.embedding_dim),
+        "chunk_count": total_indexed,
+        "parent_count": len(parent_map),
+        "artifacts": {name: file_hash(Path(output_dir) / name)
+                      for name in sorted(p.name for p in Path(output_dir).glob("*")
+                                         if p.is_file() and p.name != "manifest.json")},
+    })
+
     from src.embedding import FAISSVectorStore
 
     index_file, metadata_file = FAISSVectorStore.artifact_names(strategy_id)

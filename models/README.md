@@ -61,29 +61,26 @@ downloads nothing; exits non-zero on any mismatch.
 2. Add an entry to `registry.json` with the encoder, dimension, chunk source and file hashes.
 3. Never reuse a config ID after changing its effective settings — see `docs/BENCHMARK_RUN_REGISTER.md`.
 
-## Known issue: `models/vectorstore` in historical run records
+## Historical run records point at the old path (handled)
 
-The five `c001` runs recorded their index path as `models/vectorstore`, the legacy default, because
-that is where the index lived on the machine that ran them. That path no longer exists here; the
-same bytes are now in `vectorstore_c001_c1024_o150`. `--repeat-from` on those runs will look for
-the old path, so either point `VECTOR_STORE_PATH` at the c001 directory, or recreate
-`models/vectorstore` as a link to it on the machine doing the repetition. The raw run records were
-deliberately left unmodified.
+The five `c001` runs recorded their index as `models/vectorstore`, the legacy default on the
+machine that produced them. That directory is now `vectorstore_c001_c1024_o150`.
+`benchmark_provenance.validate_inputs` resolves the move by searching the registry for a file
+whose **hash equals what the run recorded** — so it identifies the same artifact rather than
+guessing a substitute — and reports it under `input_match_exceptions` as `relocated`. Raw run
+records are never rewritten. A file whose bytes differ still fails, as it should.
 
-## Known issue: line endings break recorded text-file hashes
+## Line endings in recorded hashes (handled)
 
-Provenance records sha256 over raw file bytes. Some hashes were recorded on Windows with CRLF and
-the committed blobs are LF, so they cannot match on a Linux/macOS checkout:
+Provenance hashes raw bytes. Some hashes were recorded on Windows from CRLF working copies while
+the committed blobs are LF, so they could never match on a Linux/macOS checkout — which had
+silently broken `--repeat-from` and `--verify-run` for **every** existing run on a Mac. Two
+changes fix it:
 
-| Recorded hash of | Matches |
-|---|---|
-| `models/vectorstore_c002_c1024_o150/manifest.json` | CRLF only |
-| `benchmarking/finalna_pitanja.json` | CRLF only |
-| `src/retrieval/context.py` | CRLF only |
-| `src/llm/prompts.py` | LF |
+- `.gitattributes` normalises text to LF everywhere, so new records cannot drift the same way.
+- Verification accepts a match found only after line-ending repair and names those files in
+  `input_match_exceptions` as `line_endings`, instead of either failing or hiding the difference.
 
-`index.faiss` and `metadatas.json` are unaffected and verify correctly everywhere. This is a
-cross-machine verification problem, not a data problem, but `benchmark_provenance.py --verify-run`
-will report failures for the CRLF-recorded files. Fixing it means agreeing on one canonical line
-ending (a `.gitattributes` rule) and re-recording the affected hashes for all compared runs — do it
-once, deliberately, before the paper's results are frozen.
+Affected today: `benchmarking/finalna_pitanja.json` and
+`models/vectorstore_c002_c1024_o150/manifest.json`. `index.faiss` and `metadatas.json` match
+exactly and are unaffected.

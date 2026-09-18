@@ -1,0 +1,13 @@
+# Provenance hashes raw file bytes (scripts/benchmark_provenance.py), so a file
+# whose line endings depend on the machine can never verify across machines.
+# Some recorded hashes were produced on Windows from CRLF working copies while
+# the committed blobs are LF; those runs now match only after line-ending
+# repair, which verification reports rather than hides. Normalising here stops
+# new records from drifting the same way.
+* text=auto eol=lf
+
+*.faiss binary
+*.pdf binary
+*.docx binary
+*.png binary
+*.jpg binary
