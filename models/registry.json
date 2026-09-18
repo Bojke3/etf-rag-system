@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "description": "Binds each benchmark configuration ID to the one embedding model its index was built with. An index is only valid for the encoder that produced it; loading it with a different encoder of the same dimension fails silently rather than raising, so the pairing is recorded here and checked at load time by src/embedding/registry.py.",
+  "configs": {
+    "c001": {
+      "index_dir": "models/vectorstore_c001_c1024_o150",
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedding_dimension": 384,
+      "embedding_max_seq_length": 256,
+      "embedding_revision_observed": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "index_type": "IndexFlatIP",
+      "vector_count": 205,
+      "chunk_source": "data/chunks_v1_c1024_o150",
+      "chunk_size": 1024,
+      "chunk_overlap": 150,
+      "files": {
+        "index.faiss": "b3e799a872701027e13a189297222a94500f15b02504d5dd41316d7890449708",
+        "metadatas.json": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+      },
+      "runs": [
+        "baseline_context8k",
+        "dev_base_c001_r02",
+        "dev_base_c001_r03",
+        "dev_base_c001_r04",
+        "dev_base_c001_r05"
+      ],
+      "recorded_run_path": "models/vectorstore",
+      "provenance": "retrospective_audit",
+      "provenance_note": "No build manifest exists for this index; it predates scripts/index_documents.py writing one. Embedding model, revision and dimension come from benchmarking/runs/baseline_context8k/local_retrieval_verification.json (15 September 2026 check), which reproduced the saved retrieval. Hashes were verified against this directory on 18 September 2026. Historical encoder runtime and server hardware remain unknown."
+    },
+    "c002": {
+      "index_dir": "models/vectorstore_c002_c1024_o150",
+      "embedding_model": "BAAI/bge-m3",
+      "embedding_dimension": 1024,
+      "embedding_max_seq_length": 8192,
+      "embedding_revision_observed": "5617a9f61b028005a4858fdac845db406aefb181",
+      "index_type": "IndexFlatIP",
+      "vector_count": 205,
+      "chunk_source": "data/chunks_v1_c1024_o150",
+      "chunk_size": 1024,
+      "chunk_overlap": 150,
+      "files": {
+        "index.faiss": "59853c616ad2181456616bb8dc7bba6b3c0ce791596cb73cbded6b2f7735b092",
+        "metadatas.json": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+      },
+      "runs": [
+        "dev_emb_c002_r01",
+        "dev_emb_c002_r02",
+        "dev_emb_c002_r03",
+        "dev_emb_c002_r04",
+        "dev_emb_c002_r05"
+      ],
+      "recorded_run_path": "models/vectorstore_c002_c1024_o150",
+      "provenance": "build_manifest",
+      "provenance_note": "Built 17 September 2026 by scripts/index_documents.py, which wrote manifest.json in this directory. The manifest's own sha256 differs between machines because it was committed from Windows with CRLF normalisation; see models/README.md."
+    }
+  }
+}

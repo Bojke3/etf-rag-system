@@ -34,7 +34,7 @@ Source: `benchmarking/runs/baseline_context8k/run_config.json`.
 | Dataset | `benchmarking/finalna_pitanja.json`, 60 development questions |
 | Dataset SHA-256 | `a88e35cb6d7b1b883065dfaebd48cc5883f1caba703b068257de5cca8131e78d` |
 | Embedding | `sentence-transformers/all-MiniLM-L6-v2`, CPU |
-| Existing index directory | `models/vectorstore` |
+| Existing index directory | `models/vectorstore_c001_c1024_o150` (renamed 18 September 2026; the five c001 runs recorded it under its former path `models/vectorstore`, and those records were left unmodified) |
 | Existing chunks | Flat, 1024 characters, overlap 150 |
 | Retrieval | top-k 5, threshold 0.0 |
 | Generator | `mistral:latest`, SSH |

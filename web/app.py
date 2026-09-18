@@ -25,7 +25,7 @@ def get_pipeline():
     global _pipeline
     if _pipeline is None:
         from src.data.chunking import LEVEL_PARENT, resolve_strategy_id
-        from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
+        from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore, verify_pairing
         from src.retrieval import ParentAwareRetriever, SimpleRetriever, load_parent_store
         from src.llm import OllamaClient
         from src.rag import RAGPipeline
@@ -36,6 +36,10 @@ def get_pipeline():
             model_name=config.embedding_model,
             device=config.embedding_device,
         )
+        # Same-dimension encoders load each other's index without error, so the
+        # registry pairing is checked before any vectors are read.
+        verify_pairing(config.vector_store_path, config.embedding_model,
+                       embedding_model.embedding_dim)
         vector_store = FAISSVectorStore(embedding_dim=embedding_model.embedding_dim)
 
         # Load the index built for this chunking strategy. Falls back to the

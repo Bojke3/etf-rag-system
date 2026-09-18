@@ -78,7 +78,7 @@ def build_local_pipeline(config, base_url, model, timeout, context_max_chars=200
                               temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
                               top_p=config.ollama_top_p, think=config.ollama_think, num_ctx=num_ctx)
         return RAGPipeline(None, client, None, context_max_chars=context_max_chars)
-    from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore
+    from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore, verify_pairing
     from src.retrieval import SimpleRetriever
 
     if getattr(config, 'chunk_strategy', 'flat_baseline') not in ('flat_baseline', 'flat_512'):
@@ -87,6 +87,8 @@ def build_local_pipeline(config, base_url, model, timeout, context_max_chars=200
     if not all((index_dir / name).is_file() for name in ('index.faiss', 'metadatas.json')):
         raise ValueError('Local vector index not found. Process and index the documents first.')
     embedding = SentenceTransformerEmbedding(model_name=config.embedding_model, device=config.embedding_device)
+    # Same-dimension encoders swap silently; the dimension check below cannot see it.
+    verify_pairing(index_dir, config.embedding_model, embedding.embedding_dim)
     store = FAISSVectorStore(embedding_dim=embedding.embedding_dim)
     store.load(str(index_dir))
     if store.index.ntotal == 0:
