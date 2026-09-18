@@ -189,3 +189,74 @@ def chunk_documents(input_dir, output_dir, chunk_size=1024, overlap=150):
     write_manifest(target, manifest)
     logger.info("Saved %s chunks to %s", len(records), target)
     return manifest
+
+
+def chunk_snapshot_with_strategy(input_dir, output_dir, strategy=None, config=None, **overrides):
+    """Chunk frozen cleaned text with a pluggable strategy, writing chunks.jsonl.
+
+    The sibling :func:`chunk_documents` writes one ``.txt`` per chunk and can
+    only chunk flat, because the per-file layout has nowhere to put a parent
+    id, a level or a page. Strategies that build a hierarchy need the richer
+    record, so they get ``<output>/<strategy>/chunks.jsonl`` -- the same layout
+    ``scripts/index_documents.py`` already reads in strategy mode.
+
+    Like stage 2, this never loads an original document or runs OCR: the text
+    comes from the hash-verified extraction snapshot, so a chunking comparison
+    varies chunking alone.
+    """
+    from .chunking import get_chunker, resolve_strategy_id
+
+    strategy_id = resolve_strategy_id(strategy)
+    source, target = prepare_output(input_dir, output_dir)
+    snapshot = read_manifest(source, "extraction")
+    if not snapshot.get("documents"):
+        raise ValueError("Extraction snapshot contains no documents")
+
+    chunker = get_chunker(strategy_id, config, **overrides)
+
+    records = []
+    counts = {}
+    for record in snapshot["documents"]:
+        path = verified_file(source, record["cleaned_file"], record["cleaned_sha256"])
+        document = Document(path.read_bytes().decode("utf-8"), record["metadata"])
+        chunks = chunker.chunk(document)
+        if not chunks:
+            raise ValueError(f"No chunks produced for {record['document']}")
+        for chunk in chunks:
+            counts[chunk.level] = counts.get(chunk.level, 0) + 1
+            records.append(chunk.to_dict())
+
+    ids = [r["chunk_id"] for r in records]
+    if len(set(ids)) != len(ids):
+        raise ValueError("Chunk ids are not unique; strategies must produce stable distinct ids.")
+
+    known = set(ids)
+    orphans = [r["chunk_id"] for r in records
+               if r["parent_chunk_id"] and r["parent_chunk_id"] not in known]
+    if orphans:
+        raise ValueError(f"{len(orphans)} chunks reference a missing parent, first: {orphans[0]}")
+
+    strategy_dir = target / strategy_id
+    strategy_dir.mkdir(parents=True, exist_ok=True)
+    chunks_path = strategy_dir / "chunks.jsonl"
+    with chunks_path.open("w", encoding="utf-8") as f:
+        for record in records:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+    manifest = {
+        "schema_version": 1, "stage": "chunking",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "snapshot_directory": str(source),
+        "snapshot_manifest_sha256": file_hash(source / "manifest.json"),
+        "settings": {"strategy": strategy_id, "chunker": type(chunker).__name__,
+                     "overrides": {k: v for k, v in overrides.items() if v is not None}},
+        "implementation_sha256": tree_hash(Path(__file__).with_name("chunking")),
+        "chunks_file": f"{strategy_id}/chunks.jsonl",
+        "chunks_file_sha256": file_hash(chunks_path),
+        "chunk_count": len(records),
+        "level_counts": counts,
+    }
+    write_manifest(target, manifest)
+    logger.info("Saved %s %s chunks (%s) to %s", len(records), strategy_id,
+                ", ".join(f"{level}={count}" for level, count in sorted(counts.items())), chunks_path)
+    return manifest

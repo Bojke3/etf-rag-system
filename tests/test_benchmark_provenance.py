@@ -167,9 +167,19 @@ def test_scorer_uses_referenced_criteria_without_rewriting_historical_answers(re
     assert (run / 'answers.jsonl').read_bytes() == before
 
 
-def test_unsupported_strategy_cannot_be_mislabeled_as_flat():
-    cfg = SimpleNamespace(chunk_strategy='hierarchical')
-    with pytest.raises(ValueError, match='flat indexes only'):
+def test_hierarchical_collection_refuses_to_fall_back_to_a_flat_index(tmp_path):
+    """A strategy must never quietly collect against another strategy's index.
+
+    The legacy unsuffixed pair is a valid flat index, so falling back to it for
+    CHUNK_STRATEGY=hierarchical would produce a complete, plausible run that
+    measured flat chunking under a hierarchical label.
+    """
+    index_dir = tmp_path / 'index'
+    index_dir.mkdir()
+    (index_dir / 'index.faiss').write_bytes(b'')
+    (index_dir / 'metadatas.json').write_text('[]', encoding='utf-8')
+    cfg = SimpleNamespace(chunk_strategy='hierarchical', vector_store_path=str(index_dir))
+    with pytest.raises(ValueError, match='No hierarchical index'):
         execution.build_local_pipeline(cfg, 'http://localhost:11434', 'mistral', 900)
 
 

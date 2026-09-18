@@ -78,31 +78,54 @@ def build_local_pipeline(config, base_url, model, timeout, context_max_chars=200
                               temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
                               top_p=config.ollama_top_p, think=config.ollama_think, num_ctx=num_ctx)
         return RAGPipeline(None, client, None, context_max_chars=context_max_chars)
+    from src.data.chunking import DEFAULT_STRATEGY, resolve_strategy_id
     from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore, verify_pairing
-    from src.retrieval import SimpleRetriever
+    from src.retrieval import ParentAwareRetriever, SimpleRetriever, load_parent_store
 
-    if getattr(config, 'chunk_strategy', 'flat_baseline') not in ('flat_baseline', 'flat_512'):
-        raise ValueError('Direct collection currently supports flat indexes only; hierarchical strategy integration is pending.')
+    strategy_id = resolve_strategy_id(getattr(config, 'chunk_strategy', None))
     index_dir = Path(config.vector_store_path)
-    if not all((index_dir / name).is_file() for name in ('index.faiss', 'metadatas.json')):
-        raise ValueError('Local vector index not found. Process and index the documents first.')
+
+    # A strategy build names its artifacts index_<strategy>.faiss; the legacy
+    # flat index is the unsuffixed pair. Prefer the strategy's own artifacts and
+    # fall back only for flat, so CHUNK_STRATEGY=hierarchical can never quietly
+    # collect against a flat index.
+    artifact_name = strategy_id
+    if not FAISSVectorStore.exists(str(index_dir), strategy_id):
+        if strategy_id != DEFAULT_STRATEGY:
+            raise ValueError(
+                f'No {strategy_id} index in {index_dir}. Build it with '
+                f'scripts/index_documents.py --strategy {strategy_id}, or set CHUNK_STRATEGY '
+                f'to the strategy this index was built for.')
+        if not FAISSVectorStore.exists(str(index_dir)):
+            raise ValueError('Local vector index not found. Process and index the documents first.')
+        artifact_name = None
+
     embedding = SentenceTransformerEmbedding(model_name=config.embedding_model, device=config.embedding_device)
     # Same-dimension encoders swap silently; the dimension check below cannot see it.
     verify_pairing(index_dir, config.embedding_model, embedding.embedding_dim)
     store = FAISSVectorStore(embedding_dim=embedding.embedding_dim)
-    store.load(str(index_dir))
+    store.load(str(index_dir), name=artifact_name)
     if store.index.ntotal == 0:
         raise ValueError('The local vector index is empty.')
     if store.index.d != embedding.embedding_dim:
         raise ValueError('The embedding model dimension does not match the saved index.')
     retriever = SimpleRetriever(embedding, store, threshold=config.retrieval_threshold)
+
+    # Hierarchical strategies embed children and feed the LLM their parents.
+    parent_store = {}
+    if getattr(config, 'hier_expand_to_parent', True):
+        parent_store = load_parent_store(str(index_dir), strategy_id)
+        if parent_store:
+            retriever = ParentAwareRetriever(retriever, parent_store)
     client = OllamaClient(base_url=base_url, model=model, timeout=timeout,
                           temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
                           top_p=config.ollama_top_p, think=config.ollama_think, raise_errors=True,
                           num_ctx=num_ctx)
     from scripts.benchmark_provenance import retrieval_record
     pipeline = RAGPipeline(retriever, client, embedding, context_max_chars=context_max_chars)
-    pipeline.collection_provenance = retrieval_record(config, embedding, store)
+    pipeline.collection_provenance = retrieval_record(
+        config, embedding, store, strategy_id=strategy_id,
+        artifact_name=artifact_name, parent_count=len(parent_store))
     return pipeline
 
 

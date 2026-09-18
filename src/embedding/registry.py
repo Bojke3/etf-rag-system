@@ -116,7 +116,8 @@ def audit(path=None):
             if actual != expected_hash:
                 problems.append(f"{config_id}: {name} hash {actual[:12]} != declared {expected_hash[:12]}")
 
-        index_file = index_dir / "index.faiss"
+        # A strategy build names its index index_<strategy>.faiss.
+        index_file = index_dir / entry.get("index_file", "index.faiss")
         if index_file.is_file():
             index = faiss.read_index(str(index_file))
             if index.d != entry.get("embedding_dimension"):

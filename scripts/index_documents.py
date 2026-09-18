@@ -77,16 +77,23 @@ def parents_file_name(strategy_id: str) -> str:
 def detect_mode(input_dir: str, strategy_id: str) -> str:
     """Pick the chunk layout for ``input_dir``.
 
-    A chunking manifest is conclusive: only chunk_documents.py writes one, and
-    the staged path needs it to verify hashes. Otherwise a chunks.jsonl or a
-    per-strategy subdirectory means strategy layout, as does a legacy flat
-    directory of ``<stem>_chunk<NNNN>.txt`` files. Anything else falls to the
-    staged path, which validates chunk filenames and so refuses a directory of
-    raw or cleaned document text. Use ``--mode`` to override.
+    A chunking manifest is conclusive, but it no longer implies one layout:
+    ``chunk_documents.py`` records a ``chunks`` list of per-chunk ``.txt``
+    files, while a strategy build records ``chunks_file`` pointing at a
+    ``chunks.jsonl``. Route on which of the two the manifest carries. Otherwise
+    a chunks.jsonl or a per-strategy subdirectory means strategy layout, as does
+    a legacy flat directory of ``<stem>_chunk<NNNN>.txt`` files. Anything else
+    falls to the staged path, which validates chunk filenames and so refuses a
+    directory of raw or cleaned document text. Use ``--mode`` to override.
     """
     source = Path(input_dir)
-    if (source / "manifest.json").exists():
-        return MODE_STAGED
+    manifest_path = source / "manifest.json"
+    if manifest_path.exists():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except Exception:
+            return MODE_STAGED
+        return MODE_STRATEGY if manifest.get("chunks_file") else MODE_STAGED
     if (source / strategy_id / CHUNKS_FILE).exists() or (source / CHUNKS_FILE).exists():
         return MODE_STRATEGY
     if (source / strategy_id).is_dir():

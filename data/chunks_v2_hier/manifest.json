@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "stage": "chunking",
+  "created_at": "2026-09-18T17:04:57.758260+00:00",
+  "snapshot_directory": "/Users/vukbojovic/etf-rag-system/data/extracted_v1",
+  "snapshot_manifest_sha256": "bde16164293f770e3134b17fdcd4f0bd01b3a56ded4823b7d7d51e8edcedce75",
+  "settings": {
+    "strategy": "hierarchical",
+    "chunker": "HierarchicalChunker",
+    "overrides": {
+      "chunk_size": 1024,
+      "chunk_overlap": 150
+    }
+  },
+  "implementation_sha256": "3b0e61e0c50fceee8528b0db5a2a8a2cab558736bc733526a0ebc95de3cce01d",
+  "chunks_file": "hierarchical/chunks.jsonl",
+  "chunks_file_sha256": "aa534f97bb71fc07ba9de94ba1f061078185d46cfd7ff5c86ec4bbf06af535db",
+  "chunk_count": 227,
+  "level_counts": {
+    "parent": 51,
+    "child": 176
+  }
+}

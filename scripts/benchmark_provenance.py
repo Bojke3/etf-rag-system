@@ -69,13 +69,26 @@ def runtime_record():
             'note': 'Client runtime only. Server hardware/runtime is not inferred from model size.'}
 
 
-def retrieval_record(config, embedding, store):
-    """Describe the actual legacy/staged index used by the current direct collector."""
+def retrieval_record(config, embedding, store, strategy_id=None, artifact_name=None, parent_count=0):
+    """Describe the index the direct collector actually loaded.
+
+    ``artifact_name`` is the suffix a strategy build uses for its files; ``None``
+    means the unsuffixed legacy pair, whose original chunking cannot be recovered
+    from the artifacts and so is recorded as ``flat_legacy_or_staged``.
+    """
+    from src.embedding import FAISSVectorStore
+
     directory = Path(config.vector_store_path)
+    index_name, metadata_name = FAISSVectorStore.artifact_names(artifact_name)
+    names = [index_name, metadata_name]
+    if parent_count:
+        names.append(f'parents_{strategy_id}.json')
     model = embedding.model
     encoder_config = getattr(getattr(model[0], 'auto_model', None), 'config', None)
     return {
-        'retriever': 'SimpleRetriever', 'effective_strategy': 'flat_legacy_or_staged',
+        'retriever': 'ParentAwareRetriever(SimpleRetriever)' if parent_count else 'SimpleRetriever',
+        'effective_strategy': strategy_id if artifact_name else 'flat_legacy_or_staged',
+        'parent_chunks_held_out': int(parent_count),
         'embedding_model': config.embedding_model, 'embedding_device': config.embedding_device,
         'embedding_revision': getattr(encoder_config, '_commit_hash', None),
         'embedding_dimension': int(store.index.d),
@@ -83,7 +96,7 @@ def retrieval_record(config, embedding, store):
         'embedding_revision_note': 'Resolved from loaded encoder config when available; null means unknown.',
         'index_type': type(store.index).__name__, 'vector_count': int(store.index.ntotal),
         'normalization': 'L2-normalized document/query vectors; inner product search',
-        'files': {name: sha256(directory / name) for name in ('index.faiss', 'metadatas.json')},
+        'files': {name: sha256(directory / name) for name in names},
         'index_manifest_sha256': sha256(directory / 'manifest.json')
             if (directory / 'manifest.json').is_file() else None,
     }
@@ -96,11 +109,15 @@ def record_inputs(run_dir, benchmark, index_dir=None, expected_files=None, retro
     provenance_path = run_dir / 'provenance.json'
     candidates = {'benchmark.json': Path(benchmark)}
     if index_dir is not None:
-        for name in ('index.faiss', 'metadatas.json', 'manifest.json'):
+        # The loader reports which artifacts it actually read, so a strategy
+        # build records index_<strategy>.faiss and its parent store rather than
+        # the legacy unsuffixed pair.
+        required = list(expected_files) if expected_files else ['index.faiss', 'metadatas.json']
+        for name in required + [n for n in ('manifest.json',) if n not in required]:
             path = Path(index_dir) / name
             if path.is_file():
                 candidates['vectorstore/' + name] = path
-        if not all('vectorstore/' + n in candidates for n in ('index.faiss', 'metadatas.json')):
+        if not all('vectorstore/' + n in candidates for n in required):
             raise ValueError('Cannot record an incomplete vector index.')
     records = {}
     for name, source in candidates.items():

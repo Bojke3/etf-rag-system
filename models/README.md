@@ -8,10 +8,30 @@ readable form.
 |---|---|---|---|---|---|
 | `c001` | `vectorstore_c001_c1024_o150` | `sentence-transformers/all-MiniLM-L6-v2` | 384 | 205, from `data/chunks_v1_c1024_o150` | retrospective audit |
 | `c002` | `vectorstore_c002_c1024_o150` | `BAAI/bge-m3` | 1024 | 205, same chunk snapshot | build manifest |
+| `c003` | `vectorstore_c003_hier` | `sentence-transformers/all-MiniLM-L6-v2` | 384 | 176 children embedded, 51 parents held out | build manifest |
 
-Both indexes are `IndexFlatIP` over L2-normalised vectors, built from the **same** 205 chunks —
-their `metadatas.json` hashes are identical. Only the encoder differs, which is what makes
-`c001` vs `c002` a controlled embedding comparison.
+All indexes are `IndexFlatIP` over L2-normalised vectors. `c001` and `c002` are built from the
+**same** 205 chunks — their `metadatas.json` hashes are identical — so only the encoder differs,
+which is what makes `c001` vs `c002` a controlled embedding comparison. `c003` shares `c001`'s
+encoder and is chunked from the same frozen extraction snapshot (`data/extracted_v1`), so
+`c001` vs `c003` isolates chunking. A strategy build names its files `index_<strategy>.faiss`;
+the registry entry's `index_file` records which.
+
+## Context budget is not comparable at equal top_k
+
+Measured over the first 20 benchmark questions at an 8000-character context budget:
+
+| Strategy | top_k | Retrieved | Reached the LLM | Passages delivered |
+|---|---|---|---|---|
+| `c001` flat | 5 | 5074 | 5074 (100%) | 5.0 |
+| `c003` hierarchical | 5 | 18221 | 7992 (44%) | 2.7 |
+
+Hierarchical parents average ~3400 characters, so five of them overflow the budget and the
+context builder drops 2.1 of the 5 retrieved passages. Comparing the two at `top_k=5` therefore
+measures truncation as much as chunking. Holding the **character budget** equal is what makes the
+comparison fair — at 8000 characters that is roughly `top_k=8` for flat and `top_k=2` for
+hierarchical. Record the delivered passage count either way; the collector saves it per question
+in `diagnostics`.
 
 ## Why the pairing is checked in code
 
