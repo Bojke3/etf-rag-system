@@ -1,6 +1,0 @@
-moindukcija, Lencovo pravilo. Uzajamna indukcija. Transformator: Energija u kalemu:
-11. Oscilacije Harmonijske oscilacije. Oscilacije u mehanici Slobodne; prinudne prigusene oscilacije Rezonancija: Matematicko i fizicko klatno. Naizmenicne struje Dobijanje naizmenicnih struja. Efektivna vrednost naizmenicne struje i napona Elsktricne otpornosti u kolima naizmenicne struje. Idedansa Prosto RLC zatvoreno oscilatorno kolo.
-12, Geometrijska optika Zakon odbijanja i prelamanja svetlosti: Idenks prelamanja Disperzija svetlosti. Prizma Totalna refleksija. Sferna ogledala Sociva, Opticarska jednacina sociva. Kombinacija sociva; Opticki instrumenti; Fotometrijske vslicine
-13. Talasi Nastanak i kretanje talasa U raznim sredinama Vrste talasa: transverzalni i longitudinalni Karakteristike talasa; amplituda, frekvencija, brzina prostiranja, talasna duzina. Talasna jednacina, Principi superpozicije talasa. Progresivni i stojeci talasi. Interferencija, difrakcija i polarizacija talasa.
-16
-Interferencija difrakcija svetlost
