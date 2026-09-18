@@ -2,7 +2,7 @@
   "run_id": "baseline_context8k",
   "label": "baseline_context8k",
   "created_at": "2026-09-12T18:10:54",
-  "benchmark": "benchmarking\\finalna_pitanja.json",
+  "benchmark": "benchmarking/finalna_pitanja.json",
   "benchmark_sha256": "a88e35cb6d7b1b883065dfaebd48cc5883f1caba703b068257de5cca8131e78d",
   "backend": {
     "execution": "ssh",
@@ -48,6 +48,6 @@
     "chunk_size": 1024,
     "chunk_overlap": 150,
     "retrieval_threshold": 0.0,
-    "vector_store_path": "./models/vectorstore"
+    "vector_store_path": "models/vectorstore"
   }
 }

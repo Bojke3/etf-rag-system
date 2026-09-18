@@ -2,7 +2,7 @@
   "run_id": "2026-07-06_004328_baseline_topk3",
   "label": "baseline_topk3",
   "created_at": "2026-07-06T00:43:28",
-  "benchmark": "benchmarking\\benchmark_svega.json",
+  "benchmark": "benchmarking/benchmark_svega.json",
   "endpoint": "http://localhost:8000/query",
   "top_k": 5,
   "prompt_strategy": "zero_shot",
@@ -22,6 +22,6 @@
     "chunk_size": 1024,
     "chunk_overlap": 150,
     "retrieval_threshold": 0.0,
-    "vector_store_path": "./models/vectorstore"
+    "vector_store_path": "models/vectorstore"
   }
 }

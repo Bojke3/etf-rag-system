@@ -2,7 +2,7 @@
   "run_id": "diagnostic_pilot_retrieved",
   "label": "baseline_topk3",
   "created_at": "2026-09-13T17:26:27",
-  "benchmark": "benchmarking\\finalna_pitanja.json",
+  "benchmark": "benchmarking/finalna_pitanja.json",
   "benchmark_sha256": "a88e35cb6d7b1b883065dfaebd48cc5883f1caba703b068257de5cca8131e78d",
   "backend": {
     "execution": "ssh",
@@ -58,6 +58,6 @@
     "chunk_size": 1024,
     "chunk_overlap": 150,
     "retrieval_threshold": 0.0,
-    "vector_store_path": "./models/vectorstore"
+    "vector_store_path": "models/vectorstore"
   }
 }

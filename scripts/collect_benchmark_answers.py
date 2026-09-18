@@ -23,6 +23,7 @@ from scripts.run_benchmark import (
     call_query_endpoint,
     format_duration,
     load_benchmark,
+    recorded_path,
     write_json,
 )
 
@@ -172,7 +173,7 @@ def build_answer_config(
         "chunk_size": get_config_value("chunk_size"),
         "chunk_overlap": get_config_value("chunk_overlap"),
         "retrieval_threshold": get_config_value("retrieval_threshold"),
-        "vector_store_path": get_config_value("vector_store_path"),
+        "vector_store_path": recorded_path(get_config_value("vector_store_path")),
     }
 
 
@@ -228,7 +229,7 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
         "run_id": run_id,
         "label": args.label,
         "created_at": datetime.now().isoformat(timespec="seconds"),
-        "benchmark": str(Path(args.benchmark)),
+        "benchmark": recorded_path(args.benchmark),
         "benchmark_sha256": hashlib.sha256(Path(args.benchmark).read_bytes()).hexdigest(),
         "backend": backend_info or {"execution": "api", "model": args.model},
         "endpoint": args.endpoint,
@@ -240,7 +241,7 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
         "resume": not args.no_resume,
         "mode": "collect_answers",
         "diagnostic_config": diagnostic_config,
-        "repeat_from": str(Path(args.repeat_from).resolve()) if getattr(args, 'repeat_from', None) else None,
+        "repeat_from": recorded_path(args.repeat_from) if getattr(args, 'repeat_from', None) else None,
         "component_config": build_answer_config(
             args.endpoint,
             args.top_k,
@@ -253,6 +254,12 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
     config_path = run_dir / "run_config.json"
     if config_path.exists() and not args.no_resume:
         existing_config = json.loads(config_path.read_text(encoding="utf-8"))
+        # Older runs stored absolute paths. Compare the same locations in one
+        # form so the path-format migration does not prevent resuming a run.
+        existing_config['repeat_from'] = recorded_path(existing_config.get('repeat_from'))
+        existing_component = existing_config.get('component_config', {})
+        if 'vector_store_path' in existing_component:
+            existing_component['vector_store_path'] = recorded_path(existing_component['vector_store_path'])
         # Never mix answers from different models/settings in a resumed run.
         immutable = ("benchmark_sha256", "backend", "top_k", "prompt_strategy", "model", "component_config", "diagnostic_config", "repeat_from")
         changed = [key for key in immutable if existing_config.get(key) != run_config.get(key)]

@@ -28,6 +28,18 @@ DEFAULT_BENCHMARK_PATH = "benchmarking/benchmark_svega.json"
 DEFAULT_OUTPUT_DIR = "benchmarking/runs"
 DEFAULT_ENDPOINT = "http://localhost:8000/query"
 DEFAULT_TIMEOUT = 900
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def recorded_path(path):
+    """Store repository files relative to its root; keep external paths explicit."""
+    if path is None:
+        return None
+    resolved = Path(path).resolve()
+    try:
+        return resolved.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        return str(resolved)
 
 
 def load_benchmark(path: str) -> List[Dict[str, Any]]:
@@ -338,7 +350,7 @@ def run_benchmark(args: argparse.Namespace) -> Path:
         "run_id": run_id,
         "label": args.label,
         "created_at": datetime.now().isoformat(timespec="seconds"),
-        "benchmark": str(Path(args.benchmark)),
+        "benchmark": recorded_path(args.benchmark),
         "endpoint": args.endpoint,
         "top_k": args.top_k,
         "prompt_strategy": args.prompt_strategy,

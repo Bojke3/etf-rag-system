@@ -13,6 +13,7 @@ from scripts import benchmark_provenance as provenance
 from scripts import benchmark_execution as execution
 from scripts import collect_benchmark_answers as collector
 from scripts import score_benchmark_run as scorer
+from scripts import run_benchmark as runner
 from src.config import Config
 from src.data.preprocessing import TextPreprocessor
 from src.llm.prompts import PromptTemplate
@@ -170,3 +171,45 @@ def test_unsupported_strategy_cannot_be_mislabeled_as_flat():
     cfg = SimpleNamespace(chunk_strategy='hierarchical')
     with pytest.raises(ValueError, match='flat indexes only'):
         execution.build_local_pipeline(cfg, 'http://localhost:11434', 'mistral', 900)
+
+
+def test_collection_records_relative_paths_and_resumes_legacy_paths(tmp_path, monkeypatch):
+    monkeypatch.setattr(runner, 'PROJECT_ROOT', tmp_path)
+    monkeypatch.setattr(provenance, 'ROOT', tmp_path)
+    monkeypatch.chdir(tmp_path)
+    benchmark = tmp_path / 'questions.json'
+    provenance.write_json(benchmark, {'questions': [
+        {'id': 'Q1', 'question': 'Pitanje?', 'expected_answer': 'Odgovor.'}
+    ]})
+    monkeypatch.setattr(collector, 'config', Config(
+        _env_file=None, vector_store_path=str(tmp_path / 'index')))
+    monkeypatch.setattr(provenance, 'runtime_record', lambda: {})
+    args = collector.parse_args(['--benchmark', str(benchmark), '--run-id', 'new',
+                                 '--output-dir', str(tmp_path / 'runs'),
+                                 '--repeat-from', str(tmp_path / 'reference')])
+    query = Mock(return_value={'status': 'success', 'answer': 'Odgovor.'})
+    run = collector.collect_benchmark_answers(args, query_fn=query)
+    cfg = provenance.read_json(run / 'run_config.json')
+    assert cfg['benchmark'] == 'questions.json'
+    assert cfg['repeat_from'] == 'reference'
+    assert cfg['component_config']['vector_store_path'] == 'index'
+    assert provenance.read_json(run / 'collection_summary.json')['config'] == cfg
+    assert provenance.validate_inputs(run)['benchmark.json'] == benchmark
+    raw = (run / 'answers.jsonl').read_bytes()
+    # Resume must accept the absolute spelling used by existing repetitions.
+    cfg['benchmark'] = str(benchmark)
+    cfg['repeat_from'] = str(tmp_path / 'reference')
+    cfg['component_config']['vector_store_path'] = str(tmp_path / 'index')
+    provenance.write_json(run / 'run_config.json', cfg)
+    collector.collect_benchmark_answers(args, query_fn=query)
+    query.assert_called_once()
+    assert (run / 'answers.jsonl').read_bytes() == raw
+    assert provenance.read_json(run / 'run_config.json')['benchmark'] == 'questions.json'
+    # A copied repository resolves question references at its new location.
+    import shutil
+    moved = tmp_path / 'moved_project'
+    moved.mkdir()
+    shutil.copy2(benchmark, moved / 'questions.json')
+    shutil.copytree(run, moved / 'runs' / 'new')
+    monkeypatch.setattr(provenance, 'ROOT', moved)
+    assert provenance.validate_inputs(moved / 'runs' / 'new')['benchmark.json'] == moved / 'questions.json'
