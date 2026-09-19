@@ -122,6 +122,16 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(self.judge("0").calculate("R", "C"), 0)
         self.assertEqual(self.judge(" 4.5 ").calculate("R", "C"), 4.5)
 
+    def test_judge_reads_the_verdict_line_after_its_reasoning(self):
+        reasoned = "Odgovor ne iznosi obavezne cinjenice.\nOCENA: 1"
+        self.assertEqual(self.judge(reasoned).calculate("R", "C"), 1)
+        # A judge that restates its verdict is taken at its last word.
+        self.assertEqual(self.judge("OCENA: 2\nispravka\nOCENA: 4.5").calculate("R", "C"), 4.5)
+        for response in ("OCENA: 9", "Obrazlozenje bez ocene.", "OCENA: nema"):
+            result = self.judge(response).calculate_details("R", "C", "Q")
+            self.assertIsNone(result["score"])
+            self.assertIn("error", result)
+
     def test_judge_failure_is_not_scored_zero_or_composited(self):
         instances = {"llm_judge": self.judge("not a score"),
                      "rouge": Mock(calculate=Mock(return_value={"rougeL": 1.0})),
