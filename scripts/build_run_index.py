@@ -44,9 +44,16 @@ def answer_stats(run_dir):
     status = Counter(row.get("status") for row in latest.values())
     truncated = sum(1 for row in latest.values()
                     if (row.get("diagnostics") or {}).get("context_truncated"))
+    # truncated covers the input side; cut covers the output side. An answer that
+    # hit num_predict stops mid-sentence and would be judged as a bad answer,
+    # blaming the configuration for a token limit. Older runs recorded no
+    # done_reason at all -- unknown is not the same as cut, so it does not count.
+    cut = sum(1 for row in latest.values()
+              if ((row.get("diagnostics") or {}).get("generation") or {}).get("done_reason")
+              not in (None, "stop"))
     return {"total": len(latest), "success": status.get("success", 0),
             "errors": sum(v for k, v in status.items() if k != "success"),
-            "truncated": truncated}
+            "truncated": truncated, "cut": cut}
 
 
 def describe(run_dir):
@@ -77,6 +84,7 @@ def describe(run_dir):
         "answers": f"{stats.get('success', 0)}/{stats.get('total', 0)}",
         "errors": stats.get("errors", 0),
         "truncated": stats.get("truncated", 0),
+        "cut": stats.get("cut", 0),
         "created": (cfg.get("created_at") or "")[:16].replace("T", " "),
     }
 
@@ -98,14 +106,19 @@ def main():
         "`truncated` counts questions whose retrieved context did not fit the budget; "
         "it must be 0 for a run to be comparable with others at the same budget.",
         "",
-        "| Run | Config | Embedding | Chunking | Index | Generator | top_k | Context | num_ctx | Answers | Errors | Truncated | Created |",
-        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
+        "`cut` counts answers that stopped at the token limit (`done_reason` other "
+        "than `stop`) instead of finishing. Such an answer is incomplete through no "
+        "fault of the configuration and must not be scored as if it were.",
+        "",
+        "| Run | Config | Embedding | Chunking | Index | Generator | top_k | Context | num_ctx | Answers | Errors | Truncated | Cut | Created |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows:
         lines.append(
             f"| `{r['run']}` | {r['config']} | {r['embedding']} | {r['chunking']} | "
             f"`{r['index']}` | {r['generator']} | {r['top_k']} | {r['context']} | "
-            f"{r['num_ctx']} | {r['answers']} | {r['errors']} | {r['truncated']} | {r['created']} |"
+            f"{r['num_ctx']} | {r['answers']} | {r['errors']} | {r['truncated']} | "
+            f"{r['cut']} | {r['created']} |"
         )
 
     scored = [p.parent.name for p in RUNS.glob("*/scores/*.json")]

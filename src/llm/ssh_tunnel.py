@@ -71,7 +71,17 @@ class SSHTunnel:
         # Refuse to accidentally send requests to a pre-existing local listener.
         with socket.socket() as probe:
             if hasattr(socket, 'SO_EXCLUSIVEADDRUSE'):
+                # Windows: SO_REUSEADDR would let us bind over a live listener,
+                # which is the one thing this probe exists to prevent.
                 probe.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+            else:
+                # POSIX: without this, bind() also fails on the TIME_WAIT sockets
+                # left by the previous run's HTTP requests -- no process holds the
+                # port, yet the next run refuses to start for up to 2*MSL (30 s on
+                # macOS). That failed six runs of the step-1 matrix. SO_REUSEADDR
+                # clears TIME_WAIT only; a live listener still fails here, as ssh
+                # itself sets the same option for the forwarded port.
+                probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
                 probe.bind(('127.0.0.1', self.local_port))
             except OSError as exc:
