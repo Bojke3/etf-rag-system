@@ -1,5 +1,6 @@
 """Offline regression tests for extraction, reusable chunking and indexing inputs."""
 
+import json
 import os
 import sys
 import tempfile
@@ -120,3 +121,52 @@ class DataStagesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class StrategyChunkingFromSnapshotTests(unittest.TestCase):
+    """Chunking strategies must reach the frozen-text path, not only the OCR path."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        source = self.root / "documents"
+        source.mkdir()
+        body = ("Clan {n}.\n\nOdredba broj {n} propisuje uslove studiranja i "
+                "polaganja ispita u toku skolske godine. " * 6 for n in range(1, 12))
+        (source / "pravilnik.txt").write_text(
+            "\n\n".join(text.format(n=i) for i, text in enumerate(body, start=1)),
+            encoding="utf-8")
+        self.snapshot = self.root / "snapshot"
+        extract_documents(source, self.snapshot, enable_ocr=False)
+
+    def test_hierarchical_chunking_needs_no_ocr_and_links_every_child(self):
+        from src.data.stages import chunk_snapshot_with_strategy
+
+        output = self.root / "chunks_hier"
+        with patch("src.data.loaders.DocumentLoaderFactory.load_document",
+                   side_effect=AssertionError("Must not load original documents")):
+            manifest = chunk_snapshot_with_strategy(self.snapshot, output, "hierarchical")
+
+        records = [json.loads(line) for line in
+                   (output / "hierarchical" / "chunks.jsonl").read_text(encoding="utf-8").splitlines()]
+        parents = {r["chunk_id"] for r in records if r["level"] == "parent"}
+        children = [r for r in records if r["level"] == "child"]
+
+        self.assertEqual(manifest["settings"]["strategy"], "hierarchical")
+        self.assertTrue(parents and children)
+        self.assertTrue(all(c["parent_chunk_id"] in parents for c in children))
+        self.assertEqual(manifest["chunk_count"], len(records))
+
+    def test_process_documents_honours_strategy_on_a_snapshot(self):
+        """Regression: --strategy used to be dropped for snapshot input."""
+        from scripts.process_documents import process_documents
+
+        output = self.root / "chunks_via_script"
+        process_documents(input_dir=str(self.snapshot), output_dir=str(output),
+                          strategy="hierarchical")
+
+        self.assertTrue((output / "hierarchical" / "chunks.jsonl").is_file())
+        levels = {json.loads(line)["level"] for line in
+                  (output / "hierarchical" / "chunks.jsonl").read_text(encoding="utf-8").splitlines()}
+        self.assertIn("parent", levels)

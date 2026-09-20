@@ -1,7 +1,0 @@
-bodova: Student uz rad opredeljuje ce za onolikO predmeta koLIKo je potrebno da ce ostvari najmanje 30 ESPB bodova, osim ako mu do kraja studijskog programa nije ostalo manje od 30 ESPB bodova: U cilju brzeg zavrsavanja studija i sireg obrazovanja; posebno uspesnim studentima moze ce odobriti i vise od 60 ESPB bodova u toku jedne skolske godine, ali ne vise od 90 ESPB bodova: Pravila studija blize ce ured uju opstim aktom Univerziteta; odnosno Fakulteta:
-Rangiranje studenata za budzetsko finansiranje
-Clan 49.
-Prilikom upisa svake skolske godine; studenti ce na osnovU Zakona VISOKOM obrazovanju i Statuta Univerziteta rangiraju za budzetsko finansiranje: Rangiranje studenata obuhvata studente upisane iste skolske godine na odred eni studijski program; a vrsi ce polazeci od broja ostvarenih ESPB bodova postignutog uspeha u savlad ivanju studijskog programa; na osnovU srednje ponderisane ocene formirane na sledeci nacin
->e; x (1+r)x o spo = t-1 SE
-21
-gde je spo srednja ponderisana ocena; N ukupan broj predmeta st

@@ -2,10 +2,11 @@
   "questions_checked": 60,
   "saved_sources_and_prompts_match": true,
   "fresh_retrieval_checked": true,
-  "verified_at": "2026-09-15T14:20:20.900091+00:00",
+  "verified_at": "2026-09-18T17:21:46.446597+00:00",
   "embedding_observed_now": {
     "retriever": "SimpleRetriever",
     "effective_strategy": "flat_legacy_or_staged",
+    "parent_chunks_held_out": 0,
     "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
     "embedding_device": "cpu",
     "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
@@ -22,5 +23,24 @@
     "index_manifest_sha256": null
   },
   "generator_called": false,
+  "input_match_exceptions": [
+    {
+      "input": "benchmark.json",
+      "match": "line_endings",
+      "recorded_path": "benchmarking/finalna_pitanja.json"
+    },
+    {
+      "input": "vectorstore/index.faiss",
+      "match": "relocated",
+      "recorded_path": "models/vectorstore/index.faiss",
+      "resolved_path": "models/vectorstore_c001_c1024_o150/index.faiss"
+    },
+    {
+      "input": "vectorstore/metadatas.json",
+      "match": "relocated",
+      "recorded_path": "models/vectorstore/metadatas.json",
+      "resolved_path": "models/vectorstore_c001_c1024_o150/metadatas.json"
+    }
+  ],
   "note": "Current cached encoder reproduces saved retrieval. Historical encoder revision and server runtime remain unknown."
 }

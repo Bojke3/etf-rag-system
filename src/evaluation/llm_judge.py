@@ -27,8 +27,13 @@ Uporedi odgovor sistema sa referentnim odgovorom i dostavljenim kriterijumima.
 Ocenjuj činjeničnu tačnost, obavezne uslove, izuzetke i potpunost odgovora.
 Ne ocenjuj stil, dužinu niti izbor latinice ili ćirilice. Jasno formulisan odgovor
 ne zaslužuje višu ocenu ako protivreči obaveznoj činjenici.
-Uvaži slučajeve u kojima se očekuje priznanje da nema dovoljno informacija,
-zahtev za pojašnjenjem ili odgovor samo na deo pitanja koji je potkrepljen.
+Polje „Očekivano ponašanje" određuje šta se u ovom slučaju smatra ispravnim.
+Kada se očekuje priznanje da nema dovoljno informacija, zahtev za pojašnjenjem ili
+odgovor samo na potkrepljeni deo pitanja, takav odgovor je ispravan i ocenjuje se punom ocenom.
+Kada se očekuje odgovor, izbegavanje odgovora je promašaj, ma koliko uljudno bilo sročeno:
+tvrdnja da odgovor nije pronađen u kontekstu, upućivanje korisnika da se obrati nekom drugom
+ili odgovor na neko drugo pitanje ocenjuju se prema navedenim obaveznim činjenicama kao i
+svaki drugi odgovor — takav odgovor ih po pravilu ne sadrži nijednu i tada nosi ocenu 0.
 Referentni odgovor je osnova ocenjivanja; ne proveravaš samostalno izvorne PDF-ove.
 Vrati tačno jedan broj od 0 do 5, bez objašnjenja. Za decimalnu ocenu koristi tačku.
 0 = netačno ili nepovezano sa pitanjem
@@ -37,8 +42,30 @@ Vrati tačno jedan broj od 0 do 5, bez objašnjenja. Za decimalnu ocenu koristi 
 3 = uglavnom tačno, uz manju činjeničnu grešku ili izostavljen obavezan detalj
 4 = tačno i dovoljno potpuno, uz sitnu nepreciznost koja ne menja značenje
 5 = potpuno tačno, potpuno i precizno, bez bitnih nepotkrepljenih dodataka"""
-JUDGE_PROMPT = "Oceni sledeći JSON zapis:\n{record}\nOcena (samo broj od 0 do 5):"
+JUDGE_PROMPT = ("Oceni sledeći JSON zapis:\n{record}\n"
+                "U najviše dve rečenice obrazloži da li odgovor iznosi obavezne činjenice i da li "
+                "ispunjava očekivano ponašanje, pa u poslednjem redu napiši samo "
+                "'OCENA: <broj od 0 do 5>'.")
 _SCORE_RE = re.compile(r"[0-5](?:\.\d+)?")
+_VERDICT_RE = re.compile(r"OCENA:\s*([0-5](?:\.\d+)?)\s*$", re.IGNORECASE | re.MULTILINE)
+
+
+def parse_score(response):
+    """Read the grade from the verdict line, or from a bare number.
+
+    Asking for a bare number made the grade independent of the criteria: llama4
+    returned 4.0 for the same answer whether expected_behavior was answer or
+    abstain, and even with the required facts removed entirely. Given room to
+    state its reasoning first, the same model applies the same criteria
+    correctly. The bare form stays accepted so grades recorded under the earlier
+    protocol can still be read back.
+    """
+    text = (response or "").strip()
+    verdicts = _VERDICT_RE.findall(text)
+    value = verdicts[-1] if verdicts else text
+    if not _SCORE_RE.fullmatch(value) or not 0 <= float(value) <= 5:
+        raise ValueError("Judge did not return exactly one score from 0 to 5")
+    return float(value)
 
 
 def prompt_hash():
@@ -82,10 +109,7 @@ class LLMJudgeMetric(Metric):
                 sample.update(raw_response=response, generation=generation)
                 if generation.get("done_reason") == "length":
                     raise ValueError("Judge output reached its token limit")
-                value = (response or "").strip()
-                if not _SCORE_RE.fullmatch(value) or not 0 <= float(value) <= 5:
-                    raise ValueError("Judge did not return exactly one score from 0 to 5")
-                sample["score"] = float(value)
+                sample["score"] = parse_score(response)
             except Exception as exc:
                 sample["error"] = str(exc)
             samples.append(sample)

@@ -1,0 +1,84 @@
+{
+  "run_id": "dev_combined_c101_r05",
+  "created_at": "2026-09-18T22:30:17",
+  "updated_at": "2026-09-18T22:32:55",
+  "config": {
+    "run_id": "dev_combined_c101_r05",
+    "label": "c101",
+    "created_at": "2026-09-18T22:30:17",
+    "benchmark": "benchmarking/finalna_pitanja.json",
+    "benchmark_sha256": "5d843c31e85e03e6f9aba38d003c9ad8c3fc855c266893805c605c18175b57a2",
+    "backend": {
+      "execution": "ssh",
+      "model": "mistral:latest",
+      "model_digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+      "model_details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama"
+        ],
+        "parameter_size": "7.2B",
+        "quantization_level": "Q4_K_M"
+      },
+      "generation_options": {
+        "temperature": 0.7,
+        "num_predict": 2048,
+        "top_p": 0.9,
+        "think": null,
+        "num_ctx": 16384
+      },
+      "context_max_chars": 22000,
+      "context_builder_sha256": "12a424fe97766f4d8b96686f051c928bcc08876a8104ef0428f69171f7fd8afa",
+      "prompts_sha256": "e54745269cf4e4a759a39c1f5d6dd554469fe8a18a4b1b79fd236f320f1048c0",
+      "retrieval_provenance": {
+        "retriever": "SimpleRetriever",
+        "effective_strategy": "flat_legacy_or_staged",
+        "parent_chunks_held_out": 0,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_device": "cpu",
+        "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "embedding_dimension": 384,
+        "embedding_max_seq_length": 256,
+        "embedding_revision_note": "Resolved from loaded encoder config when available; null means unknown.",
+        "index_type": "IndexFlatIP",
+        "vector_count": 205,
+        "normalization": "L2-normalized document/query vectors; inner product search",
+        "files": {
+          "index.faiss": "b3e799a872701027e13a189297222a94500f15b02504d5dd41316d7890449708",
+          "metadatas.json": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+        },
+        "index_manifest_sha256": null
+      }
+    },
+    "endpoint": "http://127.0.0.1:11435",
+    "top_k": 5,
+    "prompt_strategy": "zero_shot",
+    "model": "mistral:latest",
+    "timeout": 900,
+    "limit": null,
+    "resume": true,
+    "mode": "collect_answers",
+    "diagnostic_config": null,
+    "repeat_from": null,
+    "component_config": {
+      "endpoint": "http://127.0.0.1:11435",
+      "top_k": 5,
+      "prompt_strategy": "zero_shot",
+      "model": "mistral:latest",
+      "timeout": 900,
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "embedding_device": "cpu",
+      "chunk_size": 1024,
+      "chunk_overlap": 150,
+      "retrieval_threshold": 0.0,
+      "vector_store_path": "models/vectorstore_c001_c1024_o150"
+    }
+  },
+  "total_questions": 60,
+  "completed_questions": 60,
+  "successful_questions": 60,
+  "failed_questions": 0,
+  "average_wall_time_ms": 2615.5333333333333
+}

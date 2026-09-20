@@ -1,5 +1,0 @@
-et predmetni nastavnik je duzan da utvrdi plan rada. Plan rada ukljucuje: osnovne podatke predmetu: naziv; godina; fond casova; broj ESPB bodova; preduslove za prijavljivanje predmeta; ciljeve predmeta; sadrzaj i strukturu predmeta; plan izvod enja nastave (predavanja i vezbe); predispitne obaveze studenata; broj i okvirne termine odrzavanja kolokvijuma; nacin ocenjivanja; udzbenike; odnosno obaveznu i dopunsku literaturu; nacin oglasavanja obavestenja u vezi ca predmetom (poput oglasne table; sajta predmeta; mejl liste, .) imena nastavnika i saradnika angazovanih na predmetu. Predmetni nastavnik je u obavezi da plan rada na predmetu ucini javno dostupnim studentima najkasnije u prvoj sedmici semestra u kome ce izvodi nastava iz predmeta:
-5
-Angazovanje studenata u toku skolske godine
-Clan 12.
-Svaki predmet IZ studijskog programa iskazuje ce brojem ESPB bodova; obim studija izrazava ce zbirom ESPB bodova: Zbir OD 60 ESPB bodova odgovara prosecnom ukupnom angazovanju studenta u obimu 40-casovne radne nedelje to

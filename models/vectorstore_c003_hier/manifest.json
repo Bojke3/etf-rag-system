@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "stage": "indexing",
+  "created_at": "2026-09-18T17:20:53.483969+00:00",
+  "chunk_directory": "data/chunks_v2_hier/hierarchical",
+  "chunk_manifest_sha256": "affe133b752671494beef2ae6054abb20736e1ae2eb239d9f5481be7b3c0d789",
+  "settings": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "device": "cpu",
+    "batch_size": 32,
+    "strategy": "hierarchical"
+  },
+  "embedding_dimension": 384,
+  "chunk_count": 176,
+  "parent_count": 51,
+  "artifacts": {
+    "index_hierarchical.faiss": "2dd371b13c47832bd4c90953ea662fb47a52bff9e192ff2e56ae65a3a14ef08c",
+    "metadatas_hierarchical.json": "c5ca7af2e16cb337b5a8ee5112dd60e0e7df71106ee670407b3ca70d049fe560",
+    "parents_hierarchical.json": "64bd175fb49cbbab22b9c478eba7e0ddba3493e1a00bc2012677569cac1b2da4"
+  }
+}

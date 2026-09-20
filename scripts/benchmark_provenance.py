@@ -24,6 +24,27 @@ def sha256(path):
     return digest.hexdigest()
 
 
+def match_kind(path, expected):
+    """How a file matches a recorded hash: exact, only after line-ending repair, or not.
+
+    Provenance hashes raw bytes, but some were recorded on Windows from CRLF
+    working copies while the committed blobs are LF. Those records can never
+    match byte-for-byte on a Linux/macOS checkout, which would block every
+    repetition of an otherwise intact run. Reporting the weaker match keeps the
+    original record untouched and states plainly what was compared. Binary
+    artifacts are unaffected: a .faiss file is not line-ending sensitive, and a
+    coincidental match after substitution is not credible at SHA-256.
+    """
+    if sha256(path) == expected:
+        return 'exact'
+    data = Path(path).read_bytes()
+    unix = data.replace(b'\r\n', b'\n')
+    for variant in (unix, unix.replace(b'\n', b'\r\n')):
+        if variant != data and hashlib.sha256(variant).hexdigest() == expected:
+            return 'line_endings'
+    return None
+
+
 def read_json(path):
     return json.loads(Path(path).read_text(encoding='utf-8'))
 
@@ -69,13 +90,26 @@ def runtime_record():
             'note': 'Client runtime only. Server hardware/runtime is not inferred from model size.'}
 
 
-def retrieval_record(config, embedding, store):
-    """Describe the actual legacy/staged index used by the current direct collector."""
+def retrieval_record(config, embedding, store, strategy_id=None, artifact_name=None, parent_count=0):
+    """Describe the index the direct collector actually loaded.
+
+    ``artifact_name`` is the suffix a strategy build uses for its files; ``None``
+    means the unsuffixed legacy pair, whose original chunking cannot be recovered
+    from the artifacts and so is recorded as ``flat_legacy_or_staged``.
+    """
+    from src.embedding import FAISSVectorStore
+
     directory = Path(config.vector_store_path)
+    index_name, metadata_name = FAISSVectorStore.artifact_names(artifact_name)
+    names = [index_name, metadata_name]
+    if parent_count:
+        names.append(f'parents_{strategy_id}.json')
     model = embedding.model
     encoder_config = getattr(getattr(model[0], 'auto_model', None), 'config', None)
     return {
-        'retriever': 'SimpleRetriever', 'effective_strategy': 'flat_legacy_or_staged',
+        'retriever': 'ParentAwareRetriever(SimpleRetriever)' if parent_count else 'SimpleRetriever',
+        'effective_strategy': strategy_id if artifact_name else 'flat_legacy_or_staged',
+        'parent_chunks_held_out': int(parent_count),
         'embedding_model': config.embedding_model, 'embedding_device': config.embedding_device,
         'embedding_revision': getattr(encoder_config, '_commit_hash', None),
         'embedding_dimension': int(store.index.d),
@@ -83,7 +117,7 @@ def retrieval_record(config, embedding, store):
         'embedding_revision_note': 'Resolved from loaded encoder config when available; null means unknown.',
         'index_type': type(store.index).__name__, 'vector_count': int(store.index.ntotal),
         'normalization': 'L2-normalized document/query vectors; inner product search',
-        'files': {name: sha256(directory / name) for name in ('index.faiss', 'metadatas.json')},
+        'files': {name: sha256(directory / name) for name in names},
         'index_manifest_sha256': sha256(directory / 'manifest.json')
             if (directory / 'manifest.json').is_file() else None,
     }
@@ -96,11 +130,15 @@ def record_inputs(run_dir, benchmark, index_dir=None, expected_files=None, retro
     provenance_path = run_dir / 'provenance.json'
     candidates = {'benchmark.json': Path(benchmark)}
     if index_dir is not None:
-        for name in ('index.faiss', 'metadatas.json', 'manifest.json'):
+        # The loader reports which artifacts it actually read, so a strategy
+        # build records index_<strategy>.faiss and its parent store rather than
+        # the legacy unsuffixed pair.
+        required = list(expected_files) if expected_files else ['index.faiss', 'metadatas.json']
+        for name in required + [n for n in ('manifest.json',) if n not in required]:
             path = Path(index_dir) / name
             if path.is_file():
                 candidates['vectorstore/' + name] = path
-        if not all('vectorstore/' + n in candidates for n in ('index.faiss', 'metadatas.json')):
+        if not all('vectorstore/' + n in candidates for n in required):
             raise ValueError('Cannot record an incomplete vector index.')
     records = {}
     for name, source in candidates.items():
@@ -131,7 +169,26 @@ def record_inputs(run_dir, benchmark, index_dir=None, expected_files=None, retro
     return record
 
 
-def validate_inputs(run_dir):
+def relocated_index_file(name, artifact):
+    """An index artifact whose recorded directory is gone but whose bytes survive.
+
+    The c001 runs recorded ``models/vectorstore``, the legacy default path on the
+    machine that produced them; that directory was renamed to a per-configuration
+    one. The remap is accepted only when the file's hash still equals what the run
+    recorded, so this identifies the same artifact rather than guessing at a
+    substitute. Raw run records are never rewritten.
+    """
+    from src.embedding import load_registry
+
+    wanted = Path(artifact['path']).name
+    for entry in load_registry().values():
+        candidate = ROOT / entry['index_dir'] / wanted
+        if candidate.is_file() and sha256(candidate) == artifact['sha256']:
+            return candidate.resolve()
+    return None
+
+
+def validate_inputs(run_dir, notes=None):
     run_dir = Path(run_dir).resolve()
     record = read_json(run_dir / 'provenance.json')
     if record.get('schema_version') != 2:
@@ -144,11 +201,22 @@ def validate_inputs(run_dir):
             path = Path(artifact['path']).resolve()
         else:
             raise ValueError(f'Invalid input path base: {name}')
-        if not path.is_file() or sha256(path) != artifact['sha256']:
+        if not path.is_file() and name.startswith('vectorstore/'):
+            moved = relocated_index_file(name, artifact)
+            if moved is not None:
+                if notes is not None:
+                    notes.append({'input': name, 'match': 'relocated', 'recorded_path': artifact['path'],
+                                  'resolved_path': moved.relative_to(ROOT).as_posix()})
+                paths[name] = moved
+                continue
+        kind = match_kind(path, artifact['sha256']) if path.is_file() else None
+        if kind is None:
             raise ValueError(f'Referenced run input missing or changed: {name}')
+        if kind != 'exact' and notes is not None:
+            notes.append({'input': name, 'match': kind, 'recorded_path': artifact['path']})
         paths[name] = path
     cfg = read_json(run_dir / 'run_config.json')
-    if sha256(paths['benchmark.json']) != cfg['benchmark_sha256']:
+    if match_kind(paths['benchmark.json'], cfg['benchmark_sha256']) is None:
         raise ValueError('Referenced benchmark does not match the original run.')
     return paths
 
@@ -182,23 +250,45 @@ def verify_saved_inputs(run_dir, retriever=None):
     cfg = read_json(run_dir / 'run_config.json')
     if cfg['prompt_strategy'] != 'zero_shot' or cfg.get('diagnostic_config') or cfg.get('limit'):
         raise ValueError('Baseline repetition currently requires a full ordinary zero-shot run.')
-    paths = validate_inputs(run_dir) if (run_dir / 'provenance.json').exists() else {
-        'benchmark.json': Path(cfg['benchmark']),
-        'vectorstore/metadatas.json': Path(cfg['component_config']['vector_store_path']) / 'metadatas.json'}
-    if sha256(paths['benchmark.json']) != cfg['benchmark_sha256']:
+    if (run_dir / 'provenance.json').exists():
+        paths = validate_inputs(run_dir)
+    else:
+        # A run annotated for the first time has no provenance yet; derive the
+        # artifact names from the strategy it recorded.
+        from src.embedding import FAISSVectorStore
+        strategy = recorded_strategy(cfg['backend'])
+        suffix = None if strategy == 'flat_baseline' else strategy
+        _, metadata_name = FAISSVectorStore.artifact_names(suffix)
+        index_dir = Path(cfg['component_config']['vector_store_path'])
+        paths = {'benchmark.json': Path(cfg['benchmark']),
+                 'vectorstore/' + metadata_name: index_dir / metadata_name}
+        parents = index_dir / f'parents_{strategy}.json'
+        if parents.is_file():
+            paths['vectorstore/' + parents.name] = parents
+    if match_kind(paths['benchmark.json'], cfg['benchmark_sha256']) is None:
         raise ValueError('Benchmark differs from the historical run.')
     questions = questions_from(paths['benchmark.json'])
     answers = latest_answers(run_dir)
     if set(answers) != {q['id'] for q in questions}:
         raise ValueError('Reference run must contain exactly the full benchmark question set.')
-    metadata = read_json(paths['vectorstore/metadatas.json'])
+    _, metadata_path, parents_path = recorded_index(paths)
+    metadata = read_json(metadata_path)
     lookup = {(m['document'], str(m['chunk_id'])): m for m in metadata}
+    # Hierarchical runs record the parent's text under the matched child's
+    # identity, and parents are deliberately not in the embedded metadata.
+    parents = read_json(parents_path) if parents_path is not None else {}
+
+    def indexed_text(source):
+        if source.get('expanded_to_parent'):
+            return (parents.get(source.get('parent_chunk_id')) or {}).get('text')
+        return lookup.get((source['document'], str(source['chunk_id'])), {}).get('text')
+
     for question in questions:
         answer = answers[question['id']]
         if answer.get('status') != 'success' or any(answer[k] != question[k] for k in ('question', 'expected_answer')):
             raise ValueError(f'Incomplete or mismatched reference answer: {question["id"]}')
         docs = answer.get('sources', [])
-        if not docs or any(lookup.get((d['document'], str(d['chunk_id'])), {}).get('text') != d['text'] for d in docs):
+        if not docs or any(indexed_text(d) != d['text'] for d in docs):
             raise ValueError(f'Indexed source text differs for {question["id"]}')
         normalized = TextPreprocessor(ocr_cleanup=False).clean(question['question'])
         if retriever is not None:
@@ -239,10 +329,35 @@ def annotate_run(run_dir):
     return audit
 
 
+def recorded_index(paths):
+    """The index artifacts a run recorded, whatever strategy suffix they carry."""
+    def find(predicate):
+        return next((p for name, p in paths.items()
+                     if name.startswith('vectorstore/') and predicate(Path(name).name)), None)
+
+    return (find(lambda n: n.endswith('.faiss')),
+            find(lambda n: n.startswith('metadatas')),
+            find(lambda n: n.startswith('parents_')))
+
+
+def recorded_strategy(backend):
+    """The chunking strategy a run actually used.
+
+    Runs collected before strategy support recorded ``flat_legacy_or_staged``,
+    which is a statement about unrecoverable provenance, not a strategy id; they
+    were flat. Anything else is a real strategy and must be restored as such, or
+    a repetition of a hierarchical run would quietly collect flat.
+    """
+    strategy = (backend.get('retrieval_provenance') or {}).get('effective_strategy')
+    if not strategy or strategy == 'flat_legacy_or_staged':
+        return 'flat_baseline'
+    return strategy
+
+
 def apply_repeat_settings(args, config):
     """Restore recorded effective settings; SSH credentials still come from local config."""
     run_dir = Path(args.repeat_from)
-    paths = validate_inputs(run_dir)
+    paths = validate_inputs(run_dir, notes=getattr(args, 'provenance_notes', None))
     original = read_json(run_dir / 'run_config.json')
     if not args.run_id or (Path(args.output_dir) / args.run_id).resolve() == run_dir.resolve():
         raise ValueError('--repeat-from requires a different explicit --run-id.')
@@ -261,8 +376,11 @@ def apply_repeat_settings(args, config):
     args.expected_model_digest = backend['model_digest']
     overrides = {key: component[key] for key in
                  ('embedding_model', 'embedding_device', 'chunk_size', 'chunk_overlap', 'retrieval_threshold')}
-    overrides.update(vector_store_path=str(paths['vectorstore/index.faiss'].parent),
-                     chunk_strategy='flat_baseline', ollama_temperature=options['temperature'],
+    index_path, _, _ = recorded_index(paths)
+    if index_path is None:
+        raise ValueError('The reference run recorded no FAISS index.')
+    overrides.update(vector_store_path=str(index_path.parent),
+                     chunk_strategy=recorded_strategy(backend), ollama_temperature=options['temperature'],
                      ollama_top_p=options['top_p'], ollama_max_tokens=options['num_predict'],
                      ollama_think=options.get('think'))
     return config.model_copy(update=overrides)
@@ -276,6 +394,8 @@ def verify_run_locally(run_dir):
     from scripts.collect_benchmark_answers import parse_args
     from scripts.benchmark_execution import build_local_pipeline
     args = parse_args(['--repeat-from', str(run_dir), '--run-id', 'verification_only'])
+    # Weaker-than-exact input matches must appear in the report, not only pass.
+    args.provenance_notes = []
     settings = apply_repeat_settings(args, config)
     print('Loading cached encoder and referenced index; no model downloads or LLM requests.', flush=True)
     pipeline = build_local_pipeline(settings, settings.ollama_base_url, args.model, args.timeout,
@@ -285,6 +405,7 @@ def verify_run_locally(run_dir):
     audit.update(verified_at=datetime.now(timezone.utc).isoformat(),
                  embedding_observed_now=pipeline.collection_provenance,
                  generator_called=False,
+                 input_match_exceptions=args.provenance_notes,
                  note='Current cached encoder reproduces saved retrieval. Historical encoder revision and server runtime remain unknown.')
     write_json(Path(run_dir) / 'local_retrieval_verification.json', audit)
     return audit

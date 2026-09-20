@@ -34,7 +34,7 @@ Source: `benchmarking/runs/baseline_context8k/run_config.json`.
 | Dataset | `benchmarking/finalna_pitanja.json`, 60 development questions |
 | Dataset SHA-256 | `a88e35cb6d7b1b883065dfaebd48cc5883f1caba703b068257de5cca8131e78d` |
 | Embedding | `sentence-transformers/all-MiniLM-L6-v2`, CPU |
-| Existing index directory | `models/vectorstore` |
+| Existing index directory | `models/vectorstore_c001_c1024_o150` (renamed 18 September 2026; the five c001 runs recorded it under its former path `models/vectorstore`, and those records were left unmodified) |
 | Existing chunks | Flat, 1024 characters, overlap 150 |
 | Retrieval | top-k 5, threshold 0.0 |
 | Generator | `mistral:latest`, SSH |
@@ -92,6 +92,27 @@ This sequence is a recommendation, not a claim that one factor matters most:
 6. Freeze finalists and evaluate on new held-out questions, separately from the development set used to select parameters.
 
 When later chunking/depth configurations exceed c001's context limits, establish a new common-budget reference before comparing them. Do not silently truncate one strategy more than another. The initial reference series remains useful historical evidence.
+
+## Chunking configurations and repetition (18 September 2026)
+
+Hierarchical chunking now runs through the direct collector. `c003` is the hierarchical index over
+the same frozen extraction snapshot as `c001`/`c002`, so `c001` vs `c003` varies chunking alone;
+see `models/README.md` for the configuration table and `models/registry.json` for the binding of
+each configuration to its encoder and artifacts.
+
+`--repeat-from` restores the reference run's recorded chunking strategy instead of assuming flat,
+so repeating a hierarchical run can no longer collect flat results under a hierarchical label.
+Verification reports any input that matched less than exactly under `input_match_exceptions`,
+covering renamed index directories resolved by hash and hashes recorded from CRLF working copies.
+
+**Context budget is not comparable at equal top_k.** Measured over the first 20 questions at an
+8000-character budget: flat at `top_k=5` delivers all 5 passages (5074 characters), while
+hierarchical at `top_k=5` retrieves 18221 characters and the context builder drops 2.1 of the 5
+passages, delivering 2.7. A comparison at equal `top_k` therefore measures truncation as well as
+chunking. Hold the character budget equal instead — roughly `top_k=8` for flat and `top_k=2` for
+hierarchical at 8000 characters — and report the delivered passage count, which the collector
+saves per question. Existing `c001`/`c002` runs were collected at `top_k=5` and cannot be reused
+as the flat arm of a budget-matched chunking comparison without recollection.
 
 ## Raw records and status rules
 

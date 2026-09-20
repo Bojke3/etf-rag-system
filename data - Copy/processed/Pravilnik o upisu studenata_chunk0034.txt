@@ -1,9 +1,0 @@
-PO afirmativnim merama obavlja ce na osnovu Strucnog uputstva Ministarstva do donosenja opsteg akta koji donosi Senat
-Clan 28,
-Kljucne odredbe ovog Pravilnika bice dostupne kandidatima putem internet stranice Fakulteta, kao i eventualna dodatna uputstva i/ili izmens; dostavljene od strane Ministarstva i Univerziteta.
-12
-Clan 29.
-Ovaj pravilnik stupa na snagu osmog dana OD dana usvajanja na naucno- nastavnom vecu Fakulteta.
-13
-Prilog A MATEMATIKA
-Osnovne logicke operacije. Pojam funkcije: 2 Racionalni algebarski izrazi. Polinomi 3 Linearna funkcija Linearne jednacine i nejednacine: Sistemi linearnih jednacina i nejednacina 4. Kvadratna funkcija. Kvadratne jednacine i nejednacine Sistemi kvadratnih jednacina 5 Algebarske i iracionalne jednacine i nejednacine 6 Pojam logaritma: Logaritamska i eksponencijalna funkcija Logaritamske i eksponencijalne jednacine nejednacine 7 Trigonometrijske funkcije. Identiteti; jednacine i nejednacine Primena trigonometrije na trougao 8. Kompleksni brojevi: 9 Analiticka geometrija

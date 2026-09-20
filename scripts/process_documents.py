@@ -32,7 +32,7 @@ from typing import Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.data import DocumentLoaderFactory, TextPreprocessor
-from src.data.chunking import LEVEL_FLAT, get_chunker, resolve_strategy_id
+from src.data.chunking import DEFAULT_STRATEGY, LEVEL_FLAT, get_chunker, resolve_strategy_id
 from src.utils import setup_logging, ensure_directories, get_file_paths
 
 try:
@@ -68,10 +68,30 @@ def process_documents(
     if is_extraction_snapshot(input_dir):
         # Stage 2 of the three-stage pipeline: the text is already frozen and
         # hash-verified, so re-running extraction or OCR here would defeat it.
-        from src.data.stages import chunk_documents as chunk_snapshot
+        # A strategy is honoured here rather than dropped -- silently returning
+        # flat chunks for --strategy hierarchical is how a chunking comparison
+        # ends up measuring nothing.
+        strategy_id = resolve_strategy_id(strategy)
 
-        logger.info("Input is an extraction snapshot — chunking without re-running OCR")
-        chunk_snapshot(input_dir, output_dir, chunk_size, overlap)
+        if strategy_id == DEFAULT_STRATEGY:
+            # Keeps stage 2 byte-identical to the chunk set the existing indexes
+            # were built from; one .txt per chunk, as chunk_documents.py writes.
+            from src.data.stages import chunk_documents as chunk_snapshot
+
+            logger.info("Input is an extraction snapshot — flat chunking without re-running OCR")
+            chunk_snapshot(input_dir, output_dir, chunk_size, overlap)
+            return
+
+        from src.data.stages import chunk_snapshot_with_strategy
+
+        logger.info(
+            "Input is an extraction snapshot — chunking with strategy=%s without re-running OCR",
+            strategy_id,
+        )
+        chunk_snapshot_with_strategy(
+            input_dir, output_dir, strategy_id, config,
+            chunk_size=chunk_size, chunk_overlap=overlap,
+        )
         return
 
     os.environ["ETF_RAG_ENABLE_OCR"] = "1" if enable_ocr else "0"
