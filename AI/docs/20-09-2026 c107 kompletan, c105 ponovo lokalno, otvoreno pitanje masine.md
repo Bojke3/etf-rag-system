@@ -1,6 +1,10 @@
 # 20-09-2026 — `c107` kompletan, `c105` ponovo lokalno, otvoreno pitanje mašine
 
-Grana: **`hierarchical-benchmark`**. Nastavak na
+Grana: **`hierarchical-benchmark`**, **umergovana u `main` 21-09 (`22edc04`)**.
+Dokument dopunjen 21-09: `c105` je u međuvremenu završen, a odeljak o metrikama pretrage je
+**ispravljen** — ranija tvrdnja o dvosmislenosti imena dokumenata bila je pogrešna.
+
+Nastavak na
 [`19-09-2026 Popravka SSH porta, kolona cut i novi protokol sudije.md`](19-09-2026%20Popravka%20SSH%20porta,%20kolona%20cut%20i%20novi%20protokol%20sudije.md).
 
 ---
@@ -11,11 +15,18 @@ Grana: **`hierarchical-benchmark`**. Nastavak na
 |---|---|---|
 | `c101` MiniLM + flat | **5/5 kompletno** | server (GPU još radio) |
 | `c103` MiniLM + hijerarhijski | **5/5 kompletno** | server (GPU još radio) |
-| `c105` bge-m3 + flat | **prikuplja se** | Mac |
+| `c105` bge-m3 + flat | **5/5 kompletno** | Mac |
 | `c107` bge-m3 + hijerarhijski | **5/5 kompletno** | Mac |
 
+**Korak 1 je kompletan: 20 runova, 1.200 odgovora, 0 grešaka, 0 odsečenih konteksta**,
+2 presečena odgovora (`c101_r03/REAL_008`, `c107_r04/REAL_049`), oba vidljiva u `INDEX.md`.
+
+Grana je umergovana u `main` **merge commitom, ne squashem**. To je bilo suštinsko: 20 runova u
+`provenance.json` beleži `git_revision` koji je postojao samo na grani. Provereno posle merga — svi
+ti commiti su dostupni sa `main`, i 76/76 testova prolazi na `main`.
+
 Serverova grafička je i dalje otpala — provereno 20-09 u 21:18 UTC, opterećenje 0.09, dakle
-mašina je prazna a kartica se i dalje ne prijavljuje. Zato se sve dalje prikuplja lokalno.
+mašina je prazna a kartica se i dalje ne prijavljuje. Zato je sve dalje prikupljeno lokalno.
 
 ---
 
@@ -43,7 +54,7 @@ dodatna pitanja i da na njih odgovara:
 Dakle degenerisano generisanje. Da kolona `cut` nije postojala, sudija bi to ocenio kao loš
 odgovor i pripisao ga konfiguraciji `c107`.
 
-### `c105` se prikuplja ispočetka, ceo na Macu
+### `c105` prikupljen ispočetka, ceo na Macu
 
 Runovi `c105` sa servera **premešteni su u `benchmarking/runs/_superseded_ssh/`**, nisu obrisani.
 `build_run_index.py` preskače foldere čije ime počinje sa `_`, pa ne ulaze u `INDEX.md`. Premeštaj
@@ -61,6 +72,10 @@ jedne konfiguracije ubacilo bi razliku između mašina u raspon koji se u radu p
 varijansa između ponavljanja.
 
 `r01` i `r02` ostaju validni runovi i mogu se koristiti kao zasebno, serversko poređenje.
+
+Novo prikupljanje: pet runova, **300 od 300 uspešno, 0 grešaka, 0 odsečenih, 0 presečenih**,
+~15 s po pitanju, 1 h 25 min ukupno, nijedan run nije morao na drugi pokušaj. Za poređenje, ista
+konfiguracija je na serveru pred kraj davala 100 s po pitanju — Mac je bio šest i po puta brži.
 
 Oznake `c101`–`c108` su sve zauzete u `docs/TELFOR_RUN_MATRIX.md` (parni brojevi rezervisani za
 drugi generator), pa nije bilo slobodne oznake za „c105 sa Maca" — otuda premeštanje umesto nove
@@ -116,27 +131,48 @@ Run se označava jasno kao **kontrola**, ne kao šesto ponavljanje matrice.
 
 ---
 
-## Drugo otvoreno pitanje: kako se broji pogodak pretrage
+## Metrike pretrage — razrešeno, uz ispravku ranije tvrdnje
 
-Pokušano je poređenje `c103` naspram `c107`, ali izračun **ne reprodukuje brojeve iz prethodne
-sesije** (`c101` 0.966 umesto 0.981, `c103` 0.898 umesto 0.942). Uzrok nije greška u računu nego
-stvarna dvosmislenost u podacima:
+**Ranija verzija ovog dokumenta tvrdila je da postoji dvosmislenost oko imena dokumenata** („OAS"
+naspram „osnovne akademske studije"). **To je bilo pogrešno.** Zaključak je izveden iz razlike u
+brojevima, umesto iz pogleda na sama pitanja.
+
+Pravi uzrok: metrika je računata nad svih 59 pitanja koja imaju referencu, a od 60 pitanja njih 8
+**nema dokument koji je trebalo dohvatiti**:
 
 ```
-referenca:   Pravilnik_o_OAS_preciscen_jun_2023.pdf
-u pretrazi:  Pravilnik o osnovnim akademskim studijama    ← isti propis?
-             Pravilnik_o_OAS_preciscen_jun_2023           ← ili samo ovo?
+answer          52
+partial_answer   4
+abstain          3
+clarify          1
 ```
 
-„OAS" i „osnovne akademske studije" su isti propis, ali **dva zasebna dokumenta u indeksu**. Da li
-se dohvatanje jednog računa kao pogodak kad je referenca drugo — to je metodološka odluka koja
-sama pomera `doc-hit` za 4–5 procentnih poena.
+Primer, `REAL_056`: „Kolika je godišnja školarina za SI za 2026/2027?" Očekivani odgovor je da
+takvog podatka **nema u dokumentima**, a provereno je da nijedan dokument u korpusu ne pominje
+2026/2027. Za takvo pitanje promašaj pretrage nije definisan.
 
-Prethodna sesija je to računala ad-hoc i **skripta nije u repou**, pa se ne može utvrditi koja je
-konvencija korišćena. **Nijedan broj za pretragu se zato ne sme citirati dok se ovo ne odluči i
-dok skripta ne bude commitovana.**
+Kad se metrika računa **samo nad `expected_behavior=answer`** (52 pitanja), brojevi se poklapaju sa
+ranijom sesijom do treće decimale — `c101` 0.981/0.735, `c103` 0.942/0.825, `c105` 1.000/0.804.
+Konvencija je, dakle, oduvek bila ispravna, samo nije bila nigde zapisana. **Sada jeste:**
 
----
+> Metrike pretrage (`doc-hit@5`, `MRR`) računaju se isključivo nad pitanjima sa
+> `expected_behavior = "answer"`, kojih ima 52 od 60. Ostala pitanja nemaju ciljni dokument.
+
+### Rezultati pretrage
+
+| konfiguracija | doc-hit@5 | MRR |
+|---|---|---|
+| `c101` MiniLM + flat | 0.981 | 0.735 |
+| `c103` MiniLM + hijerarhijski | 0.942 | **0.825** |
+| `c105` bge-m3 + flat | **1.000** | 0.804 |
+| `c107` bge-m3 + hijerarhijski | 0.962 | 0.739 |
+
+Dve stvari čine ove brojeve upotrebljivim odmah: pretraga je **deterministička**, pa je identična u
+svih pet ponavljanja — ovo nisu proseci sa šumom nego tačne vrednosti. I **ne zavisi od mašine**,
+jer se pretraga uvek izvršava lokalno, pa je pitanje server/Mac ne dodiruje.
+
+Obrazac se ne ponavlja na oba embedinga: kod MiniLM-a hijerarhijski **diže** MRR (0.735 → 0.825),
+kod bge-m3 ga **spušta** (0.804 → 0.739). To se ne sme tumačiti dok se ne vide ocene kvaliteta.
 
 ## Izmenjeni fajlovi
 
@@ -145,9 +181,11 @@ dok skripta ne bude commitovana.**
 | `benchmarking/runs/dev_combined_c107_r01…r05` | **novo** — 300 odgovora |
 | `benchmarking/runs/_superseded_ssh/` | **novo** — serverski `c105` runovi + objašnjenje |
 | `scripts/run_matrix_step1.sh` | `EXECUTION` (ssh/local), `ONLY` filter, preskakanje gotovih runova, brojanje stvarnih uspeha umesto `wc -l` |
+| `benchmarking/runs/dev_combined_c105_r01…r05` | **novo** — 300 odgovora, ponovo prikupljeno na Macu |
 | `benchmarking/runs/INDEX.md` | regenerisan |
 
-Commit: `c8cfd7b`.
+Commiti: `c8cfd7b` (c107), `f99db7c` (premeštanje + izveštaj), `862a34f` (c105),
+`22edc04` (merge u `main`).
 
 ---
 
@@ -155,14 +193,14 @@ Commit: `c8cfd7b`.
 
 ### Traži odluku
 
-1. **Konvencija za pogodak pretrage** (OAS naspram „osnovne akademske studije"). Dok se ne odluči,
-   nema metrika pretrage.
-2. **Kontrolni run `c101_r06` lokalno** — zatvara pitanje mašine za 25 minuta.
+1. **Kontrolni run `c101_r06` lokalno** — zatvara pitanje mašine za 25 minuta. Jedina preostala
+   odluka pred ocenjivanje.
 
 ### Posao bez odluke
 
-3. **Skripta za metrike i zbirnu tabelu** — ne postoji, a sad je jasno da nije opciona. Prosek i
-   standardna devijacija po konfiguraciji, spremno za LaTeX.
+2. **Skripta za metrike i zbirnu tabelu** — i dalje ne postoji. Metrike pretrage su gore
+   izračunate ad-hoc; dok skripta ne bude commitovana, brojevi se ne reprodukuju jednom komandom.
+   Konvencija koju mora da poštuje zapisana je iznad.
 4. **Ocenjivanje** — nijedan run iz matrice nije ocenjen. Sudija je na reviziji 3 (obrazloženje pa
    ocena), ali pun run još nije prošao, nema poređenja sa ljudskom ocenom i stabilnost nije merena.
    Sudija mora na server jer llama4 ima 67 GB, a serveru je otkazala grafička — procenu vremena
