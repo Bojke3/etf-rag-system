@@ -1,3 +1,8 @@
+---
+name: progress-documentation
+description: Use when a meaningful unit of work is finished — a feature, phase, bug fix, refactor or experiment — and the state should be recorded so a later session can pick it up. Ask the user first, then write a dated progress document to AI/docs/. Do not use after every individual command or trivial fix.
+---
+
 # Progress Documentation Skill
 
 ## Purpose
@@ -8,15 +13,15 @@ Keep a persistent record of project progress so that work can be easily resumed 
 
 After completing a meaningful task, feature, phase, bug fix, refactor, or other significant piece of work, STOP before moving on to unrelated work and ask the user:
 
-> "We've finished this part. Do you want me to create a progress `.md` file in `ai/docs/` documenting where we left off?"
+> "We've finished this part. Do you want me to create a progress `.md` file in `AI/docs/` documenting where we left off?"
 
 Do **not** create the file automatically unless the user agrees.
 
 If the user agrees:
 
-1. Check the existing contents of `ai/docs/`.
+1. Check the existing contents of `AI/docs/`.
 2. Create a new `.md` file documenting the completed work.
-3. Put the file inside `ai/docs/`.
+3. Put the file inside `AI/docs/`.
 4. Make sure the documentation accurately reflects the current state of the project.
 
 ## File naming

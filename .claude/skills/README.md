@@ -42,13 +42,8 @@ pokreće serija runova, kako se ocenjuje, šta se proverava pre commita.
 
 Ne ide **šta se desilo** — to su zapisi sesija i oni idu u `AI/docs/`.
 
-## Prazan folder
-
-Ako ovde još nema nijednog skilla, ovaj README je jedini sadržaj — git ne pamti prazne foldere, pa
-bi se `.claude/skills/` inače izgubio pri kloniranju.
-
 ## Napomena o `AI/skills/`
 
-U repou postoji i `AI/skills/Progress Documentation.md`. To je dogovor o vođenju zapisa, ali **nije
-skill u ovom formatu** i Claude ga ne učitava sam — mora mu se izričito reći da ga pročita. Ako se
-prebaci ovamo kao `.claude/skills/progress-documentation/SKILL.md`, počeo bi da se primenjuje sam.
+Taj folder je postojao ranije i sadržao je `Progress Documentation.md`. Prebačen je ovamo kao
+`progress-documentation/` i sada se učitava sam; pre toga je Claudeu moralo izričito da se kaže da
+ga pročita. Folder `AI/skills/` više ne postoji — zapisi sesija i dalje idu u `AI/docs/`.
