@@ -6,7 +6,7 @@
   "temperature": 0.0,
   "top_p": 0.9,
   "num_ctx": 16384,
-  "max_tokens": 300,
+  "max_tokens": 500,
   "samples": 1,
   "seed": 42,
   "think": null,
@@ -15,5 +15,6 @@
   "supersedes_prompt_sha256": "5d5a1400e59688b433935b12d88ffa5e009bd537a2820ebe4dc051f33b6d5a58",
   "rubric_revision": 3,
   "rubric_revision_note": "Revizija 3 (2026-09-19): protokol trazi kratko obrazlozenje pa red 'OCENA: <broj>'. Pod ranijim protokolom (go broj, max_tokens=32) ocena nije zavisila od kriterijuma: isti odgovor dobijao je 4.0 i sa expected_behavior=answer i sa abstain, pa i kada su obavezne cinjenice potpuno uklonjene. Uz prostor za obrazlozenje isti model primenjuje iste kriterijume ispravno. Izmereno na 9 odgovora iz dev_base_c001_r05: REAL_002 4.0->1.0, REAL_004 4.0->5.0. Ocene iz revizije 1 nose stari prompt_sha256 i nisu uporedive.",
-  "known_issue": "JUDGE_SYSTEM jos sadrzi red 'Vrati tacno jedan broj od 0 do 5, bez objasnjenja', koji protivreci novom JUDGE_PROMPT-u. Namerno ostavljen: merenje revizije 3 izvrseno je sa tim tekstom, pa bi izmena dala u repo nesto sto nije izmereno. Ocistiti pri prvom ponovnom ocenjivanju, uz ponovnu proveru na istih 9 odgovora."
+  "known_issue": "JUDGE_SYSTEM jos sadrzi red 'Vrati tacno jedan broj od 0 do 5, bez objasnjenja', koji protivreci novom JUDGE_PROMPT-u. Namerno ostavljen: merenje revizije 3 izvrseno je sa tim tekstom, pa bi izmena dala u repo nesto sto nije izmereno. Ocistiti pri prvom ponovnom ocenjivanju, uz ponovnu proveru na istih 9 odgovora.",
+  "max_tokens_note": "Podignuto sa 300 na 500 dana 21-09-2026. Pri ocenjivanju 240 odgovora, 3 (1.25%) nisu dobila ocenu jer bi sudija napisao obrazlozenje i ne bi stigao do reda 'OCENA:' -- jedno od njih je doslovno udarilo u granicu tokena. max_tokens nije deo prompta, pa prompt_sha256 ostaje isti i runovi oceneni sa 300 ostaju uporedivi sa onima ocenjenim sa 500."
 }
