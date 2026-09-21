@@ -140,6 +140,52 @@ Poređenje po osi **chunkovanja** je netaknuto i može se koristiti.
 
 ---
 
+## Koja je konfiguracija najbolja
+
+Sirovi poredak po oceni sudije:
+
+| | konfiguracija | ocena | doc-hit@5 | MRR | kontekst |
+|---|---|---|---|---|---|
+| 1. | `c107` bge-m3 + hijerarhijski | **3.02** | 0.962 | 0.739 | 14.980 |
+| 2. | `c105` bge-m3 + flat | 2.95 | **1.000** | 0.804 | 5.127 |
+| 3. | `c103` MiniLM + hijerarhijski | 2.48 | 0.942 | **0.825** | 17.880 |
+| 4. | `c101` MiniLM + flat | 2.41 | 0.981 | 0.735 | 5.126 |
+
+Poređenje **po pitanju** (ista pitanja u obe konfiguracije, pa je test uparen i mnogo jači od
+poređenja proseka):
+
+| poređenje | razlika | t | bolji / lošiji |
+|---|---|---|---|
+| `c101` → `c103` chunking, ista mašina | +0.11 ± 0.31 | **0.3** | 20 / 19 |
+| `c105` → `c107` chunking, ista mašina | +0.07 ± 0.27 | **0.2** | 20 / 16 |
+| `c101` → `c105` embedding, različita mašina | +0.59 ± 0.28 | 2.2 | 29 / 12 |
+| `c103` → `c107` embedding, različita mašina | +0.47 ± 0.23 | 2.0 | 26 / 13 |
+
+**Efekat chunkovanja se ne razlikuje od slučajnosti.** `t ≈ 0.2–0.3`; hijerarhijski je bolji na 20
+pitanja a lošiji na 19 — bacanje novčića, i to isto na oba embedinga.
+
+**Efekat embedinga je realan po brojkama** (`t ≈ 2.0–2.2`, dosledan na obe grane), **ali je to baš
+osa pomešana sa mašinom** — vidi prethodni odeljak.
+
+### Nalaz koji vredi prijaviti, iako je negativan
+
+Hijerarhijski chunking **popravlja rangiranje pasusa ali ne i odgovore**:
+
+```
+c101 → c103:   MRR 0.735 → 0.825 (+12%)      ocena 2.41 → 2.48 (nula)
+```
+
+Tačan pasus dolazi više gore, model dobija **3,5 puta više teksta** (17.880 naprema 5.126 znakova),
+a odgovori nisu bolji. Dužina odgovora je takođe praktično ista (229 naprema 230 tokena). Uz to je
+i skuplje: hijerarhijski je išao ~45 s po pitanju naprema ~13 s za flat.
+
+**Formulacija za rad:** „Hijerarhijski chunking povećava MRR za 12%, ali ne daje merljivo bolje
+odgovore (razlika 0.07–0.11 uz standardnu grešku 0.27–0.31), uprkos 3,5 puta većem kontekstu."
+
+**Ne sme se napisati** da je bge-m3 bolji od MiniLM-a — ta razlika je pomešana sa mašinom.
+
+---
+
 ## Šta ovi brojevi još ne znače
 
 **Jedno ponavljanje po konfiguraciji.** Ocenjen je samo `r01` iz svake. Varijansa između ponavljanja
