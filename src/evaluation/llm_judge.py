@@ -35,12 +35,29 @@ tvrdnja da odgovor nije pronađen u kontekstu, upućivanje korisnika da se obrat
 ili odgovor na neko drugo pitanje ocenjuju se prema navedenim obaveznim činjenicama kao i
 svaki drugi odgovor — takav odgovor ih po pravilu ne sadrži nijednu i tada nosi ocenu 0.
 Referentni odgovor je osnova ocenjivanja; ne proveravaš samostalno izvorne PDF-ove.
-Vrati tačno jedan broj od 0 do 5, bez objašnjenja. Za decimalnu ocenu koristi tačku.
-0 = netačno ili nepovezano sa pitanjem
-1 = uglavnom netačno, uz mali relevantan deo
-2 = delimično tačno, uz veliki propust ili grešku
-3 = uglavnom tačno, uz manju činjeničnu grešku ili izostavljen obavezan detalj
-4 = tačno i dovoljno potpuno, uz sitnu nepreciznost koja ne menja značenje
+
+Najpre odredi glavni zaključak koji direktno odgovara na pitanje, a zatim proceni uslove i detalje.
+Ne tretiraj svaki izostavljeni detalj jednako. Činjenica je ključna ako menja odgovor, pravo,
+obavezu, rok, iznos ili uslov koji je korisnik pitao; administrativni postupak, naziv organa,
+član ili dodatno ograničenje smatraj sporednim kada ga pitanje ne traži i kada ne menja zaključak.
+Tačan glavni odgovor sa izostavljenim sporednim detaljem može dobiti 4. Tačan glavni odgovor
+kojem nedostaje važan uslov ili koji sadrži jednu materijalnu grešku po pravilu dobija 3.
+
+Nepotkrepljen dodatak kažnjavaj srazmerno njegovom uticaju. Bezazlen ili nerelevantan dodatak
+sam po sebi snižava ocenu najviše za jedan poen. Izmišljeni rok, iznos, pravo, zabrana ili postupak
+koji može navesti korisnika na pogrešno postupanje predstavlja veliku grešku. Direktno pogrešan
+odgovor „da" ili „ne" ima veću težinu od naknadnog delimično tačnog objašnjenja.
+Ne dodeljuj 0 ako odgovor sadrži makar jednu relevantnu i tačnu ključnu tvrdnju; tada je najmanja
+primerena ocena 1. Ocenu 0 koristi samo za potpuno pogrešan ili nepovezan odgovor, ili kada nema
+nijedne korisne činjenice i nije ispunjeno očekivano ponašanje.
+
+Kratko obrazloži ocenu, a zatim u poslednjem redu napiši „OCENA: <broj>“.
+Za decimalnu ocenu koristi tačku.
+0 = potpuno netačno ili nepovezano, bez ijedne korisne činjenice
+1 = glavni zaključak je netačan, ali postoji mali relevantan i tačan deo
+2 = delimično tačno, ali je zaključak nejasan ili kontradiktoran, ili postoji veliki propust
+3 = glavni zaključak je tačan, ali nedostaje važan uslov ili postoji materijalna greška
+4 = direktan i tačan odgovor sa svim ključnim uslovima, uz samo sporedni propust ili nepreciznost
 5 = potpuno tačno, potpuno i precizno, bez bitnih nepotkrepljenih dodataka"""
 JUDGE_PROMPT = ("Oceni sledeći JSON zapis:\n{record}\n"
                 "U najviše dve rečenice obrazloži da li odgovor iznosi obavezne činjenice i da li "

@@ -89,6 +89,7 @@ class Config(BaseSettings):
     web_debug: bool = False
     
     # Optional: Cloud LLM APIs
+    anthropic_api_key: Optional[str] = None
     openai_api_key: Optional[str] = None
     huggingface_api_key: Optional[str] = None
     

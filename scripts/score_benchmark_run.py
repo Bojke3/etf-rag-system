@@ -261,7 +261,7 @@ def _score_run(args: argparse.Namespace) -> Path:
         "metrics": metrics,
         "answers_path": str(answers_path),
         "answers_sha256": hashlib.sha256(answers_path.read_bytes()).hexdigest(),
-        "evaluation_protocol": "reference_metrics_v3",
+        "evaluation_protocol": "reference_metrics_v5",
         "reference_benchmark_sha256": json.loads((run_dir / 'provenance.json').read_text(encoding='utf-8'))['inputs']['benchmark.json']['sha256']
             if (run_dir / 'provenance.json').exists() else None,
         "diagnostic_config": json.loads((run_dir / 'run_config.json').read_text(encoding='utf-8')).get('diagnostic_config')
@@ -292,7 +292,7 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser.add_argument(
         "--judge-model",
         default=None,
-        help="Optional assertion of the fixed profile model; does not follow OLLAMA_MODEL",
+        help="Judge model ID (default: model from --judge-profile; claude-sonnet-5 in the default profile)",
     )
     parser.add_argument(
         "--judge-base-url",
@@ -311,9 +311,20 @@ def parse_args(argv=None) -> argparse.Namespace:
         default=None,
         help="Optional assertion of the fixed profile sample count",
     )
-    parser.add_argument("--judge-profile", default=None, help="Fixed judge JSON (default: benchmarking/judge_profile.json)")
-    parser.add_argument("--judge-execution", choices=["local", "ssh"], help="Override connection mode, not judge identity")
-    parser.add_argument("--bertscore-model", default="bert-base-multilingual-cased", help="Fixed multilingual BERTScore encoder")
+    parser.add_argument(
+        "--judge-profile",
+        default=None,
+        help="Judge settings JSON (default: benchmarking/judge_profile.json)",
+    )
+    parser.add_argument(
+        "--judge-execution", choices=["api", "local", "ssh"],
+        help="Judge backend (default from profile: api). api uses Anthropic; local/ssh use Ollama",
+    )
+    parser.add_argument(
+        "--bertscore-model",
+        default="bert-base-multilingual-cased",
+        help="Fixed multilingual BERTScore encoder",
+    )
     return parser.parse_args(argv)
 
 

@@ -95,6 +95,27 @@
       "runs": [],
       "provenance": "build_manifest",
       "provenance_note": "Built 18 September 2026 from the same chunks.jsonl as c003, so metadatas_hierarchical.json and parents_hierarchical.json are byte-identical to c003's; only the vectors differ. Completes the 2x2: c001/c002 flat with each encoder, c003/c004 hierarchical with each encoder, all from the frozen extraction snapshot data/extracted_v1."
+    },
+    "c005": {
+      "index_dir": "models/vectorstore_c005_c1024_o150",
+      "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "embedding_dimension": 384,
+      "embedding_max_seq_length": 128,
+      "embedding_revision_observed": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "index_type": "IndexFlatIP",
+      "vector_count": 205,
+      "chunk_source": "data/chunks_v1_c1024_o150",
+      "chunk_size": 1024,
+      "chunk_overlap": 150,
+      "files": {
+        "index.faiss": "0f2d4827a0a35ef3a1ccb0f7dd5fcafe3070796f4032351c214231da870b730c",
+        "metadatas.json": "5e1c9dba1570a0d5d7e81cc174c5a45502837cca7a27f3baa0a2595fdbd97a65"
+      },
+      "runs": [
+        "dev_combined_c109_r01"
+      ],
+      "provenance": "build_manifest",
+      "provenance_note": "Built 27 September 2026 by scripts/index_documents.py from the same 205 flat chunks as c001/c002; metadatas.json is byte-identical. Encoder revision and maximum sequence length were observed in dev_combined_c109_r01/run_config.json. Index and metadata hashes were verified against that run's retrieval provenance when registering this index."
     }
   }
 }

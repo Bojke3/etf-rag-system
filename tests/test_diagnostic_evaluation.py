@@ -14,12 +14,18 @@ from scripts import collect_benchmark_answers as collector
 from scripts import score_benchmark_run as scorer
 from scripts.benchmark_execution import build_local_pipeline
 from scripts.diagnostic_benchmark import select_questions
-from scripts.judge_execution import DEFAULT_PROFILE, load_profile, prepare_judge, verify_model, verify_generator_separation
+from scripts.judge_execution import (
+    DEFAULT_PROFILE,
+    load_profile,
+    prepare_judge,
+    verify_generator_separation,
+    verify_model,
+)
 from src.data.stages import extract_documents, file_hash
 from src.evaluation.bertscore import BERTScoreMetric
 from src.evaluation.llm_judge import LLMJudgeMetric
 from src.evaluation.rouge import ROUGEMetric
-from src.llm import OllamaClient
+from src.llm import AnthropicClient, OllamaClient
 from src.rag import RAGPipeline
 
 
@@ -143,35 +149,74 @@ class EvaluationTests(unittest.TestCase):
         self.assertIsNone(summary["metric_averages"]["llm_judge"])
         self.assertEqual(summary["metric_error_counts"]["llm_judge"], 1)
 
-    def test_fixed_judge_digest_and_model_override_checked_before_generation(self):
+    def test_pinned_ollama_digest_is_checked_and_model_can_be_overridden(self):
         profile = load_profile(DEFAULT_PROFILE)
+        pinned = {**profile, "model": "llama4:latest", "digest_prefix": "abcdef123456"}
         with self.assertRaisesRegex(ValueError, "digest differs"):
-            verify_model(profile, [{"name": profile["model"], "digest": "wrong"}])
-        args = SimpleNamespace(judge_model="different")
-        with patch("scripts.judge_execution.list_models") as models:
-            with self.assertRaisesRegex(ValueError, "must match"):
-                with prepare_judge(args, None):
-                    pass
-            models.assert_not_called()
+            verify_model(pinned, [{"name": pinned["model"], "digest": "wrong"}])
+        record = verify_model(
+            pinned, [{"name": "different", "digest": "different-digest"}], model="different")
+        self.assertEqual(record["name"], "different")
 
     def test_judge_uses_own_profile_even_when_generator_is_different(self):
         profile = load_profile(DEFAULT_PROFILE)
         args = SimpleNamespace(judge_execution="local", judge_timeout=5)
         config = SimpleNamespace(ollama_model="different-generator", ollama_base_url="http://localhost")
-        models = [{"name": profile["model"], "digest": profile["digest_prefix"] + "0" * 52}]
+        models = [{"name": profile["model"], "digest": "abc123"}]
         with patch("scripts.judge_execution.list_models", return_value=models):
             with prepare_judge(args, config):
                 self.assertEqual(args.judge_client.model, profile["model"])
                 self.assertEqual(args.judge_client.temperature, 0)
                 self.assertEqual(args.judge_client.seed, 42)
 
+    def test_cli_model_override_selects_requested_ollama_judge(self):
+        args = SimpleNamespace(
+            judge_execution="local", judge_model="qwen3.5:latest", judge_timeout=5)
+        config = SimpleNamespace(ollama_base_url="http://localhost")
+        models = [{"name": "qwen3.5:latest", "digest": "qwen-digest"}]
+        with patch("scripts.judge_execution.list_models", return_value=models):
+            with prepare_judge(args, config):
+                self.assertEqual(args.judge_client.model, "qwen3.5:latest")
+                self.assertEqual(args.judge_metadata["model"], "qwen3.5:latest")
+                self.assertEqual(args.judge_metadata["provider"], "ollama")
+
     def test_judge_cannot_grade_itself_or_an_alias_with_the_same_weights(self):
-        profile = load_profile(DEFAULT_PROFILE)
-        for record in ({"model": profile["model"]}, {"model": "llama4"},
-                       {"model": "alias", "model_digest": profile["digest_prefix"] + "0" * 52}):
-            with self.assertRaisesRegex(ValueError, "own generated answers"):
+        profile = {"model": "llama4:latest", "digest_prefix": "abcdef123456"}
+        for record in ({"model": "llama4:latest"}, {"model": "llama4"},
+                       {"model": "alias", "model_digest": "abcdef1234567890"}):
+            with self.assertRaisesRegex(ValueError, "same model"):
                 verify_generator_separation(profile, [record])
         verify_generator_separation(profile, [{"model": "mistral-large:latest"}])
+
+    def test_anthropic_client_sends_sonnet_request_without_sampling_parameters(self):
+        response = SimpleNamespace(
+            id="msg_1", _request_id="req_1", model="claude-sonnet-5", stop_reason="end_turn",
+            content=[SimpleNamespace(type="thinking", text="hidden"),
+                     SimpleNamespace(type="text", text="OCENA: 5")],
+            usage=SimpleNamespace(input_tokens=20, output_tokens=4),
+        )
+        backend = Mock()
+        backend.messages.create.return_value = response
+        client = AnthropicClient(api_key="test-key")
+        client._client = backend
+        result = client.generate("Pitanje", system="Sistem", temperature=0.0)
+        self.assertEqual(result, "OCENA: 5")
+        request = backend.messages.create.call_args.kwargs
+        self.assertEqual(request["model"], "claude-sonnet-5")
+        self.assertEqual(request["thinking"], {"type": "disabled"})
+        self.assertNotIn("temperature", request)
+        self.assertNotIn("top_p", request)
+        self.assertEqual(client.last_response_metadata["input_tokens"], 20)
+
+    def test_api_judge_defaults_to_anthropic_sonnet_and_records_selection(self):
+        args = SimpleNamespace(judge_timeout=5)
+        config = SimpleNamespace(anthropic_api_key="test-key")
+        with patch.object(AnthropicClient, "validate_configuration"), \
+             patch.object(AnthropicClient, "close"):
+            with prepare_judge(args, config):
+                self.assertEqual(args.judge_client.model, "claude-sonnet-5")
+                self.assertEqual(args.judge_metadata["provider"], "anthropic")
+                self.assertEqual(args.judge_metadata["execution"], "api")
 
     def test_model_facing_judge_prompt_is_serbian_and_hides_generator_identity(self):
         metric = self.judge("5")
@@ -182,6 +227,11 @@ class EvaluationTests(unittest.TestCase):
         self.assertIn("Navedi da nema dovoljno informacija", prompt)
         self.assertNotIn("secret-model-name", prompt)
         self.assertIn("Ti ocenjuješ", metric.llm_client.generate.call_args.kwargs["system"])
+        self.assertNotIn("bez objašnjenja", metric.llm_client.generate.call_args.kwargs["system"])
+        system = metric.llm_client.generate.call_args.kwargs["system"]
+        self.assertIn("glavni zaključak", system)
+        self.assertIn("Ne dodeljuj 0", system)
+        self.assertIn("Bezazlen ili nerelevantan dodatak", system)
 
     def test_seed_is_actually_sent(self):
         response = Mock(status_code=200)
@@ -193,7 +243,7 @@ class EvaluationTests(unittest.TestCase):
 
     def test_scoring_records_fixed_judge_and_preserves_earlier_scores(self):
         profile = load_profile(DEFAULT_PROFILE)
-        models = [{"name": profile["model"], "digest": profile["digest_prefix"] + "0" * 52}]
+        models = [{"name": profile["model"], "digest": "abc123"}]
         with tempfile.TemporaryDirectory() as directory:
             run = Path(directory) / "run"
             run.mkdir()

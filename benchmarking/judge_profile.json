@@ -1,8 +1,7 @@
 {
   "schema_version": 1,
-  "model": "llama4:latest",
-  "digest_prefix": "bf31604e25c2",
-  "execution": "ssh",
+  "model": "claude-sonnet-5",
+  "execution": "api",
   "temperature": 0.0,
   "top_p": 0.9,
   "num_ctx": 16384,
@@ -10,11 +9,10 @@
   "samples": 1,
   "seed": 42,
   "think": null,
-  "prompt_sha256": "f20c4d6254898e13b1ec14751302468d2e7e6852ab7eeb09eb0b67741302c9dd",
-  "description": "Reserved evaluation model, excluded from the generator comparison. Uses a Serbian rubric. Digest prefix comes from the user-provided installed-model list; verify server feasibility and human agreement before freezing paper results.",
-  "supersedes_prompt_sha256": "5d5a1400e59688b433935b12d88ffa5e009bd537a2820ebe4dc051f33b6d5a58",
-  "rubric_revision": 3,
-  "rubric_revision_note": "Revizija 3 (2026-09-19): protokol trazi kratko obrazlozenje pa red 'OCENA: <broj>'. Pod ranijim protokolom (go broj, max_tokens=32) ocena nije zavisila od kriterijuma: isti odgovor dobijao je 4.0 i sa expected_behavior=answer i sa abstain, pa i kada su obavezne cinjenice potpuno uklonjene. Uz prostor za obrazlozenje isti model primenjuje iste kriterijume ispravno. Izmereno na 9 odgovora iz dev_base_c001_r05: REAL_002 4.0->1.0, REAL_004 4.0->5.0. Ocene iz revizije 1 nose stari prompt_sha256 i nisu uporedive.",
-  "known_issue": "JUDGE_SYSTEM jos sadrzi red 'Vrati tacno jedan broj od 0 do 5, bez objasnjenja', koji protivreci novom JUDGE_PROMPT-u. Namerno ostavljen: merenje revizije 3 izvrseno je sa tim tekstom, pa bi izmena dala u repo nesto sto nije izmereno. Ocistiti pri prvom ponovnom ocenjivanju, uz ponovnu proveru na istih 9 odgovora.",
-  "max_tokens_note": "Podignuto sa 300 na 500 dana 21-09-2026. Pri ocenjivanju 240 odgovora, 3 (1.25%) nisu dobila ocenu jer bi sudija napisao obrazlozenje i ne bi stigao do reda 'OCENA:' -- jedno od njih je doslovno udarilo u granicu tokena. max_tokens nije deo prompta, pa prompt_sha256 ostaje isti i runovi oceneni sa 300 ostaju uporedivi sa onima ocenjenim sa 500."
+  "prompt_sha256": "e3309b995685e2521d683a03d9cca3cf3fec5cd64da23ff9f5ed95c4dad79deb",
+  "description": "Default Anthropic Claude Sonnet 5 judge using the Serbian rubric. CLI arguments may select another model and api/local/ssh execution; the effective selection is recorded in every score file.",
+  "supersedes_prompt_sha256": "b46f0017d141cbbe5ee9233c86238a6ec93a2c98b95ababc283995322e1e98c5",
+  "rubric_revision": 5,
+  "rubric_revision_note": "Revizija 5 (2026-09-27): kalibracija Sonnet sudije razlikuje glavni zakljucak i kljucne uslove od sporednih detalja, proporcionalno kaznjava nepotkrepljene dodatke i rezervise ocenu 0 za potpuno neuspesne odgovore. Rezultati nisu direktno uporedivi sa revizijom 4 i sve konfiguracije za medjusobno poredjenje moraju biti ponovo ocenjene istom revizijom.",
+  "max_tokens_note": "Limit je 500 tokena. Anthropic API rezim iskljucuje thinking kako bi ceo limit bio dostupan kratkom obrazlozenju i zavrsnom redu sa ocenom."
 }

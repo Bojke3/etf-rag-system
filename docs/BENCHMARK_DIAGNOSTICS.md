@@ -56,45 +56,52 @@ Other metric fixes:
 - BLEU uses the same Unicode tokenization without requiring a downloaded NLTK sentence tokenizer. It remains unsmoothed sentence BLEU-4, which can be zero for short correct answers. Library failures are errors, not zero scores.
 - A composite is calculated only when all three required component scores are available. The existing weights are an exploratory aggregate, not validated accuracy percentages.
 
-The output protocol is now `reference_metrics_v3`, reflecting the reserved Llama4 judge and Serbian rubric. Rescore all compared runs with the same judge profile and prompt rather than combining historical and new judge values. Scoring files receive unique timestamps, preserving earlier results. Summaries include per-metric valid/error counts; a run with missing metric values is not fully scored. Previously generated answers can be reused; changing the judge does not require regenerating them.
+The output protocol is now `reference_metrics_v5`, reflecting the selectable judge backend and model plus a calibrated Serbian rubric. The rubric prioritizes the direct conclusion and conditions that materially change the answer, treats unrelated administrative details as secondary unless the question asks for them, penalizes unsupported additions according to their impact, and reserves score 0 for answers with no useful correct fact. The default judge is Anthropic Claude Sonnet 5. Rescore all compared runs with the same judge model, backend, profile and prompt rather than combining scores produced by different judges. Scoring files receive unique timestamps, preserving earlier results. Summaries include per-metric valid/error counts; a run with missing metric values is not fully scored. Previously generated answers can be reused; changing the judge does not require regenerating them.
 
-## Fixed judge profile
+## Judge profile and execution
 
 `benchmarking/judge_profile.json` is independent of `.env`'s answer-generator model:
 
 | Setting | Value |
 |---|---|
-| Judge | `llama4:latest`, reserved outside the generator comparison |
-| Required installed digest prefix | `bf31604e25c2`, from the user's server list |
-| Execution | SSH, using existing SSH connection settings |
-| Temperature / top_p | 0.0 / 0.9 |
-| Seed | 42 |
-| Output / context token limits | 32 / 16384 |
+| Default judge | `claude-sonnet-5` |
+| Default execution | Anthropic API |
+| API authentication | `ANTHROPIC_API_KEY` from the environment or `.env` |
+| API sampling | Provider defaults; thinking disabled |
+| Local/SSH sampling | Temperature 0.0, top_p 0.9, seed 42 |
+| Output / Ollama context token limits | 500 / 16384 |
 | Samples per answer | 1 |
 | Prompt | Fixed Serbian reference-based rubric and Serbian input labels, identified by SHA-256 |
 
-This is a proposed consistent grader, not an empirically validated best judge. Check its agreement with human labels before drawing paper conclusions. The generator shortlist is Mistral, Qwen3.5, Mistral-small, Mistral-large and Qwen3.6; Llama4 is used only for judging. Keeping the roles separate avoids direct self-grading but does not eliminate all preference or reasoning biases. Generator identities are not included in judge prompts. A fixed seed and temperature reduce uncontrolled changes but do not guarantee identical outputs. Switching the rubric to Serbian aligns instructions with the material; no measured accuracy gain from that language change is claimed.
+This is a configurable grader, not an empirically validated best judge. Check the selected model's agreement with human labels before drawing paper conclusions. Keeping the judge separate from the answer generator avoids direct self-grading but does not eliminate all preference or reasoning biases. Generator identities are not included in judge prompts. Switching the rubric to Serbian aligns instructions with the material; no measured accuracy gain from that language change is claimed.
 
-Scoring verifies the installed model and digest prefix before any judge request and records the complete digest. It refuses a different model or a changed judge prompt instead of silently switching graders. If server weights change, choose a new profile and rescore all compared runs. `--judge-model` and `--judge-samples` are optional assertions and cannot silently override the profile. A separate `--judge-profile` explicitly selects a different evaluation protocol.
+`--judge-execution api|local|ssh` selects the backend and `--judge-model` overrides the model from the profile. API execution uses Anthropic; local and SSH execution use Ollama. Every score file records the effective provider, model and execution mode. Ollama runs additionally record the installed model digest and details. A profile may still pin a digest; that digest is enforced when its own model is selected. `--judge-samples` remains an assertion of the profile's sample count, and `--judge-profile` selects another rubric/configuration file.
 
-Scoring also checks recorded generator names and digests before connecting. A Llama4 generator or an alias carrying the judge digest is rejected. Old records without model provenance cannot be conclusively checked, so verify their origin manually. The detailed module comment in `src/evaluation/llm_judge.py` describes the rubric, its methodological background and its limits; it does not claim to replicate a published scoring scale.
+Scoring checks recorded generator names before connecting and, for Ollama, also compares the resolved judge digest. A generator from the selected judge family or an alias carrying the same Ollama digest is rejected. Old records without model provenance cannot be conclusively checked, so verify their origin manually. The detailed module comment in `src/evaluation/llm_judge.py` describes the rubric, its methodological background and its limits; it does not claim to replicate a published scoring scale.
 
-For the pilot, start with judge and ROUGE:
+Put the key in `.env` (which is ignored by Git):
 
-```powershell
-python scripts/score_benchmark_run.py --run-id diagnostic_pilot_curated --metrics rouge,llm_judge --judge-execution ssh
-python scripts/score_benchmark_run.py --run-id diagnostic_pilot_retrieved --metrics rouge,llm_judge --judge-execution ssh
+```dotenv
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-For all implemented metrics on an existing run:
+For the default Anthropic Sonnet 5 judge, start with judge and ROUGE:
 
 ```powershell
-python scripts/score_benchmark_run.py --run-id baseline_context8k --metrics all --judge-execution ssh
+.\.venv\Scripts\python.exe scripts\score_benchmark_run.py --run-id diagnostic_pilot_curated --metrics rouge,llm_judge
+.\.venv\Scripts\python.exe scripts\score_benchmark_run.py --run-id diagnostic_pilot_retrieved --metrics rouge,llm_judge --judge-execution api --judge-model claude-sonnet-5
 ```
 
-BERTScore runs on the laptop CPU and may download its encoder on first use. Only judge requests use the SSH server. Availability, memory feasibility and actual scoring quality of the proposed large judge have not been tested by this implementation work.
+To select an Ollama model locally or through the existing SSH configuration:
 
-To use an already established tunnel, select `--judge-execution local --judge-base-url http://127.0.0.1:11435`. Here `local` means a directly reachable endpoint; the fixed judge identity remains unchanged. A web API's answer-generator setting does not control this scorer.
+```powershell
+.\.venv\Scripts\python.exe scripts\score_benchmark_run.py --run-id baseline_context8k --metrics all --judge-execution local --judge-model llama4:latest
+.\.venv\Scripts\python.exe scripts\score_benchmark_run.py --run-id baseline_context8k --metrics all --judge-execution ssh --judge-model llama4:latest
+```
+
+BERTScore runs on the laptop CPU and may download its encoder on first use. Only judge requests use the selected API or Ollama backend. API scoring has a monetary cost; estimate and monitor usage before scoring large run matrices.
+
+To use an already established tunnel, select `--judge-execution local --judge-base-url http://127.0.0.1:11435 --judge-model <ollama-model>`. Here `local` means a directly reachable Ollama endpoint. A web API's answer-generator setting does not control this scorer.
 
 ## Verification and references
 

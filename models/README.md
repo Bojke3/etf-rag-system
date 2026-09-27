@@ -10,6 +10,7 @@ readable form.
 | `c002` | `vectorstore_c002_c1024_o150` | `BAAI/bge-m3` | 1024 | 205, same chunk snapshot | build manifest |
 | `c003` | `vectorstore_c003_hier` | `sentence-transformers/all-MiniLM-L6-v2` | 384 | 176 children embedded, 51 parents held out | build manifest |
 | `c004` | `vectorstore_c004_hier_bge` | `BAAI/bge-m3` | 1024 | same 176 children, 51 parents | build manifest |
+| `c005` | `vectorstore_c005_c1024_o150` | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` | 384 | 205, same flat chunk snapshot as c001/c002 | build manifest |
 
 All indexes are `IndexFlatIP` over L2-normalised vectors. `c001` and `c002` are built from the
 **same** 205 chunks — their `metadatas.json` hashes are identical — so only the encoder differs,
@@ -58,7 +59,7 @@ downloads nothing; exits non-zero on any mismatch.
 
 ## Adding a configuration
 
-1. Build it into a new directory: `python scripts/index_documents.py --input data/chunks_v1_c1024_o150 --output models/vectorstore_c003_...`
+1. Build it into a new, unused directory with `scripts/index_documents.py`, explicitly specifying `--input`, `--output`, and the embedding `--model`
    (the script writes its own `manifest.json`).
 2. Add an entry to `registry.json` with the encoder, dimension, chunk source and file hashes.
 3. Never reuse a config ID after changing its effective settings — see `docs/BENCHMARK_RUN_REGISTER.md`.
