@@ -101,6 +101,55 @@ Bez `--allow-draft`, nacrti se označavaju kao `needs_review`.
 
 ## Komande (PowerShell, iz korena projekta)
 
+### Pozicija dokaza u rezultatima
+
+Novi JSON i Markdown izveštaji prikazuju pozicije chunkova za svaku jedinicu
+dokaza, zasebno pre skraćivanja konteksta i u tekstu stvarno poslatom LLM-u.
+Pozicija 1 je prvi rezultat, 2 drugi itd.; to nije `chunk_id` u vektorskoj bazi.
+Kod hijerarhijskog retrievala prati se redosled proširenih roditeljskih odlomaka
+nakon uklanjanja duplikata, pa ih može biti manje od pet.
+
+JSON polja `retrieved_locations` i `delivered_locations` sadrže:
+
+- `full_chunk_ranks`: svi chunkovi koji svaki pojedinačno sadrže ceo dokaz.
+- `contributing_chunk_ranks`: chunkovi sa bar delom nekog prihvatljivog dokaza;
+  samo preklapanje ne znači da je dokaz potpun.
+- `supporting_chunk_ranks`: jedna dovoljna kombinacija chunkova unutar najranijeg
+  potpunog prefiksa rezultata. Nije nužno jedina ni najmanja moguća kombinacija.
+- `complete_by_rank`: najmanji k za koji prvih k rezultata zajedno sadrži ceo
+  dokaz. `null` znači da ceo dokaz nije pronađen. Kod dokaza raspoređenog u
+  chunkovima 2 i 4 ovo je 4, ali ne znači da chunk 4 sam sadrži ceo dokaz.
+
+`all_evidence_by_rank` uz pitanje pokazuje do koje pozicije su dostavljeni svi
+potrebni dokazi; `null` znači da neki nedostaje. Coverage i complete rate imaju
+isto značenje i vrednosti kao pre dodavanja pozicija. Za nove kolone ponovo
+pokrenite skriptu sa novim imenom izlaza; stari izveštaji se ne menjaju.
+
+Zbirni pokazatelji (zasebno za `answer_questions` i `supported_part_questions`):
+
+- `mean_found_evidence_rank`: prosek `complete_by_rank` za sve potpuno dostavljene
+  jedinice dokaza. Svaka jedinica ima istu težinu i računa se jednom, bez obzira na
+  duplikate. Pitanje sa više pronađenih jedinica zato daje više uzoraka. Dokaz koji
+  zahteva chunkove 2 i 4 doprinosi vrednošću 4. Nepronađeni dokazi se izostavljaju,
+  ne dobijaju nulu niti izmišljenu poziciju 6.
+- `found_requirement_count`, `missing_requirement_count`, `scored_requirement_count`:
+  brojevi pronađenih, nepronađenih i svih obaveznih jedinica u ocenjenim pitanjima.
+  Prvi je imenilac proseka pronađenih dokaza.
+- `found_evidence_rank_counts`: koliko potpuno pronađenih jedinica je prvi put
+  dostupno do svake pozicije (npr. `{"1": 20, "2": 15}`). Nisu kumulativni brojevi.
+- `mean_all_evidence_rank`: prosek `all_evidence_by_rank` samo preko pitanja kod
+  kojih su dostavljeni svi dokazi. Imenilac je `complete_questions`.
+
+Ako nema pronađenih dokaza/potpunih pitanja, odgovarajući prosek je `null`.
+Ako bilo koje pitanje iz grupe nije ocenjivo, oba proseka su `null`; brojači i
+histogram i dalje opisuju samo ocenjeni deo. Prosek pozicije je uslovljen uspehom:
+konfiguracija koja pronađe samo jedan lak dokaz na poziciji 1 može imati bolji
+prosek od konfiguracije koja pronađe skoro sve. Zato se nikad ne koristi sam kao
+ocena ukupnog kvaliteta pretrage. Ovo nije MRR. Kod različitih veličina chunkova
+isti broj pozicije ne znači isti broj karaktera ili tokena u kontekstu.
+
+### Pokretanje
+
 Ponovo napravi pregled nakon izmena oznaka:
 
 ```powershell

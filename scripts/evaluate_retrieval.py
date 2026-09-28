@@ -129,7 +129,7 @@ def map_context(row, documents):
         raise ValueError("Missing recorded context, sources or chunk usage")
     if len(usage) != len(sources):
         raise ValueError("Chunk usage does not match sources")
-    retrieved, delivered, pieces = {}, {}, []
+    retrieved, delivered, pieces, chunks = {}, {}, [], []
     for rank, (chunk, use) in enumerate(zip(sources, usage), 1):
         text = chunk.get("text", "")
         used = use.get("context_chars_used")
@@ -145,14 +145,17 @@ def map_context(row, documents):
             raise ValueError(f"Unknown source document: {chunk['document']}")
         start, end = locate(normalize(text), documents[key])
         retrieved.setdefault(key, []).append((start, end))
+        mapped = {"rank": rank, "document": key, "retrieved": (start, end), "delivered": None}
+        chunks.append(mapped)
         if used:
             pieces.append(text[:used])
             prefix = normalize(text[:used])
             if prefix:
                 delivered.setdefault(key, []).append((start, start + len(prefix)))
+                mapped["delivered"] = (start, start + len(prefix))
     if "\n\n".join(pieces) != context:
         raise ValueError("Reconstructed delivered chunks differ from recorded context")
-    return retrieved, delivered, len(context)
+    return retrieved, delivered, len(context), chunks
 
 
 def covers(intervals, start, end, source=""):
@@ -174,6 +177,51 @@ def requirement_present(requirement, intervals, documents):
                    for s in option["spans"]) for option in requirement["alternatives"])
 
 
+def requirement_locations(requirement, chunks, stage, documents):
+    """Report output-list ranks, not index IDs or pre-deduplication child ranks.
+
+Supporting ranks form one sufficient set within the earliest complete prefix.
+They need not be the only sufficient set or the smallest possible set.
+"""
+    def present(selected):
+        intervals = {}
+        for chunk in selected:
+            if chunk[stage] is not None:
+                intervals.setdefault(chunk["document"], []).append(chunk[stage])
+        return requirement_present(requirement, intervals, documents)
+
+    contributing = []
+    for chunk in chunks:
+        if chunk[stage] is None:
+            continue
+        left, right = chunk[stage]
+        for option in requirement["alternatives"]:
+            if any(document_key(s["document"]) == chunk["document"]
+                   and max(left, s["start"]) < min(right, s["end"])
+                   and documents[chunk["document"]][max(left, s["start"]):min(right, s["end"])].strip()
+                   for s in option["spans"]):
+                contributing.append(chunk)
+                break
+    full = [chunk["rank"] for chunk in contributing if present([chunk])]
+    supporting, completion_rank = [], None
+    prefix = []
+    for chunk in contributing:
+        prefix.append(chunk)
+        if present(prefix):
+            completion_rank = chunk["rank"]
+            supporting = list(prefix)
+            # Remove redundant hits without mixing incomplete alternatives.
+            for candidate in reversed(prefix):
+                remaining = [c for c in supporting if c["rank"] != candidate["rank"]]
+                if present(remaining):
+                    supporting = remaining
+            break
+    return {"full_chunk_ranks": full,
+            "contributing_chunk_ranks": [c["rank"] for c in contributing],
+            "supporting_chunk_ranks": [c["rank"] for c in supporting],
+            "complete_by_rank": completion_rank}
+
+
 def score_case(case, row, documents, question):
     result = {"question_id": case["question_id"], "scope": case["scope"],
               "review_status": case["review_status"]}
@@ -184,15 +232,20 @@ def score_case(case, row, documents, question):
     if row.get("question") != question["question"]:
         return {**result, "status": "unscorable", "reason": "Recorded question differs from benchmark"}
     try:
-        retrieved, delivered, chars = map_context(row, documents)
+        retrieved, delivered, chars, chunks = map_context(row, documents)
     except ValueError as error:
         return {**result, "status": "unscorable", "reason": str(error)}
     items = [{"id": r["id"], "retrieved": requirement_present(r, retrieved, documents),
-              "delivered": requirement_present(r, delivered, documents)} for r in case["requirements"]]
+              "delivered": requirement_present(r, delivered, documents),
+              "retrieved_locations": requirement_locations(r, chunks, "retrieved", documents),
+              "delivered_locations": requirement_locations(r, chunks, "delivered", documents)}
+             for r in case["requirements"]]
     count = sum(r["delivered"] for r in items)
     return {**result, "status": "scored", "requirements": items,
             "retrieved_coverage": sum(r["retrieved"] for r in items) / len(items),
             "delivered_coverage": count / len(items), "complete": count == len(items),
+            "all_evidence_by_rank": max(r["delivered_locations"]["complete_by_rank"] for r in items)
+            if count == len(items) else None,
             "verdict": "complete" if count == len(items) else "partial" if count else "none",
             "context_chars": chars, "context_sha256": digest(row["diagnostics"]["context"])}
 
@@ -202,12 +255,21 @@ def aggregate(results, scope):
     scored = [r for r in eligible if r["status"] == "scored"]
     # Missing cases never silently disappear from the denominator of a final metric.
     valid = bool(eligible) and len(scored) == len(eligible)
+    requirements = [r for q in scored for r in q["requirements"]]
+    found_ranks = [r["delivered_locations"]["complete_by_rank"] for r in requirements if r["delivered"]]
+    complete_ranks = [q["all_evidence_by_rank"] for q in scored if q["complete"]]
     return {"eligible_questions": len(eligible), "scored_questions": len(scored),
             "complete_questions": sum(r["complete"] for r in scored),
             "mean_evidence_coverage": statistics.mean(r["delivered_coverage"] for r in scored) if valid else None,
             "complete_evidence_rate": statistics.mean(r["complete"] for r in scored) if valid else None,
             "mean_retrieved_coverage": statistics.mean(r["retrieved_coverage"] for r in scored) if valid else None,
             "context_chars_mean": statistics.mean(r["context_chars"] for r in scored) if scored else None,
+            "scored_requirement_count": len(requirements),
+            "found_requirement_count": len(found_ranks),
+            "missing_requirement_count": len(requirements) - len(found_ranks),
+            "mean_found_evidence_rank": statistics.mean(found_ranks) if valid and found_ranks else None,
+            "found_evidence_rank_counts": {str(rank): found_ranks.count(rank) for rank in sorted(set(found_ranks))},
+            "mean_all_evidence_rank": statistics.mean(complete_ranks) if valid and complete_ranks else None,
             "all_cases_available": valid}
 
 
@@ -254,6 +316,19 @@ def review_markdown(data, documents, questions):
     return "\n".join(lines)
 
 
+def location_summary(locations):
+    if locations["complete_by_rank"] is None:
+        ranks = ", ".join(map(str, locations["contributing_chunk_ranks"]))
+        return f"nepotpun (delovi: {ranks})" if ranks else "nije pronađen"
+    if locations["full_chunk_ranks"]:
+        details = "ceo u: " + ", ".join(map(str, locations["full_chunk_ranks"]))
+        if len(locations["supporting_chunk_ranks"]) > 1:
+            details += "; ranije zajedno: " + " + ".join(map(str, locations["supporting_chunk_ranks"]))
+    else:
+        details = "zajedno: " + " + ".join(map(str, locations["supporting_chunk_ranks"]))
+    return f"{details}; potpun do #{locations['complete_by_rank']}"
+
+
 def report_markdown(report):
     lines = ["# Retrieval evidence coverage", "", "Evidence: " + report["evidence"], "",
              "DRAFT results are exploratory, not validated benchmark scores. "
@@ -265,6 +340,22 @@ def report_markdown(report):
         cov = "N/A" if a["mean_evidence_coverage"] is None else f"{a['mean_evidence_coverage']:.3f}"
         rate = "N/A" if a["complete_evidence_rate"] is None else f"{a['complete_evidence_rate']:.3f}"
         lines.append(f"| {Path(run['run']).name} | {run['preliminary']} | {a['scored_questions']} / {a['eligible_questions']} | {a['complete_questions']} | {cov} | {rate} |")
+    lines += ["", "## Prosečne pozicije dostavljenih dokaza (answer pitanja)", "",
+              "Prosek dokaza računa se samo preko potpuno pronađenih jedinica, svaka jednom. "
+              "Za dokaz raspoređen u chunkovima 2 i 4 računa se 4; duplikati ne dodaju uzorke. "
+              "Niži prosek znači raniji dolazak pronađenih dokaza, ali ne dokazuje bolju pretragu "
+              "ako je mnogo drugih dokaza izostalo. Zato ga čitajte uz coverage i complete rate.", "",
+              "Prosek za sve dokaze računa se samo preko potpuno pokrivenih pitanja: "
+              "do koje pozicije treba uzeti rezultate da svi dokazi budu dostupni. "
+              "Brojači se odnose na ocenjena pitanja; N/A označava nepotpun skup ili prazan imenilac.", "",
+              "| Run | Pronađeni / ocenjeni dokazi | Prosečna pozicija dokaza | Potpuna pitanja | Prosečna pozicija za sve dokaze |",
+              "|---|---:|---:|---:|---:|"]
+    for run in report["runs"]:
+        a = run["answer_questions"]
+        found = "N/A" if a["mean_found_evidence_rank"] is None else f"{a['mean_found_evidence_rank']:.3f}"
+        complete = "N/A" if a["mean_all_evidence_rank"] is None else f"{a['mean_all_evidence_rank']:.3f}"
+        lines.append(f"| {Path(run['run']).name} | {a['found_requirement_count']} / {a['scored_requirement_count']} | "
+                     f"{found} | {a['complete_questions']} | {complete} |")
     for run in report["runs"]:
         lines += ["", f"## {Path(run['run']).name}", "",
                   "| Question | Scope | Result | Missing delivered requirements / issue |",
@@ -273,6 +364,20 @@ def report_markdown(report):
             missing = ", ".join(r["id"] for r in q.get("requirements", []) if not r["delivered"])
             note = q.get("reason", missing).replace("|", "\\|")
             lines.append(f"| {q['question_id']} | {q['scope']} | {q.get('verdict', q['status'])} | {note} |")
+        lines += ["", "### Pozicije dokaza u vraćenim chunkovima", "",
+                  "Pozicije su 1-based redosled sačuvanih rezultata. Kod hijerarhijskog retrievala "
+                  "to je redosled roditeljskih odlomaka posle proširenja i uklanjanja duplikata. "
+                  "Kolona 'Poslato LLM-u' računa samo stvarno dostavljeni tekst.", "",
+                  "'Ceo u' navodi chunkove koji sami sadrže ceo dokaz. 'Zajedno' navodi jednu "
+                  "dovoljnu kombinaciju. 'Potpun do #k' znači da prvih k rezultata zajedno sadrži "
+                  "dokaz; ne mora ceo biti u chunku k. 'Nepotpun' ne donosi poene.", "",
+                  "| Question | Dokaz | Pre skraćivanja konteksta | Poslato LLM-u |",
+                  "|---|---|---|---|"]
+        for q in run["questions"]:
+            for r in q.get("requirements", []):
+                lines.append(f"| {q['question_id']} | {r['id']} | "
+                             f"{location_summary(r['retrieved_locations'])} | "
+                             f"{location_summary(r['delivered_locations'])} |")
     return "\n".join(lines) + "\n"
 
 

@@ -87,9 +87,100 @@ class EvidenceTests(unittest.TestCase):
     def test_hierarchical_numeric_usage_matches_serialized_child_id(self):
         row = answer(["Rule."])
         row["sources"][0]["chunk_id"] = "Rules::hierarchical::child::0000"
-        self.assertTrue(self.score("Rule.", [requirement("Rule.", "Rule.")], row)["complete"])
+        result = self.score("Rule.", [requirement("Rule.", "Rule.")], row)
+        self.assertTrue(result["complete"])
+        self.assertEqual(result["requirements"][0]["delivered_locations"]["full_chunk_ranks"], [1])
         row["sources"][0]["chunk_id"] = "Rules::hierarchical::child::0001"
         self.assertEqual(self.score("Rule.", [requirement("Rule.", "Rule.")], row)["status"], "unscorable")
+
+    def test_rank_five_and_all_evidence_completion_rank(self):
+        parts = ["First.", "Second.", "Third.", "Fourth.", "Fifth."]
+        source = " ".join(parts)
+        reqs = [requirement(source, "Second."), requirement(source, "Fifth.", name="E02")]
+        row = answer(parts)
+        # IDs are not ranks in the returned list.
+        row["sources"][4]["chunk_id"] = 901
+        row["diagnostics"]["chunk_usage"][4]["chunk_id"] = 901
+        result = self.score(source, reqs, row)
+        self.assertEqual(result["all_evidence_by_rank"], 5)
+        location = result["requirements"][1]["delivered_locations"]
+        self.assertEqual(location["full_chunk_ranks"], [5])
+        self.assertEqual(location["supporting_chunk_ranks"], [5])
+
+    def test_split_rule_reports_sufficient_ranks_and_earliest_complete_prefix(self):
+        source = "Before. Student cannot take exams during leave. After."
+        req = requirement(source, "Student cannot take exams during leave.")
+        result = self.score(source, [req], answer([source[:32], "Before.", source[23:], source]))
+        loc = result["requirements"][0]["delivered_locations"]
+        self.assertEqual(loc["contributing_chunk_ranks"], [1, 3, 4])
+        self.assertEqual(loc["supporting_chunk_ranks"], [1, 3])
+        self.assertEqual(loc["full_chunk_ranks"], [4])
+        self.assertEqual(loc["complete_by_rank"], 3)
+        self.assertEqual(result["all_evidence_by_rank"], 3)
+
+    def test_clipped_and_omitted_evidence_keep_retrieved_and_delivered_ranks_separate(self):
+        source = "Rule. Important exception."
+        result = self.score(source, [requirement(source, "Important exception.")],
+                            answer([source, "Important exception."], [5, 0]))
+        r = result["requirements"][0]
+        self.assertEqual(r["retrieved_locations"]["full_chunk_ranks"], [1, 2])
+        self.assertEqual(r["delivered_locations"]["contributing_chunk_ranks"], [])
+        self.assertIsNone(r["delivered_locations"]["complete_by_rank"])
+        self.assertIsNone(result["all_evidence_by_rank"])
+
+    def test_incomplete_alternatives_cannot_be_combined_into_false_complete_rank(self):
+        source = "One. Two. Three. Four."
+        req = requirement(source, "One.")
+        req["alternatives"][0]["spans"] += requirement(source, "Two.")["alternatives"][0]["spans"]
+        alt = requirement(source, "Three.")["alternatives"][0]
+        alt["spans"] += requirement(source, "Four.")["alternatives"][0]["spans"]
+        req["alternatives"].append(alt)
+        result = self.score(source, [req], answer(["One.", "Three."]))
+        loc = result["requirements"][0]["delivered_locations"]
+        self.assertEqual(loc["contributing_chunk_ranks"], [1, 2])
+        self.assertEqual(loc["supporting_chunk_ranks"], [])
+        self.assertIsNone(loc["complete_by_rank"])
+
+    def test_markdown_explains_complete_joint_and_partial_locations(self):
+        source = "Student cannot take exams."
+        req = requirement(source, source)
+        result = self.score(source, [req], answer(["Student cannot", "take exams."]))
+        self.assertEqual(ev.location_summary(result["requirements"][0]["delivered_locations"]),
+                         "zajedno: 1 + 2; potpun do #2")
+        partial = self.score(source, [req], answer(["Student cannot"]))
+        self.assertEqual(ev.location_summary(partial["requirements"][0]["delivered_locations"]),
+                         "nepotpun (delovi: 1)")
+        run = {"run": "example", "preliminary": False, "answer_questions": ev.aggregate([result], "answer"),
+               "questions": [result]}
+        md = ev.report_markdown({"evidence": "evidence.json", "runs": [run]})
+        self.assertIn("| Q1 | E01 | zajedno: 1 + 2; potpun do #2 |", md)
+
+    def test_rank_means_exclude_missing_evidence_and_count_duplicates_once(self):
+        source = "One. Two. Three. Four. Missing."
+        reqs = [requirement(source, "One."), requirement(source, "Four.", name="E02"),
+                requirement(source, "Missing.", name="E03")]
+        partial = self.score(source, reqs, answer(["One.", "Two.", "Three.", "Four.", "One."]))
+        complete = self.score(source, [requirement(source, "One.")], answer(["Two.", "One."]))
+        a = ev.aggregate([partial, complete], "answer")
+        self.assertEqual(a["scored_requirement_count"], 4)
+        self.assertEqual(a["found_requirement_count"], 3)
+        self.assertEqual(a["missing_requirement_count"], 1)
+        self.assertAlmostEqual(a["mean_found_evidence_rank"], (1+4+2)/3)
+        self.assertEqual(a["found_evidence_rank_counts"], {"1": 1, "2": 1, "4": 1})
+        self.assertEqual(a["mean_all_evidence_rank"], 2)
+        self.assertEqual(a["complete_questions"], 1)
+
+    def test_rank_means_are_null_for_no_matches_or_unscored_questions(self):
+        source = "Found. Missing."
+        absent = self.score(source, [requirement(source, "Missing.")], answer(["Found."]))
+        a = ev.aggregate([absent], "answer")
+        self.assertIsNone(a["mean_found_evidence_rank"])
+        self.assertIsNone(a["mean_all_evidence_rank"])
+        self.assertEqual(a["found_evidence_rank_counts"], {})
+        found = self.score(source, [requirement(source, "Found.")], answer(["Found."]))
+        a = ev.aggregate([found, {"scope": "answer", "status": "missing_run_question"}], "answer")
+        self.assertIsNone(a["mean_found_evidence_rank"])
+        self.assertIsNone(a["mean_all_evidence_rank"])
 
     def test_identical_text_in_wrong_document_is_not_a_match(self):
         source = "Student cannot take exams."
