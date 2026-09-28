@@ -1,0 +1,6239 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-28T16:01:33.966663+00:00",
+  "evidence": "benchmarking/retrieval_evidence.json",
+  "evidence_sha256": "775d445ae1d5315143e75b4dcddfbfec00ce66e8c7c78cdedefe33ffc13cb298",
+  "evaluator_sha256": "d01b3791b117f6b4d864aee6cae55408729524511978c396edd303deb9fcccc3",
+  "runs": [
+    {
+      "run": "benchmarking/runs/dev_combined_c105_r01",
+      "answers_sha256": "1ec5a17c95355f63eec78f3bb9a20a6bb2fe5934ddc35afebaaefe39483ebfbc",
+      "preliminary": false,
+      "answer_questions": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 39,
+        "mean_evidence_coverage": 0.8397435897435898,
+        "complete_evidence_rate": 0.75,
+        "mean_retrieved_coverage": 0.8397435897435898,
+        "context_chars_mean": 5116.134615384615,
+        "all_cases_available": true
+      },
+      "supported_part_questions": {
+        "eligible_questions": 5,
+        "scored_questions": 5,
+        "complete_questions": 3,
+        "mean_evidence_coverage": 0.7,
+        "complete_evidence_rate": 0.6,
+        "mean_retrieved_coverage": 0.7,
+        "context_chars_mean": 5020.8,
+        "all_cases_available": true
+      },
+      "questions": [
+        {
+          "question_id": "REAL_001",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5126,
+          "context_sha256": "7ad64b33b40581c826baf17f454ce1186affeecec70894d4590c6c576a58d8d6"
+        },
+        {
+          "question_id": "REAL_002",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "5a13430beec1a622c1afc0a0291683d59d0f23cd1180322caec1fd813a8db407"
+        },
+        {
+          "question_id": "REAL_003",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "73624bb9ab087fabbffd32b237d936d12fdd3a8ff8c8df6a6045884e47575453"
+        },
+        {
+          "question_id": "REAL_004",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "549b8182b107dc024dcdaf0b2744067b59fdde4cd324be5d1f3721516e197819"
+        },
+        {
+          "question_id": "REAL_005",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "cb8aaddbe500a1b82f91417446940bfff52c9fec0c3aa7a5072b3a74ed825220"
+        },
+        {
+          "question_id": "REAL_006",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E03",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E04",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.6666666666666666,
+          "delivered_coverage": 0.6666666666666666,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "c2cafe798a0c1354e268f8ccce26b42e82d332c0f56ba0fc6529eb899cf5f99c"
+        },
+        {
+          "question_id": "REAL_007",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "e37dceda6ec4042cc838ef9eccc667d8a96dd67636234439f9065ecee94ce43c"
+        },
+        {
+          "question_id": "REAL_008",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "86cfd6dd304ed004beb25afae33940e66612c666c5dd81a54ddf8d672ecff820"
+        },
+        {
+          "question_id": "REAL_009",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "218afc631a40a2cf8204d2756710285f00ddeaddba5fe589373f638b5a8eaa33"
+        },
+        {
+          "question_id": "REAL_010",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "f4c6706a60b8d0b6e7bed772e8a6c837c363e250d9643d3d6061f1e4067789a3"
+        },
+        {
+          "question_id": "REAL_011",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "51c92da4005e37872566faab33bc8325c7612354945c6b1d9a5b69e8ee318de5"
+        },
+        {
+          "question_id": "REAL_012",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "eff267f57f5730b33edb80ce7b96f69503c7aefa68a64d9786bf972176f5c02c"
+        },
+        {
+          "question_id": "REAL_013",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "fbd8e278b9a2ca6b7657a3b9116fbfe751bf931d5967674a09fa2492996dde0d"
+        },
+        {
+          "question_id": "REAL_014",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "d0f12c21f738c45683461b3afb8f32277ae7bbff9300dc5f979d544817845261"
+        },
+        {
+          "question_id": "REAL_015",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "71e35e5028e7c7f03cba8f7be0635ce3ff2f2b518c6dba1677a776504853ed40"
+        },
+        {
+          "question_id": "REAL_016",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3c1d908f8e64177916caad9c106e4d8c777970ebf550c7d30b64ef22b9fd9225"
+        },
+        {
+          "question_id": "REAL_017",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "8adb078829fdd33f84e654641b67ff785e834578feee3a2e4bc874e875affcdd"
+        },
+        {
+          "question_id": "REAL_018",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "1d863816aad7f53c24fd572696d586084afc236811d0b928ba01bd201b0d5dbb"
+        },
+        {
+          "question_id": "REAL_019",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "6528ac609a733381fe5755c56aa2d8406a891621a4caadf3524be912b4025029"
+        },
+        {
+          "question_id": "REAL_020",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "05130ec7b7a042f2717605bc0a95b6e33089004ec985a62d3bf977d1b463783c"
+        },
+        {
+          "question_id": "REAL_021",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "589bca35403dd215fcdcebb8bfbe7f3e3b113332aca3a5341a29868d7f222b9d"
+        },
+        {
+          "question_id": "REAL_022",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5125,
+          "context_sha256": "54fbb706eb7a69c0411366d21376a57b53fb5e3f67ac62a934016c8a9a19e6c3"
+        },
+        {
+          "question_id": "REAL_023",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3810d4d94d799cd15b8f5e2c6a25b377200d39e93e94087c68e79728a429d5d6"
+        },
+        {
+          "question_id": "REAL_024",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "b1c14ce50978fa63c7893ee3d2b6afcd6cd6d8b69e55e65ab15d100d42f2fd2b"
+        },
+        {
+          "question_id": "REAL_025",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "534da77fd2b9ffac679a55d4427bf74a6ad22034b3eeda0da417bb8b79a9d69b"
+        },
+        {
+          "question_id": "REAL_026",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d7508b02eb8a3a2d3f6bcefef963e70e3907c19d807252ccca982bb3adcbe02a"
+        },
+        {
+          "question_id": "REAL_027",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e52c72821e4788357509b080ddfc5dffa57a69f508211a84edaf261cfa15005c"
+        },
+        {
+          "question_id": "REAL_028",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "05010ccfb58d3b9ce3d16bd9343ccad5c45e302703f167aaa7ffb7dab1f7c372"
+        },
+        {
+          "question_id": "REAL_029",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "6198d1f76510f52da668a056c0f883088a0314bae10778a8ce323130b7c9f02e"
+        },
+        {
+          "question_id": "REAL_030",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "d11a4271f2d539ac382a9218a2ae3b2890a970d280a6be0b4f28f69b37a01d71"
+        },
+        {
+          "question_id": "REAL_031",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5123,
+          "context_sha256": "f52330ce57e39a9ce26e658e870365085a870f94c17fa44936a9f4791635b9e6"
+        },
+        {
+          "question_id": "REAL_032",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "4cdec171ea697cbcdcab4100a5e8c353e6aee830e3f676d51623772439c8e458"
+        },
+        {
+          "question_id": "REAL_033",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "979478dca1a117343206d27507691479bc6595ab4bc19d9706c9d623ee901cbc"
+        },
+        {
+          "question_id": "REAL_034",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5079,
+          "context_sha256": "ba89e423413151639a373327fa818d1c492f3915b4014b3120c42757eeb5e81e"
+        },
+        {
+          "question_id": "REAL_035",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "24c5cf5923d5d6124268f4ad79c7d827a65502afff51ebbd0d8543e9c76f7911"
+        },
+        {
+          "question_id": "REAL_036",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "39ba1e63019afa4e54e15baef68979e406cd03f1b5e600e072d522c3070e3b3a"
+        },
+        {
+          "question_id": "REAL_037",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "228fe58e97dc5ef9706bfc496ecb3b09a703f087f3dc0df7e06d63424da45506"
+        },
+        {
+          "question_id": "REAL_038",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d07fffcf6c6affe386ac1ec9665dd579a10a2ed07da9c161007a5d908acdddf3"
+        },
+        {
+          "question_id": "REAL_039",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e5cbf938b864d8ac05a25177cb4db541203fd2ffed4d53c1e121f189c4901c94"
+        },
+        {
+          "question_id": "REAL_040",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "b58b217655f0646743ca4cc89a7277c96cc5a9a7c1ecf140709227f4e8fc3f7f"
+        },
+        {
+          "question_id": "REAL_041",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "ed3d601833dbfa53ab8a72129f46d8326c9ffb1f02729b15bb65ce0f9c45ff02"
+        },
+        {
+          "question_id": "REAL_042",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "aada82ebabb32b38da9403747923eae88a4d7e048c68a72200864400f03ce1e0"
+        },
+        {
+          "question_id": "REAL_043",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "edddd051b762b3ab52c26353a8ed53ca614ca93f7707e315a704a8ddf7ffb42c"
+        },
+        {
+          "question_id": "REAL_044",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "1448b7eee67d29a929384c3f9dce6ba6a60d6ebbaa0b7998f9549246ba525a47"
+        },
+        {
+          "question_id": "REAL_045",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "227baa9c779397cad06371430166f78a3e078d7c7486049685e90efa771c5ae1"
+        },
+        {
+          "question_id": "REAL_046",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "233cce11a600c1dcd1ee7121fb6a609da1e5c7ebdc36deab870e91f6eff0fed1"
+        },
+        {
+          "question_id": "REAL_047",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4636,
+          "context_sha256": "4cb71be972613ca0006f7f68f7cda5599f913bb3028a2ef4e1105872ea0032bc"
+        },
+        {
+          "question_id": "REAL_048",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "dd85ea8d193e204c9025bbfbe0cc3528a4a674ee01a22b1197ad0f8dc5be18db"
+        },
+        {
+          "question_id": "REAL_049",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4756,
+          "context_sha256": "f357b41a39840442382ecc361a3f25b7523f92502240818fb07b298ba08eeab0"
+        },
+        {
+          "question_id": "REAL_050",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "ed83bcb8db5a018be64155043ed0682f9ef5cc3603e16b897a3c478a10f9a465"
+        },
+        {
+          "question_id": "REAL_051",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5079,
+          "context_sha256": "71f36afdad7d0867a7911a6e9a5159cff2b5402c6015bedbbcb2fed1d32c1830"
+        },
+        {
+          "question_id": "REAL_052",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5041,
+          "context_sha256": "a037e5caec8b93dbbc32d5ca6ee212170b990956ed6ad36d3154326ccbf21ac8"
+        },
+        {
+          "question_id": "REAL_053",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "ffe0b987d06267a2bae5ce121e7c47b601424e551f95ad94ed1a88285d3f22ff"
+        },
+        {
+          "question_id": "REAL_054",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "3574609259cbe557a52c9b37528b2768a426421d6428590b1387b1d1ad5acfb3"
+        },
+        {
+          "question_id": "REAL_055",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "e2de6a882e4f613fc31975e95a7538cd5baf5c8de502e54e9e1e2009ad473ccd"
+        },
+        {
+          "question_id": "REAL_056",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_057",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_058",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5088,
+          "context_sha256": "8b1008ee7dbfb5c7bcb35efc9ae729eb289de051c4d2f63983a05367700e6a84"
+        },
+        {
+          "question_id": "REAL_059",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "e7f5ab6191dce5669eb00b2f18f24f826bd88b58aad8c170094d43ca9e28eabf"
+        },
+        {
+          "question_id": "REAL_060",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c105_r02",
+      "answers_sha256": "c613bfd336118c9718ee58d9a990183f63e5d9bafd0a87520c6d65f86bbc19df",
+      "preliminary": false,
+      "answer_questions": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 39,
+        "mean_evidence_coverage": 0.8397435897435898,
+        "complete_evidence_rate": 0.75,
+        "mean_retrieved_coverage": 0.8397435897435898,
+        "context_chars_mean": 5116.134615384615,
+        "all_cases_available": true
+      },
+      "supported_part_questions": {
+        "eligible_questions": 5,
+        "scored_questions": 5,
+        "complete_questions": 3,
+        "mean_evidence_coverage": 0.7,
+        "complete_evidence_rate": 0.6,
+        "mean_retrieved_coverage": 0.7,
+        "context_chars_mean": 5020.8,
+        "all_cases_available": true
+      },
+      "questions": [
+        {
+          "question_id": "REAL_001",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5126,
+          "context_sha256": "7ad64b33b40581c826baf17f454ce1186affeecec70894d4590c6c576a58d8d6"
+        },
+        {
+          "question_id": "REAL_002",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "5a13430beec1a622c1afc0a0291683d59d0f23cd1180322caec1fd813a8db407"
+        },
+        {
+          "question_id": "REAL_003",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "73624bb9ab087fabbffd32b237d936d12fdd3a8ff8c8df6a6045884e47575453"
+        },
+        {
+          "question_id": "REAL_004",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "549b8182b107dc024dcdaf0b2744067b59fdde4cd324be5d1f3721516e197819"
+        },
+        {
+          "question_id": "REAL_005",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "cb8aaddbe500a1b82f91417446940bfff52c9fec0c3aa7a5072b3a74ed825220"
+        },
+        {
+          "question_id": "REAL_006",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E03",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E04",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.6666666666666666,
+          "delivered_coverage": 0.6666666666666666,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "c2cafe798a0c1354e268f8ccce26b42e82d332c0f56ba0fc6529eb899cf5f99c"
+        },
+        {
+          "question_id": "REAL_007",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "e37dceda6ec4042cc838ef9eccc667d8a96dd67636234439f9065ecee94ce43c"
+        },
+        {
+          "question_id": "REAL_008",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "86cfd6dd304ed004beb25afae33940e66612c666c5dd81a54ddf8d672ecff820"
+        },
+        {
+          "question_id": "REAL_009",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "218afc631a40a2cf8204d2756710285f00ddeaddba5fe589373f638b5a8eaa33"
+        },
+        {
+          "question_id": "REAL_010",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "f4c6706a60b8d0b6e7bed772e8a6c837c363e250d9643d3d6061f1e4067789a3"
+        },
+        {
+          "question_id": "REAL_011",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "51c92da4005e37872566faab33bc8325c7612354945c6b1d9a5b69e8ee318de5"
+        },
+        {
+          "question_id": "REAL_012",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "eff267f57f5730b33edb80ce7b96f69503c7aefa68a64d9786bf972176f5c02c"
+        },
+        {
+          "question_id": "REAL_013",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "fbd8e278b9a2ca6b7657a3b9116fbfe751bf931d5967674a09fa2492996dde0d"
+        },
+        {
+          "question_id": "REAL_014",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "d0f12c21f738c45683461b3afb8f32277ae7bbff9300dc5f979d544817845261"
+        },
+        {
+          "question_id": "REAL_015",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "71e35e5028e7c7f03cba8f7be0635ce3ff2f2b518c6dba1677a776504853ed40"
+        },
+        {
+          "question_id": "REAL_016",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3c1d908f8e64177916caad9c106e4d8c777970ebf550c7d30b64ef22b9fd9225"
+        },
+        {
+          "question_id": "REAL_017",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "8adb078829fdd33f84e654641b67ff785e834578feee3a2e4bc874e875affcdd"
+        },
+        {
+          "question_id": "REAL_018",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "1d863816aad7f53c24fd572696d586084afc236811d0b928ba01bd201b0d5dbb"
+        },
+        {
+          "question_id": "REAL_019",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "6528ac609a733381fe5755c56aa2d8406a891621a4caadf3524be912b4025029"
+        },
+        {
+          "question_id": "REAL_020",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "05130ec7b7a042f2717605bc0a95b6e33089004ec985a62d3bf977d1b463783c"
+        },
+        {
+          "question_id": "REAL_021",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "589bca35403dd215fcdcebb8bfbe7f3e3b113332aca3a5341a29868d7f222b9d"
+        },
+        {
+          "question_id": "REAL_022",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5125,
+          "context_sha256": "54fbb706eb7a69c0411366d21376a57b53fb5e3f67ac62a934016c8a9a19e6c3"
+        },
+        {
+          "question_id": "REAL_023",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3810d4d94d799cd15b8f5e2c6a25b377200d39e93e94087c68e79728a429d5d6"
+        },
+        {
+          "question_id": "REAL_024",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "b1c14ce50978fa63c7893ee3d2b6afcd6cd6d8b69e55e65ab15d100d42f2fd2b"
+        },
+        {
+          "question_id": "REAL_025",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "534da77fd2b9ffac679a55d4427bf74a6ad22034b3eeda0da417bb8b79a9d69b"
+        },
+        {
+          "question_id": "REAL_026",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d7508b02eb8a3a2d3f6bcefef963e70e3907c19d807252ccca982bb3adcbe02a"
+        },
+        {
+          "question_id": "REAL_027",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e52c72821e4788357509b080ddfc5dffa57a69f508211a84edaf261cfa15005c"
+        },
+        {
+          "question_id": "REAL_028",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "05010ccfb58d3b9ce3d16bd9343ccad5c45e302703f167aaa7ffb7dab1f7c372"
+        },
+        {
+          "question_id": "REAL_029",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "6198d1f76510f52da668a056c0f883088a0314bae10778a8ce323130b7c9f02e"
+        },
+        {
+          "question_id": "REAL_030",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "d11a4271f2d539ac382a9218a2ae3b2890a970d280a6be0b4f28f69b37a01d71"
+        },
+        {
+          "question_id": "REAL_031",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5123,
+          "context_sha256": "f52330ce57e39a9ce26e658e870365085a870f94c17fa44936a9f4791635b9e6"
+        },
+        {
+          "question_id": "REAL_032",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "4cdec171ea697cbcdcab4100a5e8c353e6aee830e3f676d51623772439c8e458"
+        },
+        {
+          "question_id": "REAL_033",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "979478dca1a117343206d27507691479bc6595ab4bc19d9706c9d623ee901cbc"
+        },
+        {
+          "question_id": "REAL_034",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5079,
+          "context_sha256": "ba89e423413151639a373327fa818d1c492f3915b4014b3120c42757eeb5e81e"
+        },
+        {
+          "question_id": "REAL_035",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "24c5cf5923d5d6124268f4ad79c7d827a65502afff51ebbd0d8543e9c76f7911"
+        },
+        {
+          "question_id": "REAL_036",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "39ba1e63019afa4e54e15baef68979e406cd03f1b5e600e072d522c3070e3b3a"
+        },
+        {
+          "question_id": "REAL_037",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "228fe58e97dc5ef9706bfc496ecb3b09a703f087f3dc0df7e06d63424da45506"
+        },
+        {
+          "question_id": "REAL_038",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d07fffcf6c6affe386ac1ec9665dd579a10a2ed07da9c161007a5d908acdddf3"
+        },
+        {
+          "question_id": "REAL_039",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e5cbf938b864d8ac05a25177cb4db541203fd2ffed4d53c1e121f189c4901c94"
+        },
+        {
+          "question_id": "REAL_040",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "b58b217655f0646743ca4cc89a7277c96cc5a9a7c1ecf140709227f4e8fc3f7f"
+        },
+        {
+          "question_id": "REAL_041",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "ed3d601833dbfa53ab8a72129f46d8326c9ffb1f02729b15bb65ce0f9c45ff02"
+        },
+        {
+          "question_id": "REAL_042",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "aada82ebabb32b38da9403747923eae88a4d7e048c68a72200864400f03ce1e0"
+        },
+        {
+          "question_id": "REAL_043",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "edddd051b762b3ab52c26353a8ed53ca614ca93f7707e315a704a8ddf7ffb42c"
+        },
+        {
+          "question_id": "REAL_044",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "1448b7eee67d29a929384c3f9dce6ba6a60d6ebbaa0b7998f9549246ba525a47"
+        },
+        {
+          "question_id": "REAL_045",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "227baa9c779397cad06371430166f78a3e078d7c7486049685e90efa771c5ae1"
+        },
+        {
+          "question_id": "REAL_046",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "233cce11a600c1dcd1ee7121fb6a609da1e5c7ebdc36deab870e91f6eff0fed1"
+        },
+        {
+          "question_id": "REAL_047",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4636,
+          "context_sha256": "4cb71be972613ca0006f7f68f7cda5599f913bb3028a2ef4e1105872ea0032bc"
+        },
+        {
+          "question_id": "REAL_048",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "dd85ea8d193e204c9025bbfbe0cc3528a4a674ee01a22b1197ad0f8dc5be18db"
+        },
+        {
+          "question_id": "REAL_049",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4756,
+          "context_sha256": "f357b41a39840442382ecc361a3f25b7523f92502240818fb07b298ba08eeab0"
+        },
+        {
+          "question_id": "REAL_050",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "ed83bcb8db5a018be64155043ed0682f9ef5cc3603e16b897a3c478a10f9a465"
+        },
+        {
+          "question_id": "REAL_051",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5079,
+          "context_sha256": "71f36afdad7d0867a7911a6e9a5159cff2b5402c6015bedbbcb2fed1d32c1830"
+        },
+        {
+          "question_id": "REAL_052",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5041,
+          "context_sha256": "a037e5caec8b93dbbc32d5ca6ee212170b990956ed6ad36d3154326ccbf21ac8"
+        },
+        {
+          "question_id": "REAL_053",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "ffe0b987d06267a2bae5ce121e7c47b601424e551f95ad94ed1a88285d3f22ff"
+        },
+        {
+          "question_id": "REAL_054",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "3574609259cbe557a52c9b37528b2768a426421d6428590b1387b1d1ad5acfb3"
+        },
+        {
+          "question_id": "REAL_055",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "e2de6a882e4f613fc31975e95a7538cd5baf5c8de502e54e9e1e2009ad473ccd"
+        },
+        {
+          "question_id": "REAL_056",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_057",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_058",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5088,
+          "context_sha256": "8b1008ee7dbfb5c7bcb35efc9ae729eb289de051c4d2f63983a05367700e6a84"
+        },
+        {
+          "question_id": "REAL_059",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "e7f5ab6191dce5669eb00b2f18f24f826bd88b58aad8c170094d43ca9e28eabf"
+        },
+        {
+          "question_id": "REAL_060",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c105_r03",
+      "answers_sha256": "90e016648820d8c55e26ffb93ec035f89c2c243aff7238d60b8b11391815e26c",
+      "preliminary": false,
+      "answer_questions": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 39,
+        "mean_evidence_coverage": 0.8397435897435898,
+        "complete_evidence_rate": 0.75,
+        "mean_retrieved_coverage": 0.8397435897435898,
+        "context_chars_mean": 5116.134615384615,
+        "all_cases_available": true
+      },
+      "supported_part_questions": {
+        "eligible_questions": 5,
+        "scored_questions": 5,
+        "complete_questions": 3,
+        "mean_evidence_coverage": 0.7,
+        "complete_evidence_rate": 0.6,
+        "mean_retrieved_coverage": 0.7,
+        "context_chars_mean": 5020.8,
+        "all_cases_available": true
+      },
+      "questions": [
+        {
+          "question_id": "REAL_001",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5126,
+          "context_sha256": "7ad64b33b40581c826baf17f454ce1186affeecec70894d4590c6c576a58d8d6"
+        },
+        {
+          "question_id": "REAL_002",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "5a13430beec1a622c1afc0a0291683d59d0f23cd1180322caec1fd813a8db407"
+        },
+        {
+          "question_id": "REAL_003",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "73624bb9ab087fabbffd32b237d936d12fdd3a8ff8c8df6a6045884e47575453"
+        },
+        {
+          "question_id": "REAL_004",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "549b8182b107dc024dcdaf0b2744067b59fdde4cd324be5d1f3721516e197819"
+        },
+        {
+          "question_id": "REAL_005",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "cb8aaddbe500a1b82f91417446940bfff52c9fec0c3aa7a5072b3a74ed825220"
+        },
+        {
+          "question_id": "REAL_006",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E03",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E04",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.6666666666666666,
+          "delivered_coverage": 0.6666666666666666,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "c2cafe798a0c1354e268f8ccce26b42e82d332c0f56ba0fc6529eb899cf5f99c"
+        },
+        {
+          "question_id": "REAL_007",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "e37dceda6ec4042cc838ef9eccc667d8a96dd67636234439f9065ecee94ce43c"
+        },
+        {
+          "question_id": "REAL_008",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "86cfd6dd304ed004beb25afae33940e66612c666c5dd81a54ddf8d672ecff820"
+        },
+        {
+          "question_id": "REAL_009",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "218afc631a40a2cf8204d2756710285f00ddeaddba5fe589373f638b5a8eaa33"
+        },
+        {
+          "question_id": "REAL_010",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "f4c6706a60b8d0b6e7bed772e8a6c837c363e250d9643d3d6061f1e4067789a3"
+        },
+        {
+          "question_id": "REAL_011",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "51c92da4005e37872566faab33bc8325c7612354945c6b1d9a5b69e8ee318de5"
+        },
+        {
+          "question_id": "REAL_012",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "eff267f57f5730b33edb80ce7b96f69503c7aefa68a64d9786bf972176f5c02c"
+        },
+        {
+          "question_id": "REAL_013",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "fbd8e278b9a2ca6b7657a3b9116fbfe751bf931d5967674a09fa2492996dde0d"
+        },
+        {
+          "question_id": "REAL_014",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "d0f12c21f738c45683461b3afb8f32277ae7bbff9300dc5f979d544817845261"
+        },
+        {
+          "question_id": "REAL_015",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "71e35e5028e7c7f03cba8f7be0635ce3ff2f2b518c6dba1677a776504853ed40"
+        },
+        {
+          "question_id": "REAL_016",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3c1d908f8e64177916caad9c106e4d8c777970ebf550c7d30b64ef22b9fd9225"
+        },
+        {
+          "question_id": "REAL_017",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "8adb078829fdd33f84e654641b67ff785e834578feee3a2e4bc874e875affcdd"
+        },
+        {
+          "question_id": "REAL_018",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "1d863816aad7f53c24fd572696d586084afc236811d0b928ba01bd201b0d5dbb"
+        },
+        {
+          "question_id": "REAL_019",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "6528ac609a733381fe5755c56aa2d8406a891621a4caadf3524be912b4025029"
+        },
+        {
+          "question_id": "REAL_020",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "05130ec7b7a042f2717605bc0a95b6e33089004ec985a62d3bf977d1b463783c"
+        },
+        {
+          "question_id": "REAL_021",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "589bca35403dd215fcdcebb8bfbe7f3e3b113332aca3a5341a29868d7f222b9d"
+        },
+        {
+          "question_id": "REAL_022",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5125,
+          "context_sha256": "54fbb706eb7a69c0411366d21376a57b53fb5e3f67ac62a934016c8a9a19e6c3"
+        },
+        {
+          "question_id": "REAL_023",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3810d4d94d799cd15b8f5e2c6a25b377200d39e93e94087c68e79728a429d5d6"
+        },
+        {
+          "question_id": "REAL_024",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "b1c14ce50978fa63c7893ee3d2b6afcd6cd6d8b69e55e65ab15d100d42f2fd2b"
+        },
+        {
+          "question_id": "REAL_025",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "534da77fd2b9ffac679a55d4427bf74a6ad22034b3eeda0da417bb8b79a9d69b"
+        },
+        {
+          "question_id": "REAL_026",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d7508b02eb8a3a2d3f6bcefef963e70e3907c19d807252ccca982bb3adcbe02a"
+        },
+        {
+          "question_id": "REAL_027",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e52c72821e4788357509b080ddfc5dffa57a69f508211a84edaf261cfa15005c"
+        },
+        {
+          "question_id": "REAL_028",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "05010ccfb58d3b9ce3d16bd9343ccad5c45e302703f167aaa7ffb7dab1f7c372"
+        },
+        {
+          "question_id": "REAL_029",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "6198d1f76510f52da668a056c0f883088a0314bae10778a8ce323130b7c9f02e"
+        },
+        {
+          "question_id": "REAL_030",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "d11a4271f2d539ac382a9218a2ae3b2890a970d280a6be0b4f28f69b37a01d71"
+        },
+        {
+          "question_id": "REAL_031",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5123,
+          "context_sha256": "f52330ce57e39a9ce26e658e870365085a870f94c17fa44936a9f4791635b9e6"
+        },
+        {
+          "question_id": "REAL_032",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "4cdec171ea697cbcdcab4100a5e8c353e6aee830e3f676d51623772439c8e458"
+        },
+        {
+          "question_id": "REAL_033",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "979478dca1a117343206d27507691479bc6595ab4bc19d9706c9d623ee901cbc"
+        },
+        {
+          "question_id": "REAL_034",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5079,
+          "context_sha256": "ba89e423413151639a373327fa818d1c492f3915b4014b3120c42757eeb5e81e"
+        },
+        {
+          "question_id": "REAL_035",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "24c5cf5923d5d6124268f4ad79c7d827a65502afff51ebbd0d8543e9c76f7911"
+        },
+        {
+          "question_id": "REAL_036",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "39ba1e63019afa4e54e15baef68979e406cd03f1b5e600e072d522c3070e3b3a"
+        },
+        {
+          "question_id": "REAL_037",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "228fe58e97dc5ef9706bfc496ecb3b09a703f087f3dc0df7e06d63424da45506"
+        },
+        {
+          "question_id": "REAL_038",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d07fffcf6c6affe386ac1ec9665dd579a10a2ed07da9c161007a5d908acdddf3"
+        },
+        {
+          "question_id": "REAL_039",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e5cbf938b864d8ac05a25177cb4db541203fd2ffed4d53c1e121f189c4901c94"
+        },
+        {
+          "question_id": "REAL_040",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "b58b217655f0646743ca4cc89a7277c96cc5a9a7c1ecf140709227f4e8fc3f7f"
+        },
+        {
+          "question_id": "REAL_041",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "ed3d601833dbfa53ab8a72129f46d8326c9ffb1f02729b15bb65ce0f9c45ff02"
+        },
+        {
+          "question_id": "REAL_042",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "aada82ebabb32b38da9403747923eae88a4d7e048c68a72200864400f03ce1e0"
+        },
+        {
+          "question_id": "REAL_043",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "edddd051b762b3ab52c26353a8ed53ca614ca93f7707e315a704a8ddf7ffb42c"
+        },
+        {
+          "question_id": "REAL_044",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "1448b7eee67d29a929384c3f9dce6ba6a60d6ebbaa0b7998f9549246ba525a47"
+        },
+        {
+          "question_id": "REAL_045",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "227baa9c779397cad06371430166f78a3e078d7c7486049685e90efa771c5ae1"
+        },
+        {
+          "question_id": "REAL_046",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "233cce11a600c1dcd1ee7121fb6a609da1e5c7ebdc36deab870e91f6eff0fed1"
+        },
+        {
+          "question_id": "REAL_047",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4636,
+          "context_sha256": "4cb71be972613ca0006f7f68f7cda5599f913bb3028a2ef4e1105872ea0032bc"
+        },
+        {
+          "question_id": "REAL_048",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "dd85ea8d193e204c9025bbfbe0cc3528a4a674ee01a22b1197ad0f8dc5be18db"
+        },
+        {
+          "question_id": "REAL_049",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4756,
+          "context_sha256": "f357b41a39840442382ecc361a3f25b7523f92502240818fb07b298ba08eeab0"
+        },
+        {
+          "question_id": "REAL_050",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "ed83bcb8db5a018be64155043ed0682f9ef5cc3603e16b897a3c478a10f9a465"
+        },
+        {
+          "question_id": "REAL_051",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5079,
+          "context_sha256": "71f36afdad7d0867a7911a6e9a5159cff2b5402c6015bedbbcb2fed1d32c1830"
+        },
+        {
+          "question_id": "REAL_052",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5041,
+          "context_sha256": "a037e5caec8b93dbbc32d5ca6ee212170b990956ed6ad36d3154326ccbf21ac8"
+        },
+        {
+          "question_id": "REAL_053",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "ffe0b987d06267a2bae5ce121e7c47b601424e551f95ad94ed1a88285d3f22ff"
+        },
+        {
+          "question_id": "REAL_054",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "3574609259cbe557a52c9b37528b2768a426421d6428590b1387b1d1ad5acfb3"
+        },
+        {
+          "question_id": "REAL_055",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "e2de6a882e4f613fc31975e95a7538cd5baf5c8de502e54e9e1e2009ad473ccd"
+        },
+        {
+          "question_id": "REAL_056",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_057",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_058",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5088,
+          "context_sha256": "8b1008ee7dbfb5c7bcb35efc9ae729eb289de051c4d2f63983a05367700e6a84"
+        },
+        {
+          "question_id": "REAL_059",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "e7f5ab6191dce5669eb00b2f18f24f826bd88b58aad8c170094d43ca9e28eabf"
+        },
+        {
+          "question_id": "REAL_060",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c105_r04",
+      "answers_sha256": "465b42220b7489858fc17777eb0ada0ccc30c57f18f6fe33c2bb5b5bcf2b0d29",
+      "preliminary": false,
+      "answer_questions": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 39,
+        "mean_evidence_coverage": 0.8397435897435898,
+        "complete_evidence_rate": 0.75,
+        "mean_retrieved_coverage": 0.8397435897435898,
+        "context_chars_mean": 5116.134615384615,
+        "all_cases_available": true
+      },
+      "supported_part_questions": {
+        "eligible_questions": 5,
+        "scored_questions": 5,
+        "complete_questions": 3,
+        "mean_evidence_coverage": 0.7,
+        "complete_evidence_rate": 0.6,
+        "mean_retrieved_coverage": 0.7,
+        "context_chars_mean": 5020.8,
+        "all_cases_available": true
+      },
+      "questions": [
+        {
+          "question_id": "REAL_001",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5126,
+          "context_sha256": "7ad64b33b40581c826baf17f454ce1186affeecec70894d4590c6c576a58d8d6"
+        },
+        {
+          "question_id": "REAL_002",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "5a13430beec1a622c1afc0a0291683d59d0f23cd1180322caec1fd813a8db407"
+        },
+        {
+          "question_id": "REAL_003",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "73624bb9ab087fabbffd32b237d936d12fdd3a8ff8c8df6a6045884e47575453"
+        },
+        {
+          "question_id": "REAL_004",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "549b8182b107dc024dcdaf0b2744067b59fdde4cd324be5d1f3721516e197819"
+        },
+        {
+          "question_id": "REAL_005",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "cb8aaddbe500a1b82f91417446940bfff52c9fec0c3aa7a5072b3a74ed825220"
+        },
+        {
+          "question_id": "REAL_006",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E03",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E04",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.6666666666666666,
+          "delivered_coverage": 0.6666666666666666,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "c2cafe798a0c1354e268f8ccce26b42e82d332c0f56ba0fc6529eb899cf5f99c"
+        },
+        {
+          "question_id": "REAL_007",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "e37dceda6ec4042cc838ef9eccc667d8a96dd67636234439f9065ecee94ce43c"
+        },
+        {
+          "question_id": "REAL_008",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "86cfd6dd304ed004beb25afae33940e66612c666c5dd81a54ddf8d672ecff820"
+        },
+        {
+          "question_id": "REAL_009",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "218afc631a40a2cf8204d2756710285f00ddeaddba5fe589373f638b5a8eaa33"
+        },
+        {
+          "question_id": "REAL_010",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "f4c6706a60b8d0b6e7bed772e8a6c837c363e250d9643d3d6061f1e4067789a3"
+        },
+        {
+          "question_id": "REAL_011",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "51c92da4005e37872566faab33bc8325c7612354945c6b1d9a5b69e8ee318de5"
+        },
+        {
+          "question_id": "REAL_012",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "eff267f57f5730b33edb80ce7b96f69503c7aefa68a64d9786bf972176f5c02c"
+        },
+        {
+          "question_id": "REAL_013",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "fbd8e278b9a2ca6b7657a3b9116fbfe751bf931d5967674a09fa2492996dde0d"
+        },
+        {
+          "question_id": "REAL_014",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "d0f12c21f738c45683461b3afb8f32277ae7bbff9300dc5f979d544817845261"
+        },
+        {
+          "question_id": "REAL_015",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "71e35e5028e7c7f03cba8f7be0635ce3ff2f2b518c6dba1677a776504853ed40"
+        },
+        {
+          "question_id": "REAL_016",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3c1d908f8e64177916caad9c106e4d8c777970ebf550c7d30b64ef22b9fd9225"
+        },
+        {
+          "question_id": "REAL_017",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "8adb078829fdd33f84e654641b67ff785e834578feee3a2e4bc874e875affcdd"
+        },
+        {
+          "question_id": "REAL_018",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "1d863816aad7f53c24fd572696d586084afc236811d0b928ba01bd201b0d5dbb"
+        },
+        {
+          "question_id": "REAL_019",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "6528ac609a733381fe5755c56aa2d8406a891621a4caadf3524be912b4025029"
+        },
+        {
+          "question_id": "REAL_020",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "05130ec7b7a042f2717605bc0a95b6e33089004ec985a62d3bf977d1b463783c"
+        },
+        {
+          "question_id": "REAL_021",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "589bca35403dd215fcdcebb8bfbe7f3e3b113332aca3a5341a29868d7f222b9d"
+        },
+        {
+          "question_id": "REAL_022",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5125,
+          "context_sha256": "54fbb706eb7a69c0411366d21376a57b53fb5e3f67ac62a934016c8a9a19e6c3"
+        },
+        {
+          "question_id": "REAL_023",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3810d4d94d799cd15b8f5e2c6a25b377200d39e93e94087c68e79728a429d5d6"
+        },
+        {
+          "question_id": "REAL_024",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "b1c14ce50978fa63c7893ee3d2b6afcd6cd6d8b69e55e65ab15d100d42f2fd2b"
+        },
+        {
+          "question_id": "REAL_025",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "534da77fd2b9ffac679a55d4427bf74a6ad22034b3eeda0da417bb8b79a9d69b"
+        },
+        {
+          "question_id": "REAL_026",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d7508b02eb8a3a2d3f6bcefef963e70e3907c19d807252ccca982bb3adcbe02a"
+        },
+        {
+          "question_id": "REAL_027",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e52c72821e4788357509b080ddfc5dffa57a69f508211a84edaf261cfa15005c"
+        },
+        {
+          "question_id": "REAL_028",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "05010ccfb58d3b9ce3d16bd9343ccad5c45e302703f167aaa7ffb7dab1f7c372"
+        },
+        {
+          "question_id": "REAL_029",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "6198d1f76510f52da668a056c0f883088a0314bae10778a8ce323130b7c9f02e"
+        },
+        {
+          "question_id": "REAL_030",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "d11a4271f2d539ac382a9218a2ae3b2890a970d280a6be0b4f28f69b37a01d71"
+        },
+        {
+          "question_id": "REAL_031",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5123,
+          "context_sha256": "f52330ce57e39a9ce26e658e870365085a870f94c17fa44936a9f4791635b9e6"
+        },
+        {
+          "question_id": "REAL_032",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "4cdec171ea697cbcdcab4100a5e8c353e6aee830e3f676d51623772439c8e458"
+        },
+        {
+          "question_id": "REAL_033",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "979478dca1a117343206d27507691479bc6595ab4bc19d9706c9d623ee901cbc"
+        },
+        {
+          "question_id": "REAL_034",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5079,
+          "context_sha256": "ba89e423413151639a373327fa818d1c492f3915b4014b3120c42757eeb5e81e"
+        },
+        {
+          "question_id": "REAL_035",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "24c5cf5923d5d6124268f4ad79c7d827a65502afff51ebbd0d8543e9c76f7911"
+        },
+        {
+          "question_id": "REAL_036",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "39ba1e63019afa4e54e15baef68979e406cd03f1b5e600e072d522c3070e3b3a"
+        },
+        {
+          "question_id": "REAL_037",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "228fe58e97dc5ef9706bfc496ecb3b09a703f087f3dc0df7e06d63424da45506"
+        },
+        {
+          "question_id": "REAL_038",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d07fffcf6c6affe386ac1ec9665dd579a10a2ed07da9c161007a5d908acdddf3"
+        },
+        {
+          "question_id": "REAL_039",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e5cbf938b864d8ac05a25177cb4db541203fd2ffed4d53c1e121f189c4901c94"
+        },
+        {
+          "question_id": "REAL_040",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "b58b217655f0646743ca4cc89a7277c96cc5a9a7c1ecf140709227f4e8fc3f7f"
+        },
+        {
+          "question_id": "REAL_041",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "ed3d601833dbfa53ab8a72129f46d8326c9ffb1f02729b15bb65ce0f9c45ff02"
+        },
+        {
+          "question_id": "REAL_042",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "aada82ebabb32b38da9403747923eae88a4d7e048c68a72200864400f03ce1e0"
+        },
+        {
+          "question_id": "REAL_043",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "edddd051b762b3ab52c26353a8ed53ca614ca93f7707e315a704a8ddf7ffb42c"
+        },
+        {
+          "question_id": "REAL_044",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "1448b7eee67d29a929384c3f9dce6ba6a60d6ebbaa0b7998f9549246ba525a47"
+        },
+        {
+          "question_id": "REAL_045",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "227baa9c779397cad06371430166f78a3e078d7c7486049685e90efa771c5ae1"
+        },
+        {
+          "question_id": "REAL_046",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "233cce11a600c1dcd1ee7121fb6a609da1e5c7ebdc36deab870e91f6eff0fed1"
+        },
+        {
+          "question_id": "REAL_047",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4636,
+          "context_sha256": "4cb71be972613ca0006f7f68f7cda5599f913bb3028a2ef4e1105872ea0032bc"
+        },
+        {
+          "question_id": "REAL_048",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "dd85ea8d193e204c9025bbfbe0cc3528a4a674ee01a22b1197ad0f8dc5be18db"
+        },
+        {
+          "question_id": "REAL_049",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4756,
+          "context_sha256": "f357b41a39840442382ecc361a3f25b7523f92502240818fb07b298ba08eeab0"
+        },
+        {
+          "question_id": "REAL_050",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "ed83bcb8db5a018be64155043ed0682f9ef5cc3603e16b897a3c478a10f9a465"
+        },
+        {
+          "question_id": "REAL_051",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5079,
+          "context_sha256": "71f36afdad7d0867a7911a6e9a5159cff2b5402c6015bedbbcb2fed1d32c1830"
+        },
+        {
+          "question_id": "REAL_052",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5041,
+          "context_sha256": "a037e5caec8b93dbbc32d5ca6ee212170b990956ed6ad36d3154326ccbf21ac8"
+        },
+        {
+          "question_id": "REAL_053",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "ffe0b987d06267a2bae5ce121e7c47b601424e551f95ad94ed1a88285d3f22ff"
+        },
+        {
+          "question_id": "REAL_054",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "3574609259cbe557a52c9b37528b2768a426421d6428590b1387b1d1ad5acfb3"
+        },
+        {
+          "question_id": "REAL_055",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "e2de6a882e4f613fc31975e95a7538cd5baf5c8de502e54e9e1e2009ad473ccd"
+        },
+        {
+          "question_id": "REAL_056",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_057",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_058",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5088,
+          "context_sha256": "8b1008ee7dbfb5c7bcb35efc9ae729eb289de051c4d2f63983a05367700e6a84"
+        },
+        {
+          "question_id": "REAL_059",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "e7f5ab6191dce5669eb00b2f18f24f826bd88b58aad8c170094d43ca9e28eabf"
+        },
+        {
+          "question_id": "REAL_060",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c105_r05",
+      "answers_sha256": "510eccbea1b23f54f1e8429617656a5012f55237f30078b72f9088fcde3cdf19",
+      "preliminary": false,
+      "answer_questions": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 39,
+        "mean_evidence_coverage": 0.8397435897435898,
+        "complete_evidence_rate": 0.75,
+        "mean_retrieved_coverage": 0.8397435897435898,
+        "context_chars_mean": 5116.134615384615,
+        "all_cases_available": true
+      },
+      "supported_part_questions": {
+        "eligible_questions": 5,
+        "scored_questions": 5,
+        "complete_questions": 3,
+        "mean_evidence_coverage": 0.7,
+        "complete_evidence_rate": 0.6,
+        "mean_retrieved_coverage": 0.7,
+        "context_chars_mean": 5020.8,
+        "all_cases_available": true
+      },
+      "questions": [
+        {
+          "question_id": "REAL_001",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5126,
+          "context_sha256": "7ad64b33b40581c826baf17f454ce1186affeecec70894d4590c6c576a58d8d6"
+        },
+        {
+          "question_id": "REAL_002",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "5a13430beec1a622c1afc0a0291683d59d0f23cd1180322caec1fd813a8db407"
+        },
+        {
+          "question_id": "REAL_003",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "73624bb9ab087fabbffd32b237d936d12fdd3a8ff8c8df6a6045884e47575453"
+        },
+        {
+          "question_id": "REAL_004",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "549b8182b107dc024dcdaf0b2744067b59fdde4cd324be5d1f3721516e197819"
+        },
+        {
+          "question_id": "REAL_005",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "cb8aaddbe500a1b82f91417446940bfff52c9fec0c3aa7a5072b3a74ed825220"
+        },
+        {
+          "question_id": "REAL_006",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E03",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E04",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.6666666666666666,
+          "delivered_coverage": 0.6666666666666666,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "c2cafe798a0c1354e268f8ccce26b42e82d332c0f56ba0fc6529eb899cf5f99c"
+        },
+        {
+          "question_id": "REAL_007",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "e37dceda6ec4042cc838ef9eccc667d8a96dd67636234439f9065ecee94ce43c"
+        },
+        {
+          "question_id": "REAL_008",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "86cfd6dd304ed004beb25afae33940e66612c666c5dd81a54ddf8d672ecff820"
+        },
+        {
+          "question_id": "REAL_009",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "218afc631a40a2cf8204d2756710285f00ddeaddba5fe589373f638b5a8eaa33"
+        },
+        {
+          "question_id": "REAL_010",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "f4c6706a60b8d0b6e7bed772e8a6c837c363e250d9643d3d6061f1e4067789a3"
+        },
+        {
+          "question_id": "REAL_011",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "51c92da4005e37872566faab33bc8325c7612354945c6b1d9a5b69e8ee318de5"
+        },
+        {
+          "question_id": "REAL_012",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5125,
+          "context_sha256": "eff267f57f5730b33edb80ce7b96f69503c7aefa68a64d9786bf972176f5c02c"
+        },
+        {
+          "question_id": "REAL_013",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "fbd8e278b9a2ca6b7657a3b9116fbfe751bf931d5967674a09fa2492996dde0d"
+        },
+        {
+          "question_id": "REAL_014",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "d0f12c21f738c45683461b3afb8f32277ae7bbff9300dc5f979d544817845261"
+        },
+        {
+          "question_id": "REAL_015",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "71e35e5028e7c7f03cba8f7be0635ce3ff2f2b518c6dba1677a776504853ed40"
+        },
+        {
+          "question_id": "REAL_016",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3c1d908f8e64177916caad9c106e4d8c777970ebf550c7d30b64ef22b9fd9225"
+        },
+        {
+          "question_id": "REAL_017",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5127,
+          "context_sha256": "8adb078829fdd33f84e654641b67ff785e834578feee3a2e4bc874e875affcdd"
+        },
+        {
+          "question_id": "REAL_018",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "1d863816aad7f53c24fd572696d586084afc236811d0b928ba01bd201b0d5dbb"
+        },
+        {
+          "question_id": "REAL_019",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "6528ac609a733381fe5755c56aa2d8406a891621a4caadf3524be912b4025029"
+        },
+        {
+          "question_id": "REAL_020",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "05130ec7b7a042f2717605bc0a95b6e33089004ec985a62d3bf977d1b463783c"
+        },
+        {
+          "question_id": "REAL_021",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "589bca35403dd215fcdcebb8bfbe7f3e3b113332aca3a5341a29868d7f222b9d"
+        },
+        {
+          "question_id": "REAL_022",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5125,
+          "context_sha256": "54fbb706eb7a69c0411366d21376a57b53fb5e3f67ac62a934016c8a9a19e6c3"
+        },
+        {
+          "question_id": "REAL_023",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "3810d4d94d799cd15b8f5e2c6a25b377200d39e93e94087c68e79728a429d5d6"
+        },
+        {
+          "question_id": "REAL_024",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "b1c14ce50978fa63c7893ee3d2b6afcd6cd6d8b69e55e65ab15d100d42f2fd2b"
+        },
+        {
+          "question_id": "REAL_025",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "534da77fd2b9ffac679a55d4427bf74a6ad22034b3eeda0da417bb8b79a9d69b"
+        },
+        {
+          "question_id": "REAL_026",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d7508b02eb8a3a2d3f6bcefef963e70e3907c19d807252ccca982bb3adcbe02a"
+        },
+        {
+          "question_id": "REAL_027",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e52c72821e4788357509b080ddfc5dffa57a69f508211a84edaf261cfa15005c"
+        },
+        {
+          "question_id": "REAL_028",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "05010ccfb58d3b9ce3d16bd9343ccad5c45e302703f167aaa7ffb7dab1f7c372"
+        },
+        {
+          "question_id": "REAL_029",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "6198d1f76510f52da668a056c0f883088a0314bae10778a8ce323130b7c9f02e"
+        },
+        {
+          "question_id": "REAL_030",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "d11a4271f2d539ac382a9218a2ae3b2890a970d280a6be0b4f28f69b37a01d71"
+        },
+        {
+          "question_id": "REAL_031",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5123,
+          "context_sha256": "f52330ce57e39a9ce26e658e870365085a870f94c17fa44936a9f4791635b9e6"
+        },
+        {
+          "question_id": "REAL_032",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "4cdec171ea697cbcdcab4100a5e8c353e6aee830e3f676d51623772439c8e458"
+        },
+        {
+          "question_id": "REAL_033",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "979478dca1a117343206d27507691479bc6595ab4bc19d9706c9d623ee901cbc"
+        },
+        {
+          "question_id": "REAL_034",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5079,
+          "context_sha256": "ba89e423413151639a373327fa818d1c492f3915b4014b3120c42757eeb5e81e"
+        },
+        {
+          "question_id": "REAL_035",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "24c5cf5923d5d6124268f4ad79c7d827a65502afff51ebbd0d8543e9c76f7911"
+        },
+        {
+          "question_id": "REAL_036",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "39ba1e63019afa4e54e15baef68979e406cd03f1b5e600e072d522c3070e3b3a"
+        },
+        {
+          "question_id": "REAL_037",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "228fe58e97dc5ef9706bfc496ecb3b09a703f087f3dc0df7e06d63424da45506"
+        },
+        {
+          "question_id": "REAL_038",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "d07fffcf6c6affe386ac1ec9665dd579a10a2ed07da9c161007a5d908acdddf3"
+        },
+        {
+          "question_id": "REAL_039",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "e5cbf938b864d8ac05a25177cb4db541203fd2ffed4d53c1e121f189c4901c94"
+        },
+        {
+          "question_id": "REAL_040",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "b58b217655f0646743ca4cc89a7277c96cc5a9a7c1ecf140709227f4e8fc3f7f"
+        },
+        {
+          "question_id": "REAL_041",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5128,
+          "context_sha256": "ed3d601833dbfa53ab8a72129f46d8326c9ffb1f02729b15bb65ce0f9c45ff02"
+        },
+        {
+          "question_id": "REAL_042",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "aada82ebabb32b38da9403747923eae88a4d7e048c68a72200864400f03ce1e0"
+        },
+        {
+          "question_id": "REAL_043",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "edddd051b762b3ab52c26353a8ed53ca614ca93f7707e315a704a8ddf7ffb42c"
+        },
+        {
+          "question_id": "REAL_044",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "1448b7eee67d29a929384c3f9dce6ba6a60d6ebbaa0b7998f9549246ba525a47"
+        },
+        {
+          "question_id": "REAL_045",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "227baa9c779397cad06371430166f78a3e078d7c7486049685e90efa771c5ae1"
+        },
+        {
+          "question_id": "REAL_046",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "233cce11a600c1dcd1ee7121fb6a609da1e5c7ebdc36deab870e91f6eff0fed1"
+        },
+        {
+          "question_id": "REAL_047",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4636,
+          "context_sha256": "4cb71be972613ca0006f7f68f7cda5599f913bb3028a2ef4e1105872ea0032bc"
+        },
+        {
+          "question_id": "REAL_048",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5127,
+          "context_sha256": "dd85ea8d193e204c9025bbfbe0cc3528a4a674ee01a22b1197ad0f8dc5be18db"
+        },
+        {
+          "question_id": "REAL_049",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 4756,
+          "context_sha256": "f357b41a39840442382ecc361a3f25b7523f92502240818fb07b298ba08eeab0"
+        },
+        {
+          "question_id": "REAL_050",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "ed83bcb8db5a018be64155043ed0682f9ef5cc3603e16b897a3c478a10f9a465"
+        },
+        {
+          "question_id": "REAL_051",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5079,
+          "context_sha256": "71f36afdad7d0867a7911a6e9a5159cff2b5402c6015bedbbcb2fed1d32c1830"
+        },
+        {
+          "question_id": "REAL_052",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5041,
+          "context_sha256": "a037e5caec8b93dbbc32d5ca6ee212170b990956ed6ad36d3154326ccbf21ac8"
+        },
+        {
+          "question_id": "REAL_053",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "ffe0b987d06267a2bae5ce121e7c47b601424e551f95ad94ed1a88285d3f22ff"
+        },
+        {
+          "question_id": "REAL_054",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "verdict": "complete",
+          "context_chars": 5126,
+          "context_sha256": "3574609259cbe557a52c9b37528b2768a426421d6428590b1387b1d1ad5acfb3"
+        },
+        {
+          "question_id": "REAL_055",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5126,
+          "context_sha256": "e2de6a882e4f613fc31975e95a7538cd5baf5c8de502e54e9e1e2009ad473ccd"
+        },
+        {
+          "question_id": "REAL_056",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_057",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_058",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "verdict": "none",
+          "context_chars": 5088,
+          "context_sha256": "8b1008ee7dbfb5c7bcb35efc9ae729eb289de051c4d2f63983a05367700e6a84"
+        },
+        {
+          "question_id": "REAL_059",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "verdict": "partial",
+          "context_chars": 5128,
+          "context_sha256": "e7f5ab6191dce5669eb00b2f18f24f826bd88b58aad8c170094d43ca9e28eabf"
+        },
+        {
+          "question_id": "REAL_060",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        }
+      ]
+    }
+  ]
+}

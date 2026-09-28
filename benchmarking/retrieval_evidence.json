@@ -1,0 +1,1923 @@
+{
+  "schema_version": 1,
+  "normalization": "whitespace_v1",
+  "benchmark": "benchmarking/finalna_pitanja.json",
+  "benchmark_sha256": "3b08bd873f1c643cfa513fd7df5526dc017baa42d719dacf564cb5ebcfa6f57e",
+  "description": "AI-proposed evidence spans. All annotations require human review. Coordinates are [start,end) in whitespace-normalized frozen source text; no copies of questions or full documents.",
+  "documents": [
+    {
+      "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+      "path": "data/extracted_v1/cleaned/Izmena Pravilnika o osnovnim akademskim studijama.txt",
+      "normalized_sha256": "0887fd2be73457578c9a5b86bde3646767abb5c6a1dc95e29707747ef20b72d9"
+    },
+    {
+      "document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+      "path": "data/extracted_v1/cleaned/Odluka o izmenama i dopunama Pravilnika o OAS.txt",
+      "normalized_sha256": "6feb98eeac09195c87ba7779ee35e594b7f3cf7cbd9d0e0b702488ff03c939ff"
+    },
+    {
+      "document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+      "path": "data/extracted_v1/cleaned/Odluka o izmeni Pravilnika o osnovnim akademskim studijama.txt",
+      "normalized_sha256": "2a0bf93203b088b644602e8567cc3ef1106d0e25f65e13891a27932ce10b1a16"
+    },
+    {
+      "document": "Odluka_OAS_jun_23",
+      "path": "data/extracted_v1/cleaned/Odluka_OAS_jun_23.txt",
+      "normalized_sha256": "a113bb4702c8c704806e5853a820be52b06f937f3a1d1e460563fa44955c15ae"
+    },
+    {
+      "document": "Pravilnik o osnovnim akademskim studijama",
+      "path": "data/extracted_v1/cleaned/Pravilnik o osnovnim akademskim studijama.txt",
+      "normalized_sha256": "d0780e4a335721d8e5501c6abff39da999819f9b418e28383b921cd341f1c120"
+    },
+    {
+      "document": "Pravilnik o upisu studenata",
+      "path": "data/extracted_v1/cleaned/Pravilnik o upisu studenata.txt",
+      "normalized_sha256": "155333bc68446e97b8377f9ee5d2d854fe882d6530b9d93407d09131f74655c9"
+    },
+    {
+      "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+      "path": "data/extracted_v1/cleaned/Pravilnik_o_OAS_preciscen_jun_2023.txt",
+      "normalized_sha256": "35d922c6486ca0f9935af741f739ecd1ab2e6069f977936dee1491e7f0d915ca"
+    }
+  ],
+  "cases": [
+    {
+      "question_id": "REAL_001",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28: „prvih pet su mi okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "ER: bolji rezultat iz matematike ili fizike, bez sabiranja.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 5133,
+                  "end": 5264,
+                  "sha256": "146694b157f854f1a5061963acfbb918a0b9ac6d074fc45cde4c515c6e74ae03"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "SI: vrednuje se matematika.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 5265,
+                  "end": 5373,
+                  "sha256": "6b32d8927d758d98886c63ea2284061509a18a42e4c8df10f6fa14e58f49db61"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_002",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28: „prvih pet su mi okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "ER: bolji rezultat iz matematike ili fizike, bez sabiranja.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 5133,
+                  "end": 5264,
+                  "sha256": "146694b157f854f1a5061963acfbb918a0b9ac6d074fc45cde4c515c6e74ae03"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "SI: vrednuje se matematika.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 5265,
+                  "end": 5373,
+                  "sha256": "6b32d8927d758d98886c63ea2284061509a18a42e4c8df10f6fa14e58f49db61"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_003",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28: „prvih pet su mi okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Ukupni bodovi potiču iz škole i prijemnog.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 7917,
+                  "end": 8087,
+                  "sha256": "8c3cfcef8c03e0ea35b2bef2afa802ebe554d657e12b75d95de1e650a6e28e91"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Zbir proseka puta dva daje školske bodove.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 8088,
+                  "end": 8274,
+                  "sha256": "c155a54653c635d679d6f341c6a90ae1cf7a55b207aa50276424cdf2bf1f8aaa"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_004",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28: „prvih pet su mi okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Budžet: kvota i minimum 51 bod.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 8705,
+                  "end": 8914,
+                  "sha256": "9574d9697c0a2a5adb39fd3d4e9b9162a5af01cba45f10524b00187a04e54ec8"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_005",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28: „prvih pet su mi okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Samofinansiranje: kvota i minimum 30 bodova.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 8915,
+                  "end": 9124,
+                  "sha256": "b9fde71c822e763221c1eb38c3ef373af215a32fc4460e7db1e1d2f3b98548b1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_006",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze uz uklanjanje E02 (priznavanje navedenog takmičenja iz informatike) kao nepotrebnog. Preostali ID-jevi E01, E03 i E04 zadržani su radi praćenja izmena.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Prve tri republičke nagrade u trećem/četvrtom razredu.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 9156,
+                  "end": 9509,
+                  "sha256": "abbc9c549c83a1bf18822ef0686a33685e0265f618e6d83d3a53237394365552"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E03",
+          "description": "Nagrada daje maksimum za SI, za ER potreban prijemni.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 10660,
+                  "end": 11049,
+                  "sha256": "d6fa47d1aff768de9f7a7d9b22dedf603dc7eb90f94414e1a3579d9af40f440a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E04",
+          "description": "Obavezna prijava matematike i ispunjenje uslova konkursa.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 11598,
+                  "end": 12024,
+                  "sha256": "f0f5fd08804bae2c46d1e73d2c0d411943b3eb1cc2078c4c8428a4945adcd616"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_007",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_006–REAL_010. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Prva želja menja se samo tokom prijave.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 13820,
+                  "end": 13887,
+                  "sha256": "b28f87dfbebb5f65956ec9c14e2cb4ba15026c6e2cbf5321364db5ccb33a3480"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_008",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_006–REAL_010. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Budžetska kvota prve želje znači samo listu tog programa.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 13983,
+                  "end": 14186,
+                  "sha256": "a0a995df5623174e1cc4bbd8cf4d82f0aa550b56cdc2ed9a4486af136b441498"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_009",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_006–REAL_010. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Žalba u 36 sati Komisiji; rešenje u 24 sata.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 21357,
+                  "end": 21666,
+                  "sha256": "93544f5d7c3934c0db36e160e7d23ce3d9dc1f53ec2200a869f5f4d5c606c7f2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_010",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_006–REAL_010. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Važeća lična karta ili pasoš i utvrđivanje identiteta.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o upisu studenata",
+                  "start": 20495,
+                  "end": 20745,
+                  "sha256": "ef2fe426f561b8423fcbaaaa5eddbd4e1b683b4c6f068301c1b8b916d93560c2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_011",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Budžet: 48 ESPB i mesto unutar kvote.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 27470,
+                  "end": 27793,
+                  "sha256": "1f11e85da18bb9f0c1e2ef7ff88b45a60d88e90de9b92f5dec1f7a97ab585c52"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Van kvote student se sam finansira.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 28596,
+                  "end": 28897,
+                  "sha256": "5ee653c375163cd309f306186049715f6842b63494e2b83324fdde64c73ad5bc"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_012",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Afirmativne mere/invaliditet: 36 ESPB.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 27794,
+                  "end": 27982,
+                  "sha256": "4de6ffdd3991b8fb747aec9f94ea08e949863643c2b04607f71a5df94916be04"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_013",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Budžet poslednje godine produžava se najduže godinu dana.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 28282,
+                  "end": 28471,
+                  "sha256": "38f96ffc8ccabb341b5f2875c542d7fc3182ee13f488911ca69daa456b95817f"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_014",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Minimum 60 ESPB i izuzetak za preostali manji broj.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 39476,
+                  "end": 39705,
+                  "sha256": "65ebe30b8b735bd45e6628c5c04a9069551c7d342da7bdba6906252fa98eb345"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_015",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Minimum 37 ESPB i izuzetak za preostali manji broj.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 39706,
+                  "end": 39928,
+                  "sha256": "afe9b9ac5993937500144dcc7a8886180f03168ddc9a0c5fa7a656ee532c113b"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_016",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Uslov upisa: 37 ESPB iz naredne godine.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 42867,
+                  "end": 43106,
+                  "sha256": "27dcc02f41cb235fead67473b11cc964ca8d5e597d3628e6d19103d841f5830f"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Za treću godinu svi ispiti prve moraju biti položeni.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 43107,
+                  "end": 43334,
+                  "sha256": "48f70dd10336beb41fc1bd75bdcea1105c41bf152ebf180fc7c243f22c3082bd"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_017",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Naredni predmeti uz preduslove i prioritet svih prethodnih.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 40300,
+                  "end": 40831,
+                  "sha256": "bb9b43bf7582ba388dcf758f0f71d7641c2a89b0fa7d3f07f3bd2f56f6abd314"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Ograničenja za samofinansiranje i izuzetak prodekana.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 40832,
+                  "end": 41534,
+                  "sha256": "3dee3440d66ca3ca1c467dd064e2e6545e2405a20b9e810f9c6b6c8809b65398"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_018",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Obavezni se ponavlja; izborni može da se zameni.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 43675,
+                  "end": 43931,
+                  "sha256": "bdedfe07b1dba033c2e1aaefe9d13807733972ddab0e54134395b5c04de20778"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_019",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Promena predmeta izuzetno uz odobrenje, u istom semestru.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 44124,
+                  "end": 44365,
+                  "sha256": "eb91f3cd162790ba2240e66f975372825f4a71382aee6a0a0e186c0badcb7325"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_020",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Odobrenje za više od 60, najviše 90 ESPB.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 44375,
+                  "end": 44545,
+                  "sha256": "44cd6b68a0cc09f6b502dbac4a2e7f0ff1d90bf44dad9fdc4c6c79fe1f58e8b5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Oslobađanje: prosek preko 8,5 ILI 60 ESPB prethodne godine.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 44546,
+                  "end": 44704,
+                  "sha256": "381f0d00a72f9e34a3dc801d41609743f1d9500764d208281ee3a9273dfd0eef"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_021",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Fakultativni se navode u dodatku, ne ulaze u prosek.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 44993,
+                  "end": 45107,
+                  "sha256": "4a459357ca54acd42da40290da80082d789c20eb7fc9f9d809cc43f89d9cc7c0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_022",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Molba za promenu modula: uslov treće godine i prosek 7,5.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 38085,
+                  "end": 38299,
+                  "sha256": "c9af03d5b64ef3d19a42f4c56f2995ee45c14e8886c15afa22267a390680bf68"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Priznati ispiti određuju godinu; upis i izuzetak za molbu.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 38300,
+                  "end": 38868,
+                  "sha256": "b9104ba04ce489e91645e4a593ee6c954828f32da82fba503f3b5f2618d22100"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_023",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Zabrana prelaska sa drugog univerziteta sa preostalih <=60 ESPB.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 34009,
+                  "end": 34301,
+                  "sha256": "2574b2966347509432a40488191905d303030dedc1437b4e58f1c2437bdbe43b"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_024",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa. Tehnička napomena ostaje: formula je oštećena izdvajanjem/OCR-om; prisustvo teksta ne dokazuje čitljivost formule. U ovoj potvrdi nije posebno zabeležena provera originalnog PDF-a.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Nova formula školarine i značenje veličina.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+                  "start": 1810,
+                  "end": 2208,
+                  "sha256": "d93017480320e1e74a0c55d1acc11df0a235b31f49268721965f2b4176a916cd"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "ER: ponovo upisani nepoloženi predmeti plaćaju se 2/3.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 46873,
+                  "end": 47085,
+                  "sha256": "5cb28fa9efc126b7d1e2c20e1eab0e86ef3a97550f6277033126c304434630f3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_025",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Smrtni slučaj: 100%, molba pri upisu i odluka prodekana.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 45960,
+                  "end": 46263,
+                  "sha256": "a45b8bde7c8ddd89238fe3eca3937e0fe8f0aa6a172e8a075c77deedf785bdf7"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_026",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Tri neuspela polaganja; komisiju formira prodekan uz konsultacije.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 60732,
+                  "end": 60941,
+                  "sha256": "5f73ad4a317fbb71bf8783711a1e978ddedbcb71aa75a02478e50895a34dc63d"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_027",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Prigovor zbog nepravilnosti dekanu u 36 sati.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 61198,
+                  "end": 61436,
+                  "sha256": "adc77ed7c581f1eb0535702dbda4215b8523f7bdbff0f35c3202d1fa2b472f07"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_028",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Ponovno polaganje: rok, Studentski odsek, odluka, poništenje i naknada.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 61591,
+                  "end": 62030,
+                  "sha256": "f77b02035eae8d6b7a26bbf8c307b55d787c9df123223ff7badf991dbb9e0061"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_029",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Pravo na jednu nadoknadu u prvom roku uz prijavu.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 54614,
+                  "end": 54864,
+                  "sha256": "3a118a530fa779ce3f74872ba46d3543ded780a1aa7bd1246b9b5cd2692059dd"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Dodatne nadoknade su mogućnost nastavnika.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 55118,
+                  "end": 55195,
+                  "sha256": "49be3e3a673e49505201c93931cc5ee9ded0d4e487d28d3f9446004304c5ff15"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_030",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa. Korisnik je pitao da li je E02 dovoljan; E01 i E02 su zadržani jer postojeći required_facts zasebno traži mogućnost polaganja u narednom februaru i važenje predispitnih poena. Uklanjanje E01 nije zatraženo.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Prolećni predmeti mogu se polagati i u narednom februaru.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 53965,
+                  "end": 54297,
+                  "sha256": "b55eb41e7439494a9192a8f2da5f50f04c87f3fba5d9867850db77b51303445c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Predispitni poeni važe i narednog februara.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 54444,
+                  "end": 54604,
+                  "sha256": "014cac6fde945ba96ce2439d185a6196bda9edccd2769dadbab2ec0cf34d8f93"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_031",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Najava uvida uz rezultate i najmanje 24 sata unapred.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 59584,
+                  "end": 59769,
+                  "sha256": "bbeaf8bd828b61ea929a40a8ac25f5886d4bce384c9f8895cfa8565086d1d0c5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_032",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Ocena 6 počinje od 51, do 50 je ocena 5.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 59096,
+                  "end": 59150,
+                  "sha256": "576213c54a466c8365c26a570cbb7acf85b198feddeefddf9686ef8ba1d74b19"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_033",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Raspon 81–90 daje ocenu 9.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 59016,
+                  "end": 59046,
+                  "sha256": "841cb1655190910130d4492a1d9fbfdd3e4b222f78cca28e116863425c907d43"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_034",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Predispitne obaveze nose 30–70 od ukupno 100 poena.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 51774,
+                  "end": 52015,
+                  "sha256": "bb96b03b94352e52db616aadcf283a332a04713901cd7905c065cbb1c1de21c3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_035",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Jedan preostali ispit: dodatno ispitivanje u poslednjem roku.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 55205,
+                  "end": 55424,
+                  "sha256": "2d4f502858e82185929ebf8a7f4473572639eb9bced3722b56be773b7dbdd144"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_036",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Objava rezultata kolokvijuma u roku 15 dana.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 52333,
+                  "end": 52441,
+                  "sha256": "0eb74130f6dad92c27b93e89a8ff11003bba7e4b10bb26e6de5e9d90e3d52315"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_037",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Zabrana ispita i predispitnih obaveza tokom mirovanja.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 49099,
+                  "end": 49230,
+                  "sha256": "5373b2dcaedc9e819f494bf968c9e23b3eb5b8bcae0addbe5a4fbb0ef170053b"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_038",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Teža bolest je osnov za mirovanje na zahtev.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 48335,
+                  "end": 48428,
+                  "sha256": "bdaa0760931a807a916bee8983f0585306f58e6f593dce8f10e5a9902d70a610"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Rok 30 dana/najkasnije 1. jun i uslov odsustva.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 49511,
+                  "end": 49820,
+                  "sha256": "310ab5b73c4da595d8a7e00f61792e14bbccf03c69e1f95a41dadc3d6b753671"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_039",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Finansijski osnov: jedna godina i samo jednom na programu.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 48717,
+                  "end": 48971,
+                  "sha256": "47dfc1c81958a83ed4799232132ff1f2b9ba277a3ce7fc7c800dfc38008fc117"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_040",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Redovni rok osam godina za četvorogodišnji program.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 49857,
+                  "end": 49998,
+                  "sha256": "09c5a2123ae0ecc2f777d5299c913ea1556ee73ded60bb873416f176382fd3d4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Mirovanje isključeno; produženje na zahtev pre isteka do trostrukog roka.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 50115,
+                  "end": 50454,
+                  "sha256": "deded1f9a98d0047d57370b49477e834645b5545c62226e6cec3db408c25f3ff"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_041",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Prijava odbrane uz sve obaveze; overa Studentskog odseka.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 19872,
+                  "end": 20145,
+                  "sha256": "a8899c8dd42ecc72e3db7bcd0379f0ab8a986de34cab42cfbdc24a2c33aefd86"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_042",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Godina za odbranu; nova tema ili produženje do šest meseci.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 18894,
+                  "end": 19205,
+                  "sha256": "ba3b34c61dd7127b50e8ba0ef424d9ceebe729725ae6505c6be164ff0e2fc234"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_043",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Promena teme uz odobrenje samo jednom.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 18787,
+                  "end": 18893,
+                  "sha256": "01e10b13c87bfb28f039b38201b79c7c20cad9635ee646ca0b83002f590c4404"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_044",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Izmenjeni uslov mentora: angažovan na predmetu koji je student pratio i položio.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+                  "start": 1009,
+                  "end": 1333,
+                  "sha256": "072becd6839a7723fd50fe4f1c18b1ef7fb2d20737c304a10d2f1271a8874faf"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_045",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Tema mora ostati u oblasti upisanog modula.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 18033,
+                  "end": 18116,
+                  "sha256": "eaa9141d5264dc579e7ecbf41e2de414c08ce3eda1593652f6475cbf95bb1270"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Izmenjeni uslov mentora: angažovan na predmetu koji je student pratio i položio.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+                  "start": 1009,
+                  "end": 1333,
+                  "sha256": "072becd6839a7723fd50fe4f1c18b1ef7fb2d20737c304a10d2f1271a8874faf"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_046",
+      "expected_behavior": "partial_answer",
+      "scope": "supported_part",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Meri se samo prisustvo dokaza za potkrepljeni deo/uslove. Ne meri se prepoznavanje nepoznatih podataka, odsustva pravila ili potreba za dopunom.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Zamena člana 52: stari i novi tekst radi poređenja roka.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+                  "start": 1334,
+                  "end": 2273,
+                  "sha256": "89b8a57f880389d6186e8aafd2eaf4f9c84e194febda927d9e2fa3c07b3d2969"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_047",
+      "expected_behavior": "partial_answer",
+      "scope": "supported_part",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Meri se samo prisustvo dokaza za potkrepljeni deo/uslove. Ne meri se prepoznavanje nepoznatih podataka, odsustva pravila ili potreba za dopunom.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Obrazloženje refundacije 50% za praksu i završni.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Izmena Pravilnika o osnovnim akademskim studijama",
+                  "start": 2554,
+                  "end": 2726,
+                  "sha256": "d838f85ff9b9d66c9e6707b82335a26cbc5dd73206e428650347d9540134eb06"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_048",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Praksa u inostranstvu i prethodna konsultacija rukovodioca.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 14350,
+                  "end": 14607,
+                  "sha256": "ae7c6d48c2a3e497a2b99b7e0fc0c70baaad8fbae419af31ad5d1b0b2d54431d"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "90 časova, izveštaj, potvrda/potpis/pečat, 2 ESPB i opisna ocena.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 14741,
+                  "end": 15062,
+                  "sha256": "65fb6a793f8c8cfa7c672f11466abd1c8b648c3fb404a44aab4f73a0cfd0b064"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_049",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Pre 2020/2021 najmanje 80 sati.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 62955,
+                  "end": 63081,
+                  "sha256": "d27206331ebf7e11271be0525d95061569198a73d6a8caa278abe29ba9746040"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Opšti uslov 90 časova uz izveštaj i potvrdu.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 14741,
+                  "end": 14985,
+                  "sha256": "e1858352e04e33faf4fe1689dead24e50d35de0fcfbf6cd41332b0dacec950fb"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_050",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Kontakt nastavnika pre prijave i procena sadržaja.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 23912,
+                  "end": 24419,
+                  "sha256": "148e6b0dea1e8dd3eaca827faab22523e5719922012387b1c458ae5f22d1c52e"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Saglasnosti, potpis prodekana i priznavanje uz transkript.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 24420,
+                  "end": 24717,
+                  "sha256": "105373487b1af645871f6a025f57cc3e4c049b7b917453be756393a273523333"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_051",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Tehnička napomena ostaje: formula je oštećena izdvajanjem/OCR-om; prisustvo teksta ne dokazuje čitljivost formule. U ovoj potvrdi nije posebno zabeležena provera originalnog PDF-a.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Formula izmene iz 2020: imenilac S×60 i definicije.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+                  "start": 871,
+                  "end": 1257,
+                  "sha256": "f23bfd3327baad689f5790edaa92dd97894ab566716345d9d6e2375464bbac70"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Budžetsko finansiranje zavisi od rangiranja.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Odluka o izmeni Pravilnika o osnovnim akademskim studijama",
+                  "start": 452,
+                  "end": 870,
+                  "sha256": "63419ae7d69baba18f44eead60c8c8430acfe8fb3dfbfadce5c30aa5c2340621"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_052",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Stimulacija samo u godini prvog upisa i u prva dva roka.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 42412,
+                  "end": 42702,
+                  "sha256": "49b6b38062f40fc0cfe24baeaedf47f7fe4e784714a0d5273171aa58d53b1396"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_053",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Plan uključuje predispitne obaveze i ocenjivanje.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 8152,
+                  "end": 8492,
+                  "sha256": "9053381df22c34895a7a2d691fd0a5ae658f89cb77dde6be395b17140539d915"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Objava plana najkasnije u prvoj nedelji.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 8709,
+                  "end": 8873,
+                  "sha256": "4269ace60224a889434e482ebfa6dabff9b8ccc1e5a02885b1a07b7c643e80e1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_054",
+      "expected_behavior": "partial_answer",
+      "scope": "supported_part",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Meri se samo prisustvo dokaza za potkrepljeni deo/uslove. Ne meri se prepoznavanje nepoznatih podataka, odsustva pravila ili potreba za dopunom.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Zamena konsultacija mejlom i odgovor sa fakultetske adrese.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 15926,
+                  "end": 16163,
+                  "sha256": "7b8b4ca0fdd04e2e1607f8e2fc550c8142e888210aaa408daafa3ff91f2a9f8b"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_055",
+      "expected_behavior": "answer",
+      "scope": "answer",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "S za rangiranje isključuje godine mirovanja.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 42292,
+                  "end": 42411,
+                  "sha256": "f69dfcf34ca4d40c7e4ac68b6fbe63327a272edb357fe5b5ea957eb2566507da"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Rok završetka isključuje odobreno mirovanje.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 50115,
+                  "end": 50241,
+                  "sha256": "ccf4244d58b0270e38d1c3a8168298a9ce9a28560e0e0549940b3fe9eea807ee"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_056",
+      "expected_behavior": "abstain",
+      "scope": "not_applicable",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno.",
+      "requirements": []
+    },
+    {
+      "question_id": "REAL_057",
+      "expected_behavior": "abstain",
+      "scope": "not_applicable",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno.",
+      "requirements": []
+    },
+    {
+      "question_id": "REAL_058",
+      "expected_behavior": "partial_answer",
+      "scope": "supported_part",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Meri se samo prisustvo dokaza za potkrepljeni deo/uslove. Ne meri se prepoznavanje nepoznatih podataka, odsustva pravila ili potreba za dopunom.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Nastavnik određuje pomoćna sredstva i obaveštava na početku.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 57198,
+                  "end": 57387,
+                  "sha256": "72135dc601963f3fe2b99e1f7bb1b83fd3115fe99951df1169a7d2f6903423cd"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_059",
+      "expected_behavior": "clarify",
+      "scope": "supported_part",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Meri se samo prisustvo dokaza za potkrepljeni deo/uslove. Ne meri se prepoznavanje nepoznatih podataka, odsustva pravila ili potreba za dopunom.",
+      "requirements": [
+        {
+          "id": "E01",
+          "description": "Uslovi za prelazak sa druge ustanove.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 32864,
+                  "end": 33324,
+                  "sha256": "6e955752cbd2d9d3f42eb69c8b115768593348d0a4b4872fad4306339b1d80ee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "description": "Upis na samofinansiranje; ograničenje preostalih ESPB.",
+          "alternatives": [
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik_o_OAS_preciscen_jun_2023",
+                  "start": 33858,
+                  "end": 34301,
+                  "sha256": "228834e3880261e83edccb25c55bc4df4ae0ee402e1a754f32d8fda2e166f58c"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "REAL_060",
+      "expected_behavior": "abstain",
+      "scope": "not_applicable",
+      "review_status": "approved",
+      "reviewed_by": "user",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno.",
+      "requirements": []
+    }
+  ]
+}
