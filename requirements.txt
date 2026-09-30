@@ -21,8 +21,9 @@ ollama>=0.1.0
 requests>=2.31.0
 langchain>=0.1.0
 langchain-community>=0.0.1
-sentence-transformers>=2.2.0
-transformers>=4.30.0
+sentence-transformers==5.5.0
+# GTE's custom code leaves position/rotary buffers uninitialized with Transformers 5.
+transformers==4.57.6
 torch>=2.0.0
 
 # Vector Stores

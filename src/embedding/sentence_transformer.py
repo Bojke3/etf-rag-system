@@ -16,7 +16,11 @@ class SentenceTransformerEmbedding(EmbeddingModel):
     def __init__(self, model_name: str = "all-MiniLM-L6-v2", device: str = "cpu"):
         try:
             from sentence_transformers import SentenceTransformer
-            self.model = SentenceTransformer(model_name, device=device)
+            self.model = SentenceTransformer(
+                model_name,
+                device=device,
+                trust_remote_code=(model_name == "Alibaba-NLP/gte-multilingual-base"),
+            )
             self.model_name = model_name
         except Exception as e:
             logger.error(f"Error loading embedding model: {e}")
