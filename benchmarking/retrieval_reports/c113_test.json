@@ -1,0 +1,3110 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-01T00:46:45.351322+00:00",
+  "evidence": "benchmarking/retrieval_evidence.json",
+  "evidence_sha256": "775d445ae1d5315143e75b4dcddfbfec00ce66e8c7c78cdedefe33ffc13cb298",
+  "evaluator_sha256": "0c9954ee54f532e16f7eba861f1c41a64cd415f628ae9c75787c0954a7282d25",
+  "runs": [
+    {
+      "run": "benchmarking/runs/dev_combined_c113_r01",
+      "answers_sha256": "d040ef60fb1588e46bd8b03d82f0994ade94c3f6bb4225a32af051c0939c111d",
+      "preliminary": false,
+      "answer_questions": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 42,
+        "mean_evidence_coverage": 0.8365384615384616,
+        "complete_evidence_rate": 0.8076923076923077,
+        "mean_retrieved_coverage": 0.8365384615384616,
+        "context_chars_mean": 15716.115384615385,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 63,
+        "missing_requirement_count": 11,
+        "mean_found_evidence_rank": 2.0317460317460316,
+        "found_evidence_rank_counts": {
+          "1": 27,
+          "2": 18,
+          "3": 12,
+          "4": 1,
+          "5": 5
+        },
+        "mean_all_evidence_rank": 1.9761904761904763,
+        "all_cases_available": true
+      },
+      "supported_part_questions": {
+        "eligible_questions": 5,
+        "scored_questions": 5,
+        "complete_questions": 4,
+        "mean_evidence_coverage": 0.8,
+        "complete_evidence_rate": 0.8,
+        "mean_retrieved_coverage": 0.8,
+        "context_chars_mean": 15589.6,
+        "scored_requirement_count": 6,
+        "found_requirement_count": 5,
+        "missing_requirement_count": 1,
+        "mean_found_evidence_rank": 1.8,
+        "found_evidence_rank_counts": {
+          "1": 2,
+          "2": 2,
+          "3": 1
+        },
+        "mean_all_evidence_rank": 1.75,
+        "all_cases_available": true
+      },
+      "questions": [
+        {
+          "question_id": "REAL_001",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 14314,
+          "context_sha256": "562c51374f32527d9ad9b39ee990cb444d79886870c9276b22b8b1cef969f160"
+        },
+        {
+          "question_id": "REAL_002",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 12055,
+          "context_sha256": "30173d9e4d4abce7328ac6c030a1f3cca238678e6f75dd7b3ae72a1aad1fea49"
+        },
+        {
+          "question_id": "REAL_003",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 16047,
+          "context_sha256": "091172e300534ceedfbd30caee17d1f8e154fed14210ca51fa7d4d574971bb1d"
+        },
+        {
+          "question_id": "REAL_004",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 12671,
+          "context_sha256": "48bd7873d112edd93c851cb616e5f3eaf7353604efd073915cb6286fbd0b877d"
+        },
+        {
+          "question_id": "REAL_005",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 19612,
+          "context_sha256": "c6b2780213a2297c0394507c3926f5fb446c20cc93d3acddd9a78410efd07f96"
+        },
+        {
+          "question_id": "REAL_006",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E03",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E04",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 11633,
+          "context_sha256": "4d81fe7b540ff5971c358a63f73dd1bf3181305791470f17a6d41adba17346bb"
+        },
+        {
+          "question_id": "REAL_007",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 18937,
+          "context_sha256": "a22dca62d1ec5eac886ee4acdb840762d70f34cb79cb0ebd9672dc41e1a8492d"
+        },
+        {
+          "question_id": "REAL_008",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 18541,
+          "context_sha256": "c5450406f10912317349c54b83e61fd60891ca416bf900b50c0748232c53885d"
+        },
+        {
+          "question_id": "REAL_009",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 11994,
+          "context_sha256": "f43b9a43c33825395fcddd88d229e6fd221521145a2437477df5a6f06697e375"
+        },
+        {
+          "question_id": "REAL_010",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 18925,
+          "context_sha256": "9f7ba677eea149ac8627f65d1184ea3738570efcac54ce8abec19f6113901dd8"
+        },
+        {
+          "question_id": "REAL_011",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 15993,
+          "context_sha256": "2911d45649ab14b0ff520e574d018c03f1ae526662569ad85538a80955f0c343"
+        },
+        {
+          "question_id": "REAL_012",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 14473,
+          "context_sha256": "c4c148a9505ae2ea6b4cb0756f4c4c900be4d0986d4922e6d9ee186beb9c7e8a"
+        },
+        {
+          "question_id": "REAL_013",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 13246,
+          "context_sha256": "b21c30138fb9ea05b11e1b2170094ec17a6c14e6aff3ecb145e81e133a120e71"
+        },
+        {
+          "question_id": "REAL_014",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 14482,
+          "context_sha256": "d60e7305ca278e2f0f5b99ca996dae926d0e938543819ac90a0aaf57bd23e59a"
+        },
+        {
+          "question_id": "REAL_015",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 12442,
+          "context_sha256": "b1873baf90dfbb2bfb083e92b2b3bff05d9597758ebf4ba7f08ab162da92cec3"
+        },
+        {
+          "question_id": "REAL_016",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 16578,
+          "context_sha256": "6760338b612f9f479316f77c06572614c98d0e408ee243727a2c4a1c8b185232"
+        },
+        {
+          "question_id": "REAL_017",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 14094,
+          "context_sha256": "d454326e2ca5967907356f4e55c3fadbd0ea781993299626ac361d7866db088b"
+        },
+        {
+          "question_id": "REAL_018",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 17212,
+          "context_sha256": "e0bb3d365cbf46391cdb9e0c7cb7daabd22e2cac20424d2d992f67e30da1293a"
+        },
+        {
+          "question_id": "REAL_019",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 20975,
+          "context_sha256": "76f93ce906ad29d56212b45e59059db211117919ba582ac0325635b744369038"
+        },
+        {
+          "question_id": "REAL_020",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 16578,
+          "context_sha256": "41033ac46563e513a28780aebb94decfc937bf561b343acf30483e06105ceca2"
+        },
+        {
+          "question_id": "REAL_021",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 17171,
+          "context_sha256": "0e716b221d474e25e44d08f8b170265df1f80cfd6e65483a0c26ea64727a3512"
+        },
+        {
+          "question_id": "REAL_022",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 13938,
+          "context_sha256": "afb166ad470bd8710a16784d0d4c938e83785907198ddd635935e0916ccf798d"
+        },
+        {
+          "question_id": "REAL_023",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  4
+                ],
+                "contributing_chunk_ranks": [
+                  4
+                ],
+                "supporting_chunk_ranks": [
+                  4
+                ],
+                "complete_by_rank": 4
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  4
+                ],
+                "contributing_chunk_ranks": [
+                  4
+                ],
+                "supporting_chunk_ranks": [
+                  4
+                ],
+                "complete_by_rank": 4
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 4,
+          "verdict": "complete",
+          "context_chars": 18433,
+          "context_sha256": "bc042ddbf6bb20654b6253f3dbc0f5b76e04a6b966059cec8b52dea9700f6304"
+        },
+        {
+          "question_id": "REAL_024",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "partial",
+          "context_chars": 18124,
+          "context_sha256": "b94f438ef6363a8ab3f28afd67b7924e568744099bea8d6f19aad04ce21cab06"
+        },
+        {
+          "question_id": "REAL_025",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 7995,
+          "context_sha256": "724079f2f15dbba71899a65c8aff5952c2fb47323af480b3ff871d0d16aeddea"
+        },
+        {
+          "question_id": "REAL_026",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 15647,
+          "context_sha256": "959e96c421dd3ba723db64d7db3961fc9dbc0048a06868603cbd2c78e321b05c"
+        },
+        {
+          "question_id": "REAL_027",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 8265,
+          "context_sha256": "add540583b27eab1ba1045bce88136bef7693a5bc14e5266d52df610b6b2b83d"
+        },
+        {
+          "question_id": "REAL_028",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 15403,
+          "context_sha256": "b716255574e84250ad3deb14ec6e8be30de7ceb237ed038a88160ecf9ca7d853"
+        },
+        {
+          "question_id": "REAL_029",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 19658,
+          "context_sha256": "8a17acaffc3cb90fa98b7bfb3880ee2f2cf0fe5ddc207ad7c07d160af231a3a0"
+        },
+        {
+          "question_id": "REAL_030",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 13558,
+          "context_sha256": "b6ee77e4854e06f42d75c321da584b458703fac5feda7a3d31637ed94f7cda71"
+        },
+        {
+          "question_id": "REAL_031",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 17429,
+          "context_sha256": "4cb7086924f21e2b33dc4de35260e4f96acefa4da000cdfdbea7e4fad50fedda"
+        },
+        {
+          "question_id": "REAL_032",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 16289,
+          "context_sha256": "2d86e3ea81e691a983dbce280c0260c87554828782428e50cafb718bd0799021"
+        },
+        {
+          "question_id": "REAL_033",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 16871,
+          "context_sha256": "07fea99f8cfe6fdf0325098cd40b2f17333d04d5bcce907e807ffab8a81ccd90"
+        },
+        {
+          "question_id": "REAL_034",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 15646,
+          "context_sha256": "f25d574240e481384727dd7d64d5c2424f111beb81326d970374c712b0a09d44"
+        },
+        {
+          "question_id": "REAL_035",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 19183,
+          "context_sha256": "15104c4e17cd48659217a9c5692d2d512a03cbc13799734479eb3865c6c116d0"
+        },
+        {
+          "question_id": "REAL_036",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 18745,
+          "context_sha256": "3feae66aafbf8a41dd7e060fd6e4e60ccb2ab4a543fbd7e11018dee7c6cc6b34"
+        },
+        {
+          "question_id": "REAL_037",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 13681,
+          "context_sha256": "6335dfbc3ea38b58a294a923b630e44a8c3462095a9203aa462ece88a3a8b093"
+        },
+        {
+          "question_id": "REAL_038",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 11075,
+          "context_sha256": "611383e61e5e04be8be28da77c6cc7a8cc0d4da3b214e65371721b2aa61e9126"
+        },
+        {
+          "question_id": "REAL_039",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 13919,
+          "context_sha256": "e62a7f3f3045956307170cbb2e9d9ab61729dd622c53f5231a0b6be32024437b"
+        },
+        {
+          "question_id": "REAL_040",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 18365,
+          "context_sha256": "e32700621c1f980d4186210f8d0e23b78ac2e5c9ed67fe07af180bd46b3a7df0"
+        },
+        {
+          "question_id": "REAL_041",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 14873,
+          "context_sha256": "2576cbd7deb1a095b8e5b11daa07cc2c73788a65ba291d4d675a47d63683b520"
+        },
+        {
+          "question_id": "REAL_042",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 5,
+          "verdict": "complete",
+          "context_chars": 20641,
+          "context_sha256": "e42dfde09ddd307eaaa7fe9cfbab9a0f2559162b6b48727db020269dc112a608"
+        },
+        {
+          "question_id": "REAL_043",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 15895,
+          "context_sha256": "da4a1ce2a9b3813d60073c5977c6e43972f4215bb1fe50808fab8826142b3b42"
+        },
+        {
+          "question_id": "REAL_044",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 13496,
+          "context_sha256": "7e9ba2505720462580b3521b3b42e898cae43cfdde610771d6d02ba35d91bb45"
+        },
+        {
+          "question_id": "REAL_045",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 5,
+          "verdict": "complete",
+          "context_chars": 17559,
+          "context_sha256": "319d8e97670c53efb02a6c96f3d150f3a3a57960568e4fee96b1911b38aecaa1"
+        },
+        {
+          "question_id": "REAL_046",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 14598,
+          "context_sha256": "4226977c4a6314c47da118f6aa74d380bb92a42dbdc592a58ba1d0291e61efad"
+        },
+        {
+          "question_id": "REAL_047",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 14790,
+          "context_sha256": "a465a1395424fe8b08dad6e98efcd716d5b3a9c0d90cb2bdc820f7847e689387"
+        },
+        {
+          "question_id": "REAL_048",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 18362,
+          "context_sha256": "98fc99fadd40707454bfe3367ac4df92048e96ab82d1b879d0408bc1f8fbe0bc"
+        },
+        {
+          "question_id": "REAL_049",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "partial",
+          "context_chars": 12208,
+          "context_sha256": "f8f7d128d543a10c334b5531f8d4969da3321f814090a34e345b56b25f0073db"
+        },
+        {
+          "question_id": "REAL_050",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  5
+                ],
+                "contributing_chunk_ranks": [
+                  5
+                ],
+                "supporting_chunk_ranks": [
+                  5
+                ],
+                "complete_by_rank": 5
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 5,
+          "verdict": "complete",
+          "context_chars": 18739,
+          "context_sha256": "48d35ebd8144a6041af5dd4a3900414f957aaec42a2c24a8a997f61d5abd565f"
+        },
+        {
+          "question_id": "REAL_051",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  3
+                ],
+                "contributing_chunk_ranks": [
+                  3
+                ],
+                "supporting_chunk_ranks": [
+                  3
+                ],
+                "complete_by_rank": 3
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 3,
+          "verdict": "complete",
+          "context_chars": 10695,
+          "context_sha256": "c49ca8a017ff8e9f167049fd0f92eb276f3c27a6ffb381eb6163ce7bcc1335a7"
+        },
+        {
+          "question_id": "REAL_052",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 17330,
+          "context_sha256": "58c9dd9307a202b736aac0e62d93e103a4f8ec259f7ac47a3317b26db35255bb"
+        },
+        {
+          "question_id": "REAL_053",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 19639,
+          "context_sha256": "1113886ef55788cac2abe1a4fab54c8765ad360333612f9aa9aad2e07d9f9274"
+        },
+        {
+          "question_id": "REAL_054",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 1,
+          "verdict": "complete",
+          "context_chars": 16756,
+          "context_sha256": "4e1e05677a5a6309d5a8def88252aefaf9506b4529b31559eabcecc5d47c3394"
+        },
+        {
+          "question_id": "REAL_055",
+          "scope": "answer",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  1
+                ],
+                "contributing_chunk_ranks": [
+                  1
+                ],
+                "supporting_chunk_ranks": [
+                  1
+                ],
+                "complete_by_rank": 1
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.5,
+          "delivered_coverage": 0.5,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "partial",
+          "context_chars": 17604,
+          "context_sha256": "4713a60346f24ead98dd0d79e3be1c8bad7cad9191b6374993024c444af102e4"
+        },
+        {
+          "question_id": "REAL_056",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_057",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        },
+        {
+          "question_id": "REAL_058",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": false,
+              "delivered": false,
+              "retrieved_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [],
+                "contributing_chunk_ranks": [],
+                "supporting_chunk_ranks": [],
+                "complete_by_rank": null
+              }
+            }
+          ],
+          "retrieved_coverage": 0.0,
+          "delivered_coverage": 0.0,
+          "complete": false,
+          "all_evidence_by_rank": null,
+          "verdict": "none",
+          "context_chars": 17325,
+          "context_sha256": "2604547ab986999a83bd0fecddfe1254025eb53dd4246477f89b025c6e2ce98e"
+        },
+        {
+          "question_id": "REAL_059",
+          "scope": "supported_part",
+          "review_status": "approved",
+          "status": "scored",
+          "requirements": [
+            {
+              "id": "E01",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            },
+            {
+              "id": "E02",
+              "retrieved": true,
+              "delivered": true,
+              "retrieved_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              },
+              "delivered_locations": {
+                "full_chunk_ranks": [
+                  2
+                ],
+                "contributing_chunk_ranks": [
+                  2
+                ],
+                "supporting_chunk_ranks": [
+                  2
+                ],
+                "complete_by_rank": 2
+              }
+            }
+          ],
+          "retrieved_coverage": 1.0,
+          "delivered_coverage": 1.0,
+          "complete": true,
+          "all_evidence_by_rank": 2,
+          "verdict": "complete",
+          "context_chars": 14479,
+          "context_sha256": "12c55acadb63657e3d2e30a680991de57ea1d6663eda4e67b85bc17ad9f3439b"
+        },
+        {
+          "question_id": "REAL_060",
+          "scope": "not_applicable",
+          "review_status": "approved",
+          "status": "not_applicable",
+          "reason": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno."
+        }
+      ]
+    }
+  ]
+}

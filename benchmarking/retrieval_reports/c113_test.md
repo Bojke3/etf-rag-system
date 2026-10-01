@@ -1,0 +1,173 @@
+# Retrieval evidence coverage
+
+Evidence: benchmarking/retrieval_evidence.json
+
+DRAFT results are exploratory, not validated benchmark scores. Coverage measures annotated source text presence, not semantic understanding or absence of distracting text.
+
+| Run | Draft | Scored / eligible (answer) | Complete | Coverage | Complete rate |
+|---|---|---:|---:|---:|---:|
+| dev_combined_c113_r01 | False | 52 / 52 | 42 | 0.837 | 0.808 |
+
+## Prosečne pozicije dostavljenih dokaza (answer pitanja)
+
+Prosek dokaza računa se samo preko potpuno pronađenih jedinica, svaka jednom. Za dokaz raspoređen u chunkovima 2 i 4 računa se 4; duplikati ne dodaju uzorke. Niži prosek znači raniji dolazak pronađenih dokaza, ali ne dokazuje bolju pretragu ako je mnogo drugih dokaza izostalo. Zato ga čitajte uz coverage i complete rate.
+
+Prosek za sve dokaze računa se samo preko potpuno pokrivenih pitanja: do koje pozicije treba uzeti rezultate da svi dokazi budu dostupni. Brojači se odnose na ocenjena pitanja; N/A označava nepotpun skup ili prazan imenilac.
+
+| Run | Pronađeni / ocenjeni dokazi | Prosečna pozicija dokaza | Potpuna pitanja | Prosečna pozicija za sve dokaze |
+|---|---:|---:|---:|---:|
+| dev_combined_c113_r01 | 63 / 74 | 2.032 | 42 | 1.976 |
+
+## dev_combined_c113_r01
+
+| Question | Scope | Result | Missing delivered requirements / issue |
+|---|---|---|---|
+| REAL_001 | answer | none | E01, E02 |
+| REAL_002 | answer | complete |  |
+| REAL_003 | answer | complete |  |
+| REAL_004 | answer | none | E01 |
+| REAL_005 | answer | complete |  |
+| REAL_006 | answer | complete |  |
+| REAL_007 | answer | none | E01 |
+| REAL_008 | answer | none | E01 |
+| REAL_009 | answer | complete |  |
+| REAL_010 | answer | complete |  |
+| REAL_011 | answer | complete |  |
+| REAL_012 | answer | none | E01 |
+| REAL_013 | answer | complete |  |
+| REAL_014 | answer | complete |  |
+| REAL_015 | answer | complete |  |
+| REAL_016 | answer | complete |  |
+| REAL_017 | answer | complete |  |
+| REAL_018 | answer | complete |  |
+| REAL_019 | answer | complete |  |
+| REAL_020 | answer | complete |  |
+| REAL_021 | answer | complete |  |
+| REAL_022 | answer | complete |  |
+| REAL_023 | answer | complete |  |
+| REAL_024 | answer | partial | E02 |
+| REAL_025 | answer | complete |  |
+| REAL_026 | answer | complete |  |
+| REAL_027 | answer | complete |  |
+| REAL_028 | answer | complete |  |
+| REAL_029 | answer | complete |  |
+| REAL_030 | answer | complete |  |
+| REAL_031 | answer | complete |  |
+| REAL_032 | answer | none | E01 |
+| REAL_033 | answer | complete |  |
+| REAL_034 | answer | complete |  |
+| REAL_035 | answer | complete |  |
+| REAL_036 | answer | complete |  |
+| REAL_037 | answer | complete |  |
+| REAL_038 | answer | complete |  |
+| REAL_039 | answer | complete |  |
+| REAL_040 | answer | complete |  |
+| REAL_041 | answer | none | E01 |
+| REAL_042 | answer | complete |  |
+| REAL_043 | answer | complete |  |
+| REAL_044 | answer | complete |  |
+| REAL_045 | answer | complete |  |
+| REAL_046 | supported_part | complete |  |
+| REAL_047 | supported_part | complete |  |
+| REAL_048 | answer | complete |  |
+| REAL_049 | answer | partial | E02 |
+| REAL_050 | answer | complete |  |
+| REAL_051 | answer | complete |  |
+| REAL_052 | answer | complete |  |
+| REAL_053 | answer | complete |  |
+| REAL_054 | supported_part | complete |  |
+| REAL_055 | answer | partial | E02 |
+| REAL_056 | not_applicable | not_applicable | Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno. |
+| REAL_057 | not_applicable | not_applicable | Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno. |
+| REAL_058 | supported_part | none | E01 |
+| REAL_059 | supported_part | complete |  |
+| REAL_060 | not_applicable | not_applicable | Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Nema pozitivnog dokaza za traženi podatak u korpusu. Isključeno iz evidence coverage; ispravnost uzdržavanja ocenjuje se zasebno. |
+
+### Pozicije dokaza u vraćenim chunkovima
+
+Pozicije su 1-based redosled sačuvanih rezultata. Kod hijerarhijskog retrievala to je redosled roditeljskih odlomaka posle proširenja i uklanjanja duplikata. Kolona 'Poslato LLM-u' računa samo stvarno dostavljeni tekst.
+
+'Ceo u' navodi chunkove koji sami sadrže ceo dokaz. 'Zajedno' navodi jednu dovoljnu kombinaciju. 'Potpun do #k' znači da prvih k rezultata zajedno sadrži dokaz; ne mora ceo biti u chunku k. 'Nepotpun' ne donosi poene.
+
+| Question | Dokaz | Pre skraćivanja konteksta | Poslato LLM-u |
+|---|---|---|---|
+| REAL_001 | E01 | nije pronađen | nije pronađen |
+| REAL_001 | E02 | nije pronađen | nije pronađen |
+| REAL_002 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_002 | E02 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_003 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_003 | E02 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_004 | E01 | nije pronađen | nije pronađen |
+| REAL_005 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_006 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_006 | E03 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_006 | E04 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_007 | E01 | nije pronađen | nije pronađen |
+| REAL_008 | E01 | nije pronađen | nije pronađen |
+| REAL_009 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_010 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_011 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_011 | E02 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_012 | E01 | nije pronađen | nije pronađen |
+| REAL_013 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_014 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_015 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_016 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_016 | E02 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_017 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_017 | E02 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_018 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_019 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_020 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_020 | E02 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_021 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_022 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_022 | E02 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_023 | E01 | ceo u: 4; potpun do #4 | ceo u: 4; potpun do #4 |
+| REAL_024 | E01 | ceo u: 5; potpun do #5 | ceo u: 5; potpun do #5 |
+| REAL_024 | E02 | nije pronađen | nije pronađen |
+| REAL_025 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_026 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_027 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_028 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_029 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_029 | E02 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_030 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_030 | E02 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_031 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_032 | E01 | nije pronađen | nije pronađen |
+| REAL_033 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_034 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_035 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_036 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_037 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_038 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_038 | E02 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_039 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_040 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_040 | E02 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_041 | E01 | nije pronađen | nije pronađen |
+| REAL_042 | E01 | ceo u: 5; potpun do #5 | ceo u: 5; potpun do #5 |
+| REAL_043 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_044 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_045 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_045 | E02 | ceo u: 5; potpun do #5 | ceo u: 5; potpun do #5 |
+| REAL_046 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_047 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_048 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_048 | E02 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_049 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_049 | E02 | nije pronađen | nije pronađen |
+| REAL_050 | E01 | ceo u: 5; potpun do #5 | ceo u: 5; potpun do #5 |
+| REAL_050 | E02 | ceo u: 5; potpun do #5 | ceo u: 5; potpun do #5 |
+| REAL_051 | E01 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_051 | E02 | ceo u: 3; potpun do #3 | ceo u: 3; potpun do #3 |
+| REAL_052 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_053 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_053 | E02 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_054 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_055 | E01 | ceo u: 1; potpun do #1 | ceo u: 1; potpun do #1 |
+| REAL_055 | E02 | nije pronađen | nije pronađen |
+| REAL_058 | E01 | nije pronađen | nije pronađen |
+| REAL_059 | E01 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
+| REAL_059 | E02 | ceo u: 2; potpun do #2 | ceo u: 2; potpun do #2 |
