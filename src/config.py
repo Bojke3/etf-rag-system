@@ -89,6 +89,12 @@ class Config(BaseSettings):
     web_debug: bool = False
     
     # Optional: Cloud LLM APIs
+    together_api_key: Optional[str] = Field(default=None, repr=False)
+    together_model: str = "Qwen/Qwen3.5-9B"
+    together_temperature: float = 0.7
+    together_top_p: float = 0.9
+    together_max_tokens: int = Field(default=2048, gt=0)
+    together_think: bool = False
     anthropic_api_key: Optional[str] = None
     openai_api_key: Optional[str] = None
     huggingface_api_key: Optional[str] = None

@@ -133,6 +133,39 @@ def test_model_digest_change_stops_before_pipeline_and_generation(reference):
         build.assert_not_called()
 
 
+@pytest.mark.parametrize('expanded', [False, True])
+def test_repeat_matches_serialized_hierarchical_ids_and_rejects_real_changes(reference, expanded):
+    run, _, source = reference
+    paths = provenance.validate_inputs(run)
+    stable_id = 'rules::hierarchical::child::0001'
+    parent_id = 'rules::hierarchical::parent::0000'
+    metadata = {**source, 'id': stable_id, 'parent_chunk_id': parent_id}
+    provenance.write_json(paths['vectorstore/metadatas.json'], [metadata])
+    # Update the fixture's recorded inputs to represent a hierarchical run.
+    record = provenance.read_json(run / 'provenance.json')
+    record['inputs']['vectorstore/metadatas.json']['sha256'] = provenance.sha256(
+        paths['vectorstore/metadatas.json'])
+    if expanded:
+        parents = paths['vectorstore/metadatas.json'].parent / 'parents_hierarchical.json'
+        provenance.write_json(parents, {parent_id: {'text': source['text']}})
+        record['inputs']['vectorstore/parents_hierarchical.json'] = {
+            'path': str(parents), 'path_base': 'absolute',
+            'sha256': provenance.sha256(parents)}
+    provenance.write_json(run / 'provenance.json', record)
+    row = provenance.latest_answers(run)['Q1']
+    row['sources'] = [{**source, 'chunk_id': stable_id,
+                       'parent_chunk_id': parent_id, 'expanded_to_parent': expanded}]
+    (run / 'answers.jsonl').write_text(json.dumps(row) + '\n', encoding='utf-8')
+    retriever = Mock()
+    fresh = {**metadata, 'expanded_to_parent': expanded}
+    retriever.retrieve.return_value = [fresh]
+    assert provenance.verify_saved_inputs(run, retriever)['fresh_retrieval_checked']
+    for change in ({'id': 'another-child'}, {'text': 'Different evidence.'}):
+        retriever.retrieve.return_value = [{**fresh, **change}]
+        with pytest.raises(ValueError, match='Retrieval changed'):
+            provenance.verify_saved_inputs(run, retriever)
+
+
 def test_resume_retries_latest_error_even_after_older_success(tmp_path):
     answers = tmp_path / 'answers.jsonl'
     answers.write_text('\n'.join(json.dumps({'id': 'Q1', 'status': s})

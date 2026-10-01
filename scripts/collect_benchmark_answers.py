@@ -337,7 +337,7 @@ def collect_benchmark_answers(args: argparse.Namespace, query_fn=None, backend_i
 def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Collect ETF RAG answers: local retrieval, local/SSH LLM")
     parser.add_argument("--benchmark", default="benchmarking/finalna_pitanja.json", help="Benchmark JSON path")
-    parser.add_argument("--execution", choices=["local", "ssh", "api"], help="Skip the local/SSH question; api uses an existing Flask service")
+    parser.add_argument("--execution", choices=["local", "ssh", "api", "together"], help="local/ssh use Ollama; api uses an existing Flask service; together uses hosted generation with local retrieval")
     parser.add_argument("--endpoint", default=None, help="Existing RAG /query endpoint (selects api mode)")
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="Directory for benchmark runs")
     parser.add_argument("--run-id", help="Existing or new run id. Reusing it resumes by default")
@@ -353,7 +353,7 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser.add_argument("--num-ctx", type=int, default=None,
                         help="Ollama context window in tokens; local/SSH only (default: OLLAMA_NUM_CTX from .env, otherwise server/model default)")
     parser.add_argument("--prompt-strategy", default="zero_shot", help="Prompt strategy sent to /query")
-    parser.add_argument("--model", default=None, help="Actual installed Ollama model to run; otherwise select interactively/use .env")
+    parser.add_argument("--model", default=None, help="Installed Ollama model or Together API model ID; otherwise use .env/interactive selection")
     parser.add_argument("--timeout", type=int, default=get_config_value("ollama_timeout", DEFAULT_TIMEOUT), help="HTTP timeout in seconds")
     parser.add_argument("--no-resume", action="store_true", help="Do not skip ids already present in answers.jsonl")
     args = parser.parse_args(argv)

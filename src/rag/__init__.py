@@ -92,14 +92,21 @@ class RAGPipeline:
 
             # 4. Generate answer
             generation_start = time.time()
-            answer = self.llm_client.generate(prompt, system=PromptTemplate.SYSTEM)
+            generation_error = None
+            try:
+                answer = self.llm_client.generate(prompt, system=PromptTemplate.SYSTEM)
+            except Exception as exc:
+                # A failed API call must not discard the retrieved evidence and prompt.
+                generation_error = str(exc)
+                logger.error('Generation failed: %s', generation_error)
+                answer = ''
             generation_time = time.time() - generation_start
             
             # 5. Build response
             total_time = time.time() - start_time
             
             response = {
-                "status": "success",
+                "status": "error" if generation_error else "success",
                 "question": question,
                 "answer": answer,
                 "retrieved_chunks": len(retrieved_docs),
@@ -109,6 +116,8 @@ class RAGPipeline:
                 "retrieval_time_ms": int(retrieval_time * 1000),
                 "generation_time_ms": int(generation_time * 1000),
             }
+            if generation_error:
+                response['error'] = generation_error
             
             if include_sources:
                 # chunk_id / parent_chunk_id / strategy_id are additive: existing

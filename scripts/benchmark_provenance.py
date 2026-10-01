@@ -273,7 +273,10 @@ def verify_saved_inputs(run_dir, retriever=None):
         raise ValueError('Reference run must contain exactly the full benchmark question set.')
     _, metadata_path, parents_path = recorded_index(paths)
     metadata = read_json(metadata_path)
-    lookup = {(m['document'], str(m['chunk_id'])): m for m in metadata}
+    # RAGPipeline serializes metadata['id'] as source['chunk_id'] when it
+    # exists. Accept both stored identities when checking indexed text.
+    lookup = {(m['document'], str(m[key])): m for m in metadata
+              for key in ('chunk_id', 'id') if key in m}
     # Hierarchical runs record the parent's text under the matched child's
     # identity, and parents are deliberately not in the embedded metadata.
     parents = read_json(parents_path) if parents_path is not None else {}
@@ -293,7 +296,10 @@ def verify_saved_inputs(run_dir, retriever=None):
         normalized = TextPreprocessor(ocr_cleanup=False).clean(question['question'])
         if retriever is not None:
             fresh = retriever.retrieve(normalized, cfg['top_k'])
-            signature = lambda rows: [(d['document'], str(d['chunk_id']), d['text']) for d in rows]
+            # Match the identity used by RAGPipeline's source serialization;
+            # hierarchical metadata also contains a separate numeric chunk_id.
+            signature = lambda rows: [(d['document'], str(d.get('id', d.get('chunk_id'))), d['text'])
+                                      for d in rows]
             if signature(fresh) != signature(docs):
                 raise ValueError(f'Retrieval changed for {question["id"]}; use a new configuration.')
         context = ContextBuilder.build_context(docs, cfg['backend']['context_max_chars'])
@@ -364,25 +370,33 @@ def apply_repeat_settings(args, config):
     if args.limit or args.diagnostic_contexts or args.endpoint:
         raise ValueError('Baseline repetitions cannot use limit, diagnostic contexts or API endpoint.')
     backend, component = original['backend'], original['component_config']
-    if backend['execution'] not in ('local', 'ssh') or not backend.get('model_digest'):
-        raise ValueError('Reference requires direct execution and recorded model digest.')
+    hosted = backend['execution'] == 'together'
+    if not hosted and (backend['execution'] not in ('local', 'ssh') or not backend.get('model_digest')):
+        raise ValueError('Reference requires local/ssh with a recorded model digest, or Together execution.')
+    if hosted and backend.get('provider') != 'together':
+        raise ValueError('The reference does not identify the Together provider.')
     options = backend['generation_options']
     if options.get('seed') is not None:
         raise ValueError('Repeating an explicitly seeded reference is not supported yet.')
     args.benchmark = str(paths['benchmark.json'])
     args.execution, args.model = backend['execution'], backend['model']
-    args.context_max_chars, args.num_ctx = backend['context_max_chars'], options['num_ctx']
+    args.context_max_chars, args.num_ctx = backend['context_max_chars'], options.get('num_ctx')
     args.top_k, args.prompt_strategy, args.timeout = original['top_k'], original['prompt_strategy'], original['timeout']
-    args.expected_model_digest = backend['model_digest']
+    args.expected_model_digest = backend.get('model_digest')
     overrides = {key: component[key] for key in
                  ('embedding_model', 'embedding_device', 'chunk_size', 'chunk_overlap', 'retrieval_threshold')}
     index_path, _, _ = recorded_index(paths)
     if index_path is None:
         raise ValueError('The reference run recorded no FAISS index.')
-    overrides.update(vector_store_path=str(index_path.parent),
-                     chunk_strategy=recorded_strategy(backend), ollama_temperature=options['temperature'],
-                     ollama_top_p=options['top_p'], ollama_max_tokens=options['num_predict'],
-                     ollama_think=options.get('think'))
+    overrides.update(vector_store_path=str(index_path.parent), chunk_strategy=recorded_strategy(backend))
+    if hosted:
+        overrides.update(together_model=backend['model'], together_temperature=options['temperature'],
+                         together_top_p=options['top_p'], together_max_tokens=options['max_tokens'],
+                         together_think=options['reasoning']['enabled'])
+        print('Together repetition restores recorded settings; the provider does not expose a pinned weights digest.')
+    else:
+        overrides.update(ollama_temperature=options['temperature'], ollama_top_p=options['top_p'],
+                         ollama_max_tokens=options['num_predict'], ollama_think=options.get('think'))
     return config.model_copy(update=overrides)
 
 

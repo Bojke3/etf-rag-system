@@ -22,8 +22,8 @@ def choose_execution(requested, configured='ask', endpoint=None):
             if answer in ('2', 'ssh'):
                 return 'ssh'
             print('Enter 1 or 2.')
-    if mode not in ('local', 'ssh', 'api'):
-        raise ValueError('BENCHMARK_EXECUTION must be ask, local, ssh, or api.')
+    if mode not in ('local', 'ssh', 'api', 'together'):
+        raise ValueError('BENCHMARK_EXECUTION must be ask, local, ssh, api, or together.')
     if endpoint and mode != 'api':
         raise ValueError('--endpoint is only supported with --execution api.')
     return mode
@@ -68,16 +68,20 @@ def choose_model(models, requested, default):
 
 
 def build_local_pipeline(config, base_url, model, timeout, context_max_chars=2000, num_ctx=None,
-                         retrieval_enabled=True):
-    """Keep the same retriever/prompt pipeline on the laptop in both modes."""
+                         retrieval_enabled=True, llm_client=None):
+    """Keep retrieval and prompts local, with Ollama or an injected cloud client."""
     from src.llm import OllamaClient
     from src.rag import RAGPipeline
 
+    def make_client():
+        return llm_client if llm_client is not None else OllamaClient(
+            base_url=base_url, model=model, timeout=timeout,
+            temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
+            top_p=config.ollama_top_p, think=config.ollama_think,
+            raise_errors=retrieval_enabled, num_ctx=num_ctx)
+
     if not retrieval_enabled:
-        client = OllamaClient(base_url=base_url, model=model, timeout=timeout,
-                              temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
-                              top_p=config.ollama_top_p, think=config.ollama_think, num_ctx=num_ctx)
-        return RAGPipeline(None, client, None, context_max_chars=context_max_chars)
+        return RAGPipeline(None, make_client(), None, context_max_chars=context_max_chars)
     from src.data.chunking import DEFAULT_STRATEGY, resolve_strategy_id
     from src.embedding import SentenceTransformerEmbedding, FAISSVectorStore, verify_pairing
     from src.retrieval import ParentAwareRetriever, SimpleRetriever, load_parent_store
@@ -117,12 +121,8 @@ def build_local_pipeline(config, base_url, model, timeout, context_max_chars=200
         parent_store = load_parent_store(str(index_dir), strategy_id)
         if parent_store:
             retriever = ParentAwareRetriever(retriever, parent_store)
-    client = OllamaClient(base_url=base_url, model=model, timeout=timeout,
-                          temperature=config.ollama_temperature, max_tokens=config.ollama_max_tokens,
-                          top_p=config.ollama_top_p, think=config.ollama_think, raise_errors=True,
-                          num_ctx=num_ctx)
     from scripts.benchmark_provenance import retrieval_record
-    pipeline = RAGPipeline(retriever, client, embedding, context_max_chars=context_max_chars)
+    pipeline = RAGPipeline(retriever, make_client(), embedding, context_max_chars=context_max_chars)
     pipeline.collection_provenance = retrieval_record(
         config, embedding, store, strategy_id=strategy_id,
         artifact_name=artifact_name, parent_count=len(parent_store))
@@ -154,6 +154,10 @@ def prepare_execution(args, config):
 
     if config is None:
         raise ValueError('Configuration could not be loaded. Check .env and the project Python dependencies.')
+    if mode == 'together':
+        with prepare_together(args, config) as prepared:
+            yield prepared
+        return
     context_max_chars = getattr(args, 'context_max_chars', None)
     if context_max_chars is None:
         context_max_chars = getattr(config, 'context_max_chars', 2000)
@@ -229,3 +233,63 @@ def prepare_execution(args, config):
         if isinstance(provenance, dict):
             metadata['retrieval_provenance'] = provenance
         yield query_fn, metadata
+
+
+@contextmanager
+def prepare_together(args, config):
+    from src.llm.together import TogetherClient
+
+    if getattr(args, 'num_ctx', None) is not None:
+        raise ValueError('--num-ctx is an Ollama setting; Together controls its hosted context window.')
+    if getattr(args, 'diagnostic_contexts', None):
+        raise ValueError('Diagnostic collection currently requires local/ssh execution.')
+    model = args.model or config.together_model
+    context_max_chars = args.context_max_chars if args.context_max_chars is not None else config.context_max_chars
+    client = TogetherClient(
+        api_key=config.together_api_key, model=model, timeout=args.timeout,
+        temperature=config.together_temperature, max_tokens=config.together_max_tokens,
+        top_p=config.together_top_p, think=config.together_think)
+    args.model, args.endpoint = model, client.base_url
+    print(f'LLM: {model} | provider: Together AI | local retrieval', flush=True)
+    pipeline = build_local_pipeline(config, client.base_url, model, args.timeout,
+                                    context_max_chars=context_max_chars, llm_client=client)
+    if getattr(args, 'repeat_from', None):
+        from scripts.benchmark_provenance import verify_saved_inputs
+        check = verify_saved_inputs(args.repeat_from, retriever=pipeline.retriever)
+        print(f'Reference verified: identical retrieval and prompts for {check["questions_checked"]} questions.', flush=True)
+
+    def query_fn(**request):
+        client.last_response_metadata = {}
+        result = pipeline.process_query(question=request['question'], top_k=request['top_k'],
+                                        prompt_strategy=request['prompt_strategy'], include_sources=True,
+                                        include_diagnostics=True)
+        # Preserve provider errors/usage even if generation raised inside the pipeline.
+        result.setdefault('diagnostics', {})['generation'] = dict(client.last_response_metadata)
+        details = result['diagnostics']
+        if details.get('context_truncated'):
+            print('Warning: retrieved context was shortened; inspect diagnostics.context_truncated.', flush=True)
+        if client.last_response_metadata.get('finish_reason') == 'length':
+            print('Warning: answer reached the output token limit; raw output is retained.', flush=True)
+        return result
+
+    metadata = {
+        'execution': 'together', 'provider': 'together', 'model': model,
+        'endpoint': client.base_url, 'model_digest': None,
+        'model_details': {'revision': None, 'quantization_level': None},
+        'version_note': 'Hosted weights revision and actual runtime quantization are not returned by chat completions.',
+        'generation_options': client.generation_options(),
+        'context_max_chars': context_max_chars,
+        'context_window_note': 'Provider-managed; Ollama num_ctx is not applied.',
+        'context_builder_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/retrieval/context.py').read_bytes()).hexdigest(),
+        'prompts_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/llm/prompts.py').read_bytes()).hexdigest(),
+        'client_sha256': hashlib.sha256((Path(__file__).resolve().parents[1] / 'src/llm/together.py').read_bytes()).hexdigest(),
+        'retrieval_provenance': pipeline.collection_provenance,
+    }
+    if model == 'Qwen/Qwen3.5-9B':
+        metadata['published_model_info'] = {
+            'quantization': 'FP8', 'context_length': 262144,
+            'source': 'https://docs.together.ai/docs/serverless/models',
+            'checked_on': '2026-10-01',
+            'note': 'Documentation snapshot, not verification of the serving runtime.',
+        }
+    yield query_fn, metadata
