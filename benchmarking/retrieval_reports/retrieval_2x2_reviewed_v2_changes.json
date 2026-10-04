@@ -1,0 +1,328 @@
+{
+  "date": "2026-10-04",
+  "approved_alternatives": {
+    "REAL_012": [
+      "E01"
+    ],
+    "REAL_017": [
+      "E01",
+      "E02"
+    ],
+    "REAL_024": [
+      "E02"
+    ],
+    "REAL_039": [
+      "E01"
+    ],
+    "REAL_053": [
+      "E01",
+      "E02"
+    ]
+  },
+  "base_evidence_file_sha256": "36b87739f6c96a89ca70ceabc8e75125e98997e3c01be4eb08ee46c683af2e61",
+  "updated_evidence_file_sha256": "c0427f795532acf58d52b1fbc564d178275162680f8cfb611b5d0ae51bea8647",
+  "comparisons": [
+    {
+      "run": "benchmarking/runs/dev_combined_c105_r01",
+      "before": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 39,
+        "mean_evidence_coverage": 0.8397435897435898,
+        "complete_evidence_rate": 0.75,
+        "mean_retrieved_coverage": 0.8397435897435898,
+        "context_chars_mean": 5116.134615384615,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 59,
+        "missing_requirement_count": 15,
+        "mean_found_evidence_rank": 2.016949152542373,
+        "found_evidence_rank_counts": {
+          "1": 27,
+          "2": 14,
+          "3": 11,
+          "4": 4,
+          "5": 3
+        },
+        "mean_all_evidence_rank": 2.051282051282051,
+        "all_cases_available": true
+      },
+      "after": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 41,
+        "mean_evidence_coverage": 0.8589743589743589,
+        "complete_evidence_rate": 0.7884615384615384,
+        "mean_retrieved_coverage": 0.8589743589743589,
+        "context_chars_mean": 5116.134615384615,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 61,
+        "missing_requirement_count": 13,
+        "mean_found_evidence_rank": 2.0327868852459017,
+        "found_evidence_rank_counts": {
+          "1": 27,
+          "2": 16,
+          "3": 10,
+          "4": 5,
+          "5": 3
+        },
+        "mean_all_evidence_rank": 2.097560975609756,
+        "all_cases_available": true
+      },
+      "changed_questions": [
+        {
+          "question_id": "REAL_017",
+          "before_coverage": 0.5,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_039",
+          "before_coverage": 1.0,
+          "after_coverage": 1.0,
+          "before_complete": true,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_053",
+          "before_coverage": 0.5,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c107_r01",
+      "before": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 46,
+        "mean_evidence_coverage": 0.8942307692307693,
+        "complete_evidence_rate": 0.8846153846153846,
+        "mean_retrieved_coverage": 0.8942307692307693,
+        "context_chars_mean": 15283.788461538461,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 66,
+        "missing_requirement_count": 8,
+        "mean_found_evidence_rank": 1.7878787878787878,
+        "found_evidence_rank_counts": {
+          "1": 36,
+          "2": 16,
+          "3": 8,
+          "4": 4,
+          "5": 2
+        },
+        "mean_all_evidence_rank": 1.8695652173913044,
+        "all_cases_available": true
+      },
+      "after": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 51,
+        "mean_evidence_coverage": 0.9807692307692307,
+        "complete_evidence_rate": 0.9807692307692307,
+        "mean_retrieved_coverage": 0.9807692307692307,
+        "context_chars_mean": 15283.788461538461,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 73,
+        "missing_requirement_count": 1,
+        "mean_found_evidence_rank": 1.8082191780821917,
+        "found_evidence_rank_counts": {
+          "1": 40,
+          "2": 16,
+          "3": 10,
+          "4": 5,
+          "5": 2
+        },
+        "mean_all_evidence_rank": 1.8823529411764706,
+        "all_cases_available": true
+      },
+      "changed_questions": [
+        {
+          "question_id": "REAL_012",
+          "before_coverage": 0.0,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_017",
+          "before_coverage": 0.0,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_024",
+          "before_coverage": 0.5,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_039",
+          "before_coverage": 0.0,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_053",
+          "before_coverage": 0.0,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c111_r01",
+      "before": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 27,
+        "mean_evidence_coverage": 0.6185897435897436,
+        "complete_evidence_rate": 0.5192307692307693,
+        "mean_retrieved_coverage": 0.6185897435897436,
+        "context_chars_mean": 5092.7307692307695,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 46,
+        "missing_requirement_count": 28,
+        "mean_found_evidence_rank": 2.4347826086956523,
+        "found_evidence_rank_counts": {
+          "1": 18,
+          "2": 8,
+          "3": 8,
+          "4": 6,
+          "5": 6
+        },
+        "mean_all_evidence_rank": 2.4074074074074074,
+        "all_cases_available": true
+      },
+      "after": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 28,
+        "mean_evidence_coverage": 0.6378205128205128,
+        "complete_evidence_rate": 0.5384615384615384,
+        "mean_retrieved_coverage": 0.6378205128205128,
+        "context_chars_mean": 5092.7307692307695,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 47,
+        "missing_requirement_count": 27,
+        "mean_found_evidence_rank": 2.3191489361702127,
+        "found_evidence_rank_counts": {
+          "1": 20,
+          "2": 8,
+          "3": 8,
+          "4": 6,
+          "5": 5
+        },
+        "mean_all_evidence_rank": 2.25,
+        "all_cases_available": true
+      },
+      "changed_questions": [
+        {
+          "question_id": "REAL_012",
+          "before_coverage": 0.0,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_053",
+          "before_coverage": 1.0,
+          "after_coverage": 1.0,
+          "before_complete": true,
+          "after_complete": true
+        }
+      ]
+    },
+    {
+      "run": "benchmarking/runs/dev_combined_c113_r01",
+      "before": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 42,
+        "mean_evidence_coverage": 0.8365384615384616,
+        "complete_evidence_rate": 0.8076923076923077,
+        "mean_retrieved_coverage": 0.8365384615384616,
+        "context_chars_mean": 15716.115384615385,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 63,
+        "missing_requirement_count": 11,
+        "mean_found_evidence_rank": 2.0317460317460316,
+        "found_evidence_rank_counts": {
+          "1": 27,
+          "2": 18,
+          "3": 12,
+          "4": 1,
+          "5": 5
+        },
+        "mean_all_evidence_rank": 1.9761904761904763,
+        "all_cases_available": true
+      },
+      "after": {
+        "eligible_questions": 52,
+        "scored_questions": 52,
+        "complete_questions": 44,
+        "mean_evidence_coverage": 0.8653846153846154,
+        "complete_evidence_rate": 0.8461538461538461,
+        "mean_retrieved_coverage": 0.8653846153846154,
+        "context_chars_mean": 15716.115384615385,
+        "scored_requirement_count": 74,
+        "found_requirement_count": 65,
+        "missing_requirement_count": 9,
+        "mean_found_evidence_rank": 2.046153846153846,
+        "found_evidence_rank_counts": {
+          "1": 28,
+          "2": 18,
+          "3": 12,
+          "4": 2,
+          "5": 5
+        },
+        "mean_all_evidence_rank": 2.022727272727273,
+        "all_cases_available": true
+      },
+      "changed_questions": [
+        {
+          "question_id": "REAL_012",
+          "before_coverage": 0.0,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_017",
+          "before_coverage": 1.0,
+          "after_coverage": 1.0,
+          "before_complete": true,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_024",
+          "before_coverage": 0.5,
+          "after_coverage": 1.0,
+          "before_complete": false,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_039",
+          "before_coverage": 1.0,
+          "after_coverage": 1.0,
+          "before_complete": true,
+          "after_complete": true
+        },
+        {
+          "question_id": "REAL_053",
+          "before_coverage": 1.0,
+          "after_coverage": 1.0,
+          "before_complete": true,
+          "after_complete": true
+        }
+      ]
+    }
+  ],
+  "scope": "Seven user-approved alternatives on five questions. Not an exhaustive audit of all alternative evidence."
+}

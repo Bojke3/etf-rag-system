@@ -430,7 +430,7 @@
       "scope": "answer",
       "review_status": "approved",
       "reviewed_by": "user",
-      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima \"okej su skroz\". Za ovo pitanje dodate su alternative za E01. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.",
       "requirements": [
         {
           "id": "E01",
@@ -443,6 +443,16 @@
                   "start": 27794,
                   "end": 27982,
                   "sha256": "4de6ffdd3991b8fb747aec9f94ea08e949863643c2b04607f71a5df94916be04"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o osnovnim akademskim studijama",
+                  "start": 27456,
+                  "end": 27644,
+                  "sha256": "80afd4ec72c20026bba25cd20157a38e78d52d64c9afcd08ddfb01404d73476d"
                 }
               ]
             }
@@ -576,7 +586,7 @@
       "scope": "answer",
       "review_status": "approved",
       "reviewed_by": "user",
-      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima \"okej su skroz\". Za ovo pitanje dodate su alternative za E01, E02. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.",
       "requirements": [
         {
           "id": "E01",
@@ -589,6 +599,16 @@
                   "start": 40300,
                   "end": 40831,
                   "sha256": "bb9b43bf7582ba388dcf758f0f71d7641c2a89b0fa7d3f07f3bd2f56f6abd314"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+                  "start": 2930,
+                  "end": 3460,
+                  "sha256": "14ae3e95710b44e7319fb5067d69a924bfb58e29b02185f409916cb6fd2147d6"
                 }
               ]
             }
@@ -605,6 +625,16 @@
                   "start": 40832,
                   "end": 41534,
                   "sha256": "3dee3440d66ca3ca1c467dd064e2e6545e2405a20b9e810f9c6b6c8809b65398"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Odluka o izmenama i dopunama Pravilnika o OAS",
+                  "start": 3461,
+                  "end": 4159,
+                  "sha256": "b5671ae80d9aeaf628c0fffd405a54a84087b3e2723f243996122bc3c18e4395"
                 }
               ]
             }
@@ -806,7 +836,7 @@
       "scope": "answer",
       "review_status": "approved",
       "reviewed_by": "user",
-      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa. Tehnička napomena ostaje: formula je oštećena izdvajanjem/OCR-om; prisustvo teksta ne dokazuje čitljivost formule. U ovoj potvrdi nije posebno zabeležena provera originalnog PDF-a.",
+      "review_note": "Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa. Tehnička napomena ostaje: formula je oštećena izdvajanjem/OCR-om; prisustvo teksta ne dokazuje čitljivost formule. U ovoj potvrdi nije posebno zabeležena provera originalnog PDF-a. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima \"okej su skroz\". Za ovo pitanje dodate su alternative za E02. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.",
       "requirements": [
         {
           "id": "E01",
@@ -835,6 +865,16 @@
                   "start": 46873,
                   "end": 47085,
                   "sha256": "5cb28fa9efc126b7d1e2c20e1eab0e86ef3a97550f6277033126c304434630f3"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o osnovnim akademskim studijama",
+                  "start": 45582,
+                  "end": 45794,
+                  "sha256": "569036adf9bddb99492bf8d9f091d1250cc73631967729927d3740077a4004e3"
                 }
               ]
             }
@@ -1260,7 +1300,7 @@
       "scope": "answer",
       "review_status": "approved",
       "reviewed_by": "user",
-      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.",
+      "review_note": "AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima \"okej su skroz\". Za ovo pitanje dodate su alternative za E01. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.",
       "requirements": [
         {
           "id": "E01",
@@ -1273,6 +1313,16 @@
                   "start": 48717,
                   "end": 48971,
                   "sha256": "47dfc1c81958a83ed4799232132ff1f2b9ba277a3ce7fc7c800dfc38008fc117"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o osnovnim akademskim studijama",
+                  "start": 47438,
+                  "end": 47691,
+                  "sha256": "c7658f1cb0822bc4700e1deedd1861bb4c3854174da6e692965597bb924cbb1d"
                 }
               ]
             }
@@ -1720,7 +1770,7 @@
       "scope": "answer",
       "review_status": "approved",
       "reviewed_by": "user",
-      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.",
+      "review_note": "Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima \"okej su skroz\". Za ovo pitanje dodate su alternative za E01, E02. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.",
       "requirements": [
         {
           "id": "E01",
@@ -1733,6 +1783,16 @@
                   "start": 8152,
                   "end": 8492,
                   "sha256": "9053381df22c34895a7a2d691fd0a5ae658f89cb77dde6be395b17140539d915"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o osnovnim akademskim studijama",
+                  "start": 7918,
+                  "end": 8240,
+                  "sha256": "441f1a70d7dfb4f4a5a3eab807a7c0546d94effa47fe71c97a0b862decac1eac"
                 }
               ]
             }
@@ -1749,6 +1809,16 @@
                   "start": 8709,
                   "end": 8873,
                   "sha256": "4269ace60224a889434e482ebfa6dabff9b8ccc1e5a02885b1a07b7c643e80e1"
+                }
+              ]
+            },
+            {
+              "spans": [
+                {
+                  "document": "Pravilnik o osnovnim akademskim studijama",
+                  "start": 8449,
+                  "end": 8613,
+                  "sha256": "b9d7b4397bcdd78cf34e3ba2990dc75a37547b846e12e89e5c43f540fa6cf600"
                 }
               ]
             }

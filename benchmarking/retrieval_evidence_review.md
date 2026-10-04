@@ -234,7 +234,7 @@ Upisan sam po afirmativnoj meri i ove godine imam 36 ESPB. Da li i meni treba 48
 
 **Očekivani odgovor:** Za studente upisane po afirmativnoj meri, kao i za studente sa invaliditetom, član 38 predviđa pravo na budžetsko finansiranje naredne godine sa ostvarenih 36 ESPB u tekućoj godini.
 
-**Napomena:** AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.
+**Napomena:** AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima "okej su skroz". Za ovo pitanje dodate su alternative za E01. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.
 
 ### E01: Afirmativne mere/invaliditet: 36 ESPB.
 
@@ -243,6 +243,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 - Pravilnik_o_OAS_preciscen_jun_2023 — pozicije 27794:27982
 
 > Studenti sa invaliditetom i studenti upisani po afirmativnoj meri koji u tekucoj skolskoj godini ostvare 36 ESPB bodova imaju pravo da se u narednoj skolskoj godini finansiraju iz budzeta.
+
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Pravilnik o osnovnim akademskim studijama — pozicije 27456:27644
+
+> Studenti ca invaliditetom i studenti upisani po afirmativnoj meri koji u tekucoj skolskoj godini ostvare 36 ESPB bodova imaju pravo da ce u narednoj skolskoj godini finansiraju iz budzeta:
 
 ## REAL_013 — approved
 
@@ -322,7 +328,7 @@ Obnavljam godinu. Da li to znači da smem da slušam samo stare predmete i nijed
 
 **Očekivani odgovor:** Ne. Možeš prijaviti i predmete naredne godine za koje ispunjavaš preduslove, uz obaveznu prijavu svih nepoloženih predmeta ranijih godina po njihovom prioritetu. Za samofinansirajuće studente postoje dodatna ograničenja uzimanja predmeta treće i četvrte godine ako ranije godine nisu očišćene i iz nižih godina može da se prijavi najmanje 37 ESPB. Eventualni izuzetak za ta ograničenja odobrava prodekan za nastavu.
 
-**Napomena:** AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa.
+**Napomena:** AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_011–REAL_020: „i narednih 10 je okej“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima "okej su skroz". Za ovo pitanje dodate su alternative za E01, E02. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.
 
 ### E01: Naredni predmeti uz preduslove i prioritet svih prethodnih.
 
@@ -332,6 +338,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 
 > Studenti koji nisu stekli uslov za upis u narednu godinu studijskog programa mogu da prijave i slusaju, a po odslusanoj nastavi i da polazu predmete iz naredne godine studijskog programa, ako isti nisu uslovljeni nekim nepolozenim predmetom. Uslov za prijavu bilo kog predmeta odred ene godine studijskog programa jeste da student prijavi i sve nepolozene predmete iz svih prethodnih godina studijskog programa. Nepolozeni predmeti iz prethodnih godina studijskog programa redom predstavljaju prioritet pri prijavljivanju predmeta.
 
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Odluka o izmenama i dopunama Pravilnika o OAS — pozicije 2930:3460
+
+> Studenti koji nisu stekli uslov za upis u narednu godinu studijskog programa mogu da prijave i slusaju; a po odslusanoj nastavi i da polazu predmete iz naredne godine studijskog programa, ako isti nisu uslovljeni nekim nepolozenim predmetom. Uslov za prijavu bilo KOG predmeta odred ene godine studijskog programa jeste da student prijavi I sve nepolozene predmete IZ SVIH prethodnih godina studijskog programa Nepolozeni predmeti IZ prethodnih godina studijskog programa redom predstavljaju prioritet pri prijavljivanju predmeta.
+
 ### E02: Ograničenja za samofinansiranje i izuzetak prodekana.
 
 Alternativa 1 (svi njeni pasusi su potrebni):
@@ -339,6 +351,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 - Pravilnik_o_OAS_preciscen_jun_2023 — pozicije 40832:41534
 
 > Student koji se sam finansira, a koji nije polozio sve predmete iz prve godine studijskog programa, ne moze prijaviti predmet trece godine studijskog programa ukoliko ima mogucnost da prijavi predmete prve i druge godine studijskog programa koji su potrebni da ostvari najmanje 37 ESPB bodova. Student koji se sam finansira, a koji nije polozio sve predmete iz druge godine studijskog programa, ne moze prijaviti predmet cetvrte godine studijskog programa ukoliko ima mogucnost da prijavi predmete druge i trece godine studijskog programa koji su potrebni da ostvari najmanje 37 ESPB bodova. 21 Izuzetak od pravila navedenih u stavovima 8 i 9 ovog clana je moguc samo uz odobrenje prodekana za nastavu.
+
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Odluka o izmenama i dopunama Pravilnika o OAS — pozicije 3461:4159
+
+> Student koji ce sam finansira, a koji nije polozio sve predmete iz prve godine studijskog programa, ne moze prijaviti predmet trece godine studijskog programa ukoliko ima mogucnost da prijavi predmete prve I druge godine studijskog programa koji su potrebni da ostvari najmanje 37 ESPB bodova. Student koji ce sam finansira, a koji nije polozio sve predmete iz druge godine studijskog programa ne moze prijaviti predmet cetvrte godine studijskog programa ukoliko ima mogucnost da prijavi predmete druge I trece godine studijskog programa KojI su potrebni da ostvari najmanje 37 ESPB bodova: Izuzetak od pravila navedenih u stavovima 8 I 9 OvOG clana je moguc samo uz odobrenje prodekana za nastavu.
 
 ## REAL_018 — approved
 
@@ -458,7 +476,7 @@ Na ER-u sam samofinansirajući student. Upišem 30 ESPB novih predmeta i ponovo 
 
 **Očekivani odgovor:** Cena jednog ESPB u ovom primeru je 120.000 / 60 = 2.000 dinara. Novi predmeti koštaju 30 × 2.000 = 60.000 dinara, a ponovo upisani nepoloženi predmeti na ER-u plaćaju se 2/3: 12 × 2.000 × 2/3 = 16.000 dinara. Ukupno je 76.000 dinara pre eventualne refundacije.
 
-**Napomena:** Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa. Tehnička napomena ostaje: formula je oštećena izdvajanjem/OCR-om; prisustvo teksta ne dokazuje čitljivost formule. U ovoj potvrdi nije posebno zabeležena provera originalnog PDF-a.
+**Napomena:** Korisnik je 2026-09-28 odobrio dokaze u grupi REAL_021–REAL_030: „21-30 su okej“. Bez izmena pasusa. Tehnička napomena ostaje: formula je oštećena izdvajanjem/OCR-om; prisustvo teksta ne dokazuje čitljivost formule. U ovoj potvrdi nije posebno zabeležena provera originalnog PDF-a. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima "okej su skroz". Za ovo pitanje dodate su alternative za E02. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.
 
 ### E01: Nova formula školarine i značenje veličina.
 
@@ -475,6 +493,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 - Pravilnik_o_OAS_preciscen_jun_2023 — pozicije 46873:47085
 
 > Student osnovnih akademskih studija Elektrotehnika i racunarstvo koji u skolskoj godini ponovo upisuje nepolozene predmete iz prethodne skolske godine, a sam se finansira, placa 2/3 dela skolarine za te predmete.
+
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Pravilnik o osnovnim akademskim studijama — pozicije 45582:45794
+
+> Student osnovnih akademskih studija Elektrotehnika i racunarstvo koji u skolskOj godiNI ponovo upisuje nepolozene predmete IZ prethodne skolske godine; a sam ce finansira; placa 2/3 dela skolarine za te predmete:
 
 ## REAL_025 — approved
 
@@ -730,7 +754,7 @@ Vec sam jednom na ovom programu dobio mirovanje jer nisam mogao da platim skolar
 
 **Očekivani odgovor:** Po tom osnovu mirovanje se može odobriti u trajanju od jedne školske godine i samo jednom tokom studija na istom programu. Zato drugi put ne možeš ostvariti mirovanje po istom osnovu nemogućnosti plaćanja školarine.
 
-**Napomena:** AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa.
+**Napomena:** AI predlog dokaza korisnik je pregledao i odobrio u razgovoru 2026-09-28, u grupi REAL_031–REAL_040: „31-40 su dobra isto“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima "okej su skroz". Za ovo pitanje dodate su alternative za E01. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.
 
 ### E01: Finansijski osnov: jedna godina i samo jednom na programu.
 
@@ -739,6 +763,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 - Pravilnik_o_OAS_preciscen_jun_2023 — pozicije 48717:48971
 
 > Studentu se moze odobriti mirovanje i u slucaju nemogucnosti placanja skolarine u trajanju od jedne skolske godine i to jednom u toku studija na istom studijskom programu, zbog nedostatka materijalnih sredstava, u skladu sa merilima koje utvrdi Fakultet.
+
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Pravilnik o osnovnim akademskim studijama — pozicije 47438:47691
+
+> Studentu ce moze odobriti mirovanje i u slucaju nemogucnosti placanja skolarine u trajanju od jedne skolske godine i to jednom u toku studija na istom studijskom programu, zbog nedostatka materijalnih sredstava; u skladu Ca merilima koje utvrdi Fakultet
 
 ## REAL_040 — approved
 
@@ -1002,7 +1032,7 @@ Počela je druga nedelja semestra, a plan rada za predmet još nije javno dostup
 
 **Očekivani odgovor:** Plan rada na predmetu mora biti javno dostupan studentima najkasnije u prvoj sedmici semestra. Plan obuhvata predispitne obaveze, način ocenjivanja i druge podatke o predmetu, pa je u opisanoj situaciji rok već istekao.
 
-**Napomena:** Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa.
+**Napomena:** Korisnik je pregledao i odobrio preostale oznake REAL_041–REAL_060 u razgovoru 2026-09-28: „i do kraja je sve okej“. Bez izmena pasusa. Dopuna 2026-10-04: korisnik je nakon prikaza alternativnih odlomaka i pojasnjenja REAL_053 E01 izricito odobrio svih sedam alternativa recima "okej su skroz". Za ovo pitanje dodate su alternative za E01, E02. Postojeci dokazi i obavezne jedinice nisu uklonjeni niti menjani.
 
 ### E01: Plan uključuje predispitne obaveze i ocenjivanje.
 
@@ -1012,6 +1042,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 
 > Plan rada ukljucuje:  osnovne podatke o predmetu: naziv, godina, fond casova, broj ESPB bodova;  preduslove za prijavljivanje predmeta;  ciljeve predmeta;  sadrzaj i strukturu predmeta;  plan izvod enja nastave (predavanja i vezbe);  predispitne obaveze studenata;  broj i okvirne termine odrzavanja kolokvijuma,  nacin ocenjivanja;
 
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Pravilnik o osnovnim akademskim studijama — pozicije 7918:8240
+
+> Plan rada ukljucuje: osnovne podatke predmetu: naziv; godina; fond casova; broj ESPB bodova; preduslove za prijavljivanje predmeta; ciljeve predmeta; sadrzaj i strukturu predmeta; plan izvod enja nastave (predavanja i vezbe); predispitne obaveze studenata; broj i okvirne termine odrzavanja kolokvijuma; nacin ocenjivanja;
+
 ### E02: Objava plana najkasnije u prvoj nedelji.
 
 Alternativa 1 (svi njeni pasusi su potrebni):
@@ -1019,6 +1055,12 @@ Alternativa 1 (svi njeni pasusi su potrebni):
 - Pravilnik_o_OAS_preciscen_jun_2023 — pozicije 8709:8873
 
 > Predmetni nastavnik je u obavezi da plan rada na predmetu ucini javno dostupnim studentima najkasnije u prvoj sedmici semestra u kome se izvodi nastava iz predmeta.
+
+Alternativa 2 (svi njeni pasusi su potrebni):
+
+- Pravilnik o osnovnim akademskim studijama — pozicije 8449:8613
+
+> Predmetni nastavnik je u obavezi da plan rada na predmetu ucini javno dostupnim studentima najkasnije u prvoj sedmici semestra u kome ce izvodi nastava iz predmeta:
 
 ## REAL_054 — approved
 
