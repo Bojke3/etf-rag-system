@@ -1,137 +1,132 @@
-# ETF RAG System - Faculty Documentation Search
+# ETF RAG System
 
-> Sistem za pretragu i korišćenje interne dokumentacije Elektrotehničkog fakulteta korišćenjem RAG (Retrieval-Augmented Generation) pristupa sa lokalnim LLM modelima.
+A retrieval-augmented generation (RAG) system for searching the internal documentation of the University of Belgrade School of Electrical Engineering (ETF). It retrieves relevant passages from faculty documents and uses a local large language model to answer questions with source references.
 
-## 🎯 Cilj Projekta
+## Features
 
-Razvojiti inteligentni AI Bot sistem koji omogućava:
-- **Semantičku pretragu** preko interne dokumentacije fakulteta
-- **Direktne odgovore** na studentska pitanja sa referencama na izvore
-- **Podršku za više dokumenata** pri generisanju odgovora
-- **Lokalno izvršavanje** korišćenjem Ollama i open-source modela
+- PDF and Word document ingestion with OCR fallback
+- Flat and hierarchical text chunking
+- Multilingual sentence-transformer embeddings and FAISS retrieval
+- Local answer generation through Ollama
+- Source-aware answers through a web interface and JSON API
+- Reproducible retrieval and generation benchmarks
 
-## 📚 Faza 1: MVP
+## Architecture
 
-### Fokus
-- PDF i Word dokumenti (osnovne, master i doktorske studije)
-- Ekstrakcija iz jednog i više dokumenata
-- Zero-shot i few-shot prompting strategije
-- Lokalni modeli (Ollama)
-
-### Ciljane Konferencije
-- **TELFOR 2026** - Rok: 4. septembar 2026
-
-## 🏗️ Arhitektura
-
-```
-Documents → Preprocessing → Embeddings → Vector Store
-                                            ↓
-User Query → Retrieval → Context → LLM → Answer + Citations
+```text
+Documents -> extraction -> chunking -> embeddings -> FAISS index
+                                                    |
+User question -> retrieval -> context -> local LLM -> answer + sources
 ```
 
-## 🚀 Quick Start
+See [Architecture](docs/ARCHITECTURE.md) and [Data pipeline](docs/DATA_PIPELINE.md) for implementation details.
+
+## Requirements
+
+- Python 3.10 or newer
+- Git
+- [Ollama](https://ollama.com/) for local answer generation
+- Enough disk space for the Python dependencies, embedding model, and LLM
+
+## Quick start
+
+Clone the repository and create a virtual environment:
 
 ```bash
-# 1. Kloniranje
 git clone https://github.com/Bojke3/etf-rag-system.git
 cd etf-rag-system
+python -m venv .venv
+```
 
-# 2. Instalacija
-python -m venv venv
-source venv/bin/activate  # na Windows: venv\Scripts\activate
+Activate the environment:
+
+```powershell
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+```
+
+```bash
+# Linux or macOS
+source .venv/bin/activate
+```
+
+Install the dependencies and create the local configuration:
+
+```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
+```
 
-# 3. Setup Ollama modela
-bash scripts/setup_ollama_models.sh
+```powershell
+# Windows PowerShell
+Copy-Item .env.example .env
+```
 
-# 4. Extract text, chunk the saved snapshot, then vectorize.
-python scripts/extract_documents.py --input DataAkti --output data/extracted
-python scripts/chunk_documents.py --input data/extracted --output data/chunks --chunk-size 1024 --overlap 150
-python scripts/index_documents.py --input data/chunks --output models/vectorstore
+```bash
+# Linux or macOS
+cp .env.example .env
+```
 
-# 5. Pokretanje web aplikacije
+Start Ollama, then download the default model from another terminal:
+
+```bash
+ollama pull mistral
+```
+
+The repository includes a ready-to-use FAISS index. The default settings in `.env.example` select its matching embedding model. Start the application with:
+
+```bash
 python web/app.py
 ```
 
-## 📁 Struktura Projekta
+Open `http://localhost:8000/chat` in a browser. The health endpoint is available at `http://localhost:8000/`, and questions can be submitted to `POST /query`.
 
-Dokumenti sa struktuom projekta: [ARCHITECTURE.md](docs/ARCHITECTURE.md)
+## Build a new index
 
-## 📊 Komponente
-
-### 1. **Data Layer** (`src/data/`)
-- Ekstraktori za PDF i Word dokumente
-- Preprocessing i čišćenje teksta
-- Chunking strategije
-- OCR fallback and reusable text snapshots; see [the three-stage pipeline](docs/DATA_PIPELINE.md)
-
-### 2. **Embedding & Retrieval** (`src/embedding/`, `src/retrieval/`)
-- Embedding modeli (sentence-transformers)
-- Vector store integracije (FAISS, Pinecone)
-- Smart retrieval i reranking
-
-### 3. **LLM Integration** (`src/llm/`)
-- Ollama client
-- HuggingFace integracija
-- Prompt engineering strategije
-
-### 4. **RAG Pipeline** (`src/rag/`)
-- Kombinovanje retrievala i LLM-a
-- Upravljanje kontekstom
-- Generisanje citacija
-
-### 5. **Evaluacija** (`src/evaluation/`)
-- BLEU, ROUGE metrike
-- LLM as a Judge
-- Benchmark setovi
-
-### 6. **Chatbot/Agent** (`src/chatbot/`)
-- Web interfejs (Flask/FastAPI)
-- Telegram bot
-- Discord bot
-- WhatsApp bot (Twilio)
-
-## 🧪 Testiranje
+To rebuild the knowledge base from documents in `DataAkti/`, use the three-stage pipeline:
 
 ```bash
-# Pokretanje testova
-pytest tests/ -v
+python scripts/extract_documents.py --input DataAkti --output data/extracted
+python scripts/chunk_documents.py --input data/extracted --output data/chunks --chunk-size 1024 --overlap 150
+python scripts/index_documents.py --input data/chunks --output models/vectorstore_new
+```
 
-# Sa pokrajinom
+Output directories must be new or empty. After indexing, set `VECTOR_STORE_PATH=./models/vectorstore_new` in `.env`. Keep `EMBEDDING_MODEL` identical to the model used to build the index.
+
+## Testing
+
+```bash
+pytest tests/ -v
 pytest tests/ --cov=src
 ```
 
-## 📖 Dokumentacija
+## Project structure
 
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Detaljnija arhitektura
-- [SETUP.md](docs/SETUP.md) - Detaljne instalacijske instrukcije
-- [RESEARCH.md](docs/RESEARCH.md) - Rezultati istraživanja
-- [BENCHMARKING.md](docs/BENCHMARKING.md) - Benchmark rezultati
-- [API_DOCS.md](docs/API_DOCS.md) - API dokumentacija
+| Path | Purpose |
+| --- | --- |
+| `src/data/` | Document loading, OCR, preprocessing, and chunking |
+| `src/embedding/` | Embedding models, FAISS storage, and index validation |
+| `src/retrieval/` | Similarity search and parent-aware retrieval |
+| `src/llm/` | Local and hosted LLM clients |
+| `src/rag/` | Context construction, prompting, and answer generation |
+| `src/evaluation/` | Retrieval and generation evaluation |
+| `scripts/` | Data processing and benchmarking commands |
+| `web/` | Flask web interface and API |
+| `benchmarking/` | Question sets, run records, and benchmark results |
 
-## 🔄 Development Process
+## Documentation
 
-1. **Research Sprint** - Izbor modela i tehnika
-2. **MVP Sprint** - Osnovni RAG sistem
-3. **Evaluation Sprint** - Benchmarking
-4. **Deployment Sprint** - Chatbot integracije
-5. **Publication Sprint** - Konferencijski radovi
+- [Setup guide](docs/SETUP.md)
+- [API reference](docs/API_DOCS.md)
+- [Benchmarking guide](docs/BENCHMARKING.md)
+- [Retrieval evaluation](docs/retrieval_evaluation.md)
+- [Research notes](docs/RESEARCH.md)
+- [Vector index registry](models/README.md)
 
-## 👥 Tim
+## Authors
 
-- **Researchers**: Andrija Trnavcevic i Vuk Bojovic
+Andrija Trnavcevic and Vuk Bojovic
 
-## 📅 Timeline
+## License
 
-- **Maj 2026**: Architecture & Planning ✅
-- **Jun-Jul 2026**: MVP Development
-- **Aug 2026**: Testing & Optimization
-- **Sep 2026**: TELFOR Conference
-
-## 📝 License
-
-MIT License - vidi [LICENSE](LICENSE) fajl
-
-## 📞 Kontakt
-
-Za pitanja ili sugestije, otvorite [GitHub Issue](https://github.com/Bojke3/etf-rag-system/issues)
+This project is distributed under the [MIT License](LICENSE).
