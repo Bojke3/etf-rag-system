@@ -81,6 +81,18 @@ python web/app.py
 
 Open `http://localhost:8000/chat` in a browser. The health endpoint is available at `http://localhost:8000/`, and questions can be submitted to `POST /query`.
 
+## Try other models
+
+To test another Ollama model, install it with `ollama pull MODEL_NAME`, then select it in the web interface or set `OLLAMA_MODEL=MODEL_NAME` in `.env` and restart the application.
+
+For a repeatable local comparison, run the model against the [final benchmark questions](benchmarking/finalna_pitanja.json):
+
+```bash
+python scripts/collect_benchmark_answers.py --execution local --model MODEL_NAME --benchmark benchmarking/finalna_pitanja.json --run-id MODEL_RUN_ID
+```
+
+Use a unique run ID for every model or configuration. Results are saved under `benchmarking/runs/MODEL_RUN_ID/`. Keep the vector index, retrieval settings, prompt strategy, and context budget fixed when comparing generation models. To test a different embedding model, build a new index with `scripts/index_documents.py --model EMBEDDING_MODEL` and set the same `EMBEDDING_MODEL` and new `VECTOR_STORE_PATH` in `.env`; an index must not be queried with a different encoder from the one that created it.
+
 ## Build a new index
 
 To rebuild the knowledge base from documents in `DataAkti/`, use the three-stage pipeline:
@@ -119,6 +131,7 @@ pytest tests/ --cov=src
 - [Setup guide](docs/SETUP.md)
 - [API reference](docs/API_DOCS.md)
 - [Benchmarking guide](docs/BENCHMARKING.md)
+- [Final benchmark questions](benchmarking/finalna_pitanja.json)
 - [Retrieval evaluation](docs/retrieval_evaluation.md)
 - [Research notes](docs/RESEARCH.md)
 - [Vector index registry](models/README.md)
