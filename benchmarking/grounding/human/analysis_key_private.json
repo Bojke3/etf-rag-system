@@ -1,0 +1,761 @@
+{
+  "protocol": "human_context_support_v1",
+  "sample_sha256": "15d9223536e04f462128f2352d21c796784035488b50df2e4d72a4ec77a31331",
+  "seed": 6821,
+  "a_ids": [
+    "04becb8efd87",
+    "0b630e2d0fb7",
+    "0d175958acfb",
+    "0d7f6eb729ba",
+    "0ea7b4866181",
+    "0f128724b042",
+    "1154a6dda195",
+    "12b1d63baed0",
+    "13ad40c00d05",
+    "15ae5d5ac19e",
+    "163119127176",
+    "16ade1cb35db",
+    "195e8fd65d26",
+    "1d67e95bf476",
+    "1da46dbb34c6",
+    "25381ff36a3c",
+    "277c5c663efe",
+    "2ad8ed0823c9",
+    "2d71a2ebc5b6",
+    "30bd1e325bb6",
+    "3220978a5017",
+    "327c70bd1292",
+    "3390b9e2b8dc",
+    "352e37f2b2ff",
+    "365dbb74dc09",
+    "37791c094b53",
+    "3c437c1f7630",
+    "3eda584b7580",
+    "40f321855bc0",
+    "41e3e0483b98",
+    "456ff5942e4b",
+    "4592f875670c",
+    "491141b3c2ac",
+    "4adfaa75e6ad",
+    "4bda2151a3ef",
+    "4e2ec63646ae",
+    "4f1ed42cc823",
+    "50936081499b",
+    "518d2bfa97ea",
+    "52e34a255fd3",
+    "56ff66dfd994",
+    "5788e38dffc7",
+    "5812b1e600f3",
+    "5844b5694863",
+    "5be42f1658c9",
+    "5f789797935b",
+    "60245e309e2d",
+    "62960a523aad",
+    "62f83bcc1cd6",
+    "64cf6200c701",
+    "6699052ff402",
+    "66b84d97e843",
+    "676318d9f7c6",
+    "6769041114b1",
+    "6932f7983889",
+    "6ad331934a29",
+    "715cdb909e50",
+    "72c4e2d2facd",
+    "73e246409473",
+    "74eaac36f3e7",
+    "7501d440a8be",
+    "76f31d46dcc8",
+    "80955ab20ecd",
+    "837a1269623c",
+    "840c95ff10ef",
+    "89441ff76e1c",
+    "8bd68f9edb8b",
+    "8c0b32fa401c",
+    "8d6983576524",
+    "905e9d1d7aa9",
+    "95130d8c4e4f",
+    "953b5167cc60",
+    "97ed9ffd7fd2",
+    "9842f7d33aee",
+    "9ebf78015f05",
+    "9f10f9068dfd",
+    "a0707447ec47",
+    "a11ae98c5973",
+    "a1aa807fde07",
+    "a5b24606ba88",
+    "a6d3ff62dc3a",
+    "a84ac32da7cc",
+    "a911f67d15d3",
+    "a954ec1e012f",
+    "acf21adc05c5",
+    "af67cb1721e4",
+    "b254c1bc3195",
+    "b414fd7a9a78",
+    "b5067e45a960",
+    "b75107ffda99",
+    "c79cdb8082c1",
+    "c961a87c70ec",
+    "cc747a11bdb7",
+    "cd833b72baad",
+    "d171dce36b3b",
+    "d6a9b98f9aae",
+    "d7d275f1b5bc",
+    "db8d8c454cdb",
+    "ddf0b9e2ef13",
+    "e035dfabc3ed",
+    "e0641bcdf7bf",
+    "e07e987f3b0d",
+    "e36a0b86bf74",
+    "e37ee77e09d1",
+    "e72fe01c942e",
+    "e9bd038544cc",
+    "ea2d3c98d9a4",
+    "eabd819cbb2d",
+    "ed491073b9f9",
+    "efda7482bfe8",
+    "f2487c7aeb1b",
+    "f24f90da8412",
+    "f56323a16a5b",
+    "f5cc56564a59",
+    "f895fa879b10",
+    "f907e5b202f9",
+    "fafa084cba77",
+    "fc0abc36580c",
+    "fda7979d7d13",
+    "fef81efe4acf"
+  ],
+  "b_ids": [
+    "0d7f6eb729ba",
+    "0ea7b4866181",
+    "1154a6dda195",
+    "13ad40c00d05",
+    "25381ff36a3c",
+    "3390b9e2b8dc",
+    "40f321855bc0",
+    "41e3e0483b98",
+    "4e2ec63646ae",
+    "50936081499b",
+    "5844b5694863",
+    "6769041114b1",
+    "72c4e2d2facd",
+    "74eaac36f3e7",
+    "89441ff76e1c",
+    "8bd68f9edb8b",
+    "905e9d1d7aa9",
+    "a0707447ec47",
+    "a11ae98c5973",
+    "a5b24606ba88",
+    "a911f67d15d3",
+    "b75107ffda99",
+    "c79cdb8082c1",
+    "cc747a11bdb7",
+    "d171dce36b3b",
+    "d6a9b98f9aae",
+    "e72fe01c942e",
+    "efda7482bfe8",
+    "f24f90da8412",
+    "fef81efe4acf"
+  ],
+  "items": {
+    "04becb8efd87": {
+      "run": "dev_combined_c107_r03",
+      "question_id": "REAL_004",
+      "cell": "Mistral hierarchical"
+    },
+    "0b630e2d0fb7": {
+      "run": "dev_combined_c207_api_r02",
+      "question_id": "REAL_040",
+      "cell": "Qwen hierarchical"
+    },
+    "0d175958acfb": {
+      "run": "dev_combined_c207_api_r03",
+      "question_id": "REAL_013",
+      "cell": "Qwen hierarchical"
+    },
+    "0d7f6eb729ba": {
+      "run": "dev_combined_c205_api_r02",
+      "question_id": "REAL_002",
+      "cell": "Qwen flat"
+    },
+    "0ea7b4866181": {
+      "run": "dev_combined_c305_api_r03",
+      "question_id": "REAL_027",
+      "cell": "Llama flat"
+    },
+    "0f128724b042": {
+      "run": "dev_combined_c105_r02",
+      "question_id": "REAL_013",
+      "cell": "Mistral flat"
+    },
+    "1154a6dda195": {
+      "run": "dev_combined_c305_api_r01",
+      "question_id": "REAL_028",
+      "cell": "Llama flat"
+    },
+    "12b1d63baed0": {
+      "run": "dev_combined_c205_api_r02",
+      "question_id": "REAL_026",
+      "cell": "Qwen flat"
+    },
+    "13ad40c00d05": {
+      "run": "dev_combined_c105_r03",
+      "question_id": "REAL_054",
+      "cell": "Mistral flat"
+    },
+    "15ae5d5ac19e": {
+      "run": "dev_combined_c305_api_r05",
+      "question_id": "REAL_044",
+      "cell": "Llama flat"
+    },
+    "163119127176": {
+      "run": "dev_combined_c307_api_r04",
+      "question_id": "REAL_039",
+      "cell": "Llama hierarchical"
+    },
+    "16ade1cb35db": {
+      "run": "dev_combined_c207_api_r03",
+      "question_id": "REAL_001",
+      "cell": "Qwen hierarchical"
+    },
+    "195e8fd65d26": {
+      "run": "dev_combined_c107_r02",
+      "question_id": "REAL_027",
+      "cell": "Mistral hierarchical"
+    },
+    "1d67e95bf476": {
+      "run": "dev_combined_c307_api_r02",
+      "question_id": "REAL_029",
+      "cell": "Llama hierarchical"
+    },
+    "1da46dbb34c6": {
+      "run": "dev_combined_c305_api_r04",
+      "question_id": "REAL_021",
+      "cell": "Llama flat"
+    },
+    "25381ff36a3c": {
+      "run": "dev_combined_c107_r05",
+      "question_id": "REAL_020",
+      "cell": "Mistral hierarchical"
+    },
+    "277c5c663efe": {
+      "run": "dev_combined_c207_api_r04",
+      "question_id": "REAL_050",
+      "cell": "Qwen hierarchical"
+    },
+    "2ad8ed0823c9": {
+      "run": "dev_combined_c207_api_r04",
+      "question_id": "REAL_056",
+      "cell": "Qwen hierarchical"
+    },
+    "2d71a2ebc5b6": {
+      "run": "dev_combined_c305_api_r01",
+      "question_id": "REAL_012",
+      "cell": "Llama flat"
+    },
+    "30bd1e325bb6": {
+      "run": "dev_combined_c307_api_r03",
+      "question_id": "REAL_049",
+      "cell": "Llama hierarchical"
+    },
+    "3220978a5017": {
+      "run": "dev_combined_c107_r03",
+      "question_id": "REAL_021",
+      "cell": "Mistral hierarchical"
+    },
+    "327c70bd1292": {
+      "run": "dev_combined_c307_api_r03",
+      "question_id": "REAL_002",
+      "cell": "Llama hierarchical"
+    },
+    "3390b9e2b8dc": {
+      "run": "dev_combined_c307_api_r03",
+      "question_id": "REAL_026",
+      "cell": "Llama hierarchical"
+    },
+    "352e37f2b2ff": {
+      "run": "dev_combined_c207_api_r05",
+      "question_id": "REAL_032",
+      "cell": "Qwen hierarchical"
+    },
+    "365dbb74dc09": {
+      "run": "dev_combined_c205_api_r05",
+      "question_id": "REAL_051",
+      "cell": "Qwen flat"
+    },
+    "37791c094b53": {
+      "run": "dev_combined_c305_api_r02",
+      "question_id": "REAL_003",
+      "cell": "Llama flat"
+    },
+    "3c437c1f7630": {
+      "run": "dev_combined_c105_r02",
+      "question_id": "REAL_001",
+      "cell": "Mistral flat"
+    },
+    "3eda584b7580": {
+      "run": "dev_combined_c207_api_r05",
+      "question_id": "REAL_010",
+      "cell": "Qwen hierarchical"
+    },
+    "40f321855bc0": {
+      "run": "dev_combined_c307_api_r01",
+      "question_id": "REAL_048",
+      "cell": "Llama hierarchical"
+    },
+    "41e3e0483b98": {
+      "run": "dev_combined_c105_r03",
+      "question_id": "REAL_037",
+      "cell": "Mistral flat"
+    },
+    "456ff5942e4b": {
+      "run": "dev_combined_c205_api_r01",
+      "question_id": "REAL_029",
+      "cell": "Qwen flat"
+    },
+    "4592f875670c": {
+      "run": "dev_combined_c305_api_r03",
+      "question_id": "REAL_054",
+      "cell": "Llama flat"
+    },
+    "491141b3c2ac": {
+      "run": "dev_combined_c107_r05",
+      "question_id": "REAL_011",
+      "cell": "Mistral hierarchical"
+    },
+    "4adfaa75e6ad": {
+      "run": "dev_combined_c107_r01",
+      "question_id": "REAL_016",
+      "cell": "Mistral hierarchical"
+    },
+    "4bda2151a3ef": {
+      "run": "dev_combined_c107_r02",
+      "question_id": "REAL_018",
+      "cell": "Mistral hierarchical"
+    },
+    "4e2ec63646ae": {
+      "run": "dev_combined_c205_api_r02",
+      "question_id": "REAL_049",
+      "cell": "Qwen flat"
+    },
+    "4f1ed42cc823": {
+      "run": "dev_combined_c307_api_r05",
+      "question_id": "REAL_059",
+      "cell": "Llama hierarchical"
+    },
+    "50936081499b": {
+      "run": "dev_combined_c107_r04",
+      "question_id": "REAL_060",
+      "cell": "Mistral hierarchical"
+    },
+    "518d2bfa97ea": {
+      "run": "dev_combined_c207_api_r01",
+      "question_id": "REAL_025",
+      "cell": "Qwen hierarchical"
+    },
+    "52e34a255fd3": {
+      "run": "dev_combined_c105_r04",
+      "question_id": "REAL_010",
+      "cell": "Mistral flat"
+    },
+    "56ff66dfd994": {
+      "run": "dev_combined_c307_api_r04",
+      "question_id": "REAL_057",
+      "cell": "Llama hierarchical"
+    },
+    "5788e38dffc7": {
+      "run": "dev_combined_c107_r05",
+      "question_id": "REAL_028",
+      "cell": "Mistral hierarchical"
+    },
+    "5812b1e600f3": {
+      "run": "dev_combined_c107_r03",
+      "question_id": "REAL_058",
+      "cell": "Mistral hierarchical"
+    },
+    "5844b5694863": {
+      "run": "dev_combined_c107_r05",
+      "question_id": "REAL_059",
+      "cell": "Mistral hierarchical"
+    },
+    "5be42f1658c9": {
+      "run": "dev_combined_c205_api_r04",
+      "question_id": "REAL_007",
+      "cell": "Qwen flat"
+    },
+    "5f789797935b": {
+      "run": "dev_combined_c105_r01",
+      "question_id": "REAL_031",
+      "cell": "Mistral flat"
+    },
+    "60245e309e2d": {
+      "run": "dev_combined_c305_api_r05",
+      "question_id": "REAL_052",
+      "cell": "Llama flat"
+    },
+    "62960a523aad": {
+      "run": "dev_combined_c207_api_r01",
+      "question_id": "REAL_014",
+      "cell": "Qwen hierarchical"
+    },
+    "62f83bcc1cd6": {
+      "run": "dev_combined_c205_api_r01",
+      "question_id": "REAL_019",
+      "cell": "Qwen flat"
+    },
+    "64cf6200c701": {
+      "run": "dev_combined_c305_api_r01",
+      "question_id": "REAL_020",
+      "cell": "Llama flat"
+    },
+    "6699052ff402": {
+      "run": "dev_combined_c307_api_r01",
+      "question_id": "REAL_034",
+      "cell": "Llama hierarchical"
+    },
+    "66b84d97e843": {
+      "run": "dev_combined_c207_api_r01",
+      "question_id": "REAL_023",
+      "cell": "Qwen hierarchical"
+    },
+    "676318d9f7c6": {
+      "run": "dev_combined_c305_api_r01",
+      "question_id": "REAL_011",
+      "cell": "Llama flat"
+    },
+    "6769041114b1": {
+      "run": "dev_combined_c305_api_r04",
+      "question_id": "REAL_004",
+      "cell": "Llama flat"
+    },
+    "6932f7983889": {
+      "run": "dev_combined_c305_api_r03",
+      "question_id": "REAL_018",
+      "cell": "Llama flat"
+    },
+    "6ad331934a29": {
+      "run": "dev_combined_c107_r02",
+      "question_id": "REAL_036",
+      "cell": "Mistral hierarchical"
+    },
+    "715cdb909e50": {
+      "run": "dev_combined_c307_api_r05",
+      "question_id": "REAL_007",
+      "cell": "Llama hierarchical"
+    },
+    "72c4e2d2facd": {
+      "run": "dev_combined_c107_r01",
+      "question_id": "REAL_022",
+      "cell": "Mistral hierarchical"
+    },
+    "73e246409473": {
+      "run": "dev_combined_c307_api_r01",
+      "question_id": "REAL_051",
+      "cell": "Llama hierarchical"
+    },
+    "74eaac36f3e7": {
+      "run": "dev_combined_c207_api_r04",
+      "question_id": "REAL_042",
+      "cell": "Qwen hierarchical"
+    },
+    "7501d440a8be": {
+      "run": "dev_combined_c105_r04",
+      "question_id": "REAL_055",
+      "cell": "Mistral flat"
+    },
+    "76f31d46dcc8": {
+      "run": "dev_combined_c205_api_r03",
+      "question_id": "REAL_038",
+      "cell": "Qwen flat"
+    },
+    "80955ab20ecd": {
+      "run": "dev_combined_c205_api_r02",
+      "question_id": "REAL_009",
+      "cell": "Qwen flat"
+    },
+    "837a1269623c": {
+      "run": "dev_combined_c105_r05",
+      "question_id": "REAL_059",
+      "cell": "Mistral flat"
+    },
+    "840c95ff10ef": {
+      "run": "dev_combined_c307_api_r02",
+      "question_id": "REAL_019",
+      "cell": "Llama hierarchical"
+    },
+    "89441ff76e1c": {
+      "run": "dev_combined_c307_api_r02",
+      "question_id": "REAL_035",
+      "cell": "Llama hierarchical"
+    },
+    "8bd68f9edb8b": {
+      "run": "dev_combined_c105_r01",
+      "question_id": "REAL_005",
+      "cell": "Mistral flat"
+    },
+    "8c0b32fa401c": {
+      "run": "dev_combined_c105_r02",
+      "question_id": "REAL_012",
+      "cell": "Mistral flat"
+    },
+    "8d6983576524": {
+      "run": "dev_combined_c207_api_r02",
+      "question_id": "REAL_030",
+      "cell": "Qwen hierarchical"
+    },
+    "905e9d1d7aa9": {
+      "run": "dev_combined_c207_api_r05",
+      "question_id": "REAL_055",
+      "cell": "Qwen hierarchical"
+    },
+    "95130d8c4e4f": {
+      "run": "dev_combined_c305_api_r05",
+      "question_id": "REAL_059",
+      "cell": "Llama flat"
+    },
+    "953b5167cc60": {
+      "run": "dev_combined_c105_r04",
+      "question_id": "REAL_056",
+      "cell": "Mistral flat"
+    },
+    "97ed9ffd7fd2": {
+      "run": "dev_combined_c307_api_r05",
+      "question_id": "REAL_017",
+      "cell": "Llama hierarchical"
+    },
+    "9842f7d33aee": {
+      "run": "dev_combined_c107_r04",
+      "question_id": "REAL_052",
+      "cell": "Mistral hierarchical"
+    },
+    "9ebf78015f05": {
+      "run": "dev_combined_c105_r01",
+      "question_id": "REAL_040",
+      "cell": "Mistral flat"
+    },
+    "9f10f9068dfd": {
+      "run": "dev_combined_c305_api_r03",
+      "question_id": "REAL_036",
+      "cell": "Llama flat"
+    },
+    "a0707447ec47": {
+      "run": "dev_combined_c205_api_r01",
+      "question_id": "REAL_006",
+      "cell": "Qwen flat"
+    },
+    "a11ae98c5973": {
+      "run": "dev_combined_c307_api_r05",
+      "question_id": "REAL_043",
+      "cell": "Llama hierarchical"
+    },
+    "a1aa807fde07": {
+      "run": "dev_combined_c207_api_r03",
+      "question_id": "REAL_033",
+      "cell": "Qwen hierarchical"
+    },
+    "a5b24606ba88": {
+      "run": "dev_combined_c205_api_r04",
+      "question_id": "REAL_057",
+      "cell": "Qwen flat"
+    },
+    "a6d3ff62dc3a": {
+      "run": "dev_combined_c205_api_r01",
+      "question_id": "REAL_035",
+      "cell": "Qwen flat"
+    },
+    "a84ac32da7cc": {
+      "run": "dev_combined_c205_api_r05",
+      "question_id": "REAL_034",
+      "cell": "Qwen flat"
+    },
+    "a911f67d15d3": {
+      "run": "dev_combined_c305_api_r02",
+      "question_id": "REAL_008",
+      "cell": "Llama flat"
+    },
+    "a954ec1e012f": {
+      "run": "dev_combined_c307_api_r04",
+      "question_id": "REAL_038",
+      "cell": "Llama hierarchical"
+    },
+    "acf21adc05c5": {
+      "run": "dev_combined_c107_r01",
+      "question_id": "REAL_003",
+      "cell": "Mistral hierarchical"
+    },
+    "af67cb1721e4": {
+      "run": "dev_combined_c207_api_r02",
+      "question_id": "REAL_031",
+      "cell": "Qwen hierarchical"
+    },
+    "b254c1bc3195": {
+      "run": "dev_combined_c205_api_r05",
+      "question_id": "REAL_048",
+      "cell": "Qwen flat"
+    },
+    "b414fd7a9a78": {
+      "run": "dev_combined_c105_r05",
+      "question_id": "REAL_024",
+      "cell": "Mistral flat"
+    },
+    "b5067e45a960": {
+      "run": "dev_combined_c105_r05",
+      "question_id": "REAL_014",
+      "cell": "Mistral flat"
+    },
+    "b75107ffda99": {
+      "run": "dev_combined_c207_api_r01",
+      "question_id": "REAL_024",
+      "cell": "Qwen hierarchical"
+    },
+    "c79cdb8082c1": {
+      "run": "dev_combined_c207_api_r03",
+      "question_id": "REAL_046",
+      "cell": "Qwen hierarchical"
+    },
+    "c961a87c70ec": {
+      "run": "dev_combined_c205_api_r03",
+      "question_id": "REAL_039",
+      "cell": "Qwen flat"
+    },
+    "cc747a11bdb7": {
+      "run": "dev_combined_c307_api_r03",
+      "question_id": "REAL_058",
+      "cell": "Llama hierarchical"
+    },
+    "cd833b72baad": {
+      "run": "dev_combined_c307_api_r02",
+      "question_id": "REAL_006",
+      "cell": "Llama hierarchical"
+    },
+    "d171dce36b3b": {
+      "run": "dev_combined_c305_api_r04",
+      "question_id": "REAL_060",
+      "cell": "Llama flat"
+    },
+    "d6a9b98f9aae": {
+      "run": "dev_combined_c105_r03",
+      "question_id": "REAL_042",
+      "cell": "Mistral flat"
+    },
+    "d7d275f1b5bc": {
+      "run": "dev_combined_c307_api_r01",
+      "question_id": "REAL_041",
+      "cell": "Llama hierarchical"
+    },
+    "db8d8c454cdb": {
+      "run": "dev_combined_c107_r03",
+      "question_id": "REAL_045",
+      "cell": "Mistral hierarchical"
+    },
+    "ddf0b9e2ef13": {
+      "run": "dev_combined_c207_api_r05",
+      "question_id": "REAL_059",
+      "cell": "Qwen hierarchical"
+    },
+    "e035dfabc3ed": {
+      "run": "dev_combined_c207_api_r02",
+      "question_id": "REAL_005",
+      "cell": "Qwen hierarchical"
+    },
+    "e0641bcdf7bf": {
+      "run": "dev_combined_c107_r01",
+      "question_id": "REAL_008",
+      "cell": "Mistral hierarchical"
+    },
+    "e07e987f3b0d": {
+      "run": "dev_combined_c305_api_r02",
+      "question_id": "REAL_016",
+      "cell": "Llama flat"
+    },
+    "e36a0b86bf74": {
+      "run": "dev_combined_c107_r02",
+      "question_id": "REAL_041",
+      "cell": "Mistral hierarchical"
+    },
+    "e37ee77e09d1": {
+      "run": "dev_combined_c205_api_r04",
+      "question_id": "REAL_043",
+      "cell": "Qwen flat"
+    },
+    "e72fe01c942e": {
+      "run": "dev_combined_c105_r05",
+      "question_id": "REAL_023",
+      "cell": "Mistral flat"
+    },
+    "e9bd038544cc": {
+      "run": "dev_combined_c205_api_r03",
+      "question_id": "REAL_053",
+      "cell": "Qwen flat"
+    },
+    "ea2d3c98d9a4": {
+      "run": "dev_combined_c205_api_r04",
+      "question_id": "REAL_017",
+      "cell": "Qwen flat"
+    },
+    "eabd819cbb2d": {
+      "run": "dev_combined_c105_r01",
+      "question_id": "REAL_030",
+      "cell": "Mistral flat"
+    },
+    "ed491073b9f9": {
+      "run": "dev_combined_c305_api_r04",
+      "question_id": "REAL_045",
+      "cell": "Llama flat"
+    },
+    "efda7482bfe8": {
+      "run": "dev_combined_c205_api_r05",
+      "question_id": "REAL_059",
+      "cell": "Qwen flat"
+    },
+    "f2487c7aeb1b": {
+      "run": "dev_combined_c305_api_r02",
+      "question_id": "REAL_022",
+      "cell": "Llama flat"
+    },
+    "f24f90da8412": {
+      "run": "dev_combined_c207_api_r04",
+      "question_id": "REAL_037",
+      "cell": "Qwen hierarchical"
+    },
+    "f56323a16a5b": {
+      "run": "dev_combined_c205_api_r03",
+      "question_id": "REAL_047",
+      "cell": "Qwen flat"
+    },
+    "f5cc56564a59": {
+      "run": "dev_combined_c105_r04",
+      "question_id": "REAL_032",
+      "cell": "Mistral flat"
+    },
+    "f895fa879b10": {
+      "run": "dev_combined_c305_api_r05",
+      "question_id": "REAL_015",
+      "cell": "Llama flat"
+    },
+    "f907e5b202f9": {
+      "run": "dev_combined_c307_api_r04",
+      "question_id": "REAL_053",
+      "cell": "Llama hierarchical"
+    },
+    "fafa084cba77": {
+      "run": "dev_combined_c105_r02",
+      "question_id": "REAL_033",
+      "cell": "Mistral flat"
+    },
+    "fc0abc36580c": {
+      "run": "dev_combined_c105_r03",
+      "question_id": "REAL_050",
+      "cell": "Mistral flat"
+    },
+    "fda7979d7d13": {
+      "run": "dev_combined_c107_r04",
+      "question_id": "REAL_015",
+      "cell": "Mistral hierarchical"
+    },
+    "fef81efe4acf": {
+      "run": "dev_combined_c107_r04",
+      "question_id": "REAL_044",
+      "cell": "Mistral hierarchical"
+    }
+  }
+}

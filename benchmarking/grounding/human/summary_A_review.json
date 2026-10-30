@@ -1,0 +1,163 @@
+{
+  "protocol": "human_context_support_v1",
+  "annotator": "A",
+  "reported_provenance": "User reports completing the annotations; rater provenance is not independently established by this file.",
+  "source_file": "grounding_ocene_A.json",
+  "source_sha256": "431ad779cb6d838755dbbcf2d04bb460cafc22478c6c9660cf0fd3e7ecd338d7",
+  "created_at": "2026-10-29T21:32:19.012839+00:00",
+  "n": 120,
+  "groups": {
+    "overall": {
+      "n": 120,
+      "counts": {
+        "fully_supported": 47,
+        "partly_supported": 33,
+        "unsupported": 37,
+        "no_claims": 3
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.39166666666666666,
+        "partly_supported": 0.275,
+        "unsupported": 0.30833333333333335,
+        "no_claims": 0.025
+      },
+      "n_with_claims": 117,
+      "fully_supported_fraction_among_answers_with_claims": 0.4017094017094017
+    },
+    "Llama flat": {
+      "n": 20,
+      "counts": {
+        "fully_supported": 10,
+        "partly_supported": 3,
+        "unsupported": 5,
+        "no_claims": 2
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.5,
+        "partly_supported": 0.15,
+        "unsupported": 0.25,
+        "no_claims": 0.1
+      },
+      "n_with_claims": 18,
+      "fully_supported_fraction_among_answers_with_claims": 0.5555555555555556
+    },
+    "Llama hierarchical": {
+      "n": 20,
+      "counts": {
+        "fully_supported": 16,
+        "partly_supported": 1,
+        "unsupported": 2,
+        "no_claims": 1
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.8,
+        "partly_supported": 0.05,
+        "unsupported": 0.1,
+        "no_claims": 0.05
+      },
+      "n_with_claims": 19,
+      "fully_supported_fraction_among_answers_with_claims": 0.8421052631578947
+    },
+    "Mistral flat": {
+      "n": 20,
+      "counts": {
+        "fully_supported": 5,
+        "partly_supported": 5,
+        "unsupported": 10,
+        "no_claims": 0
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.25,
+        "partly_supported": 0.25,
+        "unsupported": 0.5,
+        "no_claims": 0.0
+      },
+      "n_with_claims": 20,
+      "fully_supported_fraction_among_answers_with_claims": 0.25
+    },
+    "Mistral hierarchical": {
+      "n": 20,
+      "counts": {
+        "fully_supported": 4,
+        "partly_supported": 5,
+        "unsupported": 11,
+        "no_claims": 0
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.2,
+        "partly_supported": 0.25,
+        "unsupported": 0.55,
+        "no_claims": 0.0
+      },
+      "n_with_claims": 20,
+      "fully_supported_fraction_among_answers_with_claims": 0.2
+    },
+    "Qwen flat": {
+      "n": 20,
+      "counts": {
+        "fully_supported": 4,
+        "partly_supported": 11,
+        "unsupported": 5,
+        "no_claims": 0
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.2,
+        "partly_supported": 0.55,
+        "unsupported": 0.25,
+        "no_claims": 0.0
+      },
+      "n_with_claims": 20,
+      "fully_supported_fraction_among_answers_with_claims": 0.2
+    },
+    "Qwen hierarchical": {
+      "n": 20,
+      "counts": {
+        "fully_supported": 8,
+        "partly_supported": 8,
+        "unsupported": 4,
+        "no_claims": 0
+      },
+      "proportions_all_answers": {
+        "fully_supported": 0.4,
+        "partly_supported": 0.4,
+        "unsupported": 0.2,
+        "no_claims": 0.0
+      },
+      "n_with_claims": 20,
+      "fully_supported_fraction_among_answers_with_claims": 0.4
+    }
+  },
+  "validation": {
+    "ids_complete": true,
+    "all_labels_valid": true,
+    "evidence_count": 204,
+    "nonliteral_evidence_count": 3,
+    "nonliteral_evidence": [
+      {
+        "blind_id": "fc0abc36580c",
+        "question": "Planiram semestar na razmeni i našao sam predmete slične našim. Šta treba da dogovorim pre prijave da bi mi ispiti bili priznati po povratku?",
+        "submitted_evidence": "Student je pre prijavljivanja za mobilnost duzan da kontaktira \nnastavnika angazovanog na predmetu koji je najslicniji sa predmetom koji \nplanira da prati i polaze",
+        "note": "Quote is not an exact whitespace-normalized substring. Original grade unchanged."
+      },
+      {
+        "blind_id": "b75107ffda99",
+        "question": "Na ER-u sam samofinansirajući student. Upišem 30 ESPB novih predmeta i ponovo 12 ESPB nepoloženih iz prethodne godine. Ako je godišnja školarina za 60 ESPB 120.000 dinara i nemam druga oslobađanja, koliko iznosi školarina pre eventualne refundacije?",
+        "submitted_evidence": "Student osnovnih akademskih studija Elektrotehnika racunarstvo koji u skolskOj godiNI ponovo upisuje nepolozene predmete IZ prethodne skolske godine; a sam ce finansira; placa 2/3 dela skolarine za te predmete:",
+        "note": "Quote is not an exact whitespace-normalized substring. Original grade unchanged."
+      },
+      {
+        "blind_id": "50936081499b",
+        "question": "Možeš li da proveriš koju sam ocenu dobio iz Programiranja 1 i koliko trenutno imam ukupno ESPB?",
+        "submitted_evidence": "ri=0 ukoliko je ispit polozio u ostalim rokovima.",
+        "note": "Quote is not an exact whitespace-normalized substring. Original grade unchanged."
+      }
+    ],
+    "missing_export_hashes": [
+      "sample_sha256",
+      "subset_sha256"
+    ],
+    "note": "Custom JSON includes evidence arrays and claim lists. IDs match the frozen form. Missing source/subset hashes mean the export does not itself establish which source text version the rater used. No original labels or quotes were modified."
+  },
+  "second_rater": "No grounding_ocene_B.json supplied; no independent grounding agreement computed.",
+  "interpretation": "Answer-level context-support categories, not atomic-claim faithfulness and not correctness/style/completeness scores. Descriptive stratified subset of 20 responses per configuration; repeated question IDs across configurations are not independent questions. Earlier automated pilot scores use a different protocol and denominator and should not be compared as equivalent measures."
+}

@@ -1,0 +1,2047 @@
+{
+  "protocol": "human_context_support_v1",
+  "annotator": "A",
+  "grades":{
+    "b5067e45a960": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Budžetski student sa 20 preostalih ESPB ne mora da prijavi 60.",
+          "Postoji mogućnost odobravanja više od 60, najviše 90 ESPB."
+        ],
+        "unsupported": [
+          "Ovom studentu može se preporučiti prijava oko 50 ESPB.",
+          "Student sam bira odgovarajući obim prema tome koliko želi da uradi."
+        ],
+        "contradicted": [
+          "Ovaj budžetski student mora prijaviti najmanje 37 ESPB."
+        ]
+      },
+      "note": "Glavni odgovor da ne mora 60 podržan je, ali obaveznih 37 nije pravilo za opisanu situaciju.",
+      "evidence": [
+        "Student koji se finansira iz budzeta opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 60 ESPB bodova u toku skolske \ngodine, osim ako mu do kraja studijskog programa nije ostalo manje od 60 ESPB \nbodova.",
+        "posebno \nuspesnim studentima moze se odobriti i vise od 60 ESPB bodova u toku jedne \nskolske godine, ali ne vise od 90 ESPB bodova."
+      ]
+    },
+    "840c95ff10ef": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Prijavljeni predmeti se po pravilu ne menjaju tokom godine.",
+          "Izuzetno, prodekan za nastavu tokom semestra može odobriti zamenu drugim predmetom iz istog semestra.",
+          "Student ne može samostalno izvršiti opisanu zamenu."
+        ]
+      },
+      "note": "Zaključak i navedeni uslovi odgovaraju kontekstu.",
+      "evidence": [
+        "Predmeti koje je \nstudent prijavio, po pravilu se ne mogu menjati u toku skolske godine. U \nizuzetnim slucajevima, u toku semestra u kome se odrzava nastava, prodekan za \nnastavu moze odobriti zamenu predmeta za drugi predmet iz istog semestra."
+      ]
+    },
+    "a954ec1e012f": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Zahtev se podnosi u roku od 30 dana od nastanka sprečenosti, najkasnije do 1. juna.",
+          "Potrebna su dva propuštena sukcesivna ispitna roka ili najmanje tri meseca sprečenosti za nastavu.",
+          "Tokom odobrenog mirovanja ne ostvaruju se ispiti, predispitne i druge nastavne obaveze."
+        ]
+      },
+      "note": "Rokovi, alternativa uslova i zabrana tokom mirovanja imaju neposrednu podršku.",
+      "evidence": [
+        "Zahtev za mirovanje prava i obaveza student podnosi u roku od 30 dana \nod dana nastanka sprecenosti, a najkasnije do 1. juna za tekucu skolsku godinu.",
+        "Mirovanje se moze odobriti samo u slucajevima kada je student \npropustio dva sukcesivna ispitna roka, ili bio sprecen da pohad a nastavu \nnajmanje tri meseca.",
+        "Tokom odobrenog mirovanja, student ne moze da polaze ispite ili \nostvaruje predispitne obaveze i druge obaveze iz nastavnog procesa."
+      ]
+    },
+    "ed491073b9f9": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Profesor B može biti mentor ako je angažovan na predmetu drugog modula koji je student pratio i položio."
+        ],
+        "contradicted": [
+          "Izmena zadržava kao merodavnu formulaciju da se predmet mora polagati kod izabranog nastavnika."
+        ]
+      },
+      "note": "Zaključak je podržan novom odredbom, ali obrazloženje kao novu citira staru odredbu.",
+      "evidence": [
+        "ce brise i umesto njega unosi ce sledeci tekst:\nStudent moze uzeti zavrsni rad samo kod nastavnika koji je angazovan na nekom od predmeta izbornog podrucja - modula studijskog programa na kome je student upisan, ili na predmetu koji je student pratio i polozio, koji pripada drugom izbornom podrucju modulu osnovnih studija:"
+      ]
+    },
+    "89441ff76e1c": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Sa jednim preostalim nepoloženim ispitom na OAS postoji pravo na dodatno ispitivanje u poslednjem roku pre naredne školske godine."
+        ]
+      },
+      "note": "Neposredno navedeno u članu 63.",
+      "evidence": [
+        "student kome je preostao samo jedan nepolozen ISPIT Do okonCanja studijskog programa osnovnih akademskih studija; ima pravo na dodatno ispitivanje u poslednjem ispitnom roku pre pocetka naredne skolske godine"
+      ]
+    },
+    "04becb8efd87": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Za budžetski upis potrebno je najmanje 51 bod."
+        ],
+        "contradicted": [
+          "Ukupno 52 boda garantuju budžetski upis."
+        ]
+      },
+      "note": "Izostavljen je dodatni potreban uslov rangiranja unutar budžetske kvote.",
+      "evidence": [
+        "Kandidat ce moze upisati na studijski program U statusu studenta koji ce finansira iz budzeta ukoliko ce nalazi na rang listI DO broja odobrenog za upis kandidata na teret budzeta i ako ostvari najmanje 51 bod"
+      ]
+    },
+    "12b1d63baed0": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Posle tri neuspešna polaganja može se tražiti komisija.",
+          "Komisiju formira prodekan uz konsultacije sa nadležnim šefom katedre.",
+          "Nepoložen obavezni predmet ponovo se prijavljuje."
+        ],
+        "unsupported": [
+          "Posebno diskreciono odobravanje zahteva opisano je ovim pravilom.",
+          "Za ponovnu prijavu potrebno je doći do početka naredne godine."
+        ]
+      },
+      "note": "Glavno pravo i nadležnost su podržani; dodatno tumačenje odobravanja i vremena prijave nije izričito dato.",
+      "evidence": [
+        "Posle tri neuspela polaganja istog ispita student moze traziti da \npolaze ispit pred komisijom. Komisiju formira prodekan za nastavu uz \nkonsultacije sa sefom katedre nadlezne za predmet iz koga se polaze ispit.",
+        "Student koji ne polozi ispit iz obaveznog predmeta do pocetka naredne \nskolske godine, ponovo prijavljuje isti predmet."
+      ],
+      "human_review_required": true
+    },
+    "f907e5b202f9": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Plan rada mora biti javno dostupan najkasnije u prvoj sedmici semestra.",
+          "U drugoj sedmici taj rok je već istekao."
+        ]
+      },
+      "note": "Preporuka da se plan odmah objavi nije tretirana kao dodatni propisani rok.",
+      "evidence": [
+        "Predmetni nastavnik je u obavezi da plan rada na predmetu ucini javno dostupnim studentima najkasnije u prvoj sedmici semestra u kome ce izvodi nastava iz predmeta:"
+      ]
+    },
+    "73e246409473": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "S označava godine studiranja bez mirovanja.",
+          "Zbir doprinosa je 990, a S je 2, prema pitanju.",
+          "990 podeljeno sa 240 iznosi 4,125."
+        ],
+        "unsupported": [
+          "Formula ima dodatni faktor 2 ispred S × 60.",
+          "Srednja ponderisana ocena ovog studenta zato iznosi 4,125."
+        ]
+      },
+      "note": "Aritmetika ne opravdava izmišljeni dodatni faktor u imeniocu. OCR zapis formule zahteva oprez.",
+      "evidence": [
+        "e; x (1 +r)x 0; spo = I=1 Sx 60",
+        "$ broj godina studiranja studenta od trenutka upisa (ne racunajuci godine koje je student proveo u statusu mirovanja)"
+      ],
+      "human_review_required": true
+    },
+    "3390b9e2b8dc": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Posle tri neuspeha na istom ispitu student može tražiti komisiju.",
+          "Komisiju formira prodekan za nastavu uz konsultacije sa nadležnim šefom katedre."
+        ]
+      },
+      "note": "Ponavljanja istih tvrdnji objedinjena su.",
+      "evidence": [
+        "Posle tri neuspela polaganja istog ispita student moze traziti da \npolaze ispit pred komisijom. Komisiju formira prodekan za nastavu uz \nkonsultacije sa sefom katedre nadlezne za predmet iz koga se polaze ispit."
+      ]
+    },
+    "5be42f1658c9": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Prva želja može se menjati samo tokom prijave.",
+          "Posle prijemnog formiraju se rang-liste, pa promena prve želje tada nije dopuštena."
+        ],
+        "unsupported": [
+          "Ako ostvari uslove za upis, kandidat će nužno biti upisan na ER kao prvobitnu prvu želju."
+        ]
+      },
+      "note": "Kontekst predviđa i kandidate na obe liste; zabrana promene želje ne garantuje upis samo prvog programa.",
+      "evidence": [
+        "Prvu zelju je moguce izraziti menjati samo u fazn prijave kandidata",
+        "Kandidati koji su Ha rang listi studijskog programa za koji su izrazili prvu zelju; losije rangirani od broja mesta odobrenog za upis na teret budzeta; nalaze ce na obe liste; ukoliko su polagali odgovarajuce prijemne ispite ."
+      ]
+    },
+    "56ff66dfd994": {
+      "label": "no_claims",
+      "claims": {},
+      "note": "Uzdržavanje zbog odsustva datuma i sale, bez tvrdnji o pravilima.",
+      "evidence": []
+    },
+    "d7d275f1b5bc": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Pre prijave odbrane moraju biti položeni svi ispiti i ispunjene sve predviđene obaveze.",
+          "Sa preostalim nepoloženim ispitom odbrana se ne može prvo prijaviti."
+        ]
+      },
+      "note": "Zaključak neposredno sledi iz potrebnog uslova.",
+      "evidence": [
+        "Za prijavu odbrane zavrsnog rada student mora imati polozene sve ispite i ispunjene sve obaveze predvid ene studijskim programom."
+      ]
+    },
+    "837a1269623c": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Kombinacija prelaska i neposrednog budžetskog statusa nije podržana pravilima koja propisuju samofinansiranje.",
+          "Prelazak je zabranjen ako je na prethodnom programu ostalo 60 ili manje ESPB."
+        ],
+        "unsupported": [
+          "Pravilo o preostalim bodovima predstavlja obrazloženje zabrane prelaska za korisnika koji navodi 60 stečenih ESPB."
+        ]
+      },
+      "note": "Graničan slučaj: uslovna rečenica sama je podržana, ali njena primena na pitanje meša stečene i preostale bodove. Potrebna ljudska provera obima glavnog zaključka.",
+      "evidence": [
+        "Ovaj student moze ce upisati na ovaj Fakultet samo U statusu samofinansirajuceg studenta",
+        "Student drugog fakulteta ne moze ce upisati na Fakultet ukoliko mu je do OkONCanja studijskog programa na koji je upisan na drugom fakultetu ostalo 60 ili manje ESPB bodova:"
+      ],
+      "human_review_required": true
+    },
+    "e36a0b86bf74": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Student mora položiti sve ispite i ispuniti sve obaveze pre prijave odbrane."
+        ]
+      },
+      "note": "Nedosledno uzdržavanje ne menja podržanost jedine regulatorne tvrdnje; potpunost odgovora nije ocenjena.",
+      "evidence": [
+        "Za prijavu odbrane zavrsnog rada student mora imati polozene sve ispite i ispunjene sve obaveze predvid ene studijskim programom."
+      ]
+    },
+    "e035dfabc3ed": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Status samofinansiranja obuhvata određene studente koji nisu ostvarili 48 ESPB.",
+          "Postoje izuzeci za zadržavanje budžeta posle poslednje godine.",
+          "Prijava predmeta viših godina podleže pravilima o prethodnim nepoloženim predmetima."
+        ],
+        "unsupported": [
+          "Upisnih 29 bodova predstavljaju 29 ESPB.",
+          "Sa 29 stečenih ESPB nije moguće prijaviti predmete niti nastaviti studije.",
+          "Invaliditet ili raniji budžetski status omogućavaju opisani izuzetak za novi upis."
+        ],
+        "contradicted": [
+          "Minimum od 37 za prijavljivanje predstavlja obavezan prethodno ostvaren broj ESPB.",
+          "Zabrana prijave treće godine važi generalno za svaku sledeću godinu."
+        ]
+      },
+      "note": "Dostavljeni kontekst nema pravilo o minimalnih 30 upisnih bodova. Negativan zaključak zato nije potkrepljen relevantnim pravilom.",
+      "evidence": [
+        "Student koji se sam finansira opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 37 ESPB bodova u toku skolske \ngodine, osim ako mu do kraja studijskog programa nije ostalo manje od 37 ESPB \nbodova.",
+        "Student koji se sam finansira, a koji nije polozio sve predmete iz prve \ngodine studijskog programa, ne moze prijaviti predmet trece godine studijskog \nprograma ukoliko ima mogucnost da prijavi predmete prve i druge godine \nstudijskog programa koji su potrebni da ostvari najmanje 37 ESPB bodova."
+      ]
+    },
+    "3c437c1f7630": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "U fragmentu formule dodatnih bodova naveden je koeficijent K=0,5.",
+          "Stimulativni faktor 0,1 vezan je za prvi ili drugi rok u godini prvog upisa predmeta."
+        ],
+        "unsupported": [
+          "ER rezultat prijemnog određuje se srednjom ponderisanom ocenom.",
+          "M je zbir 42+55 ESPB, a SGE=M/2.",
+          "Prijemni poeni 42 i 55 predstavljaju ESPB predmeta.",
+          "R zavisi od razmaka manjeg od dve godine.",
+          "Fizika je položena u prvom roku.",
+          "SI se računa oduzimanjem bodova matematike i dodavanjem fizike i eventualnog maksimuma prijemnog.",
+          "Ukupan prijemni rezultat može se dobiti množenjem navedenih bodova sa 1,1."
+        ],
+        "contradicted": [
+          "M označava broj ESPB, umesto broj položenih predmeta.",
+          "(42+55)/97×100 iznosi 83,6%."
+        ]
+      },
+      "note": "Odgovor rekonstruiše nečitljive formule i izmišlja podatke; ne daje kontekstom podržan obračun ER/SI.",
+      "evidence": [
+        "gde je M ukupan broj predmeta studijskog programa koje je student polozio u prethodnoj skolskoj godini (ne racunajuci fakultativne predmete); koeficijent K=0,5",
+        "Stimulativne faktore dobijaju samo studenti koji su ispite POLOZILI U skolskoj godini kada sy prvi put upisali predmet"
+      ]
+    },
+    "15ae5d5ac19e": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Nova odredba obuhvata nastavnika angažovanog na predmetu drugog modula koji je student pratio i položio."
+        ],
+        "contradicted": [
+          "Dovoljno je da je predmet drugog modula slušan, iako nije položen."
+        ]
+      },
+      "note": "Glavni potvrdan odgovor protivreči izričitom uslovu položenog predmeta.",
+      "evidence": [
+        "ili na predmetu koji je student pratio i polozio, koji pripada drugom izbornom podrucju modulu osnovnih studija:"
+      ]
+    },
+    "60245e309e2d": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Faktor 0,1 traži polaganje u školskoj godini prvog upisa predmeta, u prvom ili drugom odgovarajućem roku.",
+          "Ponovno upisani predmet položen naredne godine ne dobija taj faktor."
+        ]
+      },
+      "note": "Uslov godine prvog upisa ispravno je primenjen.",
+      "evidence": [
+        "Stimulativne faktore dobijaju samo studenti koji su ispite polozili u \nskolskoj godini kada su prvi put upisali predmet i to ri=0,1 ukoliko je student \npolozio ispit u prvom ili drugom ispitnom roku u kome je stekao pravo na \npolaganje ispita, ri=0 ukoliko je ispit polozio u ostalim rokovima."
+      ]
+    },
+    "62f83bcc1cd6": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Samostalna zamena prijavljenog predmeta nije dopuštena.",
+          "Izuzetnu zamenu tokom semestra drugim predmetom istog semestra može odobriti prodekan."
+        ]
+      },
+      "note": "Pravilo i izuzetak su očuvani.",
+      "evidence": [
+        "Predmeti koje je \nstudent prijavio, po pravilu se ne mogu menjati u toku skolske godine. U \nizuzetnim slucajevima, u toku semestra u kome se odrzava nastava, prodekan za \nnastavu moze odobriti zamenu predmeta za drugi predmet iz istog semestra."
+      ]
+    },
+    "7501d440a8be": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Odobreno mirovanje ne računa se u osnovni rok završetka.",
+          "Produženje do trostrukog trajanja programa može se tražiti ličnim zahtevom."
+        ],
+        "unsupported": [
+          "Dostavljeni fragmenti dokazuju izuzimanje mirovanja iz godina za budžetsko rangiranje.",
+          "Ostvarivanje dovoljnog broja ESPB tokom mirovanja uslov je produženja."
+        ],
+        "contradicted": [
+          "Tokom odobrenog mirovanja mogu se ostvarivati nastavne obaveze radi sticanja ESPB."
+        ]
+      },
+      "note": "U ovom konkretnom kontekstu nema definicije S koja izuzima mirovanje iz rangiranja. Ta tvrdnja nije ocenjena na osnovu drugih primera.",
+      "evidence": [
+        "U rok iz st. 1 i 2 ovog clana ne racuna se vreme mirovanja prava i obaveza, \nodobrenog studentu u skladu sa Statutom Fakulteta.",
+        "Studentu se na licni zahtev, podnet pre isteka roka iz st. 1 i 2 ovog clana, \nmoze produziti rok za zavrsetak studija do isteka roka u trostrukom broju \nskolskih godina potrebnih za realizaciju studijskog programa.",
+        "Tokom odobrenog mirovanja; student ne moze da polaze ispite ILI ostvaruje predispitne obaveze i druge obaveze iz nastavnog procesa:"
+      ],
+      "human_review_required": true
+    },
+    "e37ee77e09d1": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Tema se može promeniti jednom, uz odobrenje šefa odseka.",
+          "Zanimljivija tema nije naveden izuzetak za drugu promenu.",
+          "Osnovni rok odbrane je jedna godina; po isteku bez produženja uzima se nova tema.",
+          "Iste teme ne odobravaju se tri godine od poslednje odbrane."
+        ]
+      },
+      "note": "Izostavljanje mogućnosti produženja nije samo po sebi ocenjeno kao nepodržanost.",
+      "evidence": [
+        "Student moze po odobrenju sefa odseka da promeni temu zavrsnog rada. \nTema se moze promeniti samo jedanput.",
+        "Student je u obavezi da odbrani zavrsni rad u roku od jedne godine od \ndana prijave teme. U suprotnom, student mora da uzme novu temu.",
+        "Iste teme se ne mogu odobriti u periodu od 3 godine od poslednje \nodbrane."
+      ]
+    },
+    "352e37f2b2ff": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Tačno 50 poena daje ocenu 5.",
+          "Ocena 6 zahteva 51–60 poena.",
+          "Konačni poeni obuhvataju predispitne obaveze i ispit.",
+          "Petica se upisuje samo u evidenciju, ne u indeks."
+        ]
+      },
+      "note": "Sve navedene tvrdnje imaju podršku.",
+      "evidence": [
+        "51-60 poena 6 dovoljan D \ndo 50 poena/ 5 nije polozio F",
+        "U evidenciju i indeks studenta unose se prelazne ocene (od 6 do 10), a \nocena 5 (nije polozio) upisuje se samo u evidenciju.",
+        "Ukupno 100 poena se stice \nispunjavanjem predispitnih obaveza i polaganjem ispita."
+      ]
+    },
+    "d171dce36b3b": {
+      "label": "no_claims",
+      "claims": {},
+      "note": "Uzdržavanje zbog odsustva ličnih rezultata; opis sadržaja konteksta nije regulatorna tvrdnja.",
+      "evidence": []
+    },
+    "e07e987f3b0d": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Za upis treće godine moraju biti položeni svi ispiti prve.",
+          "Postoji posebno ograničenje prijave predmeta treće godine za samofinansirajuće studente."
+        ],
+        "unsupported": [
+          "Korisnik je samofinansirajući student.",
+          "Jedan nepoložen ispit prve godine sam po sebi uvek zabranjuje prijavu bilo kog predmeta treće."
+        ]
+      },
+      "note": "Ispravan zaključak o upisu obrazložen je delom drugim, uslovnim pravilom o prijavi predmeta.",
+      "evidence": [
+        "student mora pri upisu trece \ngodine studija imati polozene sve ispite iz prve godine studija",
+        "Student koji se sam finansira, a koji nije polozio sve predmete iz prve \ngodine studijskog programa, ne moze prijaviti predmet trece godine studijskog \nprograma ukoliko ima mogucnost da prijavi predmete prve i druge godine \nstudijskog programa koji su potrebni da ostvari najmanje 37 ESPB bodova."
+      ]
+    },
+    "db8d8c454cdb": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Profesor B angažovan na praćenom i položenom predmetu drugog modula može biti mentor."
+        ],
+        "unsupported": [
+          "Član 44 Statuta neposredno propisuje ovaj uslov mentorstva."
+        ],
+        "contradicted": [
+          "Prikazana izmena potiče iz septembra 2025."
+        ]
+      },
+      "note": "Mentorstvo je podržano; datum i pravno uporište dodatno su pogrešno navedeni.",
+      "evidence": [
+        "Broj: 1800/38 Datum: 14.10.2025. godine",
+        "ili na predmetu koji je student pratio i polozio, koji pripada drugom izbornom podrucju modulu osnovnih studija:"
+      ]
+    },
+    "0b630e2d0fb7": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Osnovni rok je osam školskih godina za četvorogodišnji program.",
+          "Godina odobrenog mirovanja isključuje se, pa je proteklo sedam relevantnih godina.",
+          "Lični zahtev pre isteka može omogućiti produženje do trostrukog trajanja programa, odnosno 12 godina."
+        ],
+        "unsupported": [
+          "Dostavljeni tekst izričito određuje dekana kao primaoca zahteva za produženje.",
+          "Isključenje mirovanja iz produženog dvanaestogodišnjeg roka izričito je uređeno navedenim stavom."
+        ],
+        "contradicted": [
+          "Posebne kategorije imaju produženje na neodređeno vreme."
+        ]
+      },
+      "note": "Osnovni račun i mogućnost zahteva podržani su; dodatna pravila nisu. Izraz 'uključujući mirovanje' dodatno je nejasan.",
+      "evidence": [
+        "U rok iz st. 1 i 2 ovog clana ne racuna se vreme mirovanja prava i obaveza, \nodobrenog studentu u skladu sa Statutom Fakulteta.",
+        "Studentu se na licni zahtev, podnet pre isteka roka iz st. 1 i 2 ovog clana, \nmoze produziti rok za zavrsetak studija do isteka roka u trostrukom broju \nskolskih godina potrebnih za realizaciju studijskog programa.",
+        "Student koji studira uz rad, student sa invaliditetom, student koji je \nupisan na studije po afirmativnoj meri i student koji ima status kategorisanog \nvrhunskog sportiste zadrzava status studenta do isteka roka koji se odred uje u \ntrostrukom broju skolskih godina potrebnih za realizaciju studijskog \nprograma."
+      ],
+      "human_review_required": true
+    },
+    "c79cdb8082c1": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Dokument ima datum 14.10.2025."
+        ],
+        "unsupported": [
+          "Izmena je isključivo promenila iznos školarine.",
+          "Oštećeni zapisi dokazuju promenu formule iz N×h×60 u N×60."
+        ],
+        "contradicted": [
+          "Nova odredba zadržava rečenicu o plaćanju prakse i završnog pri prijavljivanju završnog rada.",
+          "Oktobarska izmena stupa na snagu osmog dana od objave."
+        ]
+      },
+      "note": "Rečenica o vremenu plaćanja nalazi se u tekstu koji se briše, a nema je u zamenskom tekstu. Rok stupanja vezan je za donošenje.",
+      "evidence": [
+        "Skolarina za strucnu praksu i zavrsni rad placa ce u trenutku prijavljivanja zavrsnog rada.\nce brise i umesto njega unosi ce sledeci tekst:",
+        "Ova izmena stupa na snagu osmog dana od dana donosenja"
+      ]
+    },
+    "4f1ed42cc823": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Prelaznik se upisuje kao samofinansirajući, ne odmah na budžet.",
+          "Prelazak je zabranjen ako je do završetka prethodnog programa ostalo 60 ili manje ESPB."
+        ],
+        "contradicted": [
+          "Iz tog pravila sledi da kandidat mora imati više od 60 stečenih ESPB."
+        ]
+      },
+      "note": "Zaključak o finansiranju podržan je, ali preostali i stečeni bodovi su pomešani.",
+      "evidence": [
+        "Ovaj student moze se upisati na ovaj fakultet samo \nu statusu samofinansirajuceg studenta",
+        "Student drugog fakulteta ne moze se upisati na Fakultet ukoliko mu je \ndo okoncanja studijskog programa na koji je upisan na drugom fakultetu ostalo \n60 ili manje ESPB bodova."
+      ]
+    },
+    "37791c094b53": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Srednjoškolski doprinos je dvostruki zbir proseka.",
+          "Zbir proseka je 18,5, doprinos 37 i sa prijemnih 40 zbir je 77."
+        ],
+        "unsupported": [
+          "Pravilo je u ovom kontekstu pripisano članu 9 Statuta Univerziteta.",
+          "Prijemni doprinos treba zameniti sa 36."
+        ],
+        "contradicted": [
+          "37 je veće od 40 i zato se zamenjuje sa 40.",
+          "Konačan rezultat je 76."
+        ]
+      },
+      "note": "Početni i završni rezultat protivreče sopstvenom ispravnom međuračunu.",
+      "evidence": [
+        "Pod opstim uspehom u srednjoj skoli podrazumeva ce zbir prosecnih ocena u svakom razredu srednje skole pomnozen ca dva:",
+        "Po ovom osnovu kandidat moze steci najmanje 16, najvise 40 bodova."
+      ]
+    },
+    "ea2d3c98d9a4": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Obnova ne isključuje prijavu novih neuslovljenih predmeta.",
+          "Moraju se prijaviti prethodni nepoloženi predmeti.",
+          "Postoji mogućnost odobrenja više od 60, najviše 90 ESPB."
+        ],
+        "unsupported": [
+          "Komisija je navedena kao organ koji odobrava povećani obim.",
+          "Za sve nove predmete obnovca obavezno je odobrenje prodekana."
+        ],
+        "contradicted": [
+          "Nova odredba člana 50 stav 3 zadržava apsolutni limit ukupno 60 ESPB."
+        ]
+      },
+      "note": "Odgovor meša staru formulaciju sa izmenom koja upućuje na pravila člana 48.",
+      "evidence": [
+        "clanu 50. stav 3. menja ce i glasi: Student koji nije ispunio uslov IZ stava 1. ovoG clana moze nastaviti studije tako da pONOvoO prijavi studijske obaveze koje nije ispunio U prethodnoj godini.",
+        "Student moze da prijavi i nove predmete iz naredne studijske godine; koji nisu uslovljeni studijskim programom;",
+        "Izuzetak od pravila navedenih u stavovima 8 I 9 OvOG clana je moguc samo uz odobrenje prodekana za nastavu."
+      ]
+    },
+    "f895fa879b10": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Samofinansirajući student po pravilu prijavljuje najmanje 37 ESPB, osim ako mu je manje preostalo."
+        ],
+        "contradicted": [
+          "Sa 100 preostalih ESPB i bez statusa studiranja uz rad sme prijaviti samo 30.",
+          "Minimum 30 važi za sve samofinansirajuće sa više od 30 preostalih."
+        ]
+      },
+      "note": "Glavni zaključak obrće izuzetak i primenjuje minimum druge kategorije.",
+      "evidence": [
+        "Student koji se sam finansira opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 37 ESPB bodova u toku skolske \ngodine, osim ako mu do kraja studijskog programa nije ostalo manje od 37 ESPB \nbodova.",
+        "Student uz rad opredeljuje se za onoliko predmeta koliko je potrebno da \nse ostvari najmanje 30 ESPB bodova"
+      ]
+    },
+    "6932f7983889": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Nepoloženi izborni može se pri narednoj godini zameniti drugim izbornim."
+        ]
+      },
+      "note": "Neposredno podržano.",
+      "evidence": [
+        "Student koji ne polozi izborni predmet do pocetka naredne skolske \ngodine, moze ponovo prijaviti isti ili se opredeliti za drugi izborni \npredmet."
+      ]
+    },
+    "2d71a2ebc5b6": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Za budžetske studente postoji pravilo prijave predmeta u obimu najmanje 60, uz izuzetak za završetak programa."
+        ],
+        "unsupported": [
+          "Korisnik trenutno ima budžetski status.",
+          "Broj preostalih ESPB određuje odgovor na pitanje o afirmativnom budžetskom pragu."
+        ],
+        "contradicted": [
+          "Pravilo o izboru obima predmeta znači da student mora ostvariti 60 položenih ESPB za budžet."
+        ]
+      },
+      "note": "Ovaj kontekst ne sadrži afirmativni prag 36; ne dopunjava se drugim primerima. Izneto obrazloženje meša prijavu i ostvarivanje bodova.",
+      "evidence": [
+        "Student koji se finansira iz budzeta opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 60 ESPB bodova u toku skolske \ngodine, osim ako mu do kraja studijskog programa nije ostalo manje od 60 ESPB \nbodova."
+      ]
+    },
+    "80955ab20ecd": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Žalba na mesto na preliminarnoj listi podnosi se Komisiji u roku od 36 sati.",
+          "Posle 20 sati preostaje 16 sati.",
+          "Za rezultate prijemnog validan je obrazac odgovora."
+        ],
+        "unsupported": [
+          "Žalba mora izričito da se pozove na obrazac odgovora."
+        ],
+        "contradicted": [
+          "Rok drugostepene žalbe teče od prijema žalbe ili dostavljanja rešenja kandidatu."
+        ]
+      },
+      "note": "Drugostepeni rok u kontekstu teče od isteka roka za donošenje prvostepenog rešenja.",
+      "evidence": [
+        "Kandidat moze podneti zalbu na regularnost postupka utvrd enog konkursom; regularnost prijemnog ispita ili na svoje mesto na rang listi u roku od 36 sati od objavljivanja prsliminarne rang liste na fakultetu",
+        "ima pravo da u drugostepenom postupku ulozi zalbu dekanu fakulteta; U roku od 24 casa od isteka roka za donosenje resenja iz stava 2 ovog clana",
+        "Prilikom zalbe kandidata na rezultate prijemnog ispita validan je samo njihov obrazac za odgovore."
+      ]
+    },
+    "0f128724b042": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Budžetski student poslednje godine zadržava pravo najduže godinu dana posle redovnog trajanja studija."
+        ]
+      },
+      "note": "Jedina regulatorna tvrdnja podržana je; naknadno uzdržavanje ne uvodi suprotno pravilo.",
+      "evidence": [
+        "Student koji u poslednjoj godini studija ima status studenta koji se \nfinansira iz budzeta, zadrzava pravo da se finansira iz budzeta najduze godinu \ndana po isteku redovnog trajanja studija."
+      ]
+    },
+    "f2487c7aeb1b": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Uslov treće godine i prosek 7,6 ispunjavaju prag za molbu za promenu modula.",
+          "Lični zahtev podnosi se pri upisu naredne godine.",
+          "Komisija izuzetno može razmatrati molbe početkom prolećnog semestra."
+        ]
+      },
+      "note": "Odgovor govori o pravu na molbu, ne garantuje njeno usvajanje.",
+      "evidence": [
+        "nakon stecenog uslova za upis trece \ngodine studijskog programa ukoliko ima prosecnu ocenu najmanje 7,5.",
+        "vrsi se na licni zahtev, prilikom upisa \nu narednu skolsku godinu.",
+        "Izuzetno; komisija za studije prvog stepena moze razmatrati molbe za promenu modula i na pocetku prolecnog semestra:"
+      ]
+    },
+    "fda7979d7d13": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Postoje uslovna ograničenja prijave treće i četvrte godine za samofinansirajuće sa nepoloženim ranijim predmetima."
+        ],
+        "contradicted": [
+          "Samofinansirajući student sa 100 preostalih, koji ne studira uz rad, može prijaviti samo 30 ESPB."
+        ]
+      },
+      "note": "Tačna druga pravila ne daju izuzetak od minimuma 37.",
+      "evidence": [
+        "Student koji se sam finansira opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 37 ESPB bodova u toku skolske \ngodine, osim ako mu do kraja studijskog programa nije ostalo manje od 37 ESPB \nbodova."
+      ]
+    },
+    "16ade1cb35db": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "ER vrednuje bolji prijemni rezultat, ovde fiziku 55.",
+          "SI vrednuje matematiku, ovde 42.",
+          "Ukupni bodovi uključuju srednjoškolski uspeh, najviše 40, i prijemni, ukupno najviše 100."
+        ]
+      },
+      "note": "Pravila izbora rezultata i račun primenjeni su na eksplicitne podatke.",
+      "evidence": [
+        "Za studijski program Elektrotehnika i racunarstvo vrednuje ce bolji rezultat ostvaren na prijemnom ispitu iz matematike ili fizike.",
+        "Za studijski program Softversko inzenjerstvo vrednuje ce rezultat ostvaren na prijemnom ispitu iz matematike",
+        "Po ovom osnovu kandidat moze steci najmanje 16, najvise 40 bodova."
+      ]
+    },
+    "cc747a11bdb7": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Kalkulator je dozvoljen samo ako ga predmetni nastavnik dopusti.",
+          "Nastavnik odlučuje o pomoćnim sredstvima i obaveštava studente na početku nastave."
+        ]
+      },
+      "note": "Potvrdan odgovor protumačen je zajedno sa neposrednim uslovom, a ne kao tvrdnja da je kalkulator već odobren za OET1.",
+      "evidence": [
+        "Predmetni nastavnik odlucuje koja se pomocna sredstva mogu koristiti \nna ispitu (knjiga, tabele, dijagrami, kalkulatori i slicno) i o tome obavestava \nstudente na pocetku nastave na predmetu."
+      ],
+      "human_review_required": true
+    },
+    "6ad331934a29": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Rezultati kolokvijuma objavljuju se najkasnije 15 dana od održavanja."
+        ]
+      },
+      "note": "Neposredno podržano.",
+      "evidence": [
+        "Rezultati kolokvijuma moraju da budu objavljeni najkasnije u roku od 15 \ndana od dana odrzavanja kolokvijuma."
+      ]
+    },
+    "a5b24606ba88": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Kalendar rokova objavljuje se na početku školske godine na oglasnoj tabli i sajtu."
+        ]
+      },
+      "note": "Nema izmišljenog datuma ili sale. Predlog gde tražiti raspored, uključujući navedenu školsku godinu, tretiran je kao preporuka, ne regulatorna tvrdnja.",
+      "evidence": [
+        "Kalendar ispitnih rokova odred uje se za celu skolsku godinu unapred i \nobjavljuju na pocetku skolske godine na oglasnoj tabli i internet stranici \nFakulteta."
+      ]
+    },
+    "52e34a255fd3": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Važeći pasoš može poslužiti za identifikaciju na prijemnom."
+        ]
+      },
+      "note": "Lična karta nije jedina dozvoljena isprava.",
+      "evidence": [
+        "Kandidat na prijemni ispit donosi dokument za identifikaciju vazecu licnu kartu iLI pasos"
+      ]
+    },
+    "72c4e2d2facd": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Uslov treće i prosek 7,6 zadovoljavaju uslove za molbu.",
+          "Zahtev ide pri upisu naredne godine, uz izuzetno razmatranje početkom prolećnog semestra.",
+          "Ako Komisija usvoji molbu, upis novog modula vrši se početkom naredne školske godine."
+        ]
+      },
+      "note": "Početna formulacija o ispunjenim uslovima čitana je uz kasnije izričit uslov usvajanja molbe.",
+      "evidence": [
+        "Student Fakulteta ima pravo da podnese molbu za prelazak sa upisanog \nmodula na drugi modul studijskog programa nakon stecenog uslova za upis trece \ngodine studijskog programa ukoliko ima prosecnu ocenu najmanje 7,5.",
+        "Ukoliko \nKomisija za studije prvog stepena usvoji molbu, upis studenta u odgovarajucu \nstudijsku godinu novog modula vrsi se na pocetku naredne skolske godine."
+      ]
+    },
+    "cd833b72baad": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Odgovarajuća nagrada iz informatike omogućava maksimalne prijemne bodove za SI.",
+          "Za ER se ipak polaže matematika ili fizika."
+        ],
+        "contradicted": [
+          "Kandidat je oslobođen prijemnog za oba programa."
+        ]
+      },
+      "note": "Suprotne tvrdnje iz istog odgovora ocenjene su odvojeno; kasnija tačna ograda ne briše početni glavni zaključak.",
+      "evidence": [
+        "Ukoliko kandidat ima nagradu IZ Informatiks\nkonkuriss za upis na studijski program Softversko inzenjerstvo, njemu ce ce samo pri rangiranju za ovaj studijski program priznati maksimalan broj poena sa prijemnog ispita",
+        "Ovaj kandidat, med utim; mora polagati prijemni ISPIT iz Matematike ILI Fizike (ili oba) ukoliko zeli da ce rangira na listi studijskog programa Elektrotehnika racunarstvo"
+      ]
+    },
+    "e9bd038544cc": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Plan rada predmeta objavljuje se najkasnije prve sedmice.",
+          "Plan sadrži obaveze, ocenjivanje i ostale navedene podatke.",
+          "Promena fakultetskog plana izvođenja može nastati tokom godine i objavljuje se na sajtu."
+        ],
+        "unsupported": [
+          "Pravilo o sajtu Fakulteta automatski propisuje isti kanal objave plana pojedinačnog predmeta.",
+          "Promena fakultetskog plana predstavlja izuzetak za propuštenu početnu objavu plana predmeta."
+        ]
+      },
+      "note": "Glavni rok je podržan; dva različita plana i njihove obaveze delom su poistovećeni.",
+      "evidence": [
+        "Predmetni nastavnik je u obavezi da plan rada na predmetu ucini javno dostupnim studentima najkasnije u prvoj sedmici semestra u kome ce izvodi nastava iz predmeta:",
+        "Promena plana izvod enja nastave objavljuje se na internet stranici \nFakulteta."
+      ]
+    },
+    "5844b5694863": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Za opisani prelazak relevantni su odgovarajuća oblast i mogućnost upisa najmanje 37 ESPB predmeta naredne godine.",
+          "Podaci pitanja nisu dovoljni da se potvrde svi uslovi."
+        ],
+        "unsupported": [
+          "Student mora već na prethodnom fakultetu biti samofinansirajući da bi prešao."
+        ]
+      },
+      "note": "Kontekst propisuje status pri upisu na ETF, ne prethodni finansijski status kao uslov.",
+      "evidence": [
+        "Na visu godinu studija moze se upisati student drugog fakulteta iz \noblasti Elektrotehnicko i racunarsko inzenjerstvo",
+        "Ovaj student moze se upisati na ovaj fakultet samo \nu statusu samofinansirajuceg studenta"
+      ]
+    },
+    "676318d9f7c6": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Budžetski status zahteva 48 ESPB i rangiranje unutar odobrenog broja mesta."
+        ],
+        "contradicted": [
+          "Samih 48 ESPB garantuje budžet naredne godine."
+        ]
+      },
+      "note": "Potrebni uslov proglašen je dovoljnim.",
+      "evidence": [
+        "koji je u tekucoj skolskoj godini ostvario 48 ESPB bodova iz \nupisanog \n studijskog programa a koji je rangiran u okviru odobrenog broja mesta \n iz budzeta."
+      ]
+    },
+    "1da46dbb34c6": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Fakultativna desetka ne ulazi u prosek.",
+          "Fakultativni predmeti navode se u dodatku diplome."
+        ]
+      },
+      "note": "Neposredno podržano.",
+      "evidence": [
+        "Fakultativni predmeti se navode u dodatku diplome kao dodatna informacija, \nali se ne uracunavaju u prosecnu ocenu."
+      ]
+    },
+    "e72fe01c942e": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Prelazak sa 60 ili manje preostalih ESPB zabranjen je.",
+          "Uz zahtev za prelazak prilaže se nastavni plan.",
+          "Određene kategorije diplomiranih mogu se upisivati bez prijemnog."
+        ],
+        "unsupported": [
+          "Opisani prelazak sa 54 preostala ESPB ipak je dopušten ako se polaže prijemni.",
+          "Član 36 stav 2 predstavlja navedeni osnov upisa bez prijemnog.",
+          "Uslovi za pojedine druge kategorije mogu se preneti na opisani slučaj."
+        ]
+      },
+      "note": "Pravilo zabrane prelaska ne dokazuje ponuđenu alternativnu dozvolu.",
+      "evidence": [
+        "Student drugog fakulteta ne moze ce upisati na Fakultet ukoliko mu je do OkONCanja studijskog programa na koji je upisan na drugom fakultetu ostalo 60 ili manje ESPB bodova:",
+        "kao i nastavni plan studijskog programa po kome je studirao:",
+        "lice koje ima steceno visoko obrazovanje na akademskim studijama prvog \nstepena"
+      ]
+    },
+    "30bd1e325bb6": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "80 sati dovoljno je za broj sati studenta upisanog pre 2020/2021.",
+          "Opšte pravilo navodi najmanje 90 sati.",
+          "80 sati zato nije dovoljno za obojicu."
+        ]
+      },
+      "note": "Kasnija nesigurnost o primeni opšteg pravila nije ocenjena kao dodatna regulatorna tvrdnja. Nije kažnjena nepotpunost zaključivanja.",
+      "evidence": [
+        "Za studente upisane pre skolske 2020/2021. godine trajanje strucne \nprakse iz clana 19 ovog Pravilnika iznosi najmanje 80 sati.",
+        "Po obavljenoj strucnoj praksi od najmanje 90 casova"
+      ],
+      "human_review_required": true
+    },
+    "6769041114b1": {
+      "label": "no_claims",
+      "claims": {},
+      "note": "Čisto uzdržavanje.",
+      "evidence": []
+    },
+    "518d2bfa97ea": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Smrt roditelja prethodne godine omogućava zahtev za oslobađanje do 100% troškova tekuće godine.",
+          "Molba sa dokazima podnosi se Studentskom odseku pri upisu; rešenje donosi prodekan.",
+          "Ograničenje prve godine u navedenom tekstu odnosi se na socijalni osnov.",
+          "Ako je potpuno oslobađanje odobreno, obuhvata tekuću školarinu."
+        ]
+      },
+      "note": "Izraz 'fiksna formula' protumačen je kao procenat oslobađanja, ne kao tvrdnja da nominalna školarina ne zavisi od upisanih bodova.",
+      "evidence": [
+        "Student koji placa skolarinu moze biti oslobod en placanja u visini od \n100% troskova tekuce godine koju upisuje ukoliko je tokom prethodne godine \nimao smrtni slucaj u uzoj porodici. Odgovarajuce resenje donosi prodekan za \nnastavu, a molba sa dokazima podnosi se Studentskom odseku prilikom upisa \ngodine."
+      ],
+      "human_review_required": true
+    },
+    "8bd68f9edb8b": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Sa 29 upisnih bodova nije dostignut minimum 30 za samofinansirajući upis."
+        ],
+        "unsupported": [
+          "Upisni bodovi iz pitanja predstavljaju ESPB."
+        ]
+      },
+      "note": "Zaključak je podržan, ali vrsta bodova je pogrešno imenovana.",
+      "evidence": [
+        "Kandidat ce moze upisati na studijski program y statusu studenta koji ce sam finansira ukoliko ce nalazi na rang listI DO broja utvrd enog 3a upis samofinansirajucih studenata i ako ostvari najmanje 30 bodova."
+      ],
+      "human_review_required": true
+    },
+    "3eda584b7580": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Pasoš je prihvatljiva identifikaciona isprava na prijemnom.",
+          "Identitet se proverava pre početka.",
+          "Posle identifikacije pasoš ili lična karta uklanjaju se sa radnog mesta."
+        ]
+      },
+      "note": "Navedena procedura ima podršku.",
+      "evidence": [
+        "Kandidat na prijemni ispit donosi dokument za identifikaciju vazecu licnu kartu iLI pasos",
+        "Po zavrsetku identifikacije; licna karta ili pasos ce obavezno sklanja van radnog mesta"
+      ]
+    },
+    "195e8fd65d26": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Prigovor ide dekanu u roku od 36 sati od ocene."
+        ],
+        "contradicted": [
+          "Posle 30 sati rok je već istekao."
+        ],
+        "unsupported": [
+          "Nakon tog trenutka ne postoje dalje mogućnosti u vezi sa obradom ocena."
+        ]
+      },
+      "note": "Glavni odgovor o pravovremenosti protivreči navedenom roku; 36−30=6.",
+      "evidence": [
+        "Prigovor se podnosi dekanu u roku od 36 sati \nod dobijanja ocene."
+      ]
+    },
+    "eabd819cbb2d": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Predispitni poeni prolećnog predmeta priznaju se u februaru naredne godine."
+        ],
+        "contradicted": [
+          "To priznavanje ograničeno je na jedan kolokvijum po predmetu."
+        ]
+      },
+      "note": "Ograničenje jednog kolokvijuma odnosi se na nadoknadu, ne na važenje ostvarenih poena.",
+      "evidence": [
+        "Izuzetno za ispite iz prolecnog semestara, ostvareni poeni \npredispitnih obaveza iz prethodnog stava priznaju se i u februarskom roku u \nnarednoj skolskoj godini.",
+        "Studentima se mora omoguciti da polazu nadoknadu kolokvijuma u toku \ntrajanja prvog ispitnog roka nakon semestra u kome je kolokvijum organizovan. \nOvo pravo se odnosi samo na jedan kolokvijum po predmetu"
+      ]
+    },
+    "76f31d46dcc8": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Nije dovoljno proizvoljno predati molbu do kraja godine.",
+          "Važe rok 30 dana i krajnji datum 1. jun.",
+          "Tokom mirovanja nema ispita ni predispitnih obaveza."
+        ],
+        "unsupported": [
+          "Ovaj tekst izričito traži dokaz trajanja bolesti.",
+          "Svaki opisani neblagovremeni zahtev neće biti razmatran."
+        ],
+        "contradicted": [
+          "Tri meseca odsustva jedina su moguća osnova trajanja.",
+          "Podnošenje do 1. juna predstavlja izuzetak od roka 30 dana."
+        ]
+      },
+      "note": "Izostavljena je alternativa dva sukcesivna roka, a dva kumulativna vremenska ograničenja pogrešno su predstavljena kao izuzetak.",
+      "evidence": [
+        "Zahtev za mirovanje prava i obaveza student podnosi u roku od 30 dana \nod dana nastanka sprecenosti, a najkasnije do 1. juna za tekucu skolsku godinu.",
+        "Mirovanje ce moze odobriti samo u slucajevima kada je student propustio dva sukcesivna ispitna roka; ili bio sprecen da pohad a nastavu najmanje tri meseca"
+      ]
+    },
+    "a6d3ff62dc3a": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Jedan preostali ispit daje pravo na dodatno ispitivanje u poslednjem roku.",
+          "Za izlazak na ispit moraju biti ispunjene propisane predispitne obaveze.",
+          "Više od jednog preostalog ispita ne ispunjava uslov ovog posebnog prava."
+        ]
+      },
+      "note": "Posebno pravo pravilno je povezano sa opštim uslovom izlaska na ispit.",
+      "evidence": [
+        "student kome je preostao samo jedan nepolozen ispit do \nokoncanja studijskog programa osnovnih akademskih studija, ima pravo na \ndodatno ispitivanje u poslednjem ispitnom roku pre pocetka naredne skolske \ngodine.",
+        "Ha ispit moze izaci student koji je zadovoljio sve propisane predispitne obaveze utvrd ene planom izvod enja nastave"
+      ]
+    },
+    "b414fd7a9a78": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "N u tekstu označava broj ESPB upisanih predmeta i drugih obaveza."
+        ],
+        "unsupported": [
+          "Oštećeni zapis S=N×60 dovoljan je za predloženi dinarski obračun.",
+          "Ponovljene predmete treba potpuno izostaviti zato što se računa pre refundacije.",
+          "Konačna školarina je 180.000 dinara."
+        ],
+        "contradicted": [
+          "60.000 dinara predstavlja cenu jednog od 30 novih ESPB.",
+          "60.000×30 iznosi 180.000."
+        ]
+      },
+      "note": "Obračun nema podršku i sadrži aritmetičke protivrečnosti. U ovom fragmentiranom kontekstu ne rekonstruišem nedostajuću formulu.",
+      "evidence": [
+        "S = N x 60",
+        "N broj ESPB bodova za predmete i ostale obaveze (strucna praksa; zavrsni rad) koje student upisuje"
+      ],
+      "human_review_required": true
+    },
+    "41e3e0483b98": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Tokom odobrenog mirovanja nisu dopušteni ispiti i nastavne obaveze.",
+          "Za bolest ili stručno odsustvo od najmanje tri meseca postoji posebno pravilo o uslovima polaganja."
+        ],
+        "contradicted": [
+          "Tokom već odobrenog mirovanja može se polagati ispit ili završavati laboratorija uz nastavnika i prodekana."
+        ]
+      },
+      "note": "Odgovor sadrži i dozvolu i zabranu; glavna dozvola protivreči izričitom pravilu.",
+      "evidence": [
+        "Tokom odobrenog mirovanja, student ne moze da polaze ispite ili \nostvaruje predispitne obaveze i druge obaveze iz nastavnog procesa."
+      ]
+    },
+    "ddf0b9e2ef13": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Pri opisanom posebnom upisu nema neposrednog budžetskog statusa.",
+          "Pravilo o 60 ili manje preostalih bodova predstavlja zabranu prelaska."
+        ],
+        "contradicted": [
+          "Tačno 60 stečenih ESPB zabranjuje prelazak.",
+          "Za prelazak je potrebno najmanje 61 stečen ESPB.",
+          "Budžetski status ostvaruje se isključivo na konkursu za prvu godinu."
+        ]
+      },
+      "note": "Glavni odgovor o neposrednom budžetu podržan je, ali obrazloženje menja preostale u stečene bodove i ignoriše budžetsko rangiranje tokom studija.",
+      "evidence": [
+        "ostvario najmanje 60 ESPB bodova",
+        "Lice iz stava 1 ovog clana moze se upisati samo kao samofinansirajuci \nstudent",
+        "koji je u tekucoj skolskoj godini ostvario 48 ESPB bodova iz upisanog studijskog programa a koji je rangiran u okviru odobrenog broja mesta IZ budzeta:"
+      ]
+    },
+    "5788e38dffc7": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Nezadovoljan prolaznom ocenom može tražiti ponovno polaganje.",
+          "Odobrenjem prethodna ocena postaje nevažeća.",
+          "Ponovno polaganje plaća se posebno."
+        ],
+        "contradicted": [
+          "Sedmica ostaje ako se student predomisli nakon odobrenja."
+        ]
+      },
+      "note": "Završni odgovor o zadržavanju ocene protivreči pravilu i prethodnoj tvrdnji istog odgovora.",
+      "evidence": [
+        "U \nslucaju da ponovno polaganje ispita bude odobreno, prethodno dobijena ocena \nproglasava se nevazecom.",
+        "Student koji ponovo polaze ispit placa posebnu naknadu troskova."
+      ]
+    },
+    "5f789797935b": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Uvid mora biti najavljen bar 24 sata ranije.",
+          "Jedan fragment navodi omogućavanje uvida najkasnije 48 sati nakon rezultata."
+        ],
+        "contradicted": [
+          "Uvid u 13 časova, prvi put najavljen u 12 istog dana, u skladu je sa pravilom."
+        ]
+      },
+      "note": "Jedan sat najave nije najmanje 24 sata, nezavisno od gornje granice za organizovanje uvida.",
+      "evidence": [
+        "Termin uvida u pregledane zadatke nakon pismenog ispita mora biti \nobjavljen najkasnije u trenutku isticanja rezultata pismenog ispita, a najmanje \n24 sata pre odrzavanja uvida u zadatke."
+      ]
+    },
+    "d6a9b98f9aae": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Osnovni rok je godina od prijave teme.",
+          "Posle 13 meseci bez produženja ne može se samo nastaviti sa istom temom.",
+          "Produženje izuzetno odobrava šef odseka, najviše šest meseci."
+        ],
+        "unsupported": [
+          "Podnošenje ili odobravanje zahteva nakon isteka roka apsolutno je nemoguće."
+        ]
+      },
+      "note": "Kontekst nalaže novu temu po isteku, ali ne navodi izričit rok za zahtev za izuzetno produženje.",
+      "evidence": [
+        "Student je u obavezi da odbrani zavrsni rad u roku od jedne godine od \ndana prijave teme. U suprotnom, student mora da uzme novu temu.",
+        "Studentu se \nmoze na njegov zahtev, izuzetno u opravdanim slucajevima, po odobrenju sefa \n 11 \nodseka, odobriti produzenje roka za odbranu zavrsnog rada, ali najvise za \nsest meseci."
+      ],
+      "human_review_required": true
+    },
+    "905e9d1d7aa9": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Mirovanje ne ulazi u S za budžetsko rangiranje.",
+          "Mirovanje ne ulazi u osnovni osmogodišnji rok.",
+          "Sedam proteklih godina sa jednom godinom mirovanja daje šest relevantnih godina.",
+          "Postoji produženje do trostrukog trajanja programa."
+        ],
+        "unsupported": [
+          "Navedena odredba izričito propisuje isključenje mirovanja i iz produženog roka."
+        ]
+      },
+      "note": "Glavni odgovor za oba osnovna računa podržan je. Proširenje izuzetka na produženi rok traži ljudsku proveru.",
+      "evidence": [
+        "S broj godina studiranja studenta od trenutka upisa ( ne racunajuci \ngodine koje je student proveo u statusu mirovanja).",
+        "U rok iz st. 1 i 2 ovog clana ne racuna se vreme mirovanja prava i obaveza, \nodobrenog studentu u skladu sa Statutom Fakulteta."
+      ],
+      "human_review_required": true
+    },
+    "acf21adc05c5": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Srednjoškolski bodovi su 8,4+9+9,6+10=37.",
+          "Ukupno sa 40 prijemnih bodova ima 77."
+        ]
+      },
+      "note": "Nejasna uvodna formulacija o procenama nije promenila primenjeno pravilo ili račun.",
+      "evidence": [
+        "Pod opstim uspehom u srednjoj skoli podrazumeva ce zbir prosecnih ocena u svakom razredu srednje skole pomnozen ca dva:"
+      ],
+      "human_review_required": true
+    },
+    "1154a6dda195": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Zahtev za ponovno polaganje podnosi se Studentskom odseku do kraja školske godine polaganja.",
+          "Odluku donosi prodekan.",
+          "Odobrenjem stara ocena postaje nevažeća.",
+          "Plaća se posebna naknada."
+        ]
+      },
+      "note": "Uzdržavanje o povlačenju zahteva ne tvrdi da se ocena automatski vraća.",
+      "evidence": [
+        "Student zahtev podnosi Studentskom odseku do kraja skolske godine u \nkojoj je ispit polagao.",
+        "Prodekan za nastavu donosi odluku o ponovnom polaganju ispita. U \nslucaju da ponovno polaganje ispita bude odobreno, prethodno dobijena ocena \nproglasava se nevazecom.",
+        "Student koji ponovo polaze ispit placa posebnu naknadu troskova."
+      ]
+    },
+    "9ebf78015f05": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Može se tražiti produženje do trostrukog trajanja programa."
+        ],
+        "contradicted": [
+          "Osam proteklih godina, od kojih je jedna mirovanje, već iscrpljuje osmogodišnji rok."
+        ]
+      },
+      "note": "Vreme mirovanja izričito se ne računa; relevantno je sedam godina.",
+      "evidence": [
+        "U rok iz st. 1 i 2 ovog clana ne racuna se vreme mirovanja prava i obaveza, \nodobrenog studentu u skladu sa Statutom Fakulteta."
+      ]
+    },
+    "491141b3c2ac": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "48 ESPB zajedno sa rangom unutar kvote daje budžetski status.",
+          "Budžetski student poslednje godine zadržava pravo do godinu dana posle redovnog trajanja."
+        ],
+        "unsupported": [
+          "Korisniku koji je naveo samo 48 ESPB budžet je već garantovan."
+        ]
+      },
+      "note": "Početno 'Da' tretirano je kao odgovor na pitanje o garanciji. Završna uslovna formulacija jeste podržana; zbog tog kolebanja potrebna je ljudska provera.",
+      "evidence": [
+        "koji je u tekucoj skolskoj godini ostvario 48 ESPB bodova iz upisanog studijskog programa a koji je rangiran u okviru odobrenog broja mesta IZ budzeta:"
+      ],
+      "human_review_required": true
+    },
+    "efda7482bfe8": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Prelaznik se prema navedenom pravilu upisuje kao samofinansirajući.",
+          "Zabrana se odnosi na 60 ili manje preostalih ESPB."
+        ],
+        "unsupported": [
+          "Ovaj kontekst utvrđuje kasniji postupak sticanja budžeta za konkretnog prelaznika."
+        ],
+        "contradicted": [
+          "Sa 60 stečenih ESPB nema prava na upis ni u kom statusu.",
+          "Pravilo prelaska iz navedene oblasti odnosi se na proizvoljnu drugu oblast."
+        ]
+      },
+      "note": "Glavni zaključak izričito zabranjuje svaki upis na osnovu pogrešne vrste bodova.",
+      "evidence": [
+        "Student drugog fakulteta ne moze ce upisati na Fakultet ukoliko mu je do OkONCanja studijskog programa na koji je upisan na drugom fakultetu ostalo 60 ili manje ESPB bodova:",
+        "Na visu godinu studija moze se upisati student drugog fakulteta iz \noblasti Elektrotehnicko i racunarsko inzenjerstvo"
+      ]
+    },
+    "a84ac32da7cc": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Ukupno je 100 poena.",
+          "Predispitne obaveze nose najmanje 30 i najviše 70.",
+          "Završni zato ne može sam nositi svih 100; najveći preostali deo je 70."
+        ],
+        "unsupported": [
+          "Kontekst dokazuje zasebnu pravnu kvalifikaciju protivzakonitosti.",
+          "Postoji mogućnost odluke za pojedinačni predmet koja menja opšti pravilnik."
+        ]
+      },
+      "note": "Glavni zaključak i račun podržani su; spekulacija o posebnom izuzetku nema dokaz.",
+      "evidence": [
+        "U strukturi ukupnog broja poena najmanje 30, a najvise 70 poena mora biti predvid eno za aktivnosti i provere znanja u tokU semestra (predispitne obaveze): Ukupno 100 poena ce stice ispunjavanjem predispitnih obaveza i polaganjem ispita"
+      ],
+      "human_review_required": true
+    },
+    "456ff5942e4b": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Garantovano pravo u prvom roku odnosi se na jedan kolokvijum po predmetu.",
+          "Prijava ide preko studentskih servisa.",
+          "Nastavnici mogu organizovati nadoknade i u drugim rokovima."
+        ],
+        "unsupported": [
+          "Student za drugi kolokvijum obavezno mora čekati naredni rok.",
+          "U prvom roku zabranjeno je organizovati više od jedne nadoknade."
+        ]
+      },
+      "note": "Ograničenje garantovanog prava nije dokaz zabrane dodatne mogućnosti.",
+      "evidence": [
+        "Ovo pravo se odnosi samo na jedan kolokvijum po predmetu, koji se prijavljuje \npreko studentskih servisa.",
+        "Nastavnici mogu da organizuju nadoknade kolokvijuma u svim ispitnim \nrokovima."
+      ]
+    },
+    "a11ae98c5973": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Tema se može promeniti samo jednom, pa druga promena zbog zanimljivije teme nije dopuštena navedenim pravilom."
+        ]
+      },
+      "note": "Neposredno podržano.",
+      "evidence": [
+        "Tema se moze promeniti samo jedanput."
+      ]
+    },
+    "5812b1e600f3": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Nastavnici mogu organizovati nadoknade kolokvijuma.",
+          "O pomoćnim sredstvima na ispitu odlučuje predmetni nastavnik."
+        ],
+        "unsupported": [
+          "Mogućnost nadoknade kolokvijuma predstavlja dokaz dozvole kalkulatora na OET1.",
+          "Dozvola je vezana za to da li je ispit usmeni ili kombinovani."
+        ]
+      },
+      "note": "Početna dozvola kalkulatora nije potkrepljena; kasnije se priznaje da konkretna odluka nedostaje.",
+      "evidence": [
+        "Nastavnici mogu da organizuju nadoknade kolokvijuma u svim ispitnim \nrokovima.",
+        "Predmetni nastavnik odlucuje koja se pomocna sredstva mogu koristiti \nna ispitu (knjiga, tabele, dijagrami, kalkulatori i slicno)"
+      ]
+    },
+    "e0641bcdf7bf": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Kandidat unutar budžetske kvote prve želje ostaje samo na njenoj listi.",
+          "Kandidati ispod budžetske kvote mogu biti na obe liste uz odgovarajuće prijemne."
+        ],
+        "unsupported": [
+          "Ovo pravilo je stav 13 člana 49 Pravilnika o osnovnim studijama."
+        ],
+        "contradicted": [
+          "Opisani kandidat sa SI kao budžetskom prvom željom nalazi se i na ER listi."
+        ]
+      },
+      "note": "Početni odgovor i izmenjene pretpostavke protivreče navedenom pravilu.",
+      "evidence": [
+        "Kandidati koji su na rang listi studijskog programa za kojn su izrazili prvu zelju, rangirani do broja odobrenog za upis kandndata na teret budzeta nalaze ce samo na listi studijskog programa prve zelje:"
+      ]
+    },
+    "fc0abc36580c": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Pre prijave mobilnosti kontaktira se nastavnik najsličnijeg predmeta.",
+          "Nastavnik procenjuje poklapanje sadržaja.",
+          "Posle saglasnosti prodekan potpisuje ugovor o učenju.",
+          "Priznavanje položenih predmeta uslovljeno je dostavljanjem transkripta."
+        ]
+      },
+      "note": "Jezička omaška o tome ko je angažovan na predmetu nije tretirana kao promena regulatornog značenja.",
+      "evidence": [
+        "Student je pre prijavljivanja za mobilnost duzan da kontaktira \nnastavnika angazovanog na predmetu koji je najslicniji sa predmetom koji \nplanira da prati i polaze",
+        "Prodekan za nastavu u ime Fakulteta potpisuje Ugovor o ucenju, kojim se \nstudentu garantuje da ce predmeti koje polozi tokom boravka na mobilnosti \nbiti priznati, ukoliko po povratku sa mobilnosti dostavi odgovarajuci \ntranskript ocena."
+      ]
+    },
+    "365dbb74dc09": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Prema pitanju zbir je 990 i S=2.",
+          "Ako je imenilac S×60, on je 120 i količnik je 8,25."
+        ],
+        "unsupported": [
+          "Bez N nije moguće koristiti već eksplicitno dati zbir svih doprinosa.",
+          "Broj predmeta je tipično 20.",
+          "Maksimum se dobija kao 20×60.",
+          "Zbir 990 implicira prosečnu ocenu veću od 60."
+        ],
+        "contradicted": [
+          "8,25 je iznad maksimalne ocene 10.",
+          "Podaci pitanja nisu potvrdili šta predstavlja zbir 990."
+        ]
+      },
+      "note": "Neopravdana sumnja u eksplicitni zbir i pogrešne matematičke tvrdnje onemogućavaju podršku glavnom obrazloženju. OCR formulu ne rekonstruišem samostalno.",
+      "evidence": [
+        "x (1 +r)x 0; spo = I=1 Sx 60",
+        "N ukupan broj predmeta studijskog programa koje je student polozio (ne racunajuci fakultativne predmete)"
+      ],
+      "human_review_required": true
+    },
+    "b75107ffda99": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Upisuje se ukupno 42 ESPB.",
+          "120.000/60=2.000 i 42×2.000=84.000 kao uslovna aritmetika.",
+          "Tekst pominje refundaciju i za praksu i završni."
+        ],
+        "unsupported": [
+          "Oštećeni broj 60 označava procenat, 1% ili fiksnu cenu po bodu.",
+          "Oštećena formula sme se popraviti uobičajenom praksom fakulteta.",
+          "Refundacija se odnosi isključivo na praksu i završni, nikada na obične predmete.",
+          "Početni rezultat 22.000 ima osnov u kontekstu."
+        ],
+        "contradicted": [
+          "Ponovljeni nepoloženi ER predmeti naplaćuju se punom cenom bez pravila dve trećine.",
+          "84.000 je potkrepljen konačan iznos za opisanu situaciju."
+        ]
+      },
+      "note": "Konačni obračun ignoriše izričitu povlasticu za ponovljene ER predmete. Ne izvodi se alternativni tačan iznos iz oštećene formule.",
+      "evidence": [
+        "Student osnovnih akademskih studija Elektrotehnika racunarstvo koji u skolskOj godiNI ponovo upisuje nepolozene predmete IZ prethodne skolske godine; a sam ce finansira; placa 2/3 dela skolarine za te predmete:",
+        "bice omoguceno samofinansirajucim studentima da ostvare refundaciju od 50% i za onaj deo skolarine koji proistice iz ESPB za strucnu praksu i zavrsni rad."
+      ],
+      "human_review_required": true
+    },
+    "4e2ec63646ae": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Za upis pre 2020/2021 minimum je 80 sati.",
+          "Kolega upisan 2021/2022 ne pripada toj grupi.",
+          "Praksa se po pravilu radi u osmom semestru, izuzetno od druge godine."
+        ],
+        "unsupported": [
+          "Dovoljnost sati zavisi od neobjašnjenog uslova trajanja studija."
+        ],
+        "contradicted": [
+          "80 sati dovoljno je za obojicu.",
+          "U dostavljenom kontekstu nije naveden opšti minimum za noviju generaciju."
+        ]
+      },
+      "note": "Kontekst izričito sadrži opštih 90 sati; kasnija nesigurnost ne poništava početnu netačnu tvrdnju.",
+      "evidence": [
+        "Za studente upisane pre skolske 2020/2021. godine trajanje strucne \nprakse iz clana 19 ovog Pravilnika iznosi najmanje 80 sati.",
+        "Po obavljenoj strucnoj praksi od najmanje 90 casova"
+      ]
+    },
+    "62960a523aad": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Sa 20 preostalih ESPB budžetski student ne mora prijaviti 60.",
+          "Pravilo sadrži izuzetak kada je ostalo manje od 60."
+        ],
+        "unsupported": [
+          "Iz same izuzetne klauzule potpuno izričito sledi obaveza prijave baš svih 20 u toj godini."
+        ],
+        "contradicted": [
+          "Minimalna obaveza računa se funkcijom max(60, ostatak).",
+          "max(60,20)=20."
+        ]
+      },
+      "note": "Glavni negativan odgovor podržan je; formula je pogrešna i aritmetički protivrečna.",
+      "evidence": [
+        "Student koji se finansira iz budzeta opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 60 ESPB bodova u toku skolske \ngodine, osim ako mu do kraja studijskog programa nije ostalo manje od 60 ESPB \nbodova."
+      ],
+      "human_review_required": true
+    },
+    "40f321855bc0": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Praksa se može obaviti u inostranstvu.",
+          "Pre izbora organizacije konsultuje se rukovodilac prakse.",
+          "Uput se izdaje na zahtev i overava u organizaciji.",
+          "Najmanje 90 sati, izveštaj i potpisana i pečatirana potvrda osnova su za 2 ESPB.",
+          "Ocena je opisna: priznaje se."
+        ]
+      },
+      "note": "Postupak i uslovi odgovaraju opštem pravilu za navedenu generaciju.",
+      "evidence": [
+        "Strucna praksa se moze obaviti i u \ninostranstvu.",
+        "Potrebno je da student pre izbora organizacije u kojoj ce raditi praksu \nkonsultuje rukovodioca prakse na odgovarajucem modulu",
+        "Po obavljenoj strucnoj praksi od najmanje 90 casova, a na osnovu \nizvestaja studenta i potvrde odgovornog lica koje potpisom i pecatom \norganizacije potvrd uje da je praksa obavljena, studentu se dodeljuju 2 ESPB \nboda za obavljenu strucnu praksu.",
+        "Strucna praksa se ne ocenjuje numericki, vec \nopisno, ocenom ''priznaje se''."
+      ]
+    },
+    "4bda2151a3ef": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Nepoložen izborni može se naredne godine zameniti drugim.",
+          "Za promenu tokom semestra postoji izuzetak uz prodekana."
+        ],
+        "unsupported": [
+          "Redovan izbor drugog predmeta naredne godine zavisi od tog izuzetka i odobrenja tokom semestra."
+        ]
+      },
+      "note": "Dva različita postupka spojena su u jedno uslovljavanje.",
+      "evidence": [
+        "Student koji ne polozi izborni predmet do pocetka naredne skolske \ngodine, moze ponovo prijaviti isti ili se opredeliti za drugi izborni \npredmet.",
+        "u toku semestra u kome se odrzava nastava, prodekan za \nnastavu moze odobriti zamenu predmeta za drugi predmet iz istog semestra."
+      ]
+    },
+    "a0707447ec47": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Za ER kandidat sa nagradom iz informatike mora polagati matematiku ili fiziku.",
+          "Odgovarajuće nagrade daju maksimalne bodove za odgovarajući program."
+        ],
+        "unsupported": [
+          "Samo međunarodne nagrade mogu predstavljati osnov oslobađanja."
+        ],
+        "contradicted": [
+          "Nagrade iz informatike ne priznaju se za SI.",
+          "Kandidat zbog toga mora polagati matematiku i za SI."
+        ]
+      },
+      "note": "Kontekst izričito povezuje informatiku sa SI i navodi takmičenja Ministarstva i Društva matematičara.",
+      "evidence": [
+        "Za upis na studijski program Softversko inzenjerstvo vrednuju ce nagrade ca takmicenja iz informatike za prijemni ispit iz matematike",
+        "U organizaciji Ministarstva prosvete, nauke i tehnoloskog razvoja i Drustva matematicara Srbije informatika kategorija A",
+        "Ukoliko kandidat ima nagradu IZ Informatiks\nkonkuriss za upis na studijski program Softversko inzenjerstvo, njemu ce ce samo pri rangiranju za ovaj studijski program priznati maksimalan broj poena sa prijemnog ispita"
+      ]
+    },
+    "0ea7b4866181": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Prigovor na neregularan ispit podnosi se dekanu.",
+          "Rok je 36 sati od ocene.",
+          "Posle 30 sati preostaje šest."
+        ]
+      },
+      "note": "Pravilo i račun podržani su.",
+      "evidence": [
+        "Student ima pravo prigovora na ocenu dobijenu na ispitu, ako smatra da \nispit nije obavljen u skladu sa Zakonom, Statutom Univerziteta, Statutom \nFakulteta i ovim Pravilnikom. Prigovor se podnosi dekanu u roku od 36 sati \nod dobijanja ocene."
+      ]
+    },
+    "a1aa807fde07": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "81 poen daje 9, izuzetno dobar, A.",
+          "Navedeni intervali za ocene 8, 9 i 10 odgovaraju skali.",
+          "Ocena uključuje ukupne predispitne i ispitne poene.",
+          "Unos ocena u evidenciju ima rok deset dana."
+        ]
+      },
+      "note": "Sve bitne tvrdnje imaju podršku.",
+      "evidence": [
+        "91-100 poena 10 odlican A+ \n81-90 poena 9 izuzetno dobar A \n71-80 poena 8 vrlo dobar B",
+        "Nastavnik je duzan da ocene unese u elektronsku evidenciju i zakljuci \nodgovarajuci spisak najkasnije u roku od deset dana od dana odrzavanja ispita."
+      ]
+    },
+    "13ad40c00d05": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Postoji obaveza odgovora na pitanja poslata sa zvanične fakultetske adrese u opisanim mejl konsultacijama."
+        ],
+        "unsupported": [
+          "Rok odgovora na mejl iznosi deset dana."
+        ]
+      },
+      "note": "Rok deset dana u drugim fragmentima odnosi se na evidenciju ocena, ne na konsultacije; traženi vremenski zaključak nije podržan.",
+      "evidence": [
+        "obavezni da odgovore na sva \npostavljena pitanja koje student postavi sa zvanicne fakultetske adrese \nelektronske poste.",
+        "Nastavnik je duzan da ocene unese u elektronsku evidenciju i zakljuci \nodgovarajuci spisak najkasnije u roku od deset dana od dana odrzavanja ispita."
+      ]
+    },
+    "95130d8c4e4f": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Opisani poseban prelazak ne daje odmah budžet.",
+          "60 ili manje preostalih ESPB predstavlja zabranu.",
+          "Pravo naredne godine na prethodnom fakultetu relevantan je uslov."
+        ],
+        "contradicted": [
+          "Uslov člana 45 je posedovanje najmanje 37 ESPB, umesto mogućnosti upisa predmeta naredne godine u tom obimu."
+        ]
+      },
+      "note": "Zaključak o budžetu podržan je; uslov za prelazak skraćen je tako da menja značenje.",
+      "evidence": [
+        "u mogucnosti da \nupise predmete naredne godine studija na ovom fakultetu u vrednosti od \nnajmanje 37 ESPB bodova.",
+        "Ovaj student moze se upisati na ovaj fakultet samo \nu statusu samofinansirajuceg studenta"
+      ]
+    },
+    "25381ff36a3c": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Dekan može odobriti povećani obim, najviše 90.",
+          "Prosek preko 8,5 ili položenih 60 prethodne godine relevantni su za oslobađanje.",
+          "Za fakultativne predmete postoji posebno pravilo najviše dva predmeta."
+        ],
+        "unsupported": [
+          "Nadoknada je proizvod dodatnih ESPB, studijskog programa i godišnje školarine.",
+          "Ispunjen uslov oslobađanja ipak ostavlja naplatu na dekanovu diskreciju."
+        ],
+        "contradicted": [
+          "Student iz pitanja može biti obavezan da plati dodatnih 12 uprkos položenih 60 prethodne godine.",
+          "Uslovi oslobađanja i pravilo fakultativnih predmeta predstavljaju isti postupak."
+        ]
+      },
+      "note": "Kontekst izričito oslobađa troškova ako je ispunjen bilo koji od dva uslova.",
+      "evidence": [
+        "Ukoliko student ima prosek preko 8,5 ili je polozio predmete u obimu \n60 ESPB u toku prethodne skolske godine, ne snosi troskove vise prijavljenih \nESPB bodova."
+      ]
+    },
+    "74eaac36f3e7": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Posle 13 meseci bez produženja ne može se samo nastaviti ista tema.",
+          "Osnovni rok je godina; izuzetno produženje do šest meseci odobrava šef.",
+          "Iste teme se ne odobravaju tri godine od poslednje odbrane."
+        ],
+        "contradicted": [
+          "Ako rok ne istekne, student mora uzeti novu temu."
+        ]
+      },
+      "note": "Sačuvana je eksplicitna negacija 'ne istekne'; nije tiho ispravljena kao tipografska greška.",
+      "evidence": [
+        "Student je u obavezi da odbrani zavrsni rad u roku od jedne godine od \ndana prijave teme. U suprotnom, student mora da uzme novu temu."
+      ]
+    },
+    "f5cc56564a59": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "50 poena nije dovoljno za šesticu.",
+          "Najniža vrednost intervala za ocenu 6 je 51, sa slovnom oznakom D."
+        ]
+      },
+      "note": "Nespretna prva rečenica ne menja jasan naredni zaključak.",
+      "evidence": [
+        "51-60 poena 6 dovoljan D \ndo 50 poena/ 5 nije polozio F"
+      ]
+    },
+    "b254c1bc3195": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Praksa u inostranstvu može se priznati.",
+          "Potrebni su provera aktivnosti, najmanje 90 sati, izveštaj i potpisana/pečatirana potvrda.",
+          "Dodeljuju se 2 ESPB i opisna ocena.",
+          "Za upis pre 2020/2021 postoji izuzetak obavljanja u prvoj godini uz dekana."
+        ],
+        "contradicted": [
+          "Student upisan 2021. pripada kategoriji upisanoj pre 2020/2021."
+        ]
+      },
+      "note": "Glavni odgovor podržan je; izuzetak je pogrešno primenjen na eksplicitnu godinu upisa.",
+      "evidence": [
+        "Strucna praksa ce moze obaviti i u inostranstvu",
+        "Po obavljenoj strucnoj praksi od najmanje 90 casova",
+        "Za studente upisane pre skolske 2020/2021. godine trajanje strucne prakse IZ clana 19 ovOG Pravilnika IZNOSI najmanje 80 sati: Ovim studentima ce izuzetno, uz saglasnost dekana, moze dozvoliti da strucnu praksu obave u prvoj studijskoj GODINI."
+      ]
+    },
+    "a911f67d15d3": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Kandidat na budžetu svoje prve želje ostaje samo na listi tog programa.",
+          "Opisani kandidat zato nije i na ER listi."
+        ]
+      },
+      "note": "Pravilo je neposredno primenjeno.",
+      "evidence": [
+        "Kandidati koji su na rang listi studijskog programa za kojn su izrazili prvu zelju, rangirani do broja odobrenog za upis kandndata na teret budzeta nalaze ce samo na listi studijskog programa prve zelje:"
+      ]
+    },
+    "327c70bd1292": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Za SI se vrednuje matematika.",
+          "Samo fizika bez odgovarajuće nagrade nije dovoljna za navedenu konkurenciju za SI.",
+          "Potrebno je polaganje matematike."
+        ]
+      },
+      "note": "Odgovor jasno ograničava negativan zaključak na konkurisanje samo rezultatom fizike.",
+      "evidence": [
+        "Za studijski program Softversko inzenjerstvo vrednuje ce rezultat ostvaren na prijemnom ispitu iz matematike",
+        "Kandidati koji konkurisu 'a upis na studijski program Softversko inzenjerstvo obavezno prijavljuju matematiku na prijavnom listu"
+      ]
+    },
+    "3220978a5017": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Fakultativna desetka ne povećava prosek.",
+          "Fakultativni predmeti isključeni su iz skupa predmeta za navedenu ponderisanu ocenu."
+        ],
+        "unsupported": [
+          "Fakultativni predmeti isključuju se iz odgovarajućih ESPB, ali ne i iz same ponderisane ocene, kako sugeriše nejasna međurečenica."
+        ]
+      },
+      "note": "Glavni zaključak je podržan; razlika koju odgovor pravi između bodova i same ocene semantički je nejasna.",
+      "evidence": [
+        "Fakultativni predmeti se navode u dodatku diplome kao dodatna informacija, \nali se ne uracunavaju u prosecnu ocenu.",
+        "N ukupan broj predmeta studijskog programa koje je student polozio (ne racunajuci fakultativne predmete)"
+      ],
+      "human_review_required": true
+    },
+    "4592f875670c": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Nastavnik mora odgovoriti na pitanja sa zvanične fakultetske adrese u opisanim konsultacijama.",
+          "Dostavljeni kontekst ne određuje rok odgovora."
+        ]
+      },
+      "note": "Rok nije izmišljen niti preuzet iz odredbi o ocenama.",
+      "evidence": [
+        "obavezni da odgovore na sva \npostavljena pitanja koje student postavi sa zvanicne fakultetske adrese \nelektronske poste."
+      ]
+    },
+    "97ed9ffd7fd2": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Obnovac može prijaviti nove neuslovljene predmete.",
+          "Ponovo prijavljuje neispunjene obaveze.",
+          "Za prijavu viših predmeta prijavljuju se svi prethodni nepoloženi."
+        ]
+      },
+      "note": "Nema neosnovanog apsolutnog limita 60 iz starije formulacije.",
+      "evidence": [
+        "Student moze da prijavi i nove predmete iz naredne studijske godine; koji nisu uslovljeni studijskim programom; u skladu ca pravilima prijave predmeta iz clana 48. Ovog Pravilnika:",
+        "Uslov za prijavu bilo KOG predmeta odred ene godine studijskog programa jeste da student prijavi I sve nepolozene predmete IZ SVIH prethodnih godina studijskog programa"
+      ]
+    },
+    "0d175958acfb": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Budžetski student poslednje godine zadržava pravo najduže godinu dana posle redovnog trajanja."
+        ],
+        "unsupported": [
+          "Nekoliko preostalih ispita dokazuje da je dodatna godina već istekla.",
+          "Broj ispita dokazuje da ih nije moguće položiti za godinu."
+        ],
+        "contradicted": [
+          "Student zato odmah prelazi na samofinansiranje.",
+          "Zadržavanje budžeta zahteva ostvarivanje novih 48 ESPB ili ponovno rangiranje u toj dodatnoj godini."
+        ]
+      },
+      "note": "Izmišljene činjenice o proteklom vremenu i uslovi suprotni izuzetku menjaju glavni zaključak.",
+      "evidence": [
+        "Student koji u poslednjoj godini studija ima status studenta koji se \nfinansira iz budzeta, zadrzava pravo da se finansira iz budzeta najduze godinu \ndana po isteku redovnog trajanja studija.",
+        "Tacke 2, 3 i 4 iz stava 1 ovog clana ne primenjuju se na studente koji su u \nposlednjoj skolskoj godini bili u statusu studenta koji se finansira iz budzeta"
+      ]
+    },
+    "50936081499b": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Kontekst ne sadrži lične ocene korisnika.",
+          "Postoji faktor 0,1 za odgovarajuće prve rokove u godini prvog upisa.",
+          "Formula rangiranja koristi ESPB, ocene i stimulativne faktore."
+        ],
+        "unsupported": [
+          "Korisnik je upisivao četiri školske godine.",
+          "Korisnik je položio Programiranje 1.",
+          "Ocena ili ESPB predmeta računaju se formulom e=x×(1+r)×x×o.",
+          "Ukupni ESPB izvode se iz navedenih rekonstrukcija SE i BB.",
+          "Ponderisana ocena preko 60 predstavlja uslov za taj račun."
+        ],
+        "contradicted": [
+          "Ako predmet nije položen u prvom ili drugom roku, nema ESPB i ocena je nužno 5.",
+          "Bodovi za rangiranje isto su što i ukupno stečeni ESPB."
+        ]
+      },
+      "note": "Odgovor nije čisto uzdržavanje: sadrži brojne nepodržane regulatorne i matematičke tvrdnje.",
+      "evidence": [
+        "ri=0 ukoliko je ispit polozio u ostalim rokovima.",
+        "Rangiranje ce vrsi na osnovu ukupnog broja bodova BB; koji ce racuna pomocu formule BB=spotbs:"
+      ]
+    },
+    "9842f7d33aee": {
+      "label": "unsupported",
+      "claims": {
+        "contradicted": [
+          "Prvi rok naredne školske godine daje 0,1 za predmet prvi put upisan prošle godine."
+        ]
+      },
+      "note": "Nije ispunjen uslov iste školske godine kao prvi upis.",
+      "evidence": [
+        "Stimulativne faktore dobijaju samo studenti koji su ispite polozili u \nskolskoj godini kada su prvi put upisali predmet"
+      ]
+    },
+    "953b5167cc60": {
+      "label": "unsupported",
+      "claims": {
+        "unsupported": [
+          "Godišnja školarina SI za 2026/2027 iznosi 1.380 evra.",
+          "Broj 23 i množenje sa 60 predstavljaju osnov obračuna godišnje školarine."
+        ],
+        "supported": [
+          "23×60=1.380 kao apstraktna aritmetika."
+        ]
+      },
+      "note": "Ta aritmetika nema dokaznu vezu sa traženom školarinom; konkretna cena i valuta nisu navedene.",
+      "evidence": [
+        "Š godisnja \nskolarina za odgovarajuci studijski program, koju svojom odlukom odred uje \nSavet fakulteta, na predlog Veca Fakulteta."
+      ]
+    },
+    "fafa084cba77": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "81 poen daje ocenu 9, opis izuzetno dobar i slovnu ocenu A."
+        ]
+      },
+      "note": "Neposredno podržano skalom.",
+      "evidence": [
+        "81-90 poena 9 izuzetno dobar A"
+      ]
+    },
+    "f24f90da8412": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Tokom mirovanja nema polaganja ispita ni ostvarivanja laboratorijskih i drugih nastavnih obaveza.",
+          "Rok zahteva je 30 dana, najkasnije 1. jun.",
+          "Uslov je dva sukcesivna roka ili najmanje tri meseca sprečenosti.",
+          "Mirovanje se ne računa u osnovni osmogodišnji rok."
+        ]
+      },
+      "note": "Sadržinske tvrdnje su podržane; neprecizna numeracija stava ne menja pravilo.",
+      "evidence": [
+        "Tokom odobrenog mirovanja, student ne moze da polaze ispite ili \nostvaruje predispitne obaveze i druge obaveze iz nastavnog procesa.",
+        "Zahtev za mirovanje prava i obaveza student podnosi u roku od 30 dana \nod dana nastanka sprecenosti, a najkasnije do 1. juna za tekucu skolsku godinu.",
+        "Mirovanje se moze odobriti samo u slucajevima kada je student \npropustio dva sukcesivna ispitna roka, ili bio sprecen da pohad a nastavu \nnajmanje tri meseca.",
+        "U rOk iz CT 1 i 2 ovog clana ne racuna ce vreme mirovanja prava i obaveza;"
+      ]
+    },
+    "1d67e95bf476": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Fakultet mora omogućiti nadoknadu jednog kolokvijuma po predmetu u prvom roku nakon semestra.",
+          "Navedeno pravo ne obavezuje ga da omogući oba."
+        ]
+      },
+      "note": "Ne pretvara ograničeno pravo u zabranu dodatne nadoknade.",
+      "evidence": [
+        "Studentima se mora omoguciti da polazu nadoknadu kolokvijuma u toku \ntrajanja prvog ispitnog roka nakon semestra u kome je kolokvijum organizovan. \nOvo pravo se odnosi samo na jedan kolokvijum po predmetu"
+      ]
+    },
+    "66b84d97e843": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Sa 54 preostala ESPB opisani prelazak nije dopušten."
+        ],
+        "unsupported": [
+          "Tekst potvrđuje da prijemni ispit automatski predstavlja dostupno rešenje za isti prelazak."
+        ],
+        "contradicted": [
+          "Granica dopuštenosti je 60 ili više preostalih ESPB.",
+          "Bez prijemnog mogu se upisivati isključivo već diplomirana lica."
+        ]
+      },
+      "note": "Glavni negativan zaključak podržan je, ali granica mora biti iznad 60, a kontekst navodi i druge kategorije upisa bez prijemnog.",
+      "evidence": [
+        "Student drugog fakulteta ne moze se upisati na Fakultet ukoliko mu je \ndo okoncanja studijskog programa na koji je upisan na drugom fakultetu ostalo \n60 ili manje ESPB bodova.",
+        "student druge visokoskolske ustanove, upisan na studijski program \nosnovnih akademskih studija iz oblasti Elektrotehnicko i racunarsko \ninzenjerstvo"
+      ],
+      "human_review_required": true
+    },
+    "8d6983576524": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Prolećni predispitni poeni priznaju se u februaru naredne školske godine.",
+          "Opšte važenje odnosi se na školsku godinu u kojoj su ostvareni.",
+          "Navedeni izuzetak nije propisan za jesenje predmete."
+        ]
+      },
+      "note": "Neformalno pominjanje septembra/oktobra čitano je kao objašnjenje prelaska školske godine, ne kao novi ispitni rok.",
+      "evidence": [
+        "Ostvareni poeni u okviru predispitnih obaveza studentu se priznaju pri \nsvakom izlasku na ispit tokom skolske godine u kojoj je te poene ostvario.",
+        "Izuzetno za ispite iz prolecnog semestara, ostvareni poeni \npredispitnih obaveza iz prethodnog stava priznaju se i u februarskom roku u \nnarednoj skolskoj godini."
+      ],
+      "human_review_required": true
+    },
+    "0d7f6eb729ba": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "SI vrednuje matematiku.",
+          "ER vrednuje bolji rezultat matematike ili fizike.",
+          "Lice sa invaliditetom može imati prilagođen način polaganja."
+        ],
+        "unsupported": [
+          "Prilagođavanje načina ispita dozvoljava zamenu matematike fizikom za SI.",
+          "Samo fizika u opisanoj situaciji dovoljna je za konkurisanje za SI."
+        ],
+        "contradicted": [
+          "Odredba o nagradama iz informatike dopušta polaganje fizike umesto matematike kao redovni prijemni za SI."
+        ]
+      },
+      "note": "Glavno početno dopuštenje i izmišljeni izuzetak nisu opravdani kasnijim tačnim navođenjem matematike.",
+      "evidence": [
+        "Za studijski program Softversko inzenjerstvo vrednuje ce rezultat ostvaren na prijemnom ispitu iz matematike",
+        "Lice ca invaliditetom moze polagati prijemni ISPIT na nacin prilagod en njegovim potrebama u skladu ca objektivnim mogucnostima Fakulteta."
+      ]
+    },
+    "9f10f9068dfd": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Rok objave kolokvijuma je 15 dana.",
+          "Posle 18 dana rok je istekao."
+        ]
+      },
+      "note": "Broj člana je pogrešno naveden, ali sadržaj pravila i zaključak su podržani; numeracija nije tretirana kao bitna zasebna tvrdnja.",
+      "evidence": [
+        "Rezultati kolokvijuma moraju da budu objavljeni najkasnije u roku od 15 \ndana od dana odrzavanja kolokvijuma."
+      ],
+      "human_review_required": true
+    },
+    "4adfaa75e6ad": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Za upis treće moraju biti položeni svi ispiti prve.",
+          "Bez ispunjenog uslova moguće je nastaviti uz ponovnu prijavu neispunjenih obaveza.",
+          "Mogućnost prijave 40 ESPB data je kao pretpostavka pitanja."
+        ],
+        "unsupported": [
+          "Za upis treće moraju već biti položeni svi ispiti treće godine."
+        ]
+      },
+      "note": "Početno 'Da' odnosi se na prijavu predmeta; odgovor potom ispravno razlikuje upis godine, ali dodaje nemoguć nepotkrepljen uslov.",
+      "evidence": [
+        "student mora pri upisu trece \ngodine studija imati polozene sve ispite iz prve godine studija",
+        "Student koji nije ispunio uslov iz stava 1 ovog clana moze nastaviti \nstudije tako da ponovo prijavi studijske obaveze koje nije ispunio u prethodnoj \ngodini."
+      ],
+      "human_review_required": true
+    },
+    "8c0b32fa401c": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Budžetsko rangiranje koristi ostvarene ESPB i uspeh.",
+          "Posebno uspešnim studentima može se odobriti više od 60, najviše 90."
+        ],
+        "unsupported": [
+          "Početno 'Da' o potrebi 48 za afirmativnog studenta.",
+          "Zaključak o 48 dodatnih predmeta odgovara pitanju o 48 ESPB."
+        ],
+        "contradicted": [
+          "Minimum prijave 37 važi za sve studente bez razlikovanja statusa."
+        ]
+      },
+      "note": "Ovaj dostavljeni kontekst nema odredbu afirmativnog praga 36; odgovor je ne izvodi već meša različite pragove i predmete.",
+      "evidence": [
+        "Student koji se sam finansira opredeljuje se za onoliko predmeta \nkoliko je potrebno da se ostvari najmanje 37 ESPB bodova",
+        "posebno \nuspesnim studentima moze se odobriti i vise od 60 ESPB bodova u toku jedne \nskolske godine, ali ne vise od 90 ESPB bodova."
+      ]
+    },
+    "715cdb909e50": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Prva želja menja se samo u fazi prijave.",
+          "Posle prijemnog formiraju se liste.",
+          "Kandidat unutar budžetske kvote prve želje nalazi se samo na njenoj listi.",
+          "Posle rezultata ne može se menjati prva želja."
+        ]
+      },
+      "note": "Pravilo je primenjeno bez izmišljanja konačnog programa upisa.",
+      "evidence": [
+        "Prvu zelju je moguce izraziti menjati samo u fazn prijave kandidata",
+        "Kandidati koji su na rang listi studijskog programa za kojn su izrazili prvu zelju, rangirani do broja odobrenog za upis kandndata na teret budzeta nalaze ce samo na listi studijskog programa prve zelje:"
+      ]
+    },
+    "6699052ff402": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "100 poena ukupno obuhvata predispitne obaveze i ispit.",
+          "Predispitne obaveze moraju nositi 30–70.",
+          "Raspodela svih 100 samo završnom ispitu ne odgovara navedenom pravilu."
+        ]
+      },
+      "note": "Neposredno podržano.",
+      "evidence": [
+        "najmanje 30, a najvise 70 poena mora biti predvid eno za aktivnosti i provere \nznanja u toku semestra ( predispitne obaveze). Ukupno 100 poena se stice \nispunjavanjem predispitnih obaveza i polaganjem ispita."
+      ]
+    },
+    "2ad8ed0823c9": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Tačan iznos godišnje školarine SI za 2026/2027 nije naveden.",
+          "Godišnju školarinu određuje Savet na predlog Veća."
+        ],
+        "unsupported": [
+          "Oštećeni zapis S=N×60 predstavlja pouzdano potpunu formulu obračuna.",
+          "Uobičajeni objavljivač konkretne cene utvrđen je datim kontekstom."
+        ]
+      },
+      "note": "Uzdržavanje o ceni opravdano je, ali odgovor ipak iznosi tvrdnje o formuli i objavi. Doslovno prepisan OCR zapis nije isto što i potvrđena čitljiva formula.",
+      "evidence": [
+        "S = N x 60",
+        "$ godisnja skolarina za odgovarajuci studijski program; koju svojom odlukom odred uje Savet fakulteta, na predlog Beca Fakulteta"
+      ],
+      "human_review_required": true
+    },
+    "af67cb1721e4": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Jedan sat najave krši pravilo najmanje 24 sata.",
+          "Jedna verzija teksta pominje uvid najkasnije 48 sati od rezultata."
+        ],
+        "unsupported": [
+          "Nedostajući broj u roku objave rezultata sme se rekonstruisati kao pet dana."
+        ],
+        "contradicted": [
+          "Uvid jedan sat posle rezultata nije unutar roka od najviše 48 sati."
+        ]
+      },
+      "note": "Glavni zaključak je tačan zbog kratke najave; dodatno tumačenje gornjeg roka i popunjavanje OCR praznine nisu podržani.",
+      "evidence": [
+        "najkasnije u roku od dana od dana odrzavanja ispita",
+        "student bar 24 sata pre odrzavanja uvida u radove mora biti obavesten 0 terminu uvida",
+        "Uvid u rezultate ispita omogucice ce studentima najkasnije 48 sati nakon objavljivanja rezultata ispita"
+      ]
+    },
+    "c961a87c70ec": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Finansijsko mirovanje može biti odobreno jednom, na jednu godinu, na istom programu."
+        ],
+        "unsupported": [
+          "Zabranjeno je samo ponovno podnošenje zahteva, nezavisno od odobravanja.",
+          "Za druge osnove dokazano postoji neograničeno ponavljanje.",
+          "Oslobađanje zbog smrti predstavlja opisano automatsko godišnje pravo."
+        ]
+      },
+      "note": "Ograničenje odobravanja ne dokazuje zabranu podnošenja; oslobađanje od školarine i mirovanje različita su prava.",
+      "evidence": [
+        "Studentu se moze odobriti mirovanje i u slucaju nemogucnosti placanja \nskolarine u trajanju od jedne skolske godine i to jednom u toku studija na istom \nstudijskom programu, zbog nedostatka materijalnih sredstava, u skladu sa \nmerilima koje utvrdi Fakultet."
+      ],
+      "human_review_required": true
+    },
+    "163119127176": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Ponovno odobrenje mirovanja po istom finansijskom osnovu na istom programu nije predviđeno.",
+          "Ovaj osnov dopušta jednu školsku godinu, jednom tokom studija."
+        ]
+      },
+      "note": "Odgovor govori o ponovnom dobijanju mirovanja, a ne o zabrani slanja molbe.",
+      "evidence": [
+        "Studentu ce moze odobriti mirovanje i u slucaju nemogucnosti placanja skolarine u trajanju od jedne skolske godine i to jednom u toku studija na istom studijskom programu"
+      ]
+    },
+    "277c5c663efe": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Pre prijave kontaktira se nastavnik najsličnijeg predmeta.",
+          "Nastavnik procenjuje poklapanje i daje saglasnost.",
+          "Prodekan potpisuje ugovor o učenju.",
+          "Priznavanje položenih predmeta uslovljeno je transkriptom i ugovorenom procedurom.",
+          "Kraći boravak i boravak jednog do dva semestra razlikuju se po obimu priznavanja."
+        ]
+      },
+      "note": "Opis postupka ima podršku; očigledna jezička omaška 'najličniji' nije sadržinska greška.",
+      "evidence": [
+        "Student je pre prijavljivanja za mobilnost duzan da kontaktira \nnastavnika angazovanog na predmetu koji je najslicniji sa predmetom koji \nplanira da prati i polaze",
+        "Prodekan za nastavu u ime Fakulteta potpisuje Ugovor o ucenju, kojim se \nstudentu garantuje da ce predmeti koje polozi tokom boravka na mobilnosti \nbiti priznati, ukoliko po povratku sa mobilnosti dostavi odgovarajuci \ntranskript ocena."
+      ]
+    },
+    "64cf6200c701": {
+      "label": "fully_supported",
+      "claims": {
+        "supported": [
+          "Prosek preko 8,5 ili položenih 60 prethodne godine dovoljan je za oslobađanje troškova dodatno prijavljenih ESPB.",
+          "Korisnik ispunjava drugi uslov i ne plaća dodatnih 12 pri odobrenom obimu."
+        ]
+      },
+      "note": "Alternativni uslovi pravilno su protumačeni.",
+      "evidence": [
+        "Ukoliko student ima prosek preko 8,5 ili je polozio predmete u obimu \n60 ESPB u toku prethodne skolske godine, ne snosi troskove vise prijavljenih \nESPB bodova."
+      ]
+    },
+    "f56323a16a5b": {
+      "label": "partly_supported",
+      "claims": {
+        "supported": [
+          "Obrazloženje izmene pominje refundaciju 50% i za deo školarine prakse i završnog.",
+          "U dostavljenom tekstu nije opisana posebna procedura te refundacije."
+        ],
+        "unsupported": [
+          "Oštećeni zapis S=N×60 pouzdano određuje iznos refundacije."
+        ],
+        "contradicted": [
+          "Refundacija se odnosi isključivo na praksu i završni.",
+          "N u opštoj definiciji obuhvata samo praksu i završni, bez predmeta."
+        ]
+      },
+      "note": "Glavni odgovor i uzdržavanje o proceduri podržani su; reč 'i' ne znači 'isključivo', a N je šire definisan.",
+      "evidence": [
+        "bice omoguceno samofinansirajucim studentima da ostvare refundaciju od 50% i za onaj deo skolarine koji proistice iz ESPB za strucnu praksu i zavrsni rad.",
+        "N broj ESPB bodova za predmete i ostale obaveze (strucna praksa; zavrsni rad) koje student upisuje"
+      ],
+      "human_review_required": true
+    },
+    "fef81efe4acf": {
+      "label": "unsupported",
+      "claims": {
+        "supported": [
+          "Nova odredba obuhvata nastavnika angažovanog na predmetu drugog modula koji je student pratio i položio."
+        ],
+        "contradicted": [
+          "Profesor može biti mentor samo na osnovu slušanog, ali nepoloženog predmeta drugog modula."
+        ]
+      },
+      "note": "Glavni odgovor zanemaruje izričitu konjunkciju praćenja i polaganja.",
+      "evidence": [
+        "ili na predmetu koji je student pratio i polozio, koji pripada drugom izbornom podrucju modulu osnovnih studija:"
+      ]
+    }
+  }
+}

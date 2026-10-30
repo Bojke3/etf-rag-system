@@ -1,0 +1,722 @@
+{
+  "eabd819cbb2d": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r01",
+    "question_id": "REAL_030",
+    "llm_score": 4.0
+  },
+  "3c437c1f7630": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r02",
+    "question_id": "REAL_001",
+    "llm_score": 0.0
+  },
+  "41e3e0483b98": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r03",
+    "question_id": "REAL_037",
+    "llm_score": 1.0
+  },
+  "f5cc56564a59": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r04",
+    "question_id": "REAL_032",
+    "llm_score": 4.0
+  },
+  "e72fe01c942e": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r05",
+    "question_id": "REAL_023",
+    "llm_score": 4.0
+  },
+  "8bd68f9edb8b": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r01",
+    "question_id": "REAL_005",
+    "llm_score": 4.0
+  },
+  "0f128724b042": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r02",
+    "question_id": "REAL_013",
+    "llm_score": 3.0
+  },
+  "fc0abc36580c": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r03",
+    "question_id": "REAL_050",
+    "llm_score": 4.0
+  },
+  "52e34a255fd3": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r04",
+    "question_id": "REAL_010",
+    "llm_score": 3.0
+  },
+  "b5067e45a960": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r05",
+    "question_id": "REAL_014",
+    "llm_score": 1.0
+  },
+  "5f789797935b": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r01",
+    "question_id": "REAL_031",
+    "llm_score": 1.0
+  },
+  "fafa084cba77": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r02",
+    "question_id": "REAL_033",
+    "llm_score": 5.0
+  },
+  "d6a9b98f9aae": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r03",
+    "question_id": "REAL_042",
+    "llm_score": 4.0
+  },
+  "7501d440a8be": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r04",
+    "question_id": "REAL_055",
+    "llm_score": 3.0
+  },
+  "b414fd7a9a78": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r05",
+    "question_id": "REAL_024",
+    "llm_score": 0.0
+  },
+  "9ebf78015f05": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r01",
+    "question_id": "REAL_040",
+    "llm_score": 2.0
+  },
+  "8c0b32fa401c": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r02",
+    "question_id": "REAL_012",
+    "llm_score": 2.0
+  },
+  "13ad40c00d05": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r03",
+    "question_id": "REAL_054",
+    "llm_score": 1.0
+  },
+  "953b5167cc60": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r04",
+    "question_id": "REAL_056",
+    "llm_score": 0.0
+  },
+  "837a1269623c": {
+    "cell": "Mistral flat",
+    "run": "dev_combined_c105_r05",
+    "question_id": "REAL_059",
+    "llm_score": 1.0
+  },
+  "e0641bcdf7bf": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r01",
+    "question_id": "REAL_008",
+    "llm_score": 1.0
+  },
+  "6ad331934a29": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r02",
+    "question_id": "REAL_036",
+    "llm_score": 3.0
+  },
+  "db8d8c454cdb": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r03",
+    "question_id": "REAL_045",
+    "llm_score": 3.0
+  },
+  "fef81efe4acf": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r04",
+    "question_id": "REAL_044",
+    "llm_score": 1.0
+  },
+  "25381ff36a3c": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r05",
+    "question_id": "REAL_020",
+    "llm_score": 1.0
+  },
+  "acf21adc05c5": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r01",
+    "question_id": "REAL_003",
+    "llm_score": 5.0
+  },
+  "4bda2151a3ef": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r02",
+    "question_id": "REAL_018",
+    "llm_score": 3.0
+  },
+  "04becb8efd87": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r03",
+    "question_id": "REAL_004",
+    "llm_score": 1.0
+  },
+  "fda7979d7d13": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r04",
+    "question_id": "REAL_015",
+    "llm_score": 0.0
+  },
+  "5788e38dffc7": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r05",
+    "question_id": "REAL_028",
+    "llm_score": 1.0
+  },
+  "72c4e2d2facd": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r01",
+    "question_id": "REAL_022",
+    "llm_score": 4.0
+  },
+  "195e8fd65d26": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r02",
+    "question_id": "REAL_027",
+    "llm_score": 1.0
+  },
+  "3220978a5017": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r03",
+    "question_id": "REAL_021",
+    "llm_score": 3.0
+  },
+  "9842f7d33aee": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r04",
+    "question_id": "REAL_052",
+    "llm_score": 0.0
+  },
+  "491141b3c2ac": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r05",
+    "question_id": "REAL_011",
+    "llm_score": 2.0
+  },
+  "4adfaa75e6ad": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r01",
+    "question_id": "REAL_016",
+    "llm_score": 2.0
+  },
+  "e36a0b86bf74": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r02",
+    "question_id": "REAL_041",
+    "llm_score": 3.0
+  },
+  "5812b1e600f3": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r03",
+    "question_id": "REAL_058",
+    "llm_score": 2.0
+  },
+  "50936081499b": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r04",
+    "question_id": "REAL_060",
+    "llm_score": 2.0
+  },
+  "5844b5694863": {
+    "cell": "Mistral hierarchical",
+    "run": "dev_combined_c107_r05",
+    "question_id": "REAL_059",
+    "llm_score": 3.0
+  },
+  "62f83bcc1cd6": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r01",
+    "question_id": "REAL_019",
+    "llm_score": 5.0
+  },
+  "4e2ec63646ae": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r02",
+    "question_id": "REAL_049",
+    "llm_score": 2.0
+  },
+  "c961a87c70ec": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r03",
+    "question_id": "REAL_039",
+    "llm_score": 4.0
+  },
+  "5be42f1658c9": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r04",
+    "question_id": "REAL_007",
+    "llm_score": 5.0
+  },
+  "365dbb74dc09": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r05",
+    "question_id": "REAL_051",
+    "llm_score": 2.0
+  },
+  "a6d3ff62dc3a": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r01",
+    "question_id": "REAL_035",
+    "llm_score": 5.0
+  },
+  "0d7f6eb729ba": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r02",
+    "question_id": "REAL_002",
+    "llm_score": 3.0
+  },
+  "76f31d46dcc8": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r03",
+    "question_id": "REAL_038",
+    "llm_score": 3.0
+  },
+  "ea2d3c98d9a4": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r04",
+    "question_id": "REAL_017",
+    "llm_score": 2.0
+  },
+  "a84ac32da7cc": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r05",
+    "question_id": "REAL_034",
+    "llm_score": 4.0
+  },
+  "456ff5942e4b": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r01",
+    "question_id": "REAL_029",
+    "llm_score": 4.0
+  },
+  "12b1d63baed0": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r02",
+    "question_id": "REAL_026",
+    "llm_score": 4.0
+  },
+  "e9bd038544cc": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r03",
+    "question_id": "REAL_053",
+    "llm_score": 5.0
+  },
+  "e37ee77e09d1": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r04",
+    "question_id": "REAL_043",
+    "llm_score": 4.0
+  },
+  "b254c1bc3195": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r05",
+    "question_id": "REAL_048",
+    "llm_score": 4.0
+  },
+  "a0707447ec47": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r01",
+    "question_id": "REAL_006",
+    "llm_score": 1.0
+  },
+  "80955ab20ecd": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r02",
+    "question_id": "REAL_009",
+    "llm_score": 3.0
+  },
+  "f56323a16a5b": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r03",
+    "question_id": "REAL_047",
+    "llm_score": 4.0
+  },
+  "a5b24606ba88": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r04",
+    "question_id": "REAL_057",
+    "llm_score": 5.0
+  },
+  "efda7482bfe8": {
+    "cell": "Qwen flat",
+    "run": "dev_combined_c205_api_r05",
+    "question_id": "REAL_059",
+    "llm_score": 1.0
+  },
+  "518d2bfa97ea": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r01",
+    "question_id": "REAL_025",
+    "llm_score": 4.0
+  },
+  "8d6983576524": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r02",
+    "question_id": "REAL_030",
+    "llm_score": 4.0
+  },
+  "16ade1cb35db": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r03",
+    "question_id": "REAL_001",
+    "llm_score": 5.0
+  },
+  "f24f90da8412": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r04",
+    "question_id": "REAL_037",
+    "llm_score": 4.0
+  },
+  "352e37f2b2ff": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r05",
+    "question_id": "REAL_032",
+    "llm_score": 4.0
+  },
+  "66b84d97e843": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r01",
+    "question_id": "REAL_023",
+    "llm_score": 3.0
+  },
+  "e035dfabc3ed": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r02",
+    "question_id": "REAL_005",
+    "llm_score": 2.0
+  },
+  "0d175958acfb": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r03",
+    "question_id": "REAL_013",
+    "llm_score": 2.0
+  },
+  "277c5c663efe": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r04",
+    "question_id": "REAL_050",
+    "llm_score": 4.0
+  },
+  "3eda584b7580": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r05",
+    "question_id": "REAL_010",
+    "llm_score": 5.0
+  },
+  "62960a523aad": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r01",
+    "question_id": "REAL_014",
+    "llm_score": 5.0
+  },
+  "af67cb1721e4": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r02",
+    "question_id": "REAL_031",
+    "llm_score": 3.0
+  },
+  "a1aa807fde07": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r03",
+    "question_id": "REAL_033",
+    "llm_score": 4.0
+  },
+  "74eaac36f3e7": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r04",
+    "question_id": "REAL_042",
+    "llm_score": 4.0
+  },
+  "905e9d1d7aa9": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r05",
+    "question_id": "REAL_055",
+    "llm_score": 5.0
+  },
+  "b75107ffda99": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r01",
+    "question_id": "REAL_024",
+    "llm_score": 1.0
+  },
+  "0b630e2d0fb7": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r02",
+    "question_id": "REAL_040",
+    "llm_score": 5.0
+  },
+  "c79cdb8082c1": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r03",
+    "question_id": "REAL_046",
+    "llm_score": 0.0
+  },
+  "2ad8ed0823c9": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r04",
+    "question_id": "REAL_056",
+    "llm_score": 5.0
+  },
+  "ddf0b9e2ef13": {
+    "cell": "Qwen hierarchical",
+    "run": "dev_combined_c207_api_r05",
+    "question_id": "REAL_059",
+    "llm_score": 2.0
+  },
+  "2d71a2ebc5b6": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r01",
+    "question_id": "REAL_012",
+    "llm_score": 0.0
+  },
+  "a911f67d15d3": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r02",
+    "question_id": "REAL_008",
+    "llm_score": 5.0
+  },
+  "9f10f9068dfd": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r03",
+    "question_id": "REAL_036",
+    "llm_score": 4.0
+  },
+  "ed491073b9f9": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r04",
+    "question_id": "REAL_045",
+    "llm_score": 3.0
+  },
+  "15ae5d5ac19e": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r05",
+    "question_id": "REAL_044",
+    "llm_score": 1.0
+  },
+  "64cf6200c701": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r01",
+    "question_id": "REAL_020",
+    "llm_score": 4.0
+  },
+  "37791c094b53": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r02",
+    "question_id": "REAL_003",
+    "llm_score": 1.0
+  },
+  "6932f7983889": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r03",
+    "question_id": "REAL_018",
+    "llm_score": 4.0
+  },
+  "6769041114b1": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r04",
+    "question_id": "REAL_004",
+    "llm_score": 0.0
+  },
+  "f895fa879b10": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r05",
+    "question_id": "REAL_015",
+    "llm_score": 1.0
+  },
+  "1154a6dda195": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r01",
+    "question_id": "REAL_028",
+    "llm_score": 5.0
+  },
+  "f2487c7aeb1b": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r02",
+    "question_id": "REAL_022",
+    "llm_score": 3.0
+  },
+  "0ea7b4866181": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r03",
+    "question_id": "REAL_027",
+    "llm_score": 5.0
+  },
+  "1da46dbb34c6": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r04",
+    "question_id": "REAL_021",
+    "llm_score": 5.0
+  },
+  "60245e309e2d": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r05",
+    "question_id": "REAL_052",
+    "llm_score": 5.0
+  },
+  "676318d9f7c6": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r01",
+    "question_id": "REAL_011",
+    "llm_score": 1.0
+  },
+  "e07e987f3b0d": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r02",
+    "question_id": "REAL_016",
+    "llm_score": 4.0
+  },
+  "4592f875670c": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r03",
+    "question_id": "REAL_054",
+    "llm_score": 4.0
+  },
+  "d171dce36b3b": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r04",
+    "question_id": "REAL_060",
+    "llm_score": 4.0
+  },
+  "95130d8c4e4f": {
+    "cell": "Llama flat",
+    "run": "dev_combined_c305_api_r05",
+    "question_id": "REAL_059",
+    "llm_score": 2.0
+  },
+  "d7d275f1b5bc": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r01",
+    "question_id": "REAL_041",
+    "llm_score": 3.0
+  },
+  "840c95ff10ef": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r02",
+    "question_id": "REAL_019",
+    "llm_score": 4.0
+  },
+  "30bd1e325bb6": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r03",
+    "question_id": "REAL_049",
+    "llm_score": 3.0
+  },
+  "163119127176": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r04",
+    "question_id": "REAL_039",
+    "llm_score": 5.0
+  },
+  "715cdb909e50": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r05",
+    "question_id": "REAL_007",
+    "llm_score": 5.0
+  },
+  "73e246409473": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r01",
+    "question_id": "REAL_051",
+    "llm_score": 1.0
+  },
+  "89441ff76e1c": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r02",
+    "question_id": "REAL_035",
+    "llm_score": 5.0
+  },
+  "327c70bd1292": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r03",
+    "question_id": "REAL_002",
+    "llm_score": 4.0
+  },
+  "a954ec1e012f": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r04",
+    "question_id": "REAL_038",
+    "llm_score": 5.0
+  },
+  "97ed9ffd7fd2": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r05",
+    "question_id": "REAL_017",
+    "llm_score": 3.0
+  },
+  "6699052ff402": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r01",
+    "question_id": "REAL_034",
+    "llm_score": 4.0
+  },
+  "1d67e95bf476": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r02",
+    "question_id": "REAL_029",
+    "llm_score": 4.0
+  },
+  "3390b9e2b8dc": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r03",
+    "question_id": "REAL_026",
+    "llm_score": 5.0
+  },
+  "f907e5b202f9": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r04",
+    "question_id": "REAL_053",
+    "llm_score": 5.0
+  },
+  "a11ae98c5973": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r05",
+    "question_id": "REAL_043",
+    "llm_score": 5.0
+  },
+  "40f321855bc0": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r01",
+    "question_id": "REAL_048",
+    "llm_score": 4.5
+  },
+  "cd833b72baad": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r02",
+    "question_id": "REAL_006",
+    "llm_score": 3.0
+  },
+  "cc747a11bdb7": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r03",
+    "question_id": "REAL_058",
+    "llm_score": 2.0
+  },
+  "56ff66dfd994": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r04",
+    "question_id": "REAL_057",
+    "llm_score": 5.0
+  },
+  "4f1ed42cc823": {
+    "cell": "Llama hierarchical",
+    "run": "dev_combined_c307_api_r05",
+    "question_id": "REAL_059",
+    "llm_score": 1.0
+  }
+}
